@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCIMasterFarm.Negocio.BackOffice
+namespace MCIMasterFarm.Negocio.BackOffice.Sequence
 {
-    public class ConsultaSQL
+    public class Sequences
     {
-        public 
     }
 }

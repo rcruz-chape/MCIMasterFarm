@@ -30,7 +30,7 @@ namespace MCIMasterFarm
         private void InitializeComponent()
         {
             this.txt_Usuario = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Senha = new System.Windows.Forms.TextBox();
             this.frame_Acesso = new System.Windows.Forms.GroupBox();
             this.btn_Acessar = new System.Windows.Forms.Button();
             this.btn_Esquecer = new System.Windows.Forms.Button();
@@ -46,13 +46,13 @@ namespace MCIMasterFarm
             this.txt_Usuario.Size = new System.Drawing.Size(235, 20);
             this.txt_Usuario.TabIndex = 0;
             // 
-            // textBox2
+            // txt_Senha
             // 
-            this.textBox2.Location = new System.Drawing.Point(109, 55);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(235, 20);
-            this.textBox2.TabIndex = 1;
+            this.txt_Senha.Location = new System.Drawing.Point(109, 55);
+            this.txt_Senha.Name = "txt_Senha";
+            this.txt_Senha.PasswordChar = '*';
+            this.txt_Senha.Size = new System.Drawing.Size(235, 20);
+            this.txt_Senha.TabIndex = 1;
             // 
             // frame_Acesso
             // 
@@ -60,7 +60,7 @@ namespace MCIMasterFarm
             this.frame_Acesso.Controls.Add(this.btn_Esquecer);
             this.frame_Acesso.Controls.Add(this.lbl_Senha);
             this.frame_Acesso.Controls.Add(this.lbl_Usuario);
-            this.frame_Acesso.Controls.Add(this.textBox2);
+            this.frame_Acesso.Controls.Add(this.txt_Senha);
             this.frame_Acesso.Location = new System.Drawing.Point(8, 1);
             this.frame_Acesso.Name = "frame_Acesso";
             this.frame_Acesso.Size = new System.Drawing.Size(417, 122);
@@ -130,7 +130,7 @@ namespace MCIMasterFarm
         #endregion
 
         private System.Windows.Forms.TextBox txt_Usuario;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_Senha;
         private System.Windows.Forms.Button btn_Acessar;
         private System.Windows.Forms.Button btn_Esquecer;
         private System.Windows.Forms.GroupBox frame_Acesso;
