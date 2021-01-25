@@ -90,6 +90,7 @@
     <Compile Include="Negocio\BackOffice\Model\SisFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SIS_PARAMETRO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_USUARIO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\Sequences.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
