@@ -36,7 +36,33 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 return false;
             }
         }
-        
+        public NpgsqlDataReader ObtemUnico(ref Banco pBanco, string pSql)
+        {
+            string vSql = pSql;
+
+            var Connect = GetConnection(ref pBanco);
+            NpgsqlCommand command = new NpgsqlCommand(vSql, Connect);
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+
+
+            var fCOnexão = FechaConnection(ref Connect);
+
+            return dataReader;
+        }
+        public NpgsqlDataReader ObtemFirst(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros)
+        {
+            string vSql = pSql;
+
+            vSql = montaSql(vSql, pParametros);
+            var Connect = GetConnection(ref pBanco);
+            NpgsqlCommand command = new NpgsqlCommand(vSql, Connect);
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+
+
+            var fCOnexão = FechaConnection(ref Connect);
+
+            return dataReader;
+        }
         public NpgsqlDataReader ObtemLista(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros )
         {
             string vSql = pSql;

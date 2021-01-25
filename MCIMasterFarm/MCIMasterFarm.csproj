@@ -83,6 +83,7 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\Criptografia.cs" />
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
     <Compile Include="Negocio\BackOffice\Install\InstallSCA.cs" />
