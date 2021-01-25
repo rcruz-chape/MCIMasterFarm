@@ -32,7 +32,7 @@ namespace MCIMasterFarm.Negocio.Telas
 
         private void btAlterarSenha_Click(object sender, EventArgs e)
         {
-
+            var Criptografia = new Criptografia();
         }
     }
 }
