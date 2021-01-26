@@ -17,8 +17,38 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         int iInatividade = 0;
         int iTentativaExcedida = 1;
         public int iSenhaExpirada = 2;
-        
+        int iMaximoLoginSemSucesso = 3;
 
+        public Boolean BloqueiaUsuario(SisUsuario pSisUsuario, ref Banco pBanco)
+        
+        public Boolean LoginSemSucesso(SisUsuario pSisUsuario, ref Banco pBanco)
+        {
+            SisUsuario vSisUsuario = new SisUsuario();
+            vSisUsuario = pSisUsuario;
+            vSisUsuario.qtd_login_sem_sucesso += 1;
+            var vSisUsuDal = new SIS_USUARIO_DAL();
+            Boolean vbLoginSemSucesso = true;
+            vbLoginSemSucesso = vSisUsuDal.atualizaUsuario(vSisUsuario, ref pBanco);
+            if (vSisUsuario.qtd_login_sem_sucesso >= iMaximoLoginSemSucesso)
+            {
+                vSisUsuario.ind_bloqueado = sUsuarioBloqueado;
+                vSisUsuario.ind_motivo_bloqueio = iTentativaExcedida;
+                vbLoginSemSucesso = !vSisUsuDal.bloqueiaUsuario(vSisUsuario, ref pBanco);
+            }
+            return vbLoginSemSucesso;
+        }
+        
+        public Boolean RealizaDesbloqueio(SisUsuario pSisUsuario, ref Banco pBanco)
+        { 
+            var vSISUSUDAL = new SIS_USUARIO_DAL();
+            return vSISUSUDAL.DesbloqueiaUSuario(pSisUsuario, ref pBanco);
+        }
+
+        public Boolean ALteraSenhaUsuario(SisUsuario psusUsuario, ref Banco PBanco)
+        {
+            var vSISUSUDAL = new SIS_USUARIO_DAL();
+            return vSISUSUDAL.AtualizaSenha(psusUsuario,ref PBanco);
+        }
         public SisUsuario vSysUsuDal(string pIDUSu, ref Banco pBanco)
         {
             var vSISUSUDal = new SIS_USUARIO_DAL();

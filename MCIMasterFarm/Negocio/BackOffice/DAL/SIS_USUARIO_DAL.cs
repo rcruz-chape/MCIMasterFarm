@@ -11,6 +11,119 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 {
     public class SIS_USUARIO_DAL
     {
+        public Boolean atualizaUsuario(SisUsuario psisUsuario, ref Banco pBanco)
+        {
+            string vsSql = @"UPDATE SIS_USUARIO 
+                                SET NM_USU = @NM_USU
+                                  , DS_EMAIL = @DS_EMAIL
+                                  , DT_LAST_LOGIN = @DT_LAST_LOGIN    
+                                 , IND_BLOQUEADO = @IND_BLOQUEADO
+                                 , IND_MOTIVO_BLOQUEIO = @IND_MOTIVO_BLOQUEIO
+                                 , QTD_LOGIN_SEM_SUCESSO = @QTD_LOGIN_SEM_SUCESSO
+                                 , ID_PESSOA_FISICA = @ID_PESSOA_FISICA
+                                 , DT_ALTERACAO = @DT_ALTERACAO
+                                 , ID_USU_ALT = @ID_USU_ALT
+                             WHERE ID_USU = @CD_USUARIO";
+
+            var parametros = new Dictionary<string, dynamic>()
+            {
+                { "CD_USUARIO", psisUsuario.id_usu },
+                { "NM_USU", psisUsuario.nm_usu },
+                { "DS_EMAIL", psisUsuario.ds_email },
+                { "DT_LAST_LOGIN",psisUsuario.dt_last_login },
+                { "IND_BLOQUEADO", psisUsuario.ind_bloqueado},
+                { "IND_MOTIVO_BLOQUEIO", psisUsuario.ind_motivo_bloqueio},
+                { "QTD_LOGINS_SEM_SUCESSO", psisUsuario.qtd_login_sem_sucesso},
+                { "ID_PESSOA_FISICA", psisUsuario.id_pessoa_fisica},
+                { "DT_ALTERACAO", psisUsuario.dt_alteracao},
+                { "ID_USU_ALT", psisUsuario.id_usu_alt}
+            };
+
+            var Connect = new Connect();
+            return Connect.update(ref pBanco, vsSql, parametros);
+        }
+        public Boolean bloqueiaUsuario(SisUsuario psisUsuario, ref Banco pBanco)
+        {
+            string vsSql = @"UPDATE SIS_USUARIO
+                                SET IND_BLOQUEADO = 'S'
+                                  , IND_MOTIVO_BLOQUEADO = @IndMotivoBloqueio
+                              WHERE ID_USU = @CD_USUARIO";
+            var parametros = new Dictionary<string, dynamic>()
+            {
+                { "CD_USUARIO", psisUsuario.id_usu },
+                { "IndMotivoBloqueio", psisUsuario.ind_motivo_bloqueio }
+            };
+            var Connect = new Connect();
+            return Connect.update(ref pBanco, vsSql, parametros);
+        }
+        public Boolean insereUsuario(SisUsuario sisUSu, ref Banco pBanco)
+        {
+            string vSql = @"INSERT INTO SIS_USUARIO
+                                 ( ID_USU
+                                 , NM_USU
+                                 , DS_EMAIL
+                                 , DT_LAST_LOGIN    
+                                 , DS_PWD
+                                 , IND_BLOQUEADO
+                                 , IND_MOTIVO_BLOQUEIO
+                                 , QTD_LOGIN_SEM_SUCESSO
+                                 , ID_PESSOA_FISICA
+                                 , DT_INCLUSAO
+                                 , DT_ALTERACAO
+                                 , ID_USU_ALT
+                                 , ID_USU_INCL
+                                 )
+                           VALUES
+                                ( @ID_USU
+                                 , @NM_USU
+                                 , @DS_EMAIL
+                                 , @DT_LAST_LOGIN    
+                                 , @DS_PWD
+                                 , @IND_BLOQUEADO
+                                 , @IND_MOTIVO_BLOQUEIO
+                                 , @QTD_LOGIN_SEM_SUCESSO
+                                 , @ID_PESSOA_FISICA
+                                 , @DT_INCLUSAO
+                                 , @DT_ALTERACAO
+                                 , @ID_USU_ALT
+                                 , @ID_USU_INCL
+                                 )";
+            var parametros = new Dictionary<string, dynamic>()
+            {
+                { "ID_USU", sisUSu.id_usu },
+                { "NM_USU", sisUSu.nm_usu },
+                { "DS_EMAIL", sisUSu.ds_email },
+                { "DT_LAST_LOGIN", sisUSu.dt_last_login },
+                { "DS_PWD", sisUSu.ds_pwd },
+                { "IND_BLOQUEADO", sisUSu.ind_bloqueado },
+                { "IND_MOTIVO_BLOQUEIO", sisUSu.ind_motivo_bloqueio },
+                { "QTD_LOGIN_SEM_SUCESSO", sisUSu.qtd_login_sem_sucesso },
+                { "ID_PESSOA_FISICA", sisUSu.id_pessoa_fisica },
+                { "DT_INCLUSAO", sisUSu.dt_inclusao },
+                { "DT_ALTERACAO", sisUSu.dt_alteracao },
+                { "ID_USU_ALT", sisUSu.id_usu_alt },
+                { "ID_USU_INCL", sisUSu.id_usu_incl }
+            };
+            var Connect = new Connect();
+            return Connect.insert(ref pBanco, vSql, parametros);
+        }
+
+
+        public Boolean DesbloqueiaUSuario(SisUsuario sisUSu, ref Banco pBanco)
+        {
+            string vSQl = @"UPDATE MCISYS.SIS_USUARIO
+                               SET IND_BLOQUEADO='N', IND_MOTIVO_BLOQUEIO=NULL,
+                             WHERE ID_USU=@CD_USUARIO";
+
+            ;
+            var parametros = new Dictionary<string, dynamic>()
+            {
+                { "CD_USUARIO", sisUSu.id_usu }
+
+            };
+            var vConnect = new Connect();
+            return vConnect.update(ref pBanco, vSQl, parametros);
+        }
         public Boolean AtualizaSenha(SisUsuario sisUSu, ref Banco pBanco)
         {
             string vSQl = @"update SIS_USUARIO 

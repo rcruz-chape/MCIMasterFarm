@@ -33,9 +33,9 @@ namespace MCIMasterFarm.Negocio.Telas
             this.lbl_ConfirmaSenha = new System.Windows.Forms.Label();
             this.lbl_NewPwd = new System.Windows.Forms.Label();
             this.lbl_PwdAtual = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSenhaNova = new System.Windows.Forms.TextBox();
+            this.txtSenhaConfirma = new System.Windows.Forms.TextBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_Resultado = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
@@ -49,9 +49,9 @@ namespace MCIMasterFarm.Negocio.Telas
             this.groupBox1.Controls.Add(this.lbl_ConfirmaSenha);
             this.groupBox1.Controls.Add(this.lbl_NewPwd);
             this.groupBox1.Controls.Add(this.lbl_PwdAtual);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtSenhaNova);
+            this.groupBox1.Controls.Add(this.txtSenhaConfirma);
+            this.groupBox1.Controls.Add(this.txtSenha);
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(363, 98);
@@ -85,26 +85,26 @@ namespace MCIMasterFarm.Negocio.Telas
             this.lbl_PwdAtual.TabIndex = 3;
             this.lbl_PwdAtual.Text = "Senha Atual";
             // 
-            // textBox3
+            // txtSenhaNova
             // 
-            this.textBox3.Location = new System.Drawing.Point(148, 38);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(204, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtSenhaNova.Location = new System.Drawing.Point(148, 38);
+            this.txtSenhaNova.Name = "txtSenhaNova";
+            this.txtSenhaNova.Size = new System.Drawing.Size(204, 20);
+            this.txtSenhaNova.TabIndex = 2;
             // 
-            // textBox2
+            // txtSenhaConfirma
             // 
-            this.textBox2.Location = new System.Drawing.Point(148, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(204, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtSenhaConfirma.Location = new System.Drawing.Point(148, 57);
+            this.txtSenhaConfirma.Name = "txtSenhaConfirma";
+            this.txtSenhaConfirma.Size = new System.Drawing.Size(204, 20);
+            this.txtSenhaConfirma.TabIndex = 1;
             // 
-            // textBox1
+            // txtSenha
             // 
-            this.textBox1.Location = new System.Drawing.Point(148, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtSenha.Location = new System.Drawing.Point(148, 19);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(204, 20);
+            this.txtSenha.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -172,9 +172,9 @@ namespace MCIMasterFarm.Negocio.Telas
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSenhaNova;
+        private System.Windows.Forms.TextBox txtSenhaConfirma;
+        private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Label lbl_ConfirmaSenha;
         private System.Windows.Forms.Label lbl_NewPwd;
         private System.Windows.Forms.Label lbl_PwdAtual;

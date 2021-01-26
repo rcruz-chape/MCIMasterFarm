@@ -19,9 +19,12 @@ namespace MCIMasterFarm.Negocio.Telas
 {
     public partial class frm_Senha_Expirada : Form
     {
+        SisUsuario vSisUsu = new SisUsuario();
+        Banco vBanco = new Banco();
         public frm_Senha_Expirada(SisUsuario pSisUsu, ref Banco pBanco)
         {
-
+            vSisUsu = pSisUsu;
+            vBanco = pBanco;
             InitializeComponent();
         }
 
@@ -33,6 +36,20 @@ namespace MCIMasterFarm.Negocio.Telas
         private void btAlterarSenha_Click(object sender, EventArgs e)
         {
             var Criptografia = new Criptografia();
+            var vNegSisParameto = new SIS_PARAMETRO_NEG();
+            string vMensagem = "";
+            Boolean vbResultado = true;
+            Boolean vbValida = Criptografia.VerifcaConteudo(txtSenha.Text,vSisUsu.ds_pwd);
+            if (!vbValida)
+            {
+                vbResultado = vbValida;
+                var vDialog = MessageBox.Show("Senha não confere!", "Erro no Login!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (vbResultado)
+            {
+                var sNEgSisUsuario = new SIS_USUARIO_NEG();
+                vbResultado = sNEgSisUsuario.
+            }
         }
     }
 }
