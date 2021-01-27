@@ -13,7 +13,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
     public class SIS_PARAMETRO_NEG
     {
         string psDS_Caracter_Obrigatorio = "S";
-        List<String> lsCaracterEspecial = new List<String>() { "@","!","$","%","¨","&","Ç","ç","?"};
+        List<String> lsCaracterEspecial = new List<String>() { "@","!","$","%","¨","&","Ç","ç","?","?","_","-"," "};
         public SisParametro ObtemParametro(ref Banco pBanco)
         {
             var vSisParametroDal = new SIS_PARAMETRO_DAL();

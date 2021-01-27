@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MCIMasterFarm.Negocio.BackOffice.DAL;
 using MCIMasterFarm.Negocio.BackOffice.Model;
+using MCIMasterFarm.Negocio.BackOffice.DadosAcesso;
 using MCIMasterFarm.Negocio.Telas;
 using MCIMasterFarm.Negocio.Global;
 
@@ -19,7 +20,26 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         public int iSenhaExpirada = 2;
         int iMaximoLoginSemSucesso = 3;
 
-        public Boolean BloqueiaUsuario(SisUsuario pSisUsuario, ref Banco pBanco)
+        public SisUsuario loginSucesso(SisUsuario psisUsuario, ref Banco pBanco)
+        {
+            var vSysDal = new SIS_USUARIO_DAL();
+            SisUsuario vSisUsuario = psisUsuario;
+            vSisUsuario.dt_last_login = DateTime.Now;
+            vSisUsuario.qtd_login_sem_sucesso = 0;
+            Boolean bSucesso = vSysDal.atualizaUsuario(vSisUsuario, ref pBanco);
+            return vSisUsuario;
+
+        }
+        
+        public Boolean BloqueiaUsuario(SisUsuario pSisUsuario, ref Banco pBanco, int piMotivoBloqueio)
+        {
+            var vSysUsuDal = new SIS_USUARIO_DAL();
+            SisUsuario vsisUsuario = pSisUsuario;
+            vsisUsuario.ind_bloqueado = sUsuarioBloqueado;
+            vsisUsuario.ind_motivo_bloqueio = piMotivoBloqueio;
+            return vSysUsuDal.bloqueiaUsuario(vsisUsuario, ref pBanco);
+
+        }
         
         public Boolean LoginSemSucesso(SisUsuario pSisUsuario, ref Banco pBanco)
         {
@@ -79,6 +99,26 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             }
             return bVerificaUsuarioBloqueado;
         }
+        public string defineSenhaUsuario(ref Banco pBanco, SisParametro sisParametro,  SisUsuario pSisUSuario)
+        {
+            string caracteresPermitidos = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@$?_ - ";
+            SisUsuario vSisUsuario = pSisUSuario;
+            char[] chars = new char[sisParametro.ind_total_car];
+            Random sRd = new Random();
+            for (int i = 0; i < sisParametro.ind_total_car; i ++)
+            {
+                chars[i] = caracteresPermitidos[sRd.Next(0, caracteresPermitidos.Length)];
+            }
+            string senhaAlterada = new string(chars);
+            var Criptografia = new Criptografia();
+
+            vSisUsuario.ds_pwd = Criptografia.CritografiaDados(senhaAlterada);
+            var vSisUsuDal = new SIS_USUARIO_DAL();
+            Boolean vbAlteraSenha = vSisUsuDal.AtualizaSenha(pSisUSuario, ref pBanco);
+
+            return senhaAlterada;
+        }
+        
 
     }
 }

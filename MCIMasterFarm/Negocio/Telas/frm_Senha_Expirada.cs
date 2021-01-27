@@ -37,6 +37,7 @@ namespace MCIMasterFarm.Negocio.Telas
         {
             var Criptografia = new Criptografia();
             var vNegSisParameto = new SIS_PARAMETRO_NEG();
+            SisParametro vsisParametro = new SisParametro();
             string vMensagem = "";
             Boolean vbResultado = true;
             Boolean vbValida = Criptografia.VerifcaConteudo(txtSenha.Text,vSisUsu.ds_pwd);
@@ -46,9 +47,48 @@ namespace MCIMasterFarm.Negocio.Telas
                 var vDialog = MessageBox.Show("Senha não confere!", "Erro no Login!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (vbResultado)
+            { 
+                vsisParametro = vNegSisParameto.ObtemParametro(ref vBanco);
+                vbValida = vNegSisParameto.bValidaDSCaracter(txtSenhaNova.Text, vsisParametro);
+                if (!vbValida)
+                {
+                    vMensagem = "Senha deve ter Caracter Especial." + Environment.NewLine;
+                    vbResultado = vbValida;
+                }
+                vbValida = vNegSisParameto.bValidaNumeroCaracterMaiuscula(txtSenhaNova.Text, vsisParametro);
+                if (!vbValida)
+                {
+                    vMensagem += "Senha deve ter o mínimo de " + vsisParametro.ind_car_maisculo + " Caracteres Maíusculos." + Environment.NewLine;
+                    vbResultado = vbValida;
+                }
+                vbValida = vNegSisParameto.bValidaNumeroCaracterMinuscula(txtSenhaNova.Text, vsisParametro);
+                if (!vbValida)
+                {
+                    vMensagem += "Senha deve ter o mínimo de " + vsisParametro.ind_car_minisculo + " Caracteres Minusculos." + Environment.NewLine;
+                    vbResultado = vbValida;
+                }
+                vbValida = vNegSisParameto.bValidaNumero(txtSenhaNova.Text, vsisParametro);
+                if (!vbValida)
+                {
+                    vMensagem += "Senha deve ter o mínimo de " + vsisParametro.ind_numero + " Caracteres Numéricos." + Environment.NewLine;
+                    vbResultado = vbValida;
+                }
+                vbValida = vNegSisParameto.bValidaIndTotalCar(txtSenhaNova.Text, vsisParametro);
+                if (!vbValida)
+                {
+                    vMensagem += "Senha deve ter o mínimo de " + vsisParametro.ind_total_car + " Caracteres." + Environment.NewLine;
+                    vbResultado = vbValida;
+                }
+
+                lbl_Resultado.Text = vMensagem;
+
+                //vbResultado = sNEgSisUsuario.
+            }
+            if (vbResultado)
             {
                 var sNEgSisUsuario = new SIS_USUARIO_NEG();
-                vbResultado = sNEgSisUsuario.
+                vSisUsu.ds_pwd = Criptografia.CritografiaDados(txtSenhaNova.Text);
+                vbResultado = sNEgSisUsuario.ALteraSenhaUsuario(vSisUsu, ref vBanco);
             }
         }
     }
