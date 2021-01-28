@@ -89,20 +89,23 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             this.txtSenhaNova.Location = new System.Drawing.Point(148, 38);
             this.txtSenhaNova.Name = "txtSenhaNova";
+            this.txtSenhaNova.PasswordChar = '*';
             this.txtSenhaNova.Size = new System.Drawing.Size(204, 20);
-            this.txtSenhaNova.TabIndex = 2;
+            this.txtSenhaNova.TabIndex = 1;
             // 
             // txtSenhaConfirma
             // 
             this.txtSenhaConfirma.Location = new System.Drawing.Point(148, 57);
             this.txtSenhaConfirma.Name = "txtSenhaConfirma";
+            this.txtSenhaConfirma.PasswordChar = '*';
             this.txtSenhaConfirma.Size = new System.Drawing.Size(204, 20);
-            this.txtSenhaConfirma.TabIndex = 1;
+            this.txtSenhaConfirma.TabIndex = 2;
             // 
             // txtSenha
             // 
             this.txtSenha.Location = new System.Drawing.Point(148, 19);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(204, 20);
             this.txtSenha.TabIndex = 0;
             // 
@@ -118,11 +121,10 @@ namespace MCIMasterFarm.Negocio.Telas
             // lbl_Resultado
             // 
             this.lbl_Resultado.AutoSize = true;
-            this.lbl_Resultado.Location = new System.Drawing.Point(124, 16);
+            this.lbl_Resultado.Location = new System.Drawing.Point(52, 16);
             this.lbl_Resultado.Name = "lbl_Resultado";
-            this.lbl_Resultado.Size = new System.Drawing.Size(80, 13);
+            this.lbl_Resultado.Size = new System.Drawing.Size(0, 13);
             this.lbl_Resultado.TabIndex = 0;
-            this.lbl_Resultado.Text = "Alterar a Senha";
             // 
             // btnSair
             // 

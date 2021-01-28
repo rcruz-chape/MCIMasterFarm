@@ -36,6 +36,14 @@ namespace MCIMasterFarm
             this.btn_Esquecer = new System.Windows.Forms.Button();
             this.lbl_Senha = new System.Windows.Forms.Label();
             this.lbl_Usuario = new System.Windows.Forms.Label();
+            if (this.txt_Usuario.Text != "")
+            {
+                this.txt_Usuario.Text = "";
+            }
+            if (this.txt_Senha.Text != "")
+            {
+                this.txt_Senha.Text = "";
+            }
             this.frame_Acesso.SuspendLayout();
             this.SuspendLayout();
             // 

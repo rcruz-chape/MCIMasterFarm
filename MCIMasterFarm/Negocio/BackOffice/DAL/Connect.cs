@@ -11,6 +11,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
     public class Connect 
     {
         private string connString = "";
+        public NpgsqlConnection vConnect = new NpgsqlConnection();
         public NpgsqlConnection GetConnection(ref Banco pBanco)
         {
             connString = String.Format(
@@ -20,7 +21,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                     pBanco.DbName,
                     pBanco.Porta,
                     pBanco.PAssword);
-            var conn = new NpgsqlConnection(connString);
+            NpgsqlConnection conn = new NpgsqlConnection(connString);
+            this.vConnect = conn;
             connString = "";
             return conn;
         }
@@ -36,17 +38,16 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 return false;
             }
         }
-        public NpgsqlDataReader ObtemUnico(ref Banco pBanco, string pSql)
+        public NpgsqlDataReader ObtemUnico(ref Banco pBanco, string pSql )
         {
             string vSql = pSql;
 
-            var Connect = GetConnection(ref pBanco);
-            NpgsqlCommand command = new NpgsqlCommand(vSql, Connect);
+            NpgsqlConnection Connect = GetConnection(ref pBanco);
+            Connect.Open();
+            NpgsqlCommand command = new NpgsqlCommand(vSql,Connect);
+            
             NpgsqlDataReader dataReader = command.ExecuteReader();
-
-
-            var fCOnexão = FechaConnection(ref Connect);
-
+            
             return dataReader;
         }
         public NpgsqlDataReader ObtemFirst(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros)
@@ -86,35 +87,42 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             foreach (var item in pParametros)            
             {
                 //  if (item.Value.getType() == typeof(string))
-                var sitem = item.Value;
-                var sitemType = sitem.GetType();
-                if (sitemType == typeof(string))
+                if (item.Value == null)
                 {
-                    vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
+                        vSql = vSql.Replace("@" + item.Key, "null"); 
                 }
-                else if (sitemType == typeof(DateTime))
+                else
                 {
-                    vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
-                }
-                else if (sitemType == typeof(int))
-                {
-                    int variavel = item.Value;
-                    vSql = vSql.Replace("@" + item.Key, variavel.ToString());
-                }
-                else if (sitemType == typeof(double))
-                {
-                    int variavel = item.Value;
-                    vSql = vSql.Replace("@" + item.Key, variavel.ToString());
-                }
-                else if (sitemType == typeof(long))
-                {
-                    long variavel = item.Value;
-                    vSql = vSql.Replace("@" + item.Key, variavel.ToString());
-                }
-                else if (sitemType == typeof(decimal))
-                {
-                    decimal variavel = item.Value;
-                    vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                    var sitem = item.Value;
+                    var sitemType = sitem.GetType();
+                    if (sitemType == typeof(string))
+                    {
+                        vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
+                    }
+                    else if (sitemType == typeof(DateTime))
+                    {
+                        vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
+                    }
+                    else if (sitemType == typeof(int))
+                    {
+                        int variavel = item.Value;
+                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                    }
+                    else if (sitemType == typeof(double))
+                    {
+                        int variavel = item.Value;
+                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                    }
+                    else if (sitemType == typeof(long))
+                    {
+                        long variavel = item.Value;
+                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                    }
+                    else if (sitemType == typeof(decimal))
+                    {
+                        decimal variavel = item.Value;
+                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                    }
                 }
             }
             return vSql;

@@ -112,7 +112,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
         public Boolean DesbloqueiaUSuario(SisUsuario sisUSu, ref Banco pBanco)
         {
             string vSQl = @"UPDATE MCISYS.SIS_USUARIO
-                               SET IND_BLOQUEADO='N', IND_MOTIVO_BLOQUEIO=NULL,
+                               SET IND_BLOQUEADO='N', IND_MOTIVO_BLOQUEIO=NULL
                              WHERE ID_USU=@CD_USUARIO";
 
             ;
@@ -188,7 +188,10 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 }
                 vSisUsuario.ds_pwd = (string)reader.GetValue(reader.GetOrdinal("ds_pwd"));
                 vSisUsuario.ind_bloqueado = (string)reader.GetValue(reader.GetOrdinal("ind_bloqueado"));
-                vSisUsuario.ind_motivo_bloqueio = (int)reader.GetValue(reader.GetOrdinal("ind_motivo_bloqueio"));
+                if (!reader.IsDBNull(reader.GetOrdinal("ind_motivo_bloqueio")))
+                {
+                    vSisUsuario.ind_motivo_bloqueio = (int)reader.GetValue(reader.GetOrdinal("ind_motivo_bloqueio"));
+                }
                 if (!reader.IsDBNull(reader.GetOrdinal("qtd_login_sem_sucesso")))
                 {
                     vSisUsuario.qtd_login_sem_sucesso = (int)reader.GetValue(reader.GetOrdinal("qtd_login_sem_sucesso"));

@@ -28,6 +28,8 @@ namespace MCIMasterFarm
             var Connect = new Connect();
             var Conn = Connect.GetConnection(ref vBanco);
             var desconectado = Connect.FechaConnection(ref Conn);
+            
+
             InitializeComponent();
         }
 
@@ -58,6 +60,10 @@ namespace MCIMasterFarm
                 vConfereSenha = vCriptografia.VerifcaConteudo(sSenha, UsuarioLogado.ds_pwd);
                 if (!vConfereSenha)
                 {
+
+                    txt_Usuario.Text = "";
+                    txt_Senha.Text = "";
+                    Boolean vbUsuarioNaoLogado = SisUsuarioNEG.LoginSemSucesso(UsuarioLogado, ref vBanco);
                     vDialog = MessageBox.Show("Usuário ou Senha não confere!","Erro no Login!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -68,10 +74,11 @@ namespace MCIMasterFarm
                         {
                             vDialog = MessageBox.Show("Usuário Bloqueado! Favor contatar o usuário administrador e solicitar o desbloqueio.", "Usuário Bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else
-                        {
-                            int i = 1;
-                        }
+                    }
+                    else
+                    {
+                        UsuarioLogado = SisUsuarioNEG.loginSucesso(UsuarioLogado, ref vBanco);
+                        vDialog = MessageBox.Show("Usuário Logado", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                  }
             }
@@ -79,7 +86,7 @@ namespace MCIMasterFarm
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

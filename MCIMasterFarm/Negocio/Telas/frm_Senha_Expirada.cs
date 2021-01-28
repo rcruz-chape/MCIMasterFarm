@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MCIMasterFarm.Negocio.Global;
 using MCIMasterFarm.Negocio.BackOffice;
+using MCIMasterFarm.Negocio.Global;
 using MCIMasterFarm.Negocio.BackOffice.DAL;
 using MCIMasterFarm.Negocio.BackOffice.Negocio;
 using MCIMasterFarm.Negocio.BackOffice.DadosAcesso;
@@ -21,7 +21,7 @@ namespace MCIMasterFarm.Negocio.Telas
     {
         SisUsuario vSisUsu = new SisUsuario();
         Banco vBanco = new Banco();
-        public frm_Senha_Expirada(SisUsuario pSisUsu, ref Banco pBanco)
+        public frm_Senha_Expirada(ref SisUsuario pSisUsu, ref Banco pBanco)
         {
             vSisUsu = pSisUsu;
             vBanco = pBanco;
@@ -89,6 +89,10 @@ namespace MCIMasterFarm.Negocio.Telas
                 var sNEgSisUsuario = new SIS_USUARIO_NEG();
                 vSisUsu.ds_pwd = Criptografia.CritografiaDados(txtSenhaNova.Text);
                 vbResultado = sNEgSisUsuario.ALteraSenhaUsuario(vSisUsu, ref vBanco);
+                vbResultado = sNEgSisUsuario.RealizaDesbloqueio(vSisUsu, ref vBanco);
+                Form frm_Login = new frn_MCILogin();
+                frm_Login.Activate();
+                this.Close();
             }
         }
     }

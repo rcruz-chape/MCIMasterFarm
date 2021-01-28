@@ -45,6 +45,10 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             SisUsuario vSisUsuario = new SisUsuario();
             vSisUsuario = pSisUsuario;
+            if (vSisUsuario.qtd_login_sem_sucesso == null)
+            {
+                vSisUsuario.qtd_login_sem_sucesso = 0;
+            }
             vSisUsuario.qtd_login_sem_sucesso += 1;
             var vSisUsuDal = new SIS_USUARIO_DAL();
             Boolean vbLoginSemSucesso = true;
@@ -88,7 +92,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             {
                 if (pRegSisUsuario.ind_motivo_bloqueio == iSenhaExpirada)
                 {
-                    frm_Senha_Expirada FrmSenhaExpirada = new frm_Senha_Expirada(pRegSisUsuario, ref pBanco);
+                    frm_Senha_Expirada FrmSenhaExpirada = new frm_Senha_Expirada(ref pRegSisUsuario, ref pBanco);
                     FrmSenhaExpirada.Show();
                     bVerificaUsuarioBloqueado = false;
                 }
