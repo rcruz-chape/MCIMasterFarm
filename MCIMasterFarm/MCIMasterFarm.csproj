@@ -44,6 +44,8 @@
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -85,11 +87,13 @@
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\Error.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
     <Compile Include="Negocio\BackOffice\Install\InstallSCA.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\Network.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_PARAMETRO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_USUARIO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\Sequences.cs" />

@@ -35,6 +35,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             }
             catch (Exception)
             {
+                
                 return false;
             }
         }
@@ -146,6 +147,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             }
             catch (Exception ex)
             {
+                var vError = new Error();
+                vbInsert = vError.DisplayErrorGrave("Connect.Insert", ex.Message, "Erro ao Inserir");
                 throw ex;
                 vbInsert = false;
                 
@@ -177,6 +180,9 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             }
             catch (Exception ex)
             {
+
+                var vError = new Error();
+                vbDelete = vError.DisplayErrorGrave("Connect.Delete", ex.Message, "Erro ao Excluir");
                 throw ex;
                 vbDelete = false;
 
@@ -208,6 +214,9 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             }
             catch (Exception ex)
             {
+
+                var vError = new Error();
+                vbUpdate = vError.DisplayErrorGrave("Connect.Update", ex.Message, "Erro ao Atualizar");
                 throw ex;
                 vbUpdate = false;
 

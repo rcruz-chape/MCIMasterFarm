@@ -33,7 +33,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 { "DT_LAST_LOGIN",psisUsuario.dt_last_login },
                 { "IND_BLOQUEADO", psisUsuario.ind_bloqueado},
                 { "IND_MOTIVO_BLOQUEIO", psisUsuario.ind_motivo_bloqueio},
-                { "QTD_LOGINS_SEM_SUCESSO", psisUsuario.qtd_login_sem_sucesso},
+                { "QTD_LOGIN_SEM_SUCESSO", psisUsuario.qtd_login_sem_sucesso},
                 { "ID_PESSOA_FISICA", psisUsuario.id_pessoa_fisica},
                 { "DT_ALTERACAO", psisUsuario.dt_alteracao},
                 { "ID_USU_ALT", psisUsuario.id_usu_alt}

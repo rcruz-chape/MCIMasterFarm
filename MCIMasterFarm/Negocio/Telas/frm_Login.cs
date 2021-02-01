@@ -78,6 +78,11 @@ namespace MCIMasterFarm
                     else
                     {
                         UsuarioLogado = SisUsuarioNEG.loginSucesso(UsuarioLogado, ref vBanco);
+                        var vNetwork = new Network();
+                        var vIP = vNetwork.IP();
+                        var vMAC = vNetwork.MAC();
+                        var OS = vNetwork.OS();
+                        var HostName = vNetwork.HostName();
                         vDialog = MessageBox.Show("Usuário Logado", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                  }
