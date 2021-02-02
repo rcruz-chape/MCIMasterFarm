@@ -12,5 +12,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
 {
     public class EmailNeg
     {
+        private SmtpClient vsSmtp = new SmtpClient();
+        
     }
 }
