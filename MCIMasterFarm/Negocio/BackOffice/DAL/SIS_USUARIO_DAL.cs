@@ -138,6 +138,31 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             var vConnect = new Connect();
             return vConnect.update(ref pBanco, vSQl, parametros);
         }
+        public SisUsuario ObtemUsuarioReiniciaSenha(string pIDUSU, string pDsEmail, ref Banco pBanco)
+        {
+            string vsSql= @"select usu.id_usu
+                                 , usu.nm_usu 
+                                 , usu.ds_email 
+                                 , usu.dt_last_login
+                                 , usu.ds_pwd 
+                                 , usu.ind_bloqueado 
+                                 , usu.ind_motivo_bloqueio 
+                                 , usu.qtd_login_sem_sucesso 
+                                 , usu.id_pessoa_fisica 
+                                 , usu.dt_inclusao 
+                                 , usu.dt_alteracao 
+                                 , usu.id_usu_incl 
+                                 , usu.id_usu_alt 
+                              from sis_usuario usu
+                             where usu.id.usu = @ID_USU
+                                or usu.ds_email = @DS_EMAIL";
+            var parametros = new Dictionary<string, dynamic>()
+            {
+                { "ID_USU", pIDUSU },
+                { "DS_EMAIL", pDsEmail }
+            };
+            return RecuperaDBUsuario(ref pBanco, vsSql, parametros);
+        }
         public SisUsuario obtemUsuario(string pIDUSU, ref Banco pBanco)
         {
             string vSql = @"select usu.id_usu

@@ -85,8 +85,12 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\Criptografia.cs" />
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisUsuarioHist.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Error.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
     <Compile Include="Negocio\BackOffice\Install\InstallSCA.cs" />
