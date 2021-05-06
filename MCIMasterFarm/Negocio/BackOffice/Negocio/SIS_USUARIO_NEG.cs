@@ -26,7 +26,9 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             SisUsuario vSisUsuario = psisUsuario;
             vSisUsuario.dt_last_login = DateTime.Now;
             vSisUsuario.qtd_login_sem_sucesso = 0;
+           
             Boolean bSucesso = vSysDal.atualizaUsuario(vSisUsuario, ref pBanco);
+            vSisUsuario = vSysUsuDal(vSisUsuario.id_usu,ref  pBanco);
             return vSisUsuario;
 
         }
@@ -90,20 +92,13 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             Boolean bVerificaUsuarioBloqueado = true;
             if (pRegSisUsuario.ind_bloqueado == sUsuarioBloqueado)
             {
-                if (pRegSisUsuario.ind_motivo_bloqueio == iSenhaExpirada)
-                {
-                    frm_Senha_Expirada FrmSenhaExpirada = new frm_Senha_Expirada(ref pRegSisUsuario, ref pBanco);
-                    FrmSenhaExpirada.Show();
-                    bVerificaUsuarioBloqueado = false;
-                }
-                else
                 {
                     bVerificaUsuarioBloqueado = false;
                 }
             }
             return bVerificaUsuarioBloqueado;
         }
-        public string defineSenhaUsuario(ref Banco pBanco, SisParametro sisParametro,  SisUsuario pSisUSuario)
+        public string defineSenhaUsuario(ref Banco pBanco, SisParametro sisParametro,  ref SisUsuario pSisUSuario)
         {
             string caracteresPermitidos = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@$?_ - ";
             SisUsuario vSisUsuario = pSisUSuario;
@@ -119,10 +114,34 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             vSisUsuario.ds_pwd = Criptografia.CritografiaDados(senhaAlterada);
             var vSisUsuDal = new SIS_USUARIO_DAL();
             Boolean vbAlteraSenha = vSisUsuDal.AtualizaSenha(pSisUSuario, ref pBanco);
+            pSisUSuario = vSisUsuario;
 
             return senhaAlterada;
         }
-        
+        public Boolean bloqueiaSenhaExpirada(SisUsuario pSisUsuario, ref Banco pBanco)
+        {
+            var vSISUSUDAL = new SIS_USUARIO_DAL();
+            var vSisUsuario = pSisUsuario;
+            vSisUsuario.ind_motivo_bloqueio = iSenhaExpirada;
+            return vSISUSUDAL.bloqueiaUsuario(vSisUsuario,ref pBanco);
+        }
+        public SisUsuario ObtemUSuarioPorEmailUsuario(string pIDUSUEmail, ref Banco pBanco)
+        {
+            string vsIDUSU = "";
+            string vsEMail = "";
+            if (pIDUSUEmail.Contains("@"))
+            { 
+                vsEMail = pIDUSUEmail;
+            }
+            else
+            {
+                vsIDUSU = pIDUSUEmail;
+            }
+            var SisUsuarioDAL = new SIS_USUARIO_DAL();
+            var vSisUsuario = SisUsuarioDAL.ObtemUsuarioReiniciaSenha(vsIDUSU, vsEMail, ref pBanco);
+            var bBLoqueia = bloqueiaSenhaExpirada(vSisUsuario, ref pBanco);
+            return vSisUsuario;
+        }
 
     }
 }

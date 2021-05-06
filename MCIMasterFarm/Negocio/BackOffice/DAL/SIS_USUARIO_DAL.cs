@@ -17,8 +17,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                                 SET NM_USU = @NM_USU
                                   , DS_EMAIL = @DS_EMAIL
                                   , DT_LAST_LOGIN = @DT_LAST_LOGIN    
-                                 , IND_BLOQUEADO = @IND_BLOQUEADO
-                                 , IND_MOTIVO_BLOQUEIO = @IND_MOTIVO_BLOQUEIO
                                  , QTD_LOGIN_SEM_SUCESSO = @QTD_LOGIN_SEM_SUCESSO
                                  , ID_PESSOA_FISICA = @ID_PESSOA_FISICA
                                  , DT_ALTERACAO = @DT_ALTERACAO
@@ -31,8 +29,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 { "NM_USU", psisUsuario.nm_usu },
                 { "DS_EMAIL", psisUsuario.ds_email },
                 { "DT_LAST_LOGIN",psisUsuario.dt_last_login },
-                { "IND_BLOQUEADO", psisUsuario.ind_bloqueado},
-                { "IND_MOTIVO_BLOQUEIO", psisUsuario.ind_motivo_bloqueio},
                 { "QTD_LOGIN_SEM_SUCESSO", psisUsuario.qtd_login_sem_sucesso},
                 { "ID_PESSOA_FISICA", psisUsuario.id_pessoa_fisica},
                 { "DT_ALTERACAO", psisUsuario.dt_alteracao},
@@ -46,7 +42,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
         {
             string vsSql = @"UPDATE SIS_USUARIO
                                 SET IND_BLOQUEADO = 'S'
-                                  , IND_MOTIVO_BLOQUEADO = @IndMotivoBloqueio
+                                  , ind_motivo_bloqueio = @IndMotivoBloqueio
                               WHERE ID_USU = @CD_USUARIO";
             var parametros = new Dictionary<string, dynamic>()
             {
@@ -154,7 +150,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                                  , usu.id_usu_incl 
                                  , usu.id_usu_alt 
                               from sis_usuario usu
-                             where usu.id.usu = @ID_USU
+                             where usu.id_usu = @ID_USU
                                 or usu.ds_email = @DS_EMAIL";
             var parametros = new Dictionary<string, dynamic>()
             {

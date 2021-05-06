@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MCIMasterFarm.Negocio.Global;
+using MCIMasterFarm.Negocio.Telas;
 using MCIMasterFarm.Negocio.BackOffice;
 using MCIMasterFarm.Negocio.BackOffice.DAL;
 using MCIMasterFarm.Negocio.BackOffice.Negocio;
@@ -20,6 +21,7 @@ namespace MCIMasterFarm
     {
         private Banco vBanco = new Banco();
         private DialogResult vDialog = new DialogResult();
+        
 
         public frn_MCILogin()
         {
@@ -28,7 +30,7 @@ namespace MCIMasterFarm
             var Connect = new Connect();
             var Conn = Connect.GetConnection(ref vBanco);
             var desconectado = Connect.FechaConnection(ref Conn);
-            
+            this.DialogResult = DialogResult.None;
 
             InitializeComponent();
         }
@@ -37,6 +39,15 @@ namespace MCIMasterFarm
         {
             string sNomeUsuario = this.txt_Usuario.Text;
             string sSenha = this.txt_Senha.Text;
+            if (this.txt_Usuario.Text != "")
+            {
+                this.txt_Usuario.Text = "";
+            }
+            if (this.txt_Senha.Text != "")
+            {
+                this.txt_Senha.Text = "";
+            }
+
             Boolean vConfereSenha = false;
             var SisUsuarioNEG = new SIS_USUARIO_NEG();
             var UsuarioLogado = SisUsuarioNEG.vSysUsuDal(sNomeUsuario, ref vBanco);
@@ -74,6 +85,21 @@ namespace MCIMasterFarm
                         {
                             vDialog = MessageBox.Show("Usuário Bloqueado! Favor contatar o usuário administrador e solicitar o desbloqueio.", "Usuário Bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        else
+                        {
+                            frm_Senha_Expirada FrmSenhaExpirada = new frm_Senha_Expirada(ref UsuarioLogado, ref vBanco);
+                            if (FrmSenhaExpirada.ShowDialog() == DialogResult.OK)
+                            {
+                                UsuarioLogado = SisUsuarioNEG.loginSucesso(UsuarioLogado, ref vBanco);
+                                var vNetwork = new Network();
+                                var vIP = vNetwork.IP();
+                                var vMAC = vNetwork.MAC();
+                                var OS = vNetwork.OS();
+                                var HostName = vNetwork.HostName();
+                                this.DialogResult = DialogResult.OK;
+                            }
+                        }
+                        this.Dispose(); 
                     }
                     else
                     {
@@ -83,7 +109,10 @@ namespace MCIMasterFarm
                         var vMAC = vNetwork.MAC();
                         var OS = vNetwork.OS();
                         var HostName = vNetwork.HostName();
+                        
                         vDialog = MessageBox.Show("Usuário Logado", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Dispose();
                     }
                  }
             }
@@ -91,7 +120,8 @@ namespace MCIMasterFarm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Frm_EsqueciSenha FrmEsqueciSenha = new Frm_EsqueciSenha( ref vBanco);
+            FrmEsqueciSenha.ShowDialog();
         }
     }
 }

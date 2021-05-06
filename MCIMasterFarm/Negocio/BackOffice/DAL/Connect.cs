@@ -65,13 +65,15 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 
             return dataReader;
         }
-        public NpgsqlDataReader ObtemLista(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros )
+        public NpgsqlDataReader ObtemLista(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros = null)
         {
             string vSql = pSql;
-            
-            foreach (var item in pParametros)
+
+            if (pParametros != null)
             {
-                vSql = vSql.Replace("@" + item.Key, item.Value);
+
+                vSql = montaSql(pSql, pParametros);
+             
             }
             var Connect = GetConnection(ref pBanco);
             NpgsqlCommand command = new NpgsqlCommand(vSql, Connect);

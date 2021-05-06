@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MCIMasterFarm.Negocio.Telas;
 
 namespace MCIMasterFarm
 {
@@ -16,7 +17,11 @@ namespace MCIMasterFarm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frn_MCILogin());
+            frn_MCILogin frmLogin = new frn_MCILogin();
+            if (frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new MDIForm());
+            }
         }
     }
 }

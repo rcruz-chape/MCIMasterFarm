@@ -25,6 +25,7 @@ namespace MCIMasterFarm.Negocio.Telas
         {
             vSisUsu = pSisUsu;
             vBanco = pBanco;
+            this.DialogResult = DialogResult.None;
             InitializeComponent();
         }
 
@@ -90,9 +91,10 @@ namespace MCIMasterFarm.Negocio.Telas
                 vSisUsu.ds_pwd = Criptografia.CritografiaDados(txtSenhaNova.Text);
                 vbResultado = sNEgSisUsuario.ALteraSenhaUsuario(vSisUsu, ref vBanco);
                 vbResultado = sNEgSisUsuario.RealizaDesbloqueio(vSisUsu, ref vBanco);
-                Form frm_Login = new frn_MCILogin();
-                frm_Login.Activate();
-                this.Close();
+                this.DialogResult = DialogResult.OK;
+                var vDialog = MessageBox.Show("Senha Alterada com Sucesso, usuário logado.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.Dispose();
             }
         }
     }

@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\temp\Compila\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +47,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FEA18C01FECBFA1A7C022D748CD8A7F6008C37EA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MCIMasterFarm_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -84,12 +112,15 @@
   <ItemGroup>
     <Compile Include="Negocio\BackOffice\DadosAcesso\Criptografia.cs" />
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
+    <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioHist.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Error.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
@@ -102,6 +133,12 @@
     <Compile Include="Negocio\BackOffice\Negocio\SIS_USUARIO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\Sequences.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
+    <Compile Include="Negocio\Telas\Frm_EsqueciSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_EsqueciSenha.Designer.cs">
+      <DependentUpon>Frm_EsqueciSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Telas\frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,13 +151,25 @@
     <Compile Include="Negocio\Telas\frm_Senha_Expirada.Designer.cs">
       <DependentUpon>frm_Senha_Expirada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Telas\MDIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\MDIForm.Designer.cs">
+      <DependentUpon>MDIForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Negocio\Telas\Frm_EsqueciSenha.resx">
+      <DependentUpon>Frm_EsqueciSenha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\frm_Senha_Expirada.resx">
       <DependentUpon>frm_Senha_Expirada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\MDIForm.resx">
+      <DependentUpon>MDIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -132,6 +181,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MCIMasterFarm_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -187,6 +237,147 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagens\icons8-alterar-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-reiniciar-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-reiniciar-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-reiniciar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-abrir-pasta-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-abrir-pasta-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-abrir-pasta-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-adicionar-arquivo-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-adicionar-arquivo-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-adicionar-arquivo-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-adicionar-arquivo-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-à-direita-dentro-de-um-círculo-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-à-esquerda-dentro-de-um-círculo-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-diretório-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-diretório-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-diretório-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-documento-estatístico-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-documento-estatístico-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-documento-estatístico-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-duplo-para-a-direita-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-duplo-para-a-esquerda-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-entrar-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-entrar-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-entrar-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-excluir-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-excluir-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-excluir-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-importar-csv-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-importar-csv-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-importar-csv-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-informação-de-sistema-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-informação-de-sistema-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-mais-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-mais-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-novo-documento-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-novo-documento-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-novo-documento-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-novo-documento-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-pesquisar-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-pesquisar-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-pesquisar-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-planilha-de-posicionamento-thumnail-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-planilha-de-posicionamento-thumnail-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-salvar-como-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
