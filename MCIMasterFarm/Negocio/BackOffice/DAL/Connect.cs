@@ -51,17 +51,14 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             
             return dataReader;
         }
-        public NpgsqlDataReader ObtemFirst(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros)
+        public NpgsqlDataReader ObtemFirst(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros, ref NpgsqlConnection pConnect)
         {
             string vSql = pSql;
 
             vSql = montaSql(vSql, pParametros);
-            var Connect = GetConnection(ref pBanco);
-            NpgsqlCommand command = new NpgsqlCommand(vSql, Connect);
+            NpgsqlCommand command = new NpgsqlCommand(vSql, pConnect);
             NpgsqlDataReader dataReader = command.ExecuteReader();
 
-
-            var fCOnexão = FechaConnection(ref Connect);
 
             return dataReader;
         }

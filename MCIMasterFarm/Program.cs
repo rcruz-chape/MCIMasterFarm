@@ -20,7 +20,7 @@ namespace MCIMasterFarm
             frn_MCILogin frmLogin = new frn_MCILogin();
             if (frmLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new MDIForm());
+                Application.Run(new MDIForm(frmLogin.txtNmUser,frmLogin.vBanco));
             }
         }
     }

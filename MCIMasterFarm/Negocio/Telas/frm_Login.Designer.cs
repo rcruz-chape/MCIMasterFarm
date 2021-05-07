@@ -128,14 +128,13 @@ namespace MCIMasterFarm
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_Usuario;
         private System.Windows.Forms.TextBox txt_Senha;
         private System.Windows.Forms.Button btn_Acessar;
         private System.Windows.Forms.Button btn_Esquecer;
         private System.Windows.Forms.GroupBox frame_Acesso;
         private System.Windows.Forms.Label lbl_Usuario;
         private System.Windows.Forms.Label lbl_Senha;
+        private System.Windows.Forms.TextBox txt_Usuario;
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCIMasterFarm.Negocio.BackOffice.Model
 {
-    public class SisUsuarioHist
+    public class SisUsuarioLog
     {
         public string ID_USU { set; get; }
         public DateTime DT_LOGIN { set; get; }

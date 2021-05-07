@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MCIMasterFarm.Negocio.Global;
 using MCIMasterFarm.Negocio.BackOffice.Negocio;
 using MCIMasterFarm.Negocio.BackOffice.Model;
+using MCIMasterFarm.Negocio.BackOffice.DadosAcesso;
 
 namespace MCIMasterFarm.Negocio.Telas
 {
@@ -20,10 +21,14 @@ namespace MCIMasterFarm.Negocio.Telas
         public List<Configuracao> vConfiguracao = new List<Configuracao>();
         public ConfigAcao vConfigAcao = new ConfigAcao();
         public ConfiguracaoNEG vConfiguracaoNEG = new ConfiguracaoNEG();
+        private Banco vBanco = new Banco();
+        private DialogResult vDialog = new DialogResult();
+        public string vIdUsu;
 
-
-        public MDIForm()
+        public MDIForm(string pIdUsu,Banco pBanco)
         {
+            vIdUsu = pIdUsu;
+            vBanco = pBanco;
             InitializeComponent();
 
         }
@@ -103,6 +108,21 @@ namespace MCIMasterFarm.Negocio.Telas
             {
                 childForm.Close();
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            var bLogoff = fbRealizarLogoff(ref vBanco);
+            this.Dispose();
+        }
+        private Boolean fbRealizarLogoff(ref Banco pBanco)
+        {
+            var vNegUsuarioLog = new SysUsuarioLogNEG();
+            var SisUsuarioLog = vNegUsuarioLog.ObtemSisUsuarioLog(ref pBanco, vIdUsu);
+            var bLogoff = vNegUsuarioLog.RealizaLogoff(ref pBanco, vIdUsu);
+            var vNegUsuarioLogHist = new SisUsuarioLogadoHistNEG();
+            bLogoff = vNegUsuarioLogHist.RegistraHistoricoLogonUsuario(SisUsuarioLog, ref pBanco);
+            return bLogoff;
         }
     }
 }

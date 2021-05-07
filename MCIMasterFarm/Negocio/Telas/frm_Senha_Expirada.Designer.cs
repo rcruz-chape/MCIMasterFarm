@@ -141,7 +141,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             // btAlterarSenha
             // 
-            this.btAlterarSenha.Image = global::MciSys.Properties.Resources.icons8_alterar_24;
+            this.btAlterarSenha.Image = global::MCIMasterFarm.Properties.Resources.icons8_alterar_24;
             this.btAlterarSenha.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAlterarSenha.Location = new System.Drawing.Point(12, 183);
             this.btAlterarSenha.Name = "btAlterarSenha";
