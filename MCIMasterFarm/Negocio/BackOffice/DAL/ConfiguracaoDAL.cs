@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using MCIMasterFarm.Negocio.BackOffice.Model;
 using MCIMasterFarm.Negocio.Global;
+using Npgsql;
 
 namespace MCIMasterFarm.Negocio.BackOffice.DAL
 {
     public class ConfiguracaoDAL
     {
         Connect vConnect = new Connect();
-        private List<Configuracao> GetConfig (string psSql, ref Banco pBanco, ref Connect pConnect)
+        private List<Configuracao> GetConfig (string psSql, ref Banco pBanco)
         {
-            var vFirst = pConnect.ObtemLista(pBanco, psSql, null);
+            NpgsqlConnection vConexao = vConnect.GetConnection(ref pBanco);
+            var vFirst = vConnect.ObtemLista(psSql, ref vConexao);
             if (!vFirst.HasRows)
             {
                 vFirst.Close();
@@ -40,7 +42,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                                   , NR_KEYCODE 
                                   , NM_FUNCAO
                                FROM SIS_CONFIGURACAO";
-            var vGetConfig = GetConfig(vsSql, ref pBanco, ref vConnect);
+            var vGetConfig = GetConfig(vsSql, ref pBanco);
             var bClose = vConnect.FechaConnection(ref vConnect.vConnect);
             return vGetConfig;
         }

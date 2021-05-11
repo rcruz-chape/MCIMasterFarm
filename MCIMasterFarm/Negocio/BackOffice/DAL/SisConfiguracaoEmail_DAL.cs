@@ -38,7 +38,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                                FROM SIS_CONFIGURACAO_EMAIL"; 
 
             var vConnect = new Connect();
-            var vRegConnect = vConnect.ObtemUnico(ref pBanco, vsSql);
+            var vConnectDriver = vConnect.GetConnection(ref pBanco);
+            var vRegConnect = vConnect.ObtemUnico(vsSql, ref vConnect.vConnect);
             var RegConfiguracaoEmail = fSisConfiguracaoEmail_DataReader(vRegConnect);
             var vClose = vConnect.FechaConnection(ref vConnect.vConnect);
             return RegConfiguracaoEmail;

@@ -119,10 +119,15 @@
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogHistDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\VwOrgPapelDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioLog.cs" />
+    <Compile Include="Negocio\BackOffice\Model\VwOrgPapel.cs" />
+    <Compile Include="Negocio\BackOffice\Model\VwOrgUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Error.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
@@ -135,6 +140,8 @@
     <Compile Include="Negocio\BackOffice\Negocio\SIS_PARAMETRO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_USUARIO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SysUsuarioLogNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\VwOrgPapelNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\VwOrgUsuNEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\Sequences.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
     <Compile Include="Negocio\Telas\Frm_EsqueciSenha.cs">
@@ -148,6 +155,12 @@
     </Compile>
     <Compile Include="Negocio\Telas\frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_SelecionaOrg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_SelecionaOrg.Designer.cs">
+      <DependentUpon>Frm_SelecionaOrg.cs</DependentUpon>
     </Compile>
     <Compile Include="Negocio\Telas\frm_Senha_Expirada.cs">
       <SubType>Form</SubType>
@@ -168,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\Frm_SelecionaOrg.resx">
+      <DependentUpon>Frm_SelecionaOrg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\frm_Senha_Expirada.resx">
       <DependentUpon>frm_Senha_Expirada.cs</DependentUpon>
@@ -382,6 +398,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagens\icons8-salvar-como-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-botão-continuar-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-botão-continuar-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-botão-continuar-36.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

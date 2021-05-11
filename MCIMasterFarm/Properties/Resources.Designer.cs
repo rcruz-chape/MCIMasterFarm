@@ -183,6 +183,36 @@ namespace MCIMasterFarm.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_botão_continuar_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_botão_continuar_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_botão_continuar_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_botão_continuar_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_botão_continuar_36 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_botão_continuar_36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_diretório_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_diretório_16", resourceCulture);

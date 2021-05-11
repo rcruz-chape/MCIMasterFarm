@@ -20,8 +20,19 @@ namespace MCIMasterFarm
             frn_MCILogin frmLogin = new frn_MCILogin();
             if (frmLogin.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new MDIForm(frmLogin.txtNmUser,frmLogin.vBanco));
-            }
+                var vvBanco = frmLogin.vBanco;
+                string vsIdUsu = frmLogin.txtNmUser;
+                frmLogin = null;
+                Frm_SelecionaOrg Frm_Seleciona_Org = new Frm_SelecionaOrg(vsIdUsu,ref vvBanco);
+                if (Frm_Seleciona_Org.ShowDialog() == DialogResult.OK)
+                {
+                    int vIDOrg = Frm_Seleciona_Org.vIdOrgSelecionada;
+                    string vIDPapel = Frm_Seleciona_Org.vIdPapelSelecionado;
+                    Frm_Seleciona_Org = null;
+
+                    Application.Run(new MDIForm(vsIdUsu, vvBanco, vIDOrg, vIDPapel));
+                }
+             }
         }
     }
 }

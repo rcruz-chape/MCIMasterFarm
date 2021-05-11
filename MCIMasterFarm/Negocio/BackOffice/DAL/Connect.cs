@@ -22,6 +22,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                     pBanco.Porta,
                     pBanco.PAssword);
             NpgsqlConnection conn = new NpgsqlConnection(connString);
+            conn.Open();
             this.vConnect = conn;
             connString = "";
             return conn;
@@ -39,13 +40,11 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 return false;
             }
         }
-        public NpgsqlDataReader ObtemUnico(ref Banco pBanco, string pSql )
+        public NpgsqlDataReader ObtemUnico(string pSql, ref NpgsqlConnection pConnect )
         {
             string vSql = pSql;
 
-            NpgsqlConnection Connect = GetConnection(ref pBanco);
-            Connect.Open();
-            NpgsqlCommand command = new NpgsqlCommand(vSql,Connect);
+            NpgsqlCommand command = new NpgsqlCommand(vSql,pConnect);
             
             NpgsqlDataReader dataReader = command.ExecuteReader();
             
@@ -62,7 +61,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 
             return dataReader;
         }
-        public NpgsqlDataReader ObtemLista(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros = null)
+        public NpgsqlDataReader ObtemLista(string pSql, ref NpgsqlConnection pConnect , Dictionary<string, dynamic> pParametros = null )
         {
             string vSql = pSql;
 
@@ -72,12 +71,10 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 vSql = montaSql(pSql, pParametros);
              
             }
-            var Connect = GetConnection(ref pBanco);
-            NpgsqlCommand command = new NpgsqlCommand(vSql, Connect);
+            NpgsqlCommand command = new NpgsqlCommand(vSql, pConnect);
             NpgsqlDataReader dataReader = command.ExecuteReader();
             
 
-            var fCOnexão = FechaConnection(ref Connect);
             
             return dataReader;
         }
@@ -137,7 +134,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             try
             {
                 conn = GetConnection(ref pBanco);
-                conn.Open();
                 cmd = new NpgsqlCommand(vSql, conn);
                 cmd.Prepare();
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -170,7 +166,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             try
             {
                 conn = GetConnection(ref pBanco);
-                conn.Open();
                 cmd = new NpgsqlCommand(vSql, conn);
                 cmd.Prepare();
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -204,7 +199,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             try
             {
                 conn = GetConnection(ref pBanco);
-                conn.Open();
                 cmd = new NpgsqlCommand(vSql, conn);
                 cmd.Prepare();
                 cmd.CommandType = System.Data.CommandType.Text;

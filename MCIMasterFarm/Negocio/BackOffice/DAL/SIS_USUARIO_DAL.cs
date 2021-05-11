@@ -190,9 +190,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 
             string vSql = vConnect.montaSql(pSql, pParametros);
             var vConnectado = vConnect.GetConnection(ref pBanco);
-            vConnectado.Open();
             
-            NpgsqlCommand command = new NpgsqlCommand(vSql, vConnectado);
+            NpgsqlCommand command = new NpgsqlCommand(vSql, vConnect.vConnect);
             NpgsqlDataReader reader = command.ExecuteReader();
 
             var vSisUsuario = new SisUsuario();

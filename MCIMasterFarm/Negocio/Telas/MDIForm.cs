@@ -22,13 +22,17 @@ namespace MCIMasterFarm.Negocio.Telas
         public ConfigAcao vConfigAcao = new ConfigAcao();
         public ConfiguracaoNEG vConfiguracaoNEG = new ConfiguracaoNEG();
         private Banco vBanco = new Banco();
+        private int vIDOrgSelecionada = 0;
+        private string vIDPapelSelecionado = "0";
         private DialogResult vDialog = new DialogResult();
         public string vIdUsu;
 
-        public MDIForm(string pIdUsu,Banco pBanco)
+        public MDIForm(string pIdUsu,Banco pBanco, int pIdOrg, string pIdPapel)
         {
             vIdUsu = pIdUsu;
             vBanco = pBanco;
+            vIDOrgSelecionada = pIdOrg;
+            vIDPapelSelecionado = pIdPapel;
             InitializeComponent();
 
         }

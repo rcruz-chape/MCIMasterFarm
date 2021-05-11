@@ -21,7 +21,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                                   , PAR.IND_TOTAL_CAR 
                                FROM SIS_PARAMETRO PAR";
             var cnnParametro = new Connect();
-            var regParametro = cnnParametro.ObtemUnico(ref pBanco, vsSql);
+            var cnnConectado = cnnParametro.GetConnection(ref pBanco);
+            var regParametro = cnnParametro.ObtemUnico(vsSql, ref cnnConectado);
             //.ObtemUnico(ref pBanco, vsSql)
             if (regParametro.HasRows)
             { 
