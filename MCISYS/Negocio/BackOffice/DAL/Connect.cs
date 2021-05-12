@@ -50,7 +50,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             
             return dataReader;
         }
-        public NpgsqlDataReader ObtemFirst(Banco pBanco, string pSql, Dictionary<string, dynamic> pParametros, ref NpgsqlConnection pConnect)
+        public NpgsqlDataReader ObtemFirst( string pSql, Dictionary<string, dynamic> pParametros, ref NpgsqlConnection pConnect)
         {
             string vSql = pSql;
 

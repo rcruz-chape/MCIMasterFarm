@@ -52,7 +52,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             // BtnSaida
             // 
-            this.BtnSaida.Image = global::MCIMasterFarm.Properties.Resources.icons8_sair_24;
+            this.BtnSaida.Image = global::MCISYS.Properties.Resources.icons8_sair_24;
             this.BtnSaida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnSaida.Location = new System.Drawing.Point(192, 58);
             this.BtnSaida.Name = "BtnSaida";
@@ -65,7 +65,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             // btnReinicia
             // 
-            this.btnReinicia.Image = global::MCIMasterFarm.Properties.Resources.icons8_reiniciar_32;
+            this.btnReinicia.Image = global::MCISYS.Properties.Resources.icons8_reiniciar_32;
             this.btnReinicia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnReinicia.Location = new System.Drawing.Point(105, 58);
             this.btnReinicia.Name = "btnReinicia";

@@ -80,7 +80,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             // button1
             // 
-            this.button1.Image = global::MCIMasterFarm.Properties.Resources.icons8_botão_continuar_36;
+            this.button1.Image = global::MCISYS.Properties.Resources.icons8_botão_continuar_36;
             this.button1.Location = new System.Drawing.Point(397, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(73, 63);

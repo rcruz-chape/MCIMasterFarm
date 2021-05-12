@@ -21,5 +21,9 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             return vVwOrgUsuDAL.ObtemListOrg(ref pBanco, pIdUsu);
         }
+        public VwOrgUsu GetOrg(ref Banco pBanco, string pIdUsu, int pIdOrg)
+        {
+            return vVwOrgUsuDAL.ObtemOrg(ref pBanco, pIdUsu, pIdOrg);
+        }
     }
 }

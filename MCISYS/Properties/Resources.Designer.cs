@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MCIMasterFarm.Properties {
+namespace MCISYS.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MCIMasterFarm.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MCIMasterFarm.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MCISYS.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -383,6 +383,16 @@ namespace MCIMasterFarm.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_grupo_de_negócios_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-grupo-de-negócios-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_importar_csv_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_importar_csv_24", resourceCulture);
@@ -616,6 +626,16 @@ namespace MCIMasterFarm.Properties {
         internal static System.Drawing.Bitmap icons8_salvar_como_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_salvar_como_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap realPapelaria {
+            get {
+                object obj = ResourceManager.GetObject("realPapelaria", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

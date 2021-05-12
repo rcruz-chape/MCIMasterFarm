@@ -128,7 +128,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             // btnSair
             // 
-            this.btnSair.Image = global::MCIMasterFarm.Properties.Resources.icons8_sair_24;
+            this.btnSair.Image = global::MCISYS.Properties.Resources.icons8_sair_24;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSair.Location = new System.Drawing.Point(300, 183);
             this.btnSair.Name = "btnSair";
@@ -141,7 +141,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             // btAlterarSenha
             // 
-            this.btAlterarSenha.Image = global::MCIMasterFarm.Properties.Resources.icons8_alterar_24;
+            this.btAlterarSenha.Image = global::MCISYS.Properties.Resources.icons8_alterar_24;
             this.btAlterarSenha.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAlterarSenha.Location = new System.Drawing.Point(12, 183);
             this.btAlterarSenha.Name = "btAlterarSenha";

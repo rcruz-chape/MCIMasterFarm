@@ -69,7 +69,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             var vConnect = new Connect();
             var RegSisUsuarioLog = new SisUsuarioLog();
             var vConnectado = vConnect.GetConnection(ref pBanco);
-            var GetResult = vConnect.ObtemFirst(pBanco, psSql, pParametros,ref vConnect.vConnect);
+            var GetResult = vConnect.ObtemFirst(psSql, pParametros,ref vConnect.vConnect);
 
             if (GetResult.HasRows)
             {

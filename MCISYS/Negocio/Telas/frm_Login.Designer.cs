@@ -70,7 +70,7 @@ namespace MCIMasterFarm
             // 
             // btn_Acessar
             // 
-            this.btn_Acessar.Image = global::MCIMasterFarm.Properties.Resources.icons8_entrar_24;
+            this.btn_Acessar.Image = global::MCISYS.Properties.Resources.icons8_entrar_24;
             this.btn_Acessar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Acessar.Location = new System.Drawing.Point(109, 78);
             this.btn_Acessar.Name = "btn_Acessar";
@@ -82,7 +82,7 @@ namespace MCIMasterFarm
             // 
             // btn_Esquecer
             // 
-            this.btn_Esquecer.Image = global::MCIMasterFarm.Properties.Resources.icons8_esqueci_a_senha_24;
+            this.btn_Esquecer.Image = global::MCISYS.Properties.Resources.icons8_esqueci_a_senha_24;
             this.btn_Esquecer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Esquecer.Location = new System.Drawing.Point(218, 78);
             this.btn_Esquecer.Name = "btn_Esquecer";

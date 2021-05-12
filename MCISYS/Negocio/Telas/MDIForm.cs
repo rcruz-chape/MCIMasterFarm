@@ -25,16 +25,21 @@ namespace MCIMasterFarm.Negocio.Telas
         private int vIDOrgSelecionada = 0;
         private string vIDPapelSelecionado = "0";
         private DialogResult vDialog = new DialogResult();
-        public string vIdUsu;
+        private VwOrgPapel vwOrgPapel = new VwOrgPapel();
+        private VwOrgUsu vwOrgUsu = new VwOrgUsu();
+        private VwOrgPapelNEG vOrgPapelNEG = new VwOrgPapelNEG();
+        private VwOrgUsuNEG vOrgUsuNEG = new VwOrgUsuNEG();
+public string vIdUsu;
 
         public MDIForm(string pIdUsu,Banco pBanco, int pIdOrg, string pIdPapel)
         {
             vIdUsu = pIdUsu;
             vBanco = pBanco;
+
             vIDOrgSelecionada = pIdOrg;
             vIDPapelSelecionado = pIdPapel;
             InitializeComponent();
-
+            var bConfiguraStatus = ConfiguraBarraStatus();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -84,7 +89,18 @@ namespace MCIMasterFarm.Negocio.Telas
         {
         }
 
-       
+        private Boolean ConfiguraBarraStatus()
+        {
+            vwOrgUsu = vOrgUsuNEG.GetOrg(ref vBanco, vIdUsu, vIDOrgSelecionada);
+            vwOrgPapel = vOrgPapelNEG.ObtemPapelSelecionado(ref vBanco, vIdUsu, vIDOrgSelecionada, vIDPapelSelecionado);
+            this.tstlUsuario.Text = "Usuário:  " + vIdUsu;
+            this.tstlOrgSelecionadaNumero.Text = "Org:   " + vIDOrgSelecionada.ToString("000");
+            this.tstl_OrgDEscricao.Text = " - " + vwOrgUsu.NM_ORG;
+            this.TstlPapel.Text = "Papel:  " + vwOrgPapel.DS_PAPEL;
+            return true;
+
+
+        }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -127,6 +143,18 @@ namespace MCIMasterFarm.Negocio.Telas
             var vNegUsuarioLogHist = new SisUsuarioLogadoHistNEG();
             bLogoff = vNegUsuarioLogHist.RegistraHistoricoLogonUsuario(SisUsuarioLog, ref pBanco);
             return bLogoff;
+        }
+
+        private void trocarOrgEPapelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_SelecionaOrg vFrm_SelecionaOrg = new Frm_SelecionaOrg(vIdUsu,ref vBanco);
+            if (vFrm_SelecionaOrg.ShowDialog() == DialogResult.OK)
+            {
+                vIDOrgSelecionada = vFrm_SelecionaOrg.vIdOrgSelecionada;
+                vIDPapelSelecionado = vFrm_SelecionaOrg.vIdPapelSelecionado;
+                vFrm_SelecionaOrg = null;
+                var bCOnfiguraStatus = ConfiguraBarraStatus();
+            }
         }
     }
 }

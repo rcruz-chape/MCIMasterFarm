@@ -10,6 +10,41 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 {
     public class VwOrgPapelDAL
     {
+        public VwOrgPapel ObtemPapelSelecionado(ref Banco pBanco,  int pIdOrg, string pIdUsu, string pIDPapel)
+        {
+            string vsSql = @"select PAP.DS_PAPEL
+                              	  , PAP.ID_PAPEL
+                               from VW_PAP_USUARIO PAP
+                              where PAP.ID_USU = @ID_USU
+                                AND PAP.ID_ORG = @ID_ORG
+                                AND PAP.ID_PAPEL = @ID_PAPEL";
+            var Parametros = new Dictionary<string, dynamic>
+            {
+                {"ID_USU",pIdUsu },
+                {"ID_ORG", pIdOrg },
+                {"ID_PAPEL", pIDPapel }
+            };
+            return RecuperaPapel(ref pBanco,vsSql,Parametros);
+        }
+        private VwOrgPapel RecuperaPapel(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros)
+        {
+            var vConnect = new Connect();
+            var vList_VwOrgPapel = new List<VwOrgPapel>();
+            var vConnectado = vConnect.GetConnection(ref pBanco);
+            var GetResult = vConnect.ObtemFirst(psSql, pParametros, ref vConnectado);
+            var vVwOrgPapel = new VwOrgPapel();
+            if (GetResult.HasRows)
+            {
+                while (GetResult.Read())
+                {
+                    vVwOrgPapel.DS_PAPEL = GetResult.GetString(0);
+                    vVwOrgPapel.ID_PAPEL = GetResult.GetString(1);
+                }
+            }
+            var close = vConnect.FechaConnection(ref vConnectado);
+            return vVwOrgPapel;
+        }
+
         public List<VwOrgPapel> ObtemPapelHabilitado(ref Banco pBanco, int pIdOrg, string pIdUsu)
         {
             string vsSql = @"select PAP.DS_PAPEL
