@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCIMasterFarm.Negocio.BackOffice.Sequence
+namespace MCISYS.Negocio.BackOffice.DAL
 {
-    public class Sequences
+    class SisFuncaoDAL
     {
     }
 }

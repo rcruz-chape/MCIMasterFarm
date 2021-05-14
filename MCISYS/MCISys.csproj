@@ -114,7 +114,11 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisFuncaoDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisModuloDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisSistemaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogHistDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
@@ -123,11 +127,15 @@
     <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisModulo.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisSistema.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioLog.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CriaEstruturaSisNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\DefaultNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Error.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
@@ -136,13 +144,15 @@
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Network.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisModuloNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisSistemaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisUsuarioLogadoHistNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_PARAMETRO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_USUARIO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SysUsuarioLogNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgPapelNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgUsuNEG.cs" />
-    <Compile Include="Negocio\BackOffice\Sequence\Sequences.cs" />
+    <Compile Include="Negocio\BackOffice\Sequence\SQ.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
     <Compile Include="Negocio\Telas\Frm_EsqueciSenha.cs">
       <SubType>Form</SubType>

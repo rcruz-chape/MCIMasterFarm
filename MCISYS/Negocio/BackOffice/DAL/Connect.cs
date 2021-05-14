@@ -50,6 +50,18 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             
             return dataReader;
         }
+        public NpgsqlDataReader ObtemDistinct(string pSql, Dictionary<string, dynamic> pParametros, ref NpgsqlConnection pConnect)
+        {
+            string vSql = pSql.ToUpper().Replace("SELECT","SELECT DISTINCT");
+
+            vSql = montaSql(vSql, pParametros);
+            NpgsqlCommand command = new NpgsqlCommand(vSql, pConnect);
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+
+
+            return dataReader;
+        }
+
         public NpgsqlDataReader ObtemFirst( string pSql, Dictionary<string, dynamic> pParametros, ref NpgsqlConnection pConnect)
         {
             string vSql = pSql;
