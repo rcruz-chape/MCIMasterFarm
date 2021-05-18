@@ -58,19 +58,28 @@ namespace MCISYS.Negocio.BackOffice.DAL
         }
         public Boolean fbInsereModulo(ref Banco pBanco, SisModulo pSisModulo)
         {
-            string vsSql = @"INSERT INTO sis_modulo
-                            (id_mod, nm_mod, ds_mod, dt_inclusao, dt_alteracao, id_sis, id_usu_alt, id_usu_incl, ds_sigla_mod)
-                            values
-                            (@id_mod
-                            , @nm_mod
-                            , @ds_mod
-                            , @dt_inclusao
-                            , @dt_alteracao
-                            , @id_sis
-                            , @id_usu_alt
-                            , @id_usu_incl
-                            , @ds_sigla_mod)
-                            ";
+            string vsSql = @"INSERT INTO SIS_MODULO (
+	                                                    ID_MOD
+	                                                    ,NM_MOD
+	                                                    ,DS_MOD
+	                                                    ,DT_INCLUSAO
+	                                                    ,DT_ALTERACAO
+	                                                    ,ID_SIS
+	                                                    ,ID_USU_ALT
+	                                                    ,ID_USU_INCL
+	                                                    ,DS_SIGLA_MOD
+	                                                    )
+                                                    VALUES (
+	                                                    @ID_MOD
+	                                                    ,@NM_MOD
+	                                                    ,@DS_MOD
+	                                                    ,@DT_INCLUSAO
+	                                                    ,@DT_ALTERACAO
+	                                                    ,@ID_SIS
+	                                                    ,@ID_USU_ALT
+	                                                    ,@ID_USU_INCL
+	                                                    ,@DS_SIGLA_MOD
+	                                                    )";
             vsSql = vsSql.ToUpper();
             var Parametros = new Dictionary<string, dynamic>()
             {
@@ -87,7 +96,21 @@ namespace MCISYS.Negocio.BackOffice.DAL
             Connect vConnect = new Connect();
             return vConnect.insert(ref pBanco,vsSql,Parametros);
         }
-
+        public List<SisModulo> ObtemTodosModulosAssociada(ref Banco pBanco)
+        {
+            string vsSql = @"SELECT ID_MOD
+   	                              , NM_MOD
+	                              , DS_MOD
+	                              , DT_INCLUSAO
+	                              , DT_ALTERACAO
+	                              , ID_SIS
+	                              , ID_USU_ALT
+	                              , ID_USU_INCL
+	                              , DS_SIGLA_MOD
+                               FROM SIS_MODULO";
+            return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql);
+        }
+    
         public List<SisModulo> ObtemTodosModulosHabilitados(ref Banco pBanco,int pidOrg, int pidSis)
         {
             string vsSql = @"select distinct 
@@ -112,8 +135,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
             };
             return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql, Parametros);
         }
-
-        private List<SisModulo> RecuperaTodosOsModulosHabilitados(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros)
+    
+        private List<SisModulo> RecuperaTodosOsModulosHabilitados(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null )
         {
             Connect vConnect = new Connect();
             List<SisModulo> vlSisModulo = new List<SisModulo>();

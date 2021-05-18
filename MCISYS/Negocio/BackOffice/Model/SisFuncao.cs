@@ -10,6 +10,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Model
     {
         public int id_funcao { get; set; }
         public string nm_funcao { get; set; }
+        public string ds_funcao { get; set; }
         public string ind_incl_reg { get; set; }
         public string ind_incl_alt { get; set; }
         public string ind_excl_reg { get; set; }

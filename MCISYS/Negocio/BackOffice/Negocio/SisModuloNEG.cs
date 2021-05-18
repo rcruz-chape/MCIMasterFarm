@@ -15,7 +15,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisModuloNEG
     {
         private SisModuloDAL vSisModuloDAL = new SisModuloDAL();
-        
+        public List<SisModulo> ObtemModulos(ref Banco pBanco)
+        {
+            return vSisModuloDAL.ObtemTodosModulosAssociada(ref pBanco);
+        }
         public List<SisModulo> ObtemModulosHabilitados(ref Banco pBanco, int pIdOrg, int pIdSis)
         {
             return vSisModuloDAL.ObtemTodosModulosHabilitados(ref pBanco, pIdOrg, pIdSis);

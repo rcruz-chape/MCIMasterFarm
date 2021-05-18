@@ -11,7 +11,20 @@ namespace MCISYS.Negocio.BackOffice.DAL
 {
     public class SisSistemaDAL
     {
-
+        public SisSistema ObtemSistema(ref Banco pBanco)
+        {
+            string vsSql = @"SELECT ID_SIS
+					                 , NM_SIS
+					                 , DS_SIS
+					                 , SG_SIS
+					                 , DT_INCLUSAO
+					                 , DT_ALTERACAO
+					                 , ID_USU_ALT
+					                 , ID_USU_INCL
+				                  FROM SIS_SISTEMA";
+            
+            return SelectSistemaHabilitado(ref pBanco, vsSql);
+        }
         public SisSistema ObtemSistemaHabilitado(ref Banco pBanco, int pIdORg)
         {
             string vsSql = @"select  
@@ -33,7 +46,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             };
             return SelectSistemaHabilitado(ref pBanco, vsSql, Parametros);
         }
-        private SisSistema SelectSistemaHabilitado(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros)
+        private SisSistema SelectSistemaHabilitado(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null)
         {
             Connect vConnect = new Connect();
             SisSistema vSisSistema = new SisSistema();
