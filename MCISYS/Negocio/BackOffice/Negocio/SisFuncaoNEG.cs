@@ -28,7 +28,9 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             var vSisFuncao = pSisFuncao;
             if (vSisFuncao.id_funcao == null)
             {
-                vSisFuncao.id_funcao = Convert.ToInt32(vSisFuncaoDAL.vSequence.sqNext(vSisFuncaoDAL.vSeq.NomeSequence, ref pBanco));
+                vSisFuncao.id_funcao = Convert.ToInt32(vSisFuncaoDAL.vSequence.sqMax(vSisFuncaoDAL.vSeq.NomeColuna,
+                                                                                     vSisFuncaoDAL.vSeq.NomeTabela, ref pBanco));
+                    
             }
             return vSisFuncaoDAL.fbInsereFuncao(ref pBanco, vSisFuncao);
 
@@ -69,7 +71,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsAssociaOrgPapelUsuario.ind_execute = "S";
             vsAssociaOrgPapelUsuario.ind_incl_alt = "N";
             vsAssociaOrgPapelUsuario.ind_incl_reg = "N";
-            vsAssociaOrgPapelUsuario.nm_funcao = "AssociaOrgPapelUsuario";
+            vsAssociaOrgPapelUsuario.nm_funcao = "AssociaOrgPapUsu";
             return vsAssociaOrgPapelUsuario;
         }
         private SisFuncao fsCriaUsuario()
@@ -85,7 +87,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsCriarUsuario.ind_execute = "N";
             vsCriarUsuario.ind_incl_alt = "S";
             vsCriarUsuario.ind_incl_reg = "S";
-            vsCriarUsuario.nm_funcao = "CriaUsuario";
+            vsCriarUsuario.nm_funcao = "CriaUsu";
             return vsCriarUsuario;
         }
 
@@ -102,7 +104,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsAssociaPapelUsuario.ind_execute = "S";
             vsAssociaPapelUsuario.ind_incl_alt = "N";
             vsAssociaPapelUsuario.ind_incl_reg = "N";
-            vsAssociaPapelUsuario.nm_funcao = "AssociaPapelUsuario";
+            vsAssociaPapelUsuario.nm_funcao = "AssociaPapUsu";
             return vsAssociaPapelUsuario;
         }
         private SisFuncao fsAssociaPapelOrg()
@@ -118,7 +120,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsAssociaPapelOrg.ind_execute = "S";
             vsAssociaPapelOrg.ind_incl_alt = "N";
             vsAssociaPapelOrg.ind_incl_reg = "N";
-            vsAssociaPapelOrg.nm_funcao = "AssociaPapelOrg";
+            vsAssociaPapelOrg.nm_funcao = "AssociaPapOrg";
             return vsAssociaPapelOrg;
         }
         private SisFuncao fsCriaPapel()
@@ -134,7 +136,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsCriarPapel.ind_execute = "N";
             vsCriarPapel.ind_incl_alt = "S";
             vsCriarPapel.ind_incl_reg = "S";
-            vsCriarPapel.nm_funcao = "CriaPapel";
+            vsCriarPapel.nm_funcao = "CriaPap";
             return vsCriarPapel;
         }
         private SisFuncao fsAssociaOrgUsuario()
@@ -150,7 +152,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsAssociaOrgUsuario.ind_execute = "S";
             vsAssociaOrgUsuario.ind_incl_alt = "N";
             vsAssociaOrgUsuario.ind_incl_reg = "N";
-            vsAssociaOrgUsuario.nm_funcao = "AssociaOrgUsuario";
+            vsAssociaOrgUsuario.nm_funcao = "AssociaOrgUsu";
             return vsAssociaOrgUsuario;
         }
         private SisFuncao fsAssociaOrgPapel()
@@ -166,7 +168,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsAssociaOrgPapel.ind_execute = "S";
             vsAssociaOrgPapel.ind_incl_alt = "N";
             vsAssociaOrgPapel.ind_incl_reg = "N";
-            vsAssociaOrgPapel.nm_funcao = "AssociaOrgPapel";
+            vsAssociaOrgPapel.nm_funcao = "AssociaOrgPap";
             return vsAssociaOrgPapel;
         }
         private SisFuncao fsCriaOrg()

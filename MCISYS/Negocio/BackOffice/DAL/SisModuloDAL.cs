@@ -155,7 +155,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     RegSisModulo.DT_ALTERACAO = GetResultado.GetDateTime(4);
                     RegSisModulo.DT_INCLUSAO = GetResultado.GetDateTime(3);
                     RegSisModulo.ID_USU_ALT = GetResultado.GetString(7);
-                    RegSisModulo.ID_USU_INCL = GetResultado.GetString(9);
+                    RegSisModulo.ID_USU_INCL = GetResultado.GetString(6);
                     vlSisModulo.Add(RegSisModulo);
                 }
             }

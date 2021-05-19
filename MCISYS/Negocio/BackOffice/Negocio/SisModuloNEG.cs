@@ -39,12 +39,13 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         public Boolean InclueModulo(ref Banco pBanco, List<SisModulo> plSisModulo = null)
         {
             Boolean bInclue = false;
-            var vListSisModulo = plSisModulo;
-            if (vListSisModulo.Count == 0 || vListSisModulo == null)
+            List<SisModulo> vListSisModulo = plSisModulo;
+            if (vListSisModulo == null)
             {
                 var ModuloImplantacao = new SisModulo();
                 ModuloImplantacao.ID_SIS = 1;
                 ModuloImplantacao.ID_MOD = vSisModuloDAL.GetIdMod(1, ref pBanco);
+                ModuloImplantacao.NM_MOD = "MCISYS Acesso";
                 ModuloImplantacao.DS_MOD = "Módulo de Controle de Acesso";
                 ModuloImplantacao.DS_SIGLA_MOD = "MCA";
                 ModuloImplantacao.DT_ALTERACAO = DateTime.Now;

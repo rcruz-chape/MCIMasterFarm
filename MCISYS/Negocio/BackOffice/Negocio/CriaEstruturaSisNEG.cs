@@ -88,7 +88,6 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             {
                 return vbCria;
             }
-            return vbCria;
             vbCria = fbAssociaModuloFuncao(ref pBanco, vSisModuloNEG, vSisFuncaoNEG);
             if (vbCria == false)
             {

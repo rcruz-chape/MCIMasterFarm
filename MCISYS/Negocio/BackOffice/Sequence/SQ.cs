@@ -11,12 +11,13 @@ namespace MCIMasterFarm.Negocio.BackOffice.Sequence
         public class SQModulo
         {
             public string NomeColuna = "ID_MOD";
-            public string NomeTabela = "NM_MOD";
+            public string NomeTabela = "SIS_MODULO";
             public string NomeColunaWhere = "ID_SIS";
         }
         public class SQFuncao
         {
-            public string NomeSequence = "func_sq";
+            public string NomeColuna = "ID_FUNCAO";
+            public string NomeTabela = "SIS_FUNCAO";
         }
 
     }

@@ -15,9 +15,14 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisModuloOrganizacaoNEG
     {
         private SisModuloOrganizacaoDAL vSisModuloOrganizacaoDAL = new SisModuloOrganizacaoDAL();
+        private SisModuloDAL vSisModuloDal = new SisModuloDAL();
         public Boolean fbAssociaUpdate(ref Banco pBanco, List<SisModuloOrganizacao> pListModulo)
         {
             return vSisModuloOrganizacaoDAL.fbAssociaListOrg(ref pBanco, pListModulo);
+        }
+        public List<SisModulo> flistModulosHabilitados(ref Banco pBanco, int pidOrg, int pidSis)
+        {
+            return vSisModuloDal.ObtemTodosModulosHabilitados(ref pBanco, pidOrg, pidSis);
         }
     }
 }

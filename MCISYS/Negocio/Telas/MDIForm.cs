@@ -11,6 +11,12 @@ using MCIMasterFarm.Negocio.Global;
 using MCIMasterFarm.Negocio.BackOffice.Negocio;
 using MCIMasterFarm.Negocio.BackOffice.Model;
 using MCIMasterFarm.Negocio.BackOffice.DadosAcesso;
+using MCIMasterFarm.Negocio.BackOffice.DAL;
+using MCISYS.Negocio.BackOffice.Model;
+using MCISYS.Negocio.BackOffice.DAL;
+using MCISYS.Negocio.BackOffice.Negocio;
+using MCISYS.Negocio.BackOffice;
+using MCIMasterFarm.Negocio.BackOffice;
 
 namespace MCIMasterFarm.Negocio.Telas
 {
@@ -23,15 +29,21 @@ namespace MCIMasterFarm.Negocio.Telas
         public ConfiguracaoNEG vConfiguracaoNEG = new ConfiguracaoNEG();
         private Banco vBanco = new Banco();
         private int vIDOrgSelecionada = 0;
+        public const int cIDOrgAdm = 1;
         private string vIDPapelSelecionado = "0";
         private DialogResult vDialog = new DialogResult();
         private VwOrgPapel vwOrgPapel = new VwOrgPapel();
         private VwOrgUsu vwOrgUsu = new VwOrgUsu();
         private VwOrgPapelNEG vOrgPapelNEG = new VwOrgPapelNEG();
         private VwOrgUsuNEG vOrgUsuNEG = new VwOrgUsuNEG();
-public string vIdUsu;
+        private SisModuloNEG vSisModuloNeg = new SisModuloNEG();
+        private List<SisModulo> vModuloAssociado = new List<SisModulo>();
+        private Error vErro = new Error();
 
-        public MDIForm(string pIdUsu,Banco pBanco, int pIdOrg, string pIdPapel)
+
+        public string vIdUsu;
+
+        public MDIForm(string pIdUsu, Banco pBanco, int pIdOrg, string pIdPapel)
         {
             vIdUsu = pIdUsu;
             vBanco = pBanco;
@@ -39,7 +51,27 @@ public string vIdUsu;
             vIDOrgSelecionada = pIdOrg;
             vIDPapelSelecionado = pIdPapel;
             InitializeComponent();
+
             var bConfiguraStatus = ConfiguraBarraStatus();
+            var bConfiguraModulo = ConfiguraModuloAtivos();
+        }
+        private Boolean ConfiguraModuloAtivos() 
+        {
+            Boolean vReturn = false;
+            vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1);
+            if (vModuloAssociado.Count == 0)
+            {
+                if (cIDOrgAdm != vIDOrgSelecionada)
+                {
+                    vReturn = vErro.DisplayErrorModulo(vIDOrgSelecionada, vwOrgUsu.NM_ORG);
+                }
+                else
+                {
+                    CriaEstruturaSisNEG vImplementaSIS = new CriaEstruturaSisNEG();
+                    vReturn = vImplementaSIS.CriaEstrutura(ref vBanco, cIDOrgAdm);
+                }
+            }
+            return vReturn;
         }
 
         private void ShowNewForm(object sender, EventArgs e)

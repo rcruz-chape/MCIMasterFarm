@@ -16,11 +16,11 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                  , string pValorPesquisa
                                  , ref Banco pBanco)
         {
-            string vsSql = "SELECT MAX(";
+            string vsSql = "SELECT COALESCE(MAX(";
             long vReturn = 1;
             var Conect = new Connect();
             var vConnectado = Conect.GetConnection(ref pBanco);
-            vsSql += pNomeColuna + ") + 1";
+            vsSql += pNomeColuna + "),0) + 1";
             vsSql += " FROM " + pNomeTabela;
             vsSql += " WHERE " + pNomeColunaWhere + " = " + pValorPesquisa;
             var vRecord = Conect.ObtemUnico(vsSql, ref vConnectado);
@@ -29,6 +29,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 vRecord.Read();
                 vReturn = vRecord.GetInt32(0);
             }
+            var bClose = Conect.FechaConnection(ref vConnectado);
             return vReturn;
         }
         public long sqNext(string psNomeSequence, ref Banco pBanco)
@@ -40,7 +41,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             vreturn.Read();
             var vIdREturn = vreturn.GetInt64(0);
             var bClose = Conect.FechaConnection(ref vConnectado);
-            return vreturn.GetInt64(0);
+            return vIdREturn;
         }
         public long sqMax(string psNomeColuna, string psNomeTabela, ref Banco pBanco)
         {

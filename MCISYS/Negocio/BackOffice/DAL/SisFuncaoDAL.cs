@@ -21,9 +21,9 @@ namespace MCISYS.Negocio.BackOffice.DAL
             Boolean vbInsereGrupo = false;
             foreach(var linhaSisFuncao in plistSisFuncao)
             {
-                if (linhaSisFuncao.id_funcao == null)
+                if (linhaSisFuncao.id_funcao == 0)
                 {
-                    linhaSisFuncao.id_funcao = Convert.ToInt32(vSequence.sqNext(vSeq.NomeSequence, ref pBanco));
+                    linhaSisFuncao.id_funcao = Convert.ToInt32(vSequence.sqMax(vSeq.NomeColuna,vSeq.NomeTabela, ref pBanco));
                 }
                 vbInsereGrupo = fbInsereFuncao(ref pBanco, linhaSisFuncao);
                 if (vbInsereGrupo == false)
@@ -124,7 +124,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , DT_ALTERACAO
 	                              , ID_USU_ALT
 	                              , ID_USU_INCL
-                               FROM SIS_PAPEL";
+                               FROM SIS_FUNCAO";
             return GetListaFuncao(ref pBanco, vsSql);
         }
         private List<SisFuncao> GetListaFuncao(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null)
@@ -144,14 +144,16 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     rSisFuncao.ind_incl_reg = GetResultado.GetString(3);
                     rSisFuncao.ind_incl_alt = GetResultado.GetString(4);
                     rSisFuncao.ind_excl_reg = GetResultado.GetString(5);
-                    rSisFuncao.ind_execute = GetResultado.GetString(6);
-                    rSisFuncao.dt_inclusao = GetResultado.GetDateTime(7);
-                    rSisFuncao.dt_alteracao = GetResultado.GetDateTime(8);
-                    rSisFuncao.id_usu_alt = GetResultado.GetString(9);
-                    rSisFuncao.id_usu_incl = GetResultado.GetString(10);
+                    rSisFuncao.ind_cons_reg = GetResultado.GetString(6);
+                    rSisFuncao.ind_execute = GetResultado.GetString(7);
+                    rSisFuncao.dt_inclusao = GetResultado.GetDateTime(8);
+                    rSisFuncao.dt_alteracao = GetResultado.GetDateTime(9);
+                    rSisFuncao.id_usu_alt = GetResultado.GetString(10);
+                    rSisFuncao.id_usu_incl = GetResultado.GetString(11);
                     vlSisFuncao.Add(rSisFuncao);
                 }
             }
+            var bDisconect = vConnect.FechaConnection(ref vConnectado);
             return vlSisFuncao;
         }
     }
