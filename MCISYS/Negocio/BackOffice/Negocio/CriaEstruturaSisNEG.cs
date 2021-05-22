@@ -14,6 +14,13 @@ namespace MCISYS.Negocio.BackOffice.Negocio
 {
     public class CriaEstruturaSisNEG
     {
+        SisSistemaNEG vSisSistemaNEG = new SisSistemaNEG();
+        SisModuloNEG vSisModuloNEG = new SisModuloNEG();
+        SisFuncaoNEG vSisFuncaoNEG = new SisFuncaoNEG();
+        SisFuncaoImplementarNEG vSisFuncaoImplementar = new SisFuncaoImplementarNEG();
+        SisPapelFuncaoNEG vSisPapelFuncaoNEG = new SisPapelFuncaoNEG();
+        SisModuloFuncaoNEG vSisModuloFuncaoNEG = new SisModuloFuncaoNEG();       
+
         private Boolean fbAssociaModuloOrg(ref Banco pBanco, SisModuloNEG pSisModuloNEG, int pidOrg)
         {
             Boolean vbAssociada = true;
@@ -67,11 +74,8 @@ namespace MCISYS.Negocio.BackOffice.Negocio
 
             return vbAssociada;
         }
-        public Boolean CriaEstrutura(ref Banco pBanco, int pidOrg)
+        public Boolean CriaEstrutura(ref Banco pBanco, int pidOrg, string pIdPapel)
         {
-            var vSisSistemaNEG = new SisSistemaNEG();
-            var vSisModuloNEG = new SisModuloNEG();
-            var vSisFuncaoNEG = new SisFuncaoNEG();
             Boolean vbCria;
             vbCria = vSisSistemaNEG.CriaSisSistema(ref pBanco);
             if (vbCria == false)
@@ -94,7 +98,35 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                 return vbCria;
             }
             vbCria = fbAssociaModuloOrg(ref pBanco, vSisModuloNEG,pidOrg);
+            if (vbCria == false)
+            {
+                return vbCria;
+            }
+            vbCria = fbAssociaFuncaoPapel(ref pBanco, pIdPapel);
             return vbCria;
+           
+        }
+        private Boolean fbAssociaFuncaoPapel(ref Banco pBanco, string pIdPapel)
+        {
+            var vListFuncao = vSisFuncaoImplementar.ObtemFuncoes(ref pBanco);
+            var vListPapelFuncao = new List<SisPapelFuncao>();
+            Boolean bInsert = true;
+            foreach (var RegListFunco in vListFuncao)
+            {
+                var RegPapelFuncao = new SisPapelFuncao();
+                RegPapelFuncao.ID_PAPEL = pIdPapel;
+                RegPapelFuncao.ID_FUNCAO = RegListFunco.ID_FUNCAO;
+                RegPapelFuncao.ID_MOD = RegListFunco.ID_MOD;
+                RegPapelFuncao.ID_SIS = RegListFunco.ID_SIS;
+                RegPapelFuncao.ind_cons_reg = RegListFunco.IND_CONS_REG;
+                RegPapelFuncao.ind_excl_reg = RegListFunco.IND_EXCL_REG;
+                RegPapelFuncao.ind_execute = RegListFunco.IND_EXECUTE;
+                RegPapelFuncao.ind_incl_alt = RegListFunco.IND_INCL_ALT;
+                RegPapelFuncao.ind_incl_reg = RegListFunco.IND_INCL_REG;
+                vListPapelFuncao.Add(RegPapelFuncao);
+            }
+            bInsert = vSisPapelFuncaoNEG.fbAssociaListaFuncaoPapel(ref pBanco, vListPapelFuncao);
+            return bInsert;
         }
 
     }

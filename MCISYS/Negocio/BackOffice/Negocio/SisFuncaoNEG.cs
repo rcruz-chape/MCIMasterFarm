@@ -44,18 +44,25 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             var vListFuncao = ListFuncaoImplementar();
             return bInsereListaFuncao(ref pBanco, vListFuncao);
         }
-        private List<SisFuncao> ListFuncaoImplementar()
+        private List<SisFuncao> ListFuncaoImplementar(List<SisFuncao> pListFuncao = null)
         {
             List<SisFuncao> vListaFuncaoImplementar = new List<SisFuncao>();
-            vListaFuncaoImplementar.Add(fsCriaOrg());
-            vListaFuncaoImplementar.Add(fsAssociaOrgPapel());
-            vListaFuncaoImplementar.Add(fsAssociaOrgUsuario());
-            vListaFuncaoImplementar.Add(fsCriaPapel());
-            vListaFuncaoImplementar.Add(fsAssociaPapelOrg());
-            vListaFuncaoImplementar.Add(fsAssociaPapelUsuario());
-            vListaFuncaoImplementar.Add(fsCriaUsuario());
-            vListaFuncaoImplementar.Add(fsAssociaOrgPapelUsuario());
 
+            if (pListFuncao == null)
+            {
+                vListaFuncaoImplementar.Add(fsCriaOrg());
+                vListaFuncaoImplementar.Add(fsAssociaOrgPapel());
+                vListaFuncaoImplementar.Add(fsAssociaOrgUsuario());
+                vListaFuncaoImplementar.Add(fsCriaPapel());
+                vListaFuncaoImplementar.Add(fsAssociaPapelOrg());
+                vListaFuncaoImplementar.Add(fsAssociaPapelUsuario());
+                vListaFuncaoImplementar.Add(fsCriaUsuario());
+                vListaFuncaoImplementar.Add(fsAssociaOrgPapelUsuario());
+            }
+            else
+            {
+                vListaFuncaoImplementar = pListFuncao;
+            }
             return vListaFuncaoImplementar;
         }
         private SisFuncao fsAssociaOrgPapelUsuario()

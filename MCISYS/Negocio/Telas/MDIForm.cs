@@ -30,6 +30,8 @@ namespace MCIMasterFarm.Negocio.Telas
         private Banco vBanco = new Banco();
         private int vIDOrgSelecionada = 0;
         public const int cIDOrgAdm = 1;
+        public const string CIDPapel = "1";
+        public const string MCISYS = "MCISYS";
         private string vIDPapelSelecionado = "0";
         private DialogResult vDialog = new DialogResult();
         private VwOrgPapel vwOrgPapel = new VwOrgPapel();
@@ -39,7 +41,7 @@ namespace MCIMasterFarm.Negocio.Telas
         private SisModuloNEG vSisModuloNeg = new SisModuloNEG();
         private List<SisModulo> vModuloAssociado = new List<SisModulo>();
         private Error vErro = new Error();
-
+        private ModIconsNEG vIconsNEG = new ModIconsNEG();
 
         public string vIdUsu;
 
@@ -54,6 +56,7 @@ namespace MCIMasterFarm.Negocio.Telas
 
             var bConfiguraStatus = ConfiguraBarraStatus();
             var bConfiguraModulo = ConfiguraModuloAtivos();
+            var bMontaTreeList = AlimentaMCITreeList();
         }
         private Boolean ConfiguraModuloAtivos() 
         {
@@ -68,9 +71,11 @@ namespace MCIMasterFarm.Negocio.Telas
                 else
                 {
                     CriaEstruturaSisNEG vImplementaSIS = new CriaEstruturaSisNEG();
-                    vReturn = vImplementaSIS.CriaEstrutura(ref vBanco, cIDOrgAdm);
+                    vReturn = vImplementaSIS.CriaEstrutura(ref vBanco, cIDOrgAdm, CIDPapel);
+                    vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1);
                 }
             }
+            
             return vReturn;
         }
 
@@ -164,7 +169,6 @@ namespace MCIMasterFarm.Negocio.Telas
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            var bLogoff = fbRealizarLogoff(ref vBanco);
             this.Dispose();
         }
         private Boolean fbRealizarLogoff(ref Banco pBanco)
@@ -176,6 +180,35 @@ namespace MCIMasterFarm.Negocio.Telas
             bLogoff = vNegUsuarioLogHist.RegistraHistoricoLogonUsuario(SisUsuarioLog, ref pBanco);
             return bLogoff;
         }
+        private Boolean AlimentaMCITreeList()
+        {
+            int vIndex = 1;
+            trv_MCISYS.Nodes.Clear();
+            ImageList lIcons = new ImageList();
+            lIcons.ImageSize = new Size(48, 48);
+            foreach(var Icons in vIconsNEG.lModIcons)
+            {
+                
+                lIcons.Images.Add((Image)global::MCISYS.Properties.Resources.ResourceManager.GetObject(Icons.Value));
+            }
+            trv_MCISYS.ImageList = lIcons;
+           
+            TreeNode rootNode = trv_MCISYS.Nodes.Add(MCISYS);
+            rootNode.ImageIndex = 0;
+            TreeNode[] NosFilhos = new TreeNode[vModuloAssociado.Count];
+            foreach (var TreeList in vModuloAssociado)
+            {
+               
+                NosFilhos[vIndex-1] = rootNode.Nodes.Add(TreeList.DS_SIGLA_MOD);
+                NosFilhos[vIndex-1].ImageIndex = vIndex;
+                NosFilhos[vIndex - 1].SelectedImageIndex = vIndex;
+
+                vIndex += 1;
+            }
+            return true;
+        }
+
+
 
         private void trocarOrgEPapelToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -186,7 +219,25 @@ namespace MCIMasterFarm.Negocio.Telas
                 vIDPapelSelecionado = vFrm_SelecionaOrg.vIdPapelSelecionado;
                 vFrm_SelecionaOrg = null;
                 var bCOnfiguraStatus = ConfiguraBarraStatus();
+                var bConfiguraModulo = ConfiguraModuloAtivos();
+                var bMontaTreeList = AlimentaMCITreeList();
             }
+        }
+
+        private void trv_MCISYS_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            string sModuloSelecionado = this.trv_MCISYS.SelectedNode.Text.ToString();
+            
+            
+        }
+        private Boolean CarregaFuncoesHabilitadas(string psModuloSelecionado)
+        {
+            Boolean vbREturn = (psModuloSelecionado == MCISYS);
+            if (!vbREturn)
+            {
+
+            }
+            return vbREturn;
         }
     }
 }

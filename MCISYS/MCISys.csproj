@@ -117,9 +117,11 @@
     <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisFuncaoDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisFuncaoImplementarDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloOrganizacaoDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisPapelFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisSistemaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogHistDAL.cs" />
@@ -129,11 +131,14 @@
     <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisFuncaoImplementar.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModulo.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModuloOrganizacao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisPapelFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisSistema.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioLog.cs" />
+    <Compile Include="Negocio\BackOffice\Model\VwFuncaoPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
@@ -147,11 +152,14 @@
     <Compile Include="Negocio\BackOffice\Model\SisFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisFuncaoImplementarNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\ModIconsNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Network.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloOrganizacaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisPapelFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisSistemaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisUsuarioLogadoHistNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_PARAMETRO_NEG.cs" />
@@ -209,7 +217,7 @@
       <DependentUpon>MDIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -430,6 +438,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagens\icons8-grupo-de-negócios-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\GrupoNegocio_Big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\GrupoNegocio_SML.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-sistema-erp-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\LogoTipoMCI.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
