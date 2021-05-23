@@ -38,6 +38,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
         {
             string vsSql = @"INSERT INTO SIS_FUNCAO (
 	                                                ID_FUNCAO
+                                                    ,IND_TIPO_FUNCAO
 	                                                ,NM_FUNCAO
 	                                                ,DS_FUNCAO
 	                                                ,IND_INCL_REG
@@ -53,6 +54,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                                 VALUES 
 	                                                (
 	                                                 @ID_FUNCAO
+                                                    ,@IND_TIPO_FUNCAO
 	                                                ,@NM_FUNCAO
 	                                                ,@DS_FUNCAO
 	                                                ,@IND_INCL_REG
@@ -69,6 +71,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             {
                 {"ID_FUNCAO",pSisFuncao.id_funcao},
                 {"NM_FUNCAO",pSisFuncao.nm_funcao},
+                {"IND_TIPO_FUNCAO", pSisFuncao.ind_tipo_funcao },
                 {"DS_FUNCAO",pSisFuncao.ds_funcao},
                 {"IND_INCL_REG",pSisFuncao.ind_incl_reg},
                 {"IND_INCL_ALT",pSisFuncao.ind_incl_alt},
@@ -98,6 +101,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , DT_ALTERACAO
 	                              , ID_USU_ALT
 	                              , ID_USU_INCL
+                                  , IND_TIPO_FUNCAO
                                FROM VW_FUNCAO_HABILITADA_PAPEL
                               WHERE ID_PAPEL = @ID_PAPEL 
                                 AND ID_SIS = @ID_SIS 
@@ -124,6 +128,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , DT_ALTERACAO
 	                              , ID_USU_ALT
 	                              , ID_USU_INCL
+                                  , IND_TIPO_FUNCAO
                                FROM SIS_FUNCAO";
             return GetListaFuncao(ref pBanco, vsSql);
         }
@@ -150,6 +155,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     rSisFuncao.dt_alteracao = GetResultado.GetDateTime(9);
                     rSisFuncao.id_usu_alt = GetResultado.GetString(10);
                     rSisFuncao.id_usu_incl = GetResultado.GetString(11);
+                    rSisFuncao.ind_tipo_funcao = GetResultado.GetString(12);
                     vlSisFuncao.Add(rSisFuncao);
                 }
             }

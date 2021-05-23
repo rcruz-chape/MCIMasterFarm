@@ -38,9 +38,9 @@ namespace MCIMasterFarm.Negocio.Telas
             this.tstlOrgSelecionadaNumero = new System.Windows.Forms.ToolStripStatusLabel();
             this.tstl_OrgDEscricao = new System.Windows.Forms.ToolStripStatusLabel();
             this.TstlPapel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnExit = new System.Windows.Forms.Button();
             this.trv_MCISYS = new System.Windows.Forms.TreeView();
             this.grpModulo = new System.Windows.Forms.GroupBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.StatusStrip.SuspendLayout();
             this.grpModulo.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,7 @@ namespace MCIMasterFarm.Negocio.Telas
             this.TstlPapel});
             this.StatusStrip.Location = new System.Drawing.Point(0, 429);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(632, 24);
+            this.StatusStrip.Size = new System.Drawing.Size(835, 24);
             this.StatusStrip.TabIndex = 3;
             this.StatusStrip.Text = "statusStrip1";
             // 
@@ -114,19 +114,6 @@ namespace MCIMasterFarm.Negocio.Telas
             this.TstlPapel.Size = new System.Drawing.Size(122, 19);
             this.TstlPapel.Text = "toolStripStatusLabel4";
             // 
-            // btnExit
-            // 
-            this.btnExit.Image = global::MCISYS.Properties.Resources.icons8_sair_48;
-            this.btnExit.Location = new System.Drawing.Point(518, 349);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(86, 77);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "Sair";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // trv_MCISYS
             // 
             this.trv_MCISYS.BackColor = System.Drawing.SystemColors.Control;
@@ -144,6 +131,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // grpModulo
             // 
             this.grpModulo.Controls.Add(this.trv_MCISYS);
+            this.grpModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpModulo.Location = new System.Drawing.Point(1, 2);
             this.grpModulo.Name = "grpModulo";
             this.grpModulo.Size = new System.Drawing.Size(371, 424);
@@ -151,14 +139,27 @@ namespace MCIMasterFarm.Negocio.Telas
             this.grpModulo.TabStop = false;
             this.grpModulo.Text = "Módulos";
             // 
+            // btnExit
+            // 
+            this.btnExit.Image = global::MCISYS.Properties.Resources.icons8_sair_48;
+            this.btnExit.Location = new System.Drawing.Point(735, 349);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(5);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(86, 77);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "Sair";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // MDIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(835, 453);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.grpModulo);
             this.Controls.Add(this.StatusStrip);
-            this.Controls.Add(this.btnExit);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MDIForm";
@@ -171,8 +172,6 @@ namespace MCIMasterFarm.Negocio.Telas
 
         }
         #endregion
-
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tstlUsuario;
         private System.Windows.Forms.ToolStripStatusLabel tstlOrgSelecionadaNumero;
@@ -182,6 +181,7 @@ namespace MCIMasterFarm.Negocio.Telas
         private System.Windows.Forms.ToolStripMenuItem trocarOrgEPapelToolStripMenuItem;
         private System.Windows.Forms.TreeView trv_MCISYS;
         private System.Windows.Forms.GroupBox grpModulo;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

@@ -20,5 +20,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.Model
         public DateTime dt_alteracao { get; set; }
         public string id_usu_incl { get; set; }
         public string id_usu_alt { get; set; }
+        public string ind_tipo_funcao { set; get; }
     }
 }
