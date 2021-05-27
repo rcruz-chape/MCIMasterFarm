@@ -52,6 +52,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                 ModuloImplantacao.DT_INCLUSAO = DateTime.Now;
                 ModuloImplantacao.ID_USU_INCL = "admin";
                 ModuloImplantacao.ID_USU_ALT = "admin";
+                ModuloImplantacao.NM_IMAGEM_ICONE = "GrupoNegocio_SML";
                 bInclue = vSisModuloDAL.fbInsereModulo(ref pBanco, ModuloImplantacao);
             }
             else

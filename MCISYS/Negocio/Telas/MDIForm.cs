@@ -39,9 +39,12 @@ namespace MCIMasterFarm.Negocio.Telas
         private VwOrgPapelNEG vOrgPapelNEG = new VwOrgPapelNEG();
         private VwOrgUsuNEG vOrgUsuNEG = new VwOrgUsuNEG();
         private SisModuloNEG vSisModuloNeg = new SisModuloNEG();
+        private SisFuncaoNEG vSisFuncaoNEG = new SisFuncaoNEG();
         private List<SisModulo> vModuloAssociado = new List<SisModulo>();
+        private List<SisFuncao> vFuncaoAssociado = new List<SisFuncao>();
+        private List<SisFuncao> vTelaAssociada = new List<SisFuncao>();
+
         private Error vErro = new Error();
-        private ModIconsNEG vIconsNEG = new ModIconsNEG();
 
         public string vIdUsu;
 
@@ -56,7 +59,17 @@ namespace MCIMasterFarm.Negocio.Telas
 
             var bConfiguraStatus = ConfiguraBarraStatus();
             var bConfiguraModulo = ConfiguraModuloAtivos();
+            var bConfiguraFuncao = ConfiguraFuncaoAtiva();
             var bMontaTreeList = AlimentaMCITreeList();
+        }
+        private Boolean ConfiguraFuncaoAtiva()
+        {
+            foreach(var Modulo in vModuloAssociado)
+            {
+                vFuncaoAssociado.AddRange(vSisFuncaoNEG.GetFuncaoHabilitada(ref vBanco, vIDPapelSelecionado, Modulo.ID_MOD, Modulo.ID_SIS));
+            }
+            vFuncaoAssociado = vFuncaoAssociado.FindAll(SisFuncao => SisFuncao.ind_tipo_funcao != "I");
+            return true;
         }
         private Boolean ConfiguraModuloAtivos() 
         {
@@ -183,14 +196,21 @@ namespace MCIMasterFarm.Negocio.Telas
         private Boolean AlimentaMCITreeList()
         {
             int vIndex = 1;
+            int vIndexadorImagem = 1;
+            int vIndexFuncao = 0;
+
+            var FuncIconeNEG = new ImagemModuloFuncaoNEG();
+            var MOduloIconeList = FuncIconeNEG.GetIcone(ref vBanco, vIDPapelSelecionado);
             trv_MCISYS.Nodes.Clear();
             ImageList lIcons = new ImageList();
             lIcons.ImageSize = new Size(48, 48);
-            foreach(var Icons in vIconsNEG.lModIcons)
+            lIcons.Images.Add((Image)global::MCISYS.Properties.Resources.ResourceManager.GetObject("icons8_sistema_erp_48"));
+            foreach(var ModuloIcone in MOduloIconeList)
             {
-                
-                lIcons.Images.Add((Image)global::MCISYS.Properties.Resources.ResourceManager.GetObject(Icons.Value));
+                var vNMImagemIcone = ModuloIcone.NM_IMAGEM_ICONE.Replace("-", "_");
+                lIcons.Images.Add((Image)global::MCISYS.Properties.Resources.ResourceManager.GetObject(vNMImagemIcone));
             }
+            
             trv_MCISYS.ImageList = lIcons;
            
             TreeNode rootNode = trv_MCISYS.Nodes.Add(MCISYS);
@@ -200,16 +220,33 @@ namespace MCIMasterFarm.Negocio.Telas
             {
                
                 NosFilhos[vIndex-1] = rootNode.Nodes.Add(TreeList.DS_SIGLA_MOD);
-                NosFilhos[vIndex-1].ImageIndex = vIndex;
-                NosFilhos[vIndex - 1].SelectedImageIndex = vIndex;
+                NosFilhos[vIndex-1].ImageIndex = vIndexadorImagem;
+                NosFilhos[vIndex-1].SelectedImageIndex = vIndexadorImagem;
+                var FuncaoIconeHabilitada = new List<SisFuncao>();
+                FuncaoIconeHabilitada.AddRange(vSisFuncaoNEG.GetFuncaoHabilitada(ref vBanco, vIDPapelSelecionado, TreeList.ID_MOD, TreeList.ID_SIS));
+                FuncaoIconeHabilitada = FuncaoIconeHabilitada.FindAll(FuncaoIcone => FuncaoIcone.ind_tipo_funcao != "I");
+                TreeNode[] NosNetos = new TreeNode[FuncaoIconeHabilitada.Count()];
+                if (FuncaoIconeHabilitada.Count > 1)
+                {
+                    vIndexFuncao = 1;
+                }
+                else
+                {
+                    vIndexadorImagem += 1;
+                }
+                foreach (var linha in FuncaoIconeHabilitada)
+                {
+                    NosNetos[vIndexFuncao - 1] = NosFilhos[vIndex - 1].Nodes.Add(linha.NM_FUNCAO_RESUMIDo);
+                    NosNetos[vIndexFuncao - 1].ImageIndex = vIndexadorImagem;
+                    NosNetos[vIndexFuncao - 1].SelectedImageIndex = vIndexadorImagem;
+                    NosNetos[vIndexFuncao - 1].Tag = linha.nm_funcao;
+                    vIndexadorImagem += 1;
+                }
 
                 vIndex += 1;
             }
             return true;
         }
-
-
-
         private void trocarOrgEPapelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_SelecionaOrg vFrm_SelecionaOrg = new Frm_SelecionaOrg(vIdUsu,ref vBanco);
@@ -220,24 +257,17 @@ namespace MCIMasterFarm.Negocio.Telas
                 vFrm_SelecionaOrg = null;
                 var bCOnfiguraStatus = ConfiguraBarraStatus();
                 var bConfiguraModulo = ConfiguraModuloAtivos();
+                var bConfiguraFuncao = ConfiguraFuncaoAtiva();
                 var bMontaTreeList = AlimentaMCITreeList();
             }
         }
 
         private void trv_MCISYS_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            string sModuloSelecionado = this.trv_MCISYS.SelectedNode.Text.ToString();
-            
-            
-        }
-        private Boolean CarregaFuncoesHabilitadas(string psModuloSelecionado)
-        {
-            Boolean vbREturn = (psModuloSelecionado == MCISYS);
-            if (!vbREturn)
+            if (this.trv_MCISYS.SelectedNode.Tag != null)
             {
-
+                string vEscolhe = this.trv_MCISYS.SelectedNode.Tag.ToString();
             }
-            return vbREturn;
         }
     }
 }

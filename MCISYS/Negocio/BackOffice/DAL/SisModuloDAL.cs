@@ -68,6 +68,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                                    ,ID_USU_ALT
 	                                                    ,ID_USU_INCL
 	                                                    ,DS_SIGLA_MOD
+                                                        ,NM_IMAGEM_ICONE
 	                                                    )
                                                     VALUES (
 	                                                    @ID_MOD
@@ -79,6 +80,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                                    ,@ID_USU_ALT
 	                                                    ,@ID_USU_INCL
 	                                                    ,@DS_SIGLA_MOD
+                                                        ,@NM_IMAGEM_ICONE
 	                                                    )";
             vsSql = vsSql.ToUpper();
             var Parametros = new Dictionary<string, dynamic>()
@@ -91,7 +93,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {"DT_ALTERACAO", pSisModulo.DT_ALTERACAO },
                 {"DS_SIGLA_MOD", pSisModulo.DS_SIGLA_MOD },
                 {"ID_USU_INCL", pSisModulo.ID_USU_INCL },
-                {"ID_USU_ALT", pSisModulo.ID_USU_ALT }
+                {"ID_USU_ALT", pSisModulo.ID_USU_ALT },
+                {"NM_IMAGEM_ICONE", pSisModulo.NM_IMAGEM_ICONE }
             };
             Connect vConnect = new Connect();
             return vConnect.insert(ref pBanco,vsSql,Parametros);
@@ -122,7 +125,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                   , modu.id_sis 
                                   , modu.id_usu_alt 
                                   , modu.id_usu_incl 
-                                  , modu.ds_sigla_mod 
+                                  , modu.ds_sigla_mod
+                                  , modu.nm_imagem_icone
                                from sis_modulo modu
                                inner join vw_modulo_sistema_habilitado SIS_HAB on (SIS_HAB.id_sis = MODU.id_sis and SIS_HAB.id_mod = modu.id_mod)
                               where SIS_HAB.id_org  = @ID_ORG

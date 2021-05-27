@@ -162,6 +162,7 @@ namespace MCIMasterFarm.Negocio.Telas
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_Senha_Expirada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario Com Senha Expirada";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

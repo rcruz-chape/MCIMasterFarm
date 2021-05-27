@@ -100,6 +100,7 @@ namespace MCIMasterFarm.Negocio.Telas
             this.ClientSize = new System.Drawing.Size(432, 125);
             this.Controls.Add(this.grbUserData);
             this.Name = "Frm_EsqueciSenha";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reinicia a Senha";
             this.grbUserData.ResumeLayout(false);
             this.grbUserData.PerformLayout();

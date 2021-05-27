@@ -119,6 +119,7 @@ namespace MCIMasterFarm
             this.Controls.Add(this.txt_Usuario);
             this.Controls.Add(this.frame_Acesso);
             this.Name = "frn_MCILogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCI Acesso";
             this.frame_Acesso.ResumeLayout(false);
             this.frame_Acesso.PerformLayout();

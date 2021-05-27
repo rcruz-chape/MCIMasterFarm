@@ -19,7 +19,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisFuncaoDAL.ObtemListaFuncao(ref pBanco);
         }
-        public List<SisFuncao> GetFuncaoHabilitada(ref Banco pBanco, int pidPapel, int pidMod, int pidSIS)
+        public List<SisFuncao> GetFuncaoHabilitada(ref Banco pBanco, string pidPapel, int pidMod, int pidSIS)
         {
             return vSisFuncaoDAL.ObtemListaFuncaoHabilitados(ref pBanco, pidPapel, pidMod, pidSIS);
         }
@@ -97,6 +97,8 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsCriarUsuario.ind_incl_reg = "S";
             vsCriarUsuario.nm_funcao = "CriaUsu";
             vsCriarUsuario.ind_tipo_funcao = "T";
+            vsCriarUsuario.NM_IMAGEM_ICONE = "icons8-user-folder-48";
+            vsCriarUsuario.NM_FUNCAO_RESUMIDo = "Cadastro de Usuários";
             return vsCriarUsuario;
         }
 
@@ -149,6 +151,8 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsCriarPapel.ind_incl_reg = "S";
             vsCriarPapel.nm_funcao = "CriaPap";
             vsCriarPapel.ind_tipo_funcao = "T";
+            vsCriarPapel.NM_IMAGEM_ICONE = "icons8-user-group-48";
+            vsCriarPapel.NM_FUNCAO_RESUMIDo = "Cadastro de Papeis";
             return vsCriarPapel;
         }
         private SisFuncao fsAssociaOrgUsuario()
@@ -200,6 +204,8 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             vsCriarOrg.ind_incl_reg = "S";
             vsCriarOrg.nm_funcao = "CriaOrg";
             vsCriarOrg.ind_tipo_funcao = "T";
+            vsCriarOrg.NM_IMAGEM_ICONE = "icons8-organization-chart-people-48";
+            vsCriarOrg.NM_FUNCAO_RESUMIDo = "Cadastro de Organizações";
             return vsCriarOrg;
         }
     }

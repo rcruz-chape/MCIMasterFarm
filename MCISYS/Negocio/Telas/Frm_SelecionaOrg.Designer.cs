@@ -99,6 +99,7 @@ namespace MCIMasterFarm.Negocio.Telas
             this.Controls.Add(this.grbPapel);
             this.Controls.Add(this.grBOrg);
             this.Name = "Frm_SelecionaOrg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Organização de Trabalho";
             this.grBOrg.ResumeLayout(false);
             this.grbPapel.ResumeLayout(false);

@@ -114,6 +114,7 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\ImagemModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisFuncaoDAL.cs" />
@@ -130,6 +131,8 @@
     <Compile Include="Negocio\BackOffice\DAL\VwOrgPapelDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorOrganizacao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\ImagensModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisFuncaoImplementar.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModulo.cs" />
@@ -152,6 +155,7 @@
     <Compile Include="Negocio\BackOffice\Model\SisFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\ImagemModuloFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisFuncaoImplementarNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ModIconsNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Network.cs" />
@@ -169,6 +173,12 @@
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgUsuNEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\SQ.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
+    <Compile Include="Negocio\Telas\Frm_CriaOrg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_CriaOrg.Designer.cs">
+      <DependentUpon>Frm_CriaOrg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Telas\Frm_EsqueciSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +211,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Negocio\Telas\Frm_CriaOrg.resx">
+      <DependentUpon>Frm_CriaOrg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_EsqueciSenha.resx">
       <DependentUpon>Frm_EsqueciSenha.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,6 +463,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Imagens\LogoTipoMCI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-user-group-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-user-folder-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagens\icons8-organization-chart-people-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imagens\icons8-organization-chart-people-48.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,6 +17,7 @@ namespace MCISYS.Negocio.BackOffice.Model
         public string ID_USU_ALT { set; get; }
         public string ID_USU_INCL { set; get; }
         public string DS_SIGLA_MOD { set; get; }
+        public string NM_IMAGEM_ICONE { set; get; }
 
     }
 }

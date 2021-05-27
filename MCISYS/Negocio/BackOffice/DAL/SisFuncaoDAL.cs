@@ -39,6 +39,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             string vsSql = @"INSERT INTO SIS_FUNCAO (
 	                                                ID_FUNCAO
                                                     ,IND_TIPO_FUNCAO
+                                                    ,NM_IMAGEM_ICONE
 	                                                ,NM_FUNCAO
 	                                                ,DS_FUNCAO
 	                                                ,IND_INCL_REG
@@ -50,11 +51,13 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                                ,DT_ALTERACAO
 	                                                ,ID_USU_ALT
 	                                                ,ID_USU_INCL
+                                                    ,NM_FUNCAO_RESUMIDO
 	                                                )
                                                 VALUES 
 	                                                (
 	                                                 @ID_FUNCAO
                                                     ,@IND_TIPO_FUNCAO
+                                                    ,@NM_IMAGEM_ICONE
 	                                                ,@NM_FUNCAO
 	                                                ,@DS_FUNCAO
 	                                                ,@IND_INCL_REG
@@ -66,10 +69,12 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                                ,@DT_ALTERACAO
 	                                                ,@ID_USU_ALT
 	                                                ,@ID_USU_INCL
+                                                    ,@NM_FUNCAO_RESUMIDO
 	                                                )";
             var Parametros = new Dictionary<string, dynamic>()
             {
                 {"ID_FUNCAO",pSisFuncao.id_funcao},
+                {"NM_FUNCAO_RESUMIDO", pSisFuncao.NM_FUNCAO_RESUMIDo },
                 {"NM_FUNCAO",pSisFuncao.nm_funcao},
                 {"IND_TIPO_FUNCAO", pSisFuncao.ind_tipo_funcao },
                 {"DS_FUNCAO",pSisFuncao.ds_funcao},
@@ -81,13 +86,14 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {"DT_INCLUSAO",pSisFuncao.dt_inclusao},
                 {"DT_ALTERACAO",pSisFuncao.dt_alteracao},
                 {"ID_USU_ALT",pSisFuncao.id_usu_alt},
-                {"ID_USU_INCL",pSisFuncao.id_usu_incl}
+                {"ID_USU_INCL",pSisFuncao.id_usu_incl},
+                {"NM_IMAGEM_ICONE", pSisFuncao.NM_IMAGEM_ICONE }
             };
             var vConnect = new Connect();
             return vConnect.insert(ref pBanco,vsSql,Parametros);
         }
 
-        public List<SisFuncao> ObtemListaFuncaoHabilitados(ref Banco pBanco, int pidPapel, int pidMod, int pidSIS)
+        public List<SisFuncao> ObtemListaFuncaoHabilitados(ref Banco pBanco, string pidPapel, int pidMod, int pidSIS)
         {
             string vsSql = @"SELECT ID_FUNCAO
                                   , NM_FUNCAO
@@ -102,6 +108,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , ID_USU_ALT
 	                              , ID_USU_INCL
                                   , IND_TIPO_FUNCAO
+                                  , COALESCE(NM_IMAGEM_ICONE,' ') AS NM_IMAGEM_ICONE
+                                  , COALESCE(NM_FUNCAO_RESUMIDO, ' ') AS NM_FUNCAO_RESUMIDO
                                FROM VW_FUNCAO_HABILITADA_PAPEL
                               WHERE ID_PAPEL = @ID_PAPEL 
                                 AND ID_SIS = @ID_SIS 
@@ -129,6 +137,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , ID_USU_ALT
 	                              , ID_USU_INCL
                                   , IND_TIPO_FUNCAO
+                                  , COALESCE(NM_IMAGEM_ICONE,' ') AS NM_IMAGEM_ICONE
+                                  , COALESCE(NM_FUNCAO_RESUMIDO, ' ') AS NM_FUNCAO_RESUMIDO
                                FROM SIS_FUNCAO";
             return GetListaFuncao(ref pBanco, vsSql);
         }
@@ -156,6 +166,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     rSisFuncao.id_usu_alt = GetResultado.GetString(10);
                     rSisFuncao.id_usu_incl = GetResultado.GetString(11);
                     rSisFuncao.ind_tipo_funcao = GetResultado.GetString(12);
+                    rSisFuncao.NM_IMAGEM_ICONE = GetResultado.GetString(13);
+                    rSisFuncao.NM_FUNCAO_RESUMIDo = GetResultado.GetString(14);
                     vlSisFuncao.Add(rSisFuncao);
                 }
             }

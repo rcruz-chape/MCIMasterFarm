@@ -38,11 +38,13 @@ namespace MCIMasterFarm.Negocio.Telas
             this.tstlOrgSelecionadaNumero = new System.Windows.Forms.ToolStripStatusLabel();
             this.tstl_OrgDEscricao = new System.Windows.Forms.ToolStripStatusLabel();
             this.TstlPapel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.trv_MCISYS = new System.Windows.Forms.TreeView();
-            this.grpModulo = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExit = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.trv_MCISYS = new System.Windows.Forms.TreeView();
             this.StatusStrip.SuspendLayout();
-            this.grpModulo.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // StatusStrip
@@ -114,35 +116,19 @@ namespace MCIMasterFarm.Negocio.Telas
             this.TstlPapel.Size = new System.Drawing.Size(122, 19);
             this.TstlPapel.Text = "toolStripStatusLabel4";
             // 
-            // trv_MCISYS
+            // groupBox1
             // 
-            this.trv_MCISYS.BackColor = System.Drawing.SystemColors.Control;
-            this.trv_MCISYS.CausesValidation = false;
-            this.trv_MCISYS.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.trv_MCISYS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trv_MCISYS.HotTracking = true;
-            this.trv_MCISYS.ItemHeight = 48;
-            this.trv_MCISYS.Location = new System.Drawing.Point(3, 18);
-            this.trv_MCISYS.Name = "trv_MCISYS";
-            this.trv_MCISYS.Size = new System.Drawing.Size(365, 403);
-            this.trv_MCISYS.TabIndex = 5;
-            this.trv_MCISYS.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv_MCISYS_AfterSelect);
-            // 
-            // grpModulo
-            // 
-            this.grpModulo.Controls.Add(this.trv_MCISYS);
-            this.grpModulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpModulo.Location = new System.Drawing.Point(1, 2);
-            this.grpModulo.Name = "grpModulo";
-            this.grpModulo.Size = new System.Drawing.Size(371, 424);
-            this.grpModulo.TabIndex = 7;
-            this.grpModulo.TabStop = false;
-            this.grpModulo.Text = "Módulos";
+            this.groupBox1.Controls.Add(this.btnExit);
+            this.groupBox1.Location = new System.Drawing.Point(4, 326);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(828, 100);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
             // 
             // btnExit
             // 
             this.btnExit.Image = global::MCISYS.Properties.Resources.icons8_sair_48;
-            this.btnExit.Location = new System.Drawing.Point(735, 349);
+            this.btnExit.Location = new System.Drawing.Point(735, 15);
             this.btnExit.Margin = new System.Windows.Forms.Padding(5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(86, 77);
@@ -152,21 +138,43 @@ namespace MCIMasterFarm.Negocio.Telas
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.trv_MCISYS);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(4, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(828, 317);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Módulos - Programas";
+            // 
+            // trv_MCISYS
+            // 
+            this.trv_MCISYS.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.trv_MCISYS.Location = new System.Drawing.Point(7, 22);
+            this.trv_MCISYS.Name = "trv_MCISYS";
+            this.trv_MCISYS.Size = new System.Drawing.Size(812, 289);
+            this.trv_MCISYS.TabIndex = 0;
+            this.trv_MCISYS.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv_MCISYS_AfterSelect);
+            // 
             // MDIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 453);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.grpModulo);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.StatusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MDIForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MCISys";
             this.StatusStrip.ResumeLayout(false);
             this.StatusStrip.PerformLayout();
-            this.grpModulo.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,9 +187,10 @@ namespace MCIMasterFarm.Negocio.Telas
         private System.Windows.Forms.ToolStripStatusLabel TstlPapel;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem trocarOrgEPapelToolStripMenuItem;
-        private System.Windows.Forms.TreeView trv_MCISYS;
-        private System.Windows.Forms.GroupBox grpModulo;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TreeView trv_MCISYS;
     }
 }
 

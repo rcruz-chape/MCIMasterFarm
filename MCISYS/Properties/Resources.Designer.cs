@@ -523,6 +523,16 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_organization_chart_people_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_organization_chart_people_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_pastel_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_pastel_24", resourceCulture);
@@ -656,6 +666,26 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_sistema_erp_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_sistema_erp_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_user_folder_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_user_folder_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_user_group_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_user_group_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
