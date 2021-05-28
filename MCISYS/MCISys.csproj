@@ -114,6 +114,7 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ImagemModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgUsuNEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\SQ.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
+    <Compile Include="Negocio\Telas\FormularioNEG.cs" />
     <Compile Include="Negocio\Telas\Frm_CriaOrg.cs">
       <SubType>Form</SubType>
     </Compile>

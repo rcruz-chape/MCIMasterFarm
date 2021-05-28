@@ -17,6 +17,7 @@ using MCISYS.Negocio.BackOffice.DAL;
 using MCISYS.Negocio.BackOffice.Negocio;
 using MCISYS.Negocio.BackOffice;
 using MCIMasterFarm.Negocio.BackOffice;
+using MCISYS.Negocio.Telas;
 
 namespace MCIMasterFarm.Negocio.Telas
 {
@@ -267,7 +268,17 @@ namespace MCIMasterFarm.Negocio.Telas
             if (this.trv_MCISYS.SelectedNode.Tag != null)
             {
                 string vEscolhe = this.trv_MCISYS.SelectedNode.Tag.ToString();
+                Boolean bChama = bChamaForm(vEscolhe);
             }
+        }
+
+        public Boolean bChamaForm(string pTag)
+        {
+            FormularioNEG vFormularioNEG = new FormularioNEG();
+            Form vForm = new Form();
+            vForm = vFormularioNEG.ChamaForm(pTag, ref vBanco, vIDOrgSelecionada, vIDPapelSelecionado, vIdUsu, vwOrgUsu.NM_ORG, vwOrgPapel.DS_PAPEL);
+            vForm.ShowDialog();
+            return true;
         }
     }
 }
