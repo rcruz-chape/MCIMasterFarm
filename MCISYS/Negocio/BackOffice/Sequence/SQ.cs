@@ -19,6 +19,11 @@ namespace MCIMasterFarm.Negocio.BackOffice.Sequence
             public string NomeColuna = "ID_FUNCAO";
             public string NomeTabela = "SIS_FUNCAO";
         }
+        public class SQOrg
+        {
+            public string NomeColuna = "ID_ORG";
+            public string NomeTabela = "COR_ORGANIZACAO";
+        }
 
     }
 }

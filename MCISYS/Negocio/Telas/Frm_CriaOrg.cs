@@ -45,5 +45,10 @@ namespace MCISYS.Negocio.Telas
 
             return true;
         }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

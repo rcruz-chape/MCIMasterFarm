@@ -35,13 +35,20 @@ namespace MCISYS.Negocio.Telas
             this.tbP_AssociaOrgPap = new System.Windows.Forms.TabPage();
             this.tPage_AssociaOrgUsu = new System.Windows.Forms.TabPage();
             this.StStripDados = new System.Windows.Forms.StatusStrip();
+            this.tstlUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.tstlOrgSelecionadaNumero = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tstl_OrgDEscricao = new System.Windows.Forms.ToolStripStatusLabel();
             this.TstlPapel = new System.Windows.Forms.ToolStripStatusLabel();
             this.grb = new System.Windows.Forms.GroupBox();
-            this.tstlUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tstl_OrgDEscricao = new System.Windows.Forms.ToolStripStatusLabel();
+            this.grpButtons = new System.Windows.Forms.GroupBox();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.StStripDados.SuspendLayout();
+            this.grpButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -101,6 +108,15 @@ namespace MCISYS.Negocio.Telas
             this.StStripDados.TabIndex = 2;
             this.StStripDados.Text = "statusStrip1";
             // 
+            // tstlUsuario
+            // 
+            this.tstlUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tstlUsuario.Name = "tstlUsuario";
+            this.tstlUsuario.Size = new System.Drawing.Size(67, 19);
+            this.tstlUsuario.Text = "tstlUsuario";
+            // 
             // tstlOrgSelecionadaNumero
             // 
             this.tstlOrgSelecionadaNumero.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
@@ -108,6 +124,14 @@ namespace MCISYS.Negocio.Telas
             this.tstlOrgSelecionadaNumero.Name = "tstlOrgSelecionadaNumero";
             this.tstlOrgSelecionadaNumero.Size = new System.Drawing.Size(154, 19);
             this.tstlOrgSelecionadaNumero.Text = "tstlOrgSelecionadaNumero";
+            // 
+            // tstl_OrgDEscricao
+            // 
+            this.tstl_OrgDEscricao.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.tstl_OrgDEscricao.Name = "tstl_OrgDEscricao";
+            this.tstl_OrgDEscricao.Size = new System.Drawing.Size(103, 19);
+            this.tstl_OrgDEscricao.Text = "tstl_OrgDEscricao";
             // 
             // TstlPapel
             // 
@@ -128,28 +152,86 @@ namespace MCISYS.Negocio.Telas
             this.grb.TabStop = false;
             this.grb.Text = "Dados Organizacionais";
             // 
-            // tstlUsuario
+            // grpButtons
             // 
-            this.tstlUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tstlUsuario.Name = "tstlUsuario";
-            this.tstlUsuario.Size = new System.Drawing.Size(67, 19);
-            this.tstlUsuario.Text = "tstlUsuario";
+            this.grpButtons.Controls.Add(this.btnSair);
+            this.grpButtons.Controls.Add(this.btnGravar);
+            this.grpButtons.Controls.Add(this.btnExcluir);
+            this.grpButtons.Controls.Add(this.btnEditar);
+            this.grpButtons.Controls.Add(this.btnNovo);
+            this.grpButtons.Location = new System.Drawing.Point(331, 3);
+            this.grpButtons.Name = "grpButtons";
+            this.grpButtons.Size = new System.Drawing.Size(457, 58);
+            this.grpButtons.TabIndex = 4;
+            this.grpButtons.TabStop = false;
             // 
-            // tstl_OrgDEscricao
+            // btnNovo
             // 
-            this.tstl_OrgDEscricao.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.tstl_OrgDEscricao.Name = "tstl_OrgDEscricao";
-            this.tstl_OrgDEscricao.Size = new System.Drawing.Size(103, 19);
-            this.tstl_OrgDEscricao.Text = "tstl_OrgDEscricao";
+            this.btnNovo.Image = global::MCISYS.Properties.Resources.icons8_novo_documento_24;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNovo.Location = new System.Drawing.Point(6, 9);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(42, 44);
+            this.btnNovo.TabIndex = 0;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Image = global::MCISYS.Properties.Resources.icons8_alterar_24;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditar.Location = new System.Drawing.Point(48, 9);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(42, 44);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Image = global::MCISYS.Properties.Resources.icons8_excluir_24;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExcluir.Location = new System.Drawing.Point(90, 9);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(48, 44);
+            this.btnExcluir.TabIndex = 2;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.Image = global::MCISYS.Properties.Resources.icons8_salvar_como_24;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGravar.Location = new System.Drawing.Point(138, 9);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(48, 44);
+            this.btnGravar.TabIndex = 3;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGravar.UseVisualStyleBackColor = true;
+            // 
+            // btnSair
+            // 
+            this.btnSair.Image = global::MCISYS.Properties.Resources.icons8_sair_24;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSair.Location = new System.Drawing.Point(403, 10);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(48, 44);
+            this.btnSair.TabIndex = 4;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // Frm_CriaOrg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 514);
+            this.Controls.Add(this.grpButtons);
             this.Controls.Add(this.grb);
             this.Controls.Add(this.StStripDados);
             this.Controls.Add(this.tabControl1);
@@ -162,6 +244,7 @@ namespace MCISYS.Negocio.Telas
             this.tabControl1.ResumeLayout(false);
             this.StStripDados.ResumeLayout(false);
             this.StStripDados.PerformLayout();
+            this.grpButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +262,11 @@ namespace MCISYS.Negocio.Telas
         private System.Windows.Forms.ToolStripStatusLabel TstlPapel;
         private System.Windows.Forms.ToolStripStatusLabel tstlUsuario;
         private System.Windows.Forms.ToolStripStatusLabel tstl_OrgDEscricao;
+        private System.Windows.Forms.GroupBox grpButtons;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnEditar;
     }
 }

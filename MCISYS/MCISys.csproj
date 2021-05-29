@@ -147,6 +147,7 @@
     <Compile Include="Negocio\BackOffice\Model\VwOrgUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CriaEstruturaSisNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\DefaultNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
