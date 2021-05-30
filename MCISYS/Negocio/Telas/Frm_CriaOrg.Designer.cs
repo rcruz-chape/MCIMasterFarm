@@ -41,11 +41,13 @@ namespace MCISYS.Negocio.Telas
             this.TstlPapel = new System.Windows.Forms.ToolStripStatusLabel();
             this.grb = new System.Windows.Forms.GroupBox();
             this.grpButtons = new System.Windows.Forms.GroupBox();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnGravar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.trvOrgs = new System.Windows.Forms.TreeView();
+            this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.StStripDados.SuspendLayout();
             this.grpButtons.SuspendLayout();
@@ -53,6 +55,7 @@ namespace MCISYS.Negocio.Telas
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.trvOrgs);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(5, 3);
             this.groupBox1.Name = "groupBox1";
@@ -145,6 +148,7 @@ namespace MCISYS.Negocio.Telas
             // grb
             // 
             this.grb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grb.ForeColor = System.Drawing.SystemColors.ControlText;
             this.grb.Location = new System.Drawing.Point(330, 61);
             this.grb.Name = "grb";
             this.grb.Size = new System.Drawing.Size(458, 154);
@@ -165,17 +169,44 @@ namespace MCISYS.Negocio.Telas
             this.grpButtons.TabIndex = 4;
             this.grpButtons.TabStop = false;
             // 
-            // btnNovo
+            // btnSair
             // 
-            this.btnNovo.Image = global::MCISYS.Properties.Resources.icons8_novo_documento_24;
-            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNovo.Location = new System.Drawing.Point(6, 9);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(42, 44);
-            this.btnNovo.TabIndex = 0;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnSair.Image = global::MCISYS.Properties.Resources.icons8_sair_24;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSair.Location = new System.Drawing.Point(403, 10);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(48, 44);
+            this.btnSair.TabIndex = 4;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.Enabled = false;
+            this.btnGravar.Image = global::MCISYS.Properties.Resources.icons8_salvar_como_24;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGravar.Location = new System.Drawing.Point(138, 9);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(48, 44);
+            this.btnGravar.TabIndex = 3;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGravar.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Enabled = false;
+            this.btnExcluir.Image = global::MCISYS.Properties.Resources.icons8_excluir_24;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExcluir.Location = new System.Drawing.Point(90, 9);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(48, 44);
+            this.btnExcluir.TabIndex = 2;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluir.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
@@ -189,42 +220,24 @@ namespace MCISYS.Negocio.Telas
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
-            // btnExcluir
+            // btnNovo
             // 
-            this.btnExcluir.Image = global::MCISYS.Properties.Resources.icons8_excluir_24;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(90, 9);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(48, 44);
-            this.btnExcluir.TabIndex = 2;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnNovo.Image = global::MCISYS.Properties.Resources.icons8_novo_documento_24;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNovo.Location = new System.Drawing.Point(6, 9);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(42, 44);
+            this.btnNovo.TabIndex = 0;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNovo.UseVisualStyleBackColor = true;
             // 
-            // btnGravar
+            // trvOrgs
             // 
-            this.btnGravar.Image = global::MCISYS.Properties.Resources.icons8_salvar_como_24;
-            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGravar.Location = new System.Drawing.Point(138, 9);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(48, 44);
-            this.btnGravar.TabIndex = 3;
-            this.btnGravar.Text = "Gravar";
-            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnGravar.UseVisualStyleBackColor = true;
-            // 
-            // btnSair
-            // 
-            this.btnSair.Image = global::MCISYS.Properties.Resources.icons8_sair_24;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSair.Location = new System.Drawing.Point(403, 10);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(48, 44);
-            this.btnSair.TabIndex = 4;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.trvOrgs.Location = new System.Drawing.Point(7, 19);
+            this.trvOrgs.Name = "trvOrgs";
+            this.trvOrgs.Size = new System.Drawing.Size(306, 189);
+            this.trvOrgs.TabIndex = 0;
             // 
             // Frm_CriaOrg
             // 
@@ -241,6 +254,7 @@ namespace MCISYS.Negocio.Telas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "CriaOrg";
             this.Text = "Cadastro de Organizações";
+            this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.StStripDados.ResumeLayout(false);
             this.StStripDados.PerformLayout();
@@ -268,5 +282,6 @@ namespace MCISYS.Negocio.Telas
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.TreeView trvOrgs;
     }
 }

@@ -143,7 +143,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     vCorOrganizacao.ID_ORG = GetResultado.GetInt32(0);
                     vCorOrganizacao.NM_ORG = GetResultado.GetString(1);
                     vCorOrganizacao.NM_ORG_RESUMIDO = GetResultado.GetString(2);
-                    if (GetResultado.GetString(3) != null)
+                    if (!GetResultado.IsDBNull(3))
                     {
                         vCorOrganizacao.ID_ORG_MAE = GetResultado.GetInt32(3);
                     }
