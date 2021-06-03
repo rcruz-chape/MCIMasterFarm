@@ -10,6 +10,25 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 {
     public class VwOrgPapelDAL
     {
+        public const string CADMIN = "admin";
+        public List<VwOrgPapel> ObtemListOrgPapel(ref Banco pBanco, int pIdOrg, string pIdUsu)
+        {
+            string vsSql = @"select PAP.DS_PAPEL
+                              	  , PAP.ID_PAPEL
+                               from VW_PAP_USUARIO PAP";
+            var Parametros = new Dictionary<string, dynamic>();
+
+
+            if (pIdUsu != CADMIN)
+            {
+                vsSql += @"where PAP.ID_USU = @ID_USU
+                                AND PAP.ID_ORG = @ID_ORG";
+                Parametros.Add("ID_USU", pIdUsu);
+                Parametros.Add("ID_ORG", pIdOrg);
+            }
+            return RecuperaListaPapel(ref pBanco, vsSql, Parametros);
+
+        }
         public VwOrgPapel ObtemPapelSelecionado(ref Banco pBanco,  int pIdOrg, string pIdUsu, string pIDPapel)
         {
             string vsSql = @"select PAP.DS_PAPEL

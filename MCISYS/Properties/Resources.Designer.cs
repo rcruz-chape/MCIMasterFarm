@@ -473,9 +473,29 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_mais_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-mais-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_mais_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_mais_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_menos_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-menos-16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -20,6 +20,12 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         public int iSenhaExpirada = 2;
         int iMaximoLoginSemSucesso = 3;
 
+        public List<SisUsuario> ObtemListaUsuario(ref Banco pBanco, int pIdOrg, string pIdUSu)
+        {
+            var vSysDal = new SIS_USUARIO_DAL();
+            return vSysDal.GetListaUsuario(ref pBanco, pIdUSu, pIdOrg);
+        }
+
         public SisUsuario loginSucesso(SisUsuario psisUsuario, ref Banco pBanco)
         {
             var vSysDal = new SIS_USUARIO_DAL();

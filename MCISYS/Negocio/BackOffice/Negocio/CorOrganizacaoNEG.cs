@@ -15,8 +15,8 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class CorOrganizacaoNEG
     {
         private CorOrganizacaoDAL vCorOrganizacaoDAL = new CorOrganizacaoDAL();
-        public const int ADMINISTRATIVA = 0;
-        public const int OPERACIONAL = 1;
+        public int ADMINISTRATIVA = 0;
+        public int OPERACIONAL = 1;
         public const int ORGADM = 1;
 
         public CorOrganizacao ObtemOrgSelecionada(int pIdOrg, List<CorOrganizacao> plistCorOrganizacao)
@@ -24,6 +24,12 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             CorOrganizacao RegCorOrganizacao = plistCorOrganizacao.Find(Registro => Registro.ID_ORG == pIdOrg);
             return RegCorOrganizacao;
         }
+
+        public List<CorOrganizacao> ObtemListaOrgMae(ref Banco pBanco, string pidUsu)
+        {
+            return vCorOrganizacaoDAL.ObtemListaOrganizacao(ref pBanco, pidUsu, true);
+        }
+
 
         public List<CorOrganizacao> ObtemListaOrg(ref Banco pBanco, string pidUsu)
         {

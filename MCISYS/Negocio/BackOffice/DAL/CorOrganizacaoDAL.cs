@@ -15,6 +15,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
     {
         private Boolean bClose;
         private const string CUSERADMIN = "admin";
+        private const int TPORGADMINISTRADORA = 0;
         public Boolean ExisteFilhos(ref Banco pBanco, int pIdOrgMae)
         {
             string vsSql = @"SELECT ID_ORG
@@ -109,7 +110,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             return vConnect.insert(ref pBanco, vsSql, Parametros);
 
         }
-        public List<CorOrganizacao> ObtemListaOrganizacao(ref Banco pBanco, string pIDUsu)
+        public List<CorOrganizacao> ObtemListaOrganizacao(ref Banco pBanco, string pIDUsu, Boolean pOnlyMae = false)
         {
             string vsSql = @"SELECT  ORG_CAD.ID_ORG
                          ,  ORG_CAD.NM_ORG 
@@ -123,7 +124,21 @@ namespace MCISYS.Negocio.BackOffice.DAL
             {
                 vsSql += @"WHERE UORG.ID_USU = @ID_USU";
                 Parametros.Add("ID_USU",pIDUsu);
+                if (pOnlyMae)
+                {
+                    vsSql += @"AND ORG_CAD.TP_ORG = @TP_ORG";
+                    Parametros.Add("TP_ORG", TPORGADMINISTRADORA);
+                }
             }
+            else
+            {
+                if (pOnlyMae)
+                {
+                    vsSql += @"WHERE ORG_CAD.TP_ORG = @TP_ORG";
+                    Parametros.Add("TP_ORG", TPORGADMINISTRADORA);
+                }
+            }
+
             return RecuperaTodasOrgs(ref pBanco, vsSql, Parametros);
         }
 

@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MCIMasterFarm.Negocio.Global;
-using MCIMasterFarm.Negocio.Global;
 using MCIMasterFarm.Negocio.BackOffice.Negocio;
 using MCIMasterFarm.Negocio.BackOffice.Model;
 using MCIMasterFarm.Negocio.BackOffice.DadosAcesso;
@@ -30,9 +29,23 @@ namespace MCISYS.Negocio.Telas
         private string vIdUsu;
         private string vNmOrg;
         private string vDsPapel;
+        private Boolean vbNovo = false;
+        private Boolean vbPreCOmmit = false;
         private List<CorOrganizacao> listCorOrganizacao = new List<CorOrganizacao>();
+        private List<CorOrganizacao> listOrgMae = new List<CorOrganizacao>();
         private CorOrganizacaoNEG vCorOrgNEG = new CorOrganizacaoNEG();
+        private SisOrganizacaoPapelNEG vOrgPapelNEG = new SisOrganizacaoPapelNEG();
+        private SisUsuarioOrganizacaoNEG vUorgNEG = new SisUsuarioOrganizacaoNEG();
         private Boolean bExecuta;
+        private int Comando;
+        private int vIdOrgSelecionada;
+        public const int iInsert = 1;
+        public const int iRegNovo = 1;
+        public const int iRegAlterar = 2;
+        public const int iRegExcluir = 3;
+        public const int iRegPesquisar = 4;
+        public const int iRegGravar = 5;
+        public Boolean bModoPreGravacao;
 
         public Frm_CriaOrg(ref Banco pBanco, int pIdOrg, string pIdPapel, 
                             string pIdUSU, string pNmOrg, string psDSPapel)
@@ -44,9 +57,15 @@ namespace MCISYS.Negocio.Telas
             vIdUsu = pIdUSU;
             vNmOrg = pNmOrg;
             vDsPapel = psDSPapel;
-            listCorOrganizacao = vCorOrgNEG.ObtemListaOrg(ref vBanco, vIdUsu);
             bExecuta = CarregaBarraStatus();
-            bExecuta = AlimentaTreeListOrg();
+            bExecuta = bConfiguraTituloDbGrid();
+            bExecuta = CarregaOrgs();
+        }
+        private Boolean CarregaOrgs()
+        {
+            listCorOrganizacao = vCorOrgNEG.ObtemListaOrg(ref vBanco, vIdUsu);
+            listOrgMae = listCorOrganizacao.FindAll(org => org.TP_ORG == vCorOrgNEG.ADMINISTRATIVA);
+            return AlimentaTreeListOrg();
         }
         private Boolean CarregaBarraStatus()
         {
@@ -114,6 +133,100 @@ namespace MCISYS.Negocio.Telas
                 inDexFilho += 1;
             }
             return true;
+        }
+        public Boolean RegNovo(Boolean pacao = true)
+        {
+            Comando = iInsert;
+            return LimpaTela(pacao);
+        }
+
+        public Boolean LimpaTela(Boolean pacao = false)
+        {
+
+            bModoPreGravacao = false;
+            this.DtgPapel.Rows.Clear();
+            return true;
+
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInclueAssociacao_Click(object sender, EventArgs e)
+        {
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco,Frm_Associa.AssociaORGPapel, vIdOrg, vIdUsu);
+            if (FrmAssocia.ShowDialog() == DialogResult.OK)
+            {
+                int vIndex = this.DtgPapel.RowCount + 1;
+                this.DtgPapel.Rows.Add(FrmAssocia.vSysOrg.ID_PAPEL, FrmAssocia.vSysOrg.DS_PAPEL, FrmAssocia.vSysOrg.ID_USU_INCL, FrmAssocia.vSysOrg.DT_INCLUSAO);
+            }
+        }
+
+        private void trvOrgs_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            vIdOrgSelecionada = Convert.ToInt32(this.trvOrgs.SelectedNode.Tag);
+            var vSeleciona = bAlimentaDbGridPapel();
+            vSeleciona = bAlimenteDbGridUsuario();
+        }
+        private Boolean bAlimentaDbGridPapel()
+        {
+            var vListPapel = vOrgPapelNEG.ObtemListaPapeisAssociados(ref vBanco, vIdOrgSelecionada, vIdUsu);
+            this.DtgPapel.Rows.Clear();
+            foreach(var RegPapel in vListPapel)
+            {
+                this.DtgPapel.Rows.Add(RegPapel.ID_PAPEL, RegPapel.DS_PAPEL, RegPapel.ID_USU_INCL, RegPapel.DT_INCLUSAO);
+            }
+
+            return true;
+        }
+        private Boolean bAlimenteDbGridUsuario()
+        {
+            var vListUser = vUorgNEG.ObtemUsuariosAssociadosOrg(ref vBanco, vIdOrg);
+            this.dGvUser.Rows.Clear();
+            foreach(var RegUorg in vListUser)
+            {
+                this.dGvUser.Rows.Add(RegUorg.ID_USU, RegUorg.ID_USU_INCL, RegUorg.DT_INCLUSAO);
+            }
+            return true;
+        }
+        public Boolean bConfiguraTituloDbGrid()
+        {
+            this.DtgPapel.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.DtgPapel.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.DtgPapel.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.DtgPapel.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dGvUser.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dGvUser.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dGvUser.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            return true;
+        }
+
+        private void btnAssociaUsu_Click(object sender, EventArgs e)
+        {
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaORGUsuario, vIdOrg, vIdUsu);
+            if (FrmAssocia.ShowDialog() == DialogResult.OK)
+            {
+                int vIndex = this.dGvUser.RowCount + 1;
+                this.dGvUser.Rows.Add(FrmAssocia.vUorg.ID_USU, FrmAssocia.vUorg.ID_USU_INCL, FrmAssocia.vUorg.DT_INCLUSAO);
+            }
         }
     }
 }

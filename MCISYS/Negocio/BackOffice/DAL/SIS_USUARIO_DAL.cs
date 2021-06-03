@@ -11,6 +11,104 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 {
     public class SIS_USUARIO_DAL
     {
+        public List<SisUsuario> GetListaUsuario(ref Banco pBanco, string pIdUsu, int pIdOrg)
+        {
+            string CUSUADMIN = "admin";
+            int CORGADMIN = 1;
+            string vsSql = @"SELECT USU.ID_USU
+	                              , USU.NM_USU
+	                              , USU.DS_EMAIL
+	                              , USU.DT_LAST_LOGIN
+	                              , USU.DS_PWD
+	                              , USU.IND_BLOQUEADO
+	                              , USU.IND_MOTIVO_BLOQUEIO
+	                              , USU.QTD_LOGIN_SEM_SUCESSO
+	                              , USU.ID_PESSOA_FISICA
+	                              , USU.DT_INCLUSAO
+	                              , USU.DT_ALTERACAO
+	                              , USU.ID_USU_ALT
+	                              , USU.ID_USU_INCL
+                               FROM SIS_USUARIO USU";
+            var Parametro = new Dictionary<string, dynamic>();
+            if (pIdUsu != CUSUADMIN) 
+            {
+                vsSql += @"WHERE EXISTS (
+		                                SELECT 1
+		                                FROM SIS_ORGANIZACAO_PAPEL_USUARIO OPUSU
+		                                WHERE OPUSU.ID_ORG = @ID_ORG
+			                                AND OPUSU.ID_USU = USU.ID_USU
+		                                )";
+                Parametro.Add("ID_ORG", pIdOrg);
+            }
+            return RecuperaListaRegistro(ref pBanco, vsSql, Parametro);
+
+
+        }
+        private List<SisUsuario> RecuperaListaRegistro(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametro)
+        {
+            Boolean bClose;
+            var vListUsu = new List<SisUsuario>();
+            var vConnect = new Connect();
+            var vConnectado = vConnect.GetConnection(ref pBanco);
+
+            var GetResultado = vConnect.ObtemLista(psSql, ref vConnectado, pParametro);
+
+            if (GetResultado.HasRows)
+            {
+                while (GetResultado.Read())
+                {
+                    var vSisUsu = new SisUsuario();
+                    vSisUsu.id_usu = GetResultado.GetString(0);
+                    vSisUsu.nm_usu = GetResultado.GetString(1);
+                    if (!GetResultado.IsDBNull(2))
+                    {
+                        vSisUsu.ds_email = GetResultado.GetString(2);
+                    }
+                    if (!GetResultado.IsDBNull(3))
+                    {
+                        vSisUsu.dt_last_login = GetResultado.GetDateTime(3);
+                    }
+                    vSisUsu.ds_pwd = GetResultado.GetString(4);
+                    vSisUsu.ind_bloqueado = GetResultado.GetString(5);
+                    if (!GetResultado.IsDBNull(6))
+                    {
+                        vSisUsu.ind_motivo_bloqueio = GetResultado.GetInt32(6);
+                    }
+                    if (!GetResultado.IsDBNull(7))
+                    {
+                        vSisUsu.qtd_login_sem_sucesso = GetResultado.GetInt32(7);
+                    }
+                    if (!GetResultado.IsDBNull(8))
+                    {
+                        vSisUsu.id_pessoa_fisica = GetResultado.GetInt32(8);
+                    }
+                    if (!GetResultado.IsDBNull(9))
+                    {
+                        vSisUsu.dt_inclusao = GetResultado.GetDateTime(9);
+                    }
+                    if (!GetResultado.IsDBNull(10))
+                    {
+                        vSisUsu.dt_alteracao = GetResultado.GetDateTime(10);
+                    }
+                    if (!GetResultado.IsDBNull(11))
+                    {
+                        vSisUsu.id_usu_incl = GetResultado.GetString(11);
+                    }
+                    if (!GetResultado.IsDBNull(12))
+                    {
+                        vSisUsu.id_usu_alt = GetResultado.GetString(12);
+                    }
+                    vListUsu.Add(vSisUsu);
+                }
+            }
+
+            vListUsu.OrderBy(usu => usu.id_usu);
+            
+            bClose = vConnect.FechaConnection(ref vConnectado);
+
+            return vListUsu;
+        }
+        
         public Boolean atualizaUsuario(SisUsuario psisUsuario, ref Banco pBanco)
         {
             string vsSql = @"UPDATE SIS_USUARIO 

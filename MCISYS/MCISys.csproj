@@ -123,10 +123,12 @@
     <Compile Include="Negocio\BackOffice\DAL\SisModuloDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloOrganizacaoDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisOrganizacaoPapelDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisPapelFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisSistemaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogHistDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisUsuarioOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_PARAMETRO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\VwOrgPapelDAL.cs" />
@@ -139,9 +141,11 @@
     <Compile Include="Negocio\BackOffice\Model\SisModulo.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModuloOrganizacao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisOrganizacaoPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisPapelFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisSistema.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioLog.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisUsuarioOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwFuncaoPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgUsu.cs" />
@@ -165,9 +169,11 @@
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloOrganizacaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisOrganizacaoPapelNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisPapelFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisSistemaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisUsuarioLogadoHistNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisUsuarioOrganizacaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_PARAMETRO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SIS_USUARIO_NEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SysUsuarioLogNEG.cs" />
@@ -176,6 +182,12 @@
     <Compile Include="Negocio\BackOffice\Sequence\SQ.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
     <Compile Include="Negocio\Telas\FormularioNEG.cs" />
+    <Compile Include="Negocio\Telas\Frm_Associa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_Associa.Designer.cs">
+      <DependentUpon>Frm_Associa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Telas\Frm_CriaOrg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +226,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Negocio\Telas\Frm_Associa.resx">
+      <DependentUpon>Frm_Associa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_CriaOrg.resx">
       <DependentUpon>Frm_CriaOrg.cs</DependentUpon>
     </EmbeddedResource>
@@ -477,6 +492,8 @@
     <None Include="Imagens\icons8-organization-chart-people-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Imagens\icons8-mais-16.png" />
+    <None Include="Imagens\icons8-menos-16.png" />
     <Content Include="Imagens\icons8-organization-chart-people-48.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
