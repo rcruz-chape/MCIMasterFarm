@@ -15,7 +15,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class CorOrganizacaoNEG
     {
         private CorOrganizacaoDAL vCorOrganizacaoDAL = new CorOrganizacaoDAL();
-        public int ADMINISTRATIVA = 0;
+        public string ADMINISTRATIVA = "A";
         public int OPERACIONAL = 1;
         public const int ORGADM = 1;
 
@@ -29,7 +29,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vCorOrganizacaoDAL.ObtemListaOrganizacao(ref pBanco, pidUsu, true);
         }
-
+        public int ObtemIdOrg(ref Banco pBanco)
+        {
+            return vCorOrganizacaoDAL.GetIdOrg(ref pBanco);
+        }
 
         public List<CorOrganizacao> ObtemListaOrg(ref Banco pBanco, string pidUsu)
         {
@@ -38,7 +41,6 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         public Boolean InsereCorOrganizacao(ref Banco pBanco, CorOrganizacao pCorOrganizacao)
         {
             var vCorOrganizacao = pCorOrganizacao;
-            vCorOrganizacao.ID_ORG = vCorOrganizacaoDAL.GetIdOrg(ref pBanco);
             return vCorOrganizacaoDAL.fbInsereOrg(ref pBanco, pCorOrganizacao);
         }
         public Boolean UpdateCorOrganizacao(ref Banco pBanco, CorOrganizacao pCorOrganizacao)

@@ -21,7 +21,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Install
         public int idOrg = 1;
         public string nmOrg = "Organização Administradora da Instância";
         public string nmOrgResumido = "ORG ADM";
-        public int tpOrg = 0;
+        public string tpOrg = "A";
         public int idPapel = 1;
         public string dsPapel = "ADMINISTRADOR";       
     }

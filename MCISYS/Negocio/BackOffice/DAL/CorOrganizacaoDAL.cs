@@ -46,7 +46,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
             var vSEquences = new Sequences();
             int vIdOrg = 0;
             var vSeqValor = vSEquences.sqMax(vSeqOrg.NomeColuna, vSeqOrg.NomeTabela, ref pBanco);
-            vIdOrg = Convert.ToInt32(vSeqValor) + 1;
+            vIdOrg = Convert.ToInt32(vSeqValor);
+           
             return vIdOrg;
         }
         public Boolean fbExclueOrg(ref Banco pBanco, CorOrganizacao pCorOrganizacao)
@@ -84,6 +85,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
         }
         public Boolean fbInsereOrg(ref Banco pBanco, CorOrganizacao pCorOrganizacao)
         {
+            
             string vsSql = @"INSERT INTO COR_ORGANIZACAO (ID_ORG
 	                                                     ,NM_ORG
 	                                                        ,NM_ORG_RESUMIDO
@@ -97,15 +99,20 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                                        ,@ID_ORG_MAE
 	                                                        ,@TP_ORG
 	                                                        )";
-            var Parametros = new Dictionary<string, dynamic>()
+            var Parametros = new Dictionary<string, dynamic>();
+            Parametros.Add("NM_ORG_RESUMIDO", pCorOrganizacao.NM_ORG_RESUMIDO);
+            if (pCorOrganizacao.ID_ORG_MAE == 0)
             {
-                {"NM_ORG_RESUMIDO",pCorOrganizacao.NM_ORG_RESUMIDO },
-                {"ID_ORG_MAE",pCorOrganizacao.ID_ORG_MAE },
-                {"ID_ORG",pCorOrganizacao.ID_ORG },
-                {"NM_ORG",pCorOrganizacao.NM_ORG },
-                {"TP_ORG",pCorOrganizacao.TP_ORG }
-
-            };
+                Parametros.Add("ID_ORG_MAE",null);
+            }
+            else
+            {
+                Parametros.Add("ID_ORG_MAE", pCorOrganizacao.ID_ORG_MAE);
+            }
+            Parametros.Add("ID_ORG", pCorOrganizacao.ID_ORG);
+            Parametros.Add("NM_ORG", pCorOrganizacao.NM_ORG);
+            Parametros.Add("TP_ORG", pCorOrganizacao.TP_ORG);
+            
             Connect vConnect = new Connect();
             return vConnect.insert(ref pBanco, vsSql, Parametros);
 
@@ -162,7 +169,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     {
                         vCorOrganizacao.ID_ORG_MAE = GetResultado.GetInt32(3);
                     }
-                    vCorOrganizacao.TP_ORG = GetResultado.GetInt32(4);
+                    vCorOrganizacao.TP_ORG = GetResultado.GetString(4);
                     vListCorOrganizacao.Add(vCorOrganizacao);
                 }
             }

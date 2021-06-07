@@ -14,6 +14,20 @@ namespace MCISYS.Negocio.BackOffice.DAL
     public class SisOrganizacaoPapelDAL
     {
         private const string CUSUADMIN = "admin";
+        public Boolean DeletePapelAssociado(ref Banco pBanco,int pIdOrg)
+        {
+            Boolean vExecuteDelete = true;
+            string vsSql = @"DELETE FROM SIS_ORGANIZACAO_PAPEL
+                              WHERE ID_ORG = @ID_ORG";
+            var vParametros = new Dictionary<string, dynamic>()
+            {
+                {"ID_ORG", pIdOrg }
+            };
+            var vConnect = new Connect();
+            vExecuteDelete = vConnect.delete(ref pBanco, vsSql, vParametros);
+            return vExecuteDelete;
+
+        }
         public Boolean DeletePapelAssociadoOrg(ref Banco pBanco, SisOrganizacaoPapel pOrganizacaoPapel)
         {
             Boolean vExecuteDelete = true;

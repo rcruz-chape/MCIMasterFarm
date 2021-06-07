@@ -12,7 +12,7 @@ namespace MCISYS.Negocio.BackOffice.Model
         public string NM_ORG { set; get; }
         public string NM_ORG_RESUMIDO { set; get; }
         public int ID_ORG_MAE { set; get; }
-        public int TP_ORG { set; get; }
+        public string TP_ORG { set; get; }
 
     }
 }

@@ -20,19 +20,54 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             return vSisOrgPap.RecuperaPapeisAssociadosOrg(ref pBanco, pIdOrg, pIdUsu);
         }
 
-        public Boolean AssociaPapelOrg(ref Banco pBanco, int pIdOrg, string pIdPapel, string pIdUsuIncl)
+        public Boolean AssociaPapelOrg(ref Banco pBanco,
+            List<SisOrganizacaoPapel> pListSisOrganizacaoInicial
+            , List<SisOrganizacaoPapel> pListSisOrganizacaoFinal)
         {
-            var vSisOrgPapel = new SisOrganizacaoPapel();
-            vSisOrgPapel.ID_ORG = pIdOrg;
-            vSisOrgPapel.ID_PAPEL = pIdPapel;
-            vSisOrgPapel.ID_USU_INCL = pIdUsuIncl;
-            vSisOrgPapel.DT_INCLUSAO = DateTime.Now;
-            return vSisOrgPap.InserePapelAssociadoOrg(ref pBanco, vSisOrgPapel);
+            Boolean vbAssocia = true;
+            var ListOrPapel = new List<SisOrganizacaoPapel>();
+            foreach(var RegOrgPap in pListSisOrganizacaoFinal)
+            {
+                if (!pListSisOrganizacaoInicial.Exists(linhaRegOrgPap => linhaRegOrgPap.ID_ORG == RegOrgPap.ID_ORG
+                                                                      && linhaRegOrgPap.ID_PAPEL == RegOrgPap.ID_PAPEL))
+                {
+                    vbAssocia = vSisOrgPap.InserePapelAssociadoOrg(ref pBanco, RegOrgPap);
+                    if(!vbAssocia)
+                    {
+                        break;
+                    }
+
+                }
+            }
+            return vbAssocia;
+        }
+        public Boolean ExclueAssociaPapelOrg(ref Banco pBanco, int pIdOrg)
+        {
+            return vSisOrgPap.DeletePapelAssociado(ref pBanco, pIdOrg);
         }
 
         public Boolean RetiraAssociacaoPapelOrg(ref Banco pBanco, SisOrganizacaoPapel pSisOrgPapel)
         {
             return vSisOrgPap.DeletePapelAssociadoOrg(ref pBanco, pSisOrgPapel);
+        }
+        public Boolean RetiraAssociaPapOrg(ref Banco pBanco, List<SisOrganizacaoPapel> pListSisOrganizacaoInicial, List<SisOrganizacaoPapel> pListSisOrganizacaoFinal)
+        {
+            Boolean vbRetira = true;
+            var ListOrgPapel = new List<SisOrganizacaoPapel>();
+            foreach(var LinhaOrgPapelInicial in pListSisOrganizacaoInicial)
+            {
+                if(!pListSisOrganizacaoFinal.Exists(RegOrgPapel => 
+                                                    RegOrgPapel.ID_ORG == LinhaOrgPapelInicial.ID_ORG && 
+                                                    RegOrgPapel.ID_PAPEL == LinhaOrgPapelInicial.ID_PAPEL))
+                {
+                    vbRetira = RetiraAssociacaoPapelOrg(ref pBanco, LinhaOrgPapelInicial);
+                    if (!vbRetira)
+                    {
+                        break;
+                    }
+                }
+            }
+            return vbRetira;
         }
     }
 }

@@ -16,6 +16,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisUsuarioOrganizacaoNEG
     {
         private SisUsuarioOrganizacaoDAL vUORGDAL = new SisUsuarioOrganizacaoDAL();
+        public Boolean DeleteOrgUsu(ref Banco pBanco, int pIdOrg, string pIdUsu)
+        {
+            return vUORGDAL.ExclueOrgUsu(ref pBanco, pIdOrg, pIdUsu);
+        }
         public List<SisUsuarioOrganizacao> ObtemUsuariosAssociadosOrg(ref Banco pBanco, int pIdOrg)
         {
             return vUORGDAL.ObtemUsuariosAssociadosOrg(ref pBanco, pIdOrg);
