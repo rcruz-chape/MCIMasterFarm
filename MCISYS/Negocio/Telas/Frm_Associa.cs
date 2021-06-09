@@ -61,6 +61,7 @@ namespace MCISYS.Negocio.Telas
         {
             this.Text = "Associar Usuário a Org " + vIdOrg.ToString("000");
             this.lblCbx.Text = "Usuário:  ";
+            this.grpBox.Text = "Associação de Usuário";
             var vSisUsuarioNEG = new SIS_USUARIO_NEG();
             ListUsu = vSisUsuarioNEG.ObtemListaUsuario(ref vBanco, vIdOrg, vIdUsu);
             this.cbxGeneral.DataSource = ListUsu;
@@ -72,6 +73,7 @@ namespace MCISYS.Negocio.Telas
         {
             this.Text = "Associar Papel a Org " + vIdOrg.ToString("00000");
             this.lblCbx.Text = "Papel:   ";
+            this.grpBox.Text = "Associação de Papel";
             var VwOrgPapNEG = new VwOrgPapelNEG();
             ListPap = VwOrgPapNEG.ObtemListaPapeis(ref vBanco, vIdUsu, vIdOrg);
 

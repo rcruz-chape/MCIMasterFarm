@@ -13,6 +13,17 @@ namespace MCISYS.Negocio.BackOffice.DAL
 {
 	public class SisModuloOrganizacaoDAL
 	{
+		public Boolean fbExcluiModuloOrg(ref Banco pBanco, int pIdOrg)
+        {
+			string vsSql = @"DELETE FROM SIS_MODULO_ORGANIZACAO WHERE ID_ORG = @ID_ORG";
+			var Parametros = new Dictionary<string, dynamic>()
+            {
+				{ "ID_ORG", pIdOrg}
+            };
+			var vConnect = new Connect();
+			return vConnect.delete(ref pBanco, vsSql, Parametros);
+        }
+		
 		private Boolean fbAssociaOrg(ref Banco pBanco, SisModuloOrganizacao pSisModulo)
 		{
 			string vsSql = @"INSERT INTO SIS_MODULO_ORGANIZACAO (

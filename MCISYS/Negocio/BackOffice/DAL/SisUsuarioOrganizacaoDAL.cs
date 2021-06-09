@@ -41,8 +41,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
             var vParametros = new Dictionary<string, dynamic>()
             {
                 {"ID_ORG", pRegUsuOrg.ID_ORG },
-                {"ID_USU", pRegUsuOrg.ID_USU },
                 {"ID_USU_INCL", pRegUsuOrg.ID_USU_INCL },
+                {"ID_USU", pRegUsuOrg.ID_USU },
                 {"DT_INCLUSAO", pRegUsuOrg.DT_INCLUSAO }
             };
             return vConnect.insert(ref pBanco, vsSql, vParametros);

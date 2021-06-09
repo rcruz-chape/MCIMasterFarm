@@ -29,8 +29,6 @@ namespace MCISYS.Negocio.Telas
         private string vIdUsu;
         private string vNmOrg;
         private string vDsPapel;
-        private Boolean vbNovo = false;
-        private Boolean vbPreCOmmit = false;
         private List<CorOrganizacao> listCorOrganizacao = new List<CorOrganizacao>();
         private List<CorOrganizacao> listOrgMae = new List<CorOrganizacao>();
         private List<SisOrganizacaoPapel> ListPapel = new List<SisOrganizacaoPapel>();
@@ -43,6 +41,8 @@ namespace MCISYS.Negocio.Telas
         private Boolean bExecuta;
         private int Comando;
         private int vIdOrgSelecionada;
+        public const int CORGADMIN = 1;
+        public const string CTPORGADM = "A";
         public const int iInsert = 1;
         public const int iUpdate = 2;
         public const int iRegNovo = 1;
@@ -214,7 +214,7 @@ namespace MCISYS.Negocio.Telas
         }
         public Boolean HabilitaBotoes(int pCOmando)
         {
-            switch(pCOmando)
+            switch (pCOmando)
             {
                 case iRegNovo:
                     this.btnNovo.Enabled = false;
@@ -246,9 +246,26 @@ namespace MCISYS.Negocio.Telas
                     this.btnAssociaUsu.Enabled = false;
                     this.btnREtiraAssociaOrgUsu.Enabled = false;
                     break;
+                case iRegExcluir:
+                    this.btnNovo.Enabled = true;
+                    this.btnEditar.Enabled = true;
+                    this.btnExcluir.Enabled = false;
+                    this.btnGravar.Enabled = false;
+                    this.btnInclueAssociacao.Enabled = false;
+                    this.btnRetiraAssociacao.Enabled = false;
+                    this.btnAssociaUsu.Enabled = false;
+                    this.btnREtiraAssociaOrgUsu.Enabled = false;
+                    break;
+
 
             }
             return true;
+        }
+        public Boolean HabilitaLic(Boolean pacao = false)
+        {
+            this.btnLic.Enabled = pacao;
+            return pacao;
+
         }
 
         public Boolean LimpaTela(Boolean pacao = false)
@@ -282,6 +299,7 @@ namespace MCISYS.Negocio.Telas
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
+
             if (bModoPreGravacao)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -295,7 +313,8 @@ namespace MCISYS.Negocio.Telas
             Comando = iInsert;
             Boolean bNovo = RegNovo();
             bModoPreGravacao = true;
-            bNovo = HabilitaBotoes(iRegNovo); 
+            bNovo = HabilitaBotoes(iRegNovo);
+            bNovo = HabilitaLic();
         }
         public Boolean RegSalvar()
         {
@@ -322,7 +341,7 @@ namespace MCISYS.Negocio.Telas
                 this.cbx_TpOrg.Focus();
                 return false;
             }
-            if (this.DtgPapel.RowCount == 0)
+            if (this.DtgPapel.RowCount-1 == 0)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show("Não Há Papeis Associados Deseja Continuar?", "Org Sem Papel Associado", buttons);
@@ -331,7 +350,7 @@ namespace MCISYS.Negocio.Telas
                     return false;
                 }
             }
-            if (this.dGvUser.RowCount == 0)
+            if (this.dGvUser.RowCount-1 == 0)
             {
                 MessageBoxButtons buttons1 = MessageBoxButtons.YesNo;
                 DialogResult result1 = MessageBox.Show("Não Há Usuários Associados Deseja Continuar?", "Org Sem Usuário Associado", buttons1);
@@ -354,7 +373,7 @@ namespace MCISYS.Negocio.Telas
                     }
                     RegInsereOrg.TP_ORG = this.cbx_TpOrg.SelectedValue.ToString();
                     var bInsere = vCorOrgNEG.InsereCorOrganizacao(ref vBanco, RegInsereOrg);
-                    if (this.DtgPapel.Rows.Count > 0)
+                    if (this.DtgPapel.Rows.Count-1 > 0)
                     {
                         vTotLoop = DtgPapel.Rows.Count - 1;
                         var ListPapelAssociado = new List<SisOrganizacaoPapel>();
@@ -370,7 +389,7 @@ namespace MCISYS.Negocio.Telas
                         }
                         bInsere = vOrgPapelNEG.AssociaPapelOrg(ref vBanco, new List<SisOrganizacaoPapel>(), ListPapelAssociado);
                     }
-                    if (this.dGvUser.Rows.Count > 0)
+                    if (this.dGvUser.Rows.Count-1 > 0)
                     {
                         vTotLoop = this.dGvUser.Rows.Count - 1;
                         var ListUORG = new List<SisUsuarioOrganizacao>();
@@ -379,8 +398,8 @@ namespace MCISYS.Negocio.Telas
                             var LinhaUORG = new SisUsuarioOrganizacao();
                             LinhaUORG.ID_ORG = vIdOrgSelecionada;
                             LinhaUORG.ID_USU = dGvUser.Rows[linha].Cells[0].Value.ToString();
-                            LinhaUORG.ID_USU_INCL = DtgPapel.Rows[linha].Cells[1].Value.ToString();
-                            LinhaUORG.DT_INCLUSAO = Convert.ToDateTime(DtgPapel.Rows[linha].Cells[2].Value.ToString());
+                            LinhaUORG.ID_USU_INCL = dGvUser.Rows[linha].Cells[1].Value.ToString();
+                            LinhaUORG.DT_INCLUSAO = Convert.ToDateTime(dGvUser.Rows[linha].Cells[2].Value.ToString());
                             ListUORG.Add(LinhaUORG);
                         }
                         bInsere = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, new List<SisUsuarioOrganizacao>(), ListUORG);
@@ -398,7 +417,7 @@ namespace MCISYS.Negocio.Telas
                     }
                     RegUpdateOrg.TP_ORG = this.cbx_TpOrg.SelectedValue.ToString();
                     var bUpdate = vCorOrgNEG.UpdateCorOrganizacao(ref vBanco, RegUpdateOrg);
-                    if (this.DtgPapel.Rows.Count > 0)
+                    if (this.DtgPapel.Rows.Count-1 > 0)
                     {
                         vTotLoop = DtgPapel.Rows.Count - 1;
                         var ListPapelAssociado = new List<SisOrganizacaoPapel>();
@@ -414,7 +433,7 @@ namespace MCISYS.Negocio.Telas
                         }
                         bInsere = vOrgPapelNEG.AssociaPapelOrg(ref vBanco, ListPapel, ListPapelAssociado);
                     }
-                    if (this.dGvUser.Rows.Count > 0)
+                    if (this.dGvUser.Rows.Count-1 > 0)
                     {
                         vTotLoop = this.dGvUser.Rows.Count - 1;
                         var ListUORG = new List<SisUsuarioOrganizacao>();
@@ -423,8 +442,8 @@ namespace MCISYS.Negocio.Telas
                             var LinhaUORG = new SisUsuarioOrganizacao();
                             LinhaUORG.ID_ORG = vIdOrgSelecionada;
                             LinhaUORG.ID_USU = dGvUser.Rows[linha].Cells[0].Value.ToString();
-                            LinhaUORG.ID_USU_INCL = DtgPapel.Rows[linha].Cells[1].Value.ToString();
-                            LinhaUORG.DT_INCLUSAO = Convert.ToDateTime(DtgPapel.Rows[linha].Cells[2].Value.ToString());
+                            LinhaUORG.ID_USU_INCL = dGvUser.Rows[linha].Cells[1].Value.ToString();
+                            LinhaUORG.DT_INCLUSAO = Convert.ToDateTime(dGvUser.Rows[linha].Cells[2].Value.ToString());
                             ListUORG.Add(LinhaUORG);
                         }
                         bInsere = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, ListUser, ListUORG);
@@ -454,6 +473,9 @@ namespace MCISYS.Negocio.Telas
         {
             
             var bExcluir = RegExcluir();
+            bExcluir = HabilitaBotoes(iRegExcluir);
+            bExcluir = CarregaOrgs();
+            bExcluir = CarregaCbxOrgMae();
         }
 
         public Boolean RegExcluir()
@@ -510,12 +532,16 @@ namespace MCISYS.Negocio.Telas
         {
             var Habilita = HabilitaBotoes(iRegGravar);
             Habilita = RegSalvar();
+            Habilita = DesabilitaCamposTela(); 
+            Habilita = CarregaOrgs();
+            Habilita = CarregaCbxOrgMae();
+            Habilita = LimpaTela();
             bModoPreGravacao = false;
         }
 
         private void btnInclueAssociacao_Click(object sender, EventArgs e)
         {
-            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco,Frm_Associa.AssociaORGPapel, vIdOrg, vIdUsu);
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco,Frm_Associa.AssociaORGPapel, vIdOrgSelecionada, vIdUsu);
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {
                 int vIndex = this.DtgPapel.RowCount + 1;
@@ -534,6 +560,7 @@ namespace MCISYS.Negocio.Telas
             var vSeleciona = bAlimentaDbGridPapel();
             vSeleciona = bAlimenteDbGridUsuario();
             vSeleciona = LoadReg();
+            vSeleciona = HabilitaLic(vIdOrgSelecionada != CORGADMIN && CorOrg.TP_ORG == CTPORGADM);
         }
         private Boolean LoadReg()
         {
@@ -579,7 +606,7 @@ namespace MCISYS.Negocio.Telas
         }
         private Boolean bAlimenteDbGridUsuario()
         {
-            ListUser = vUorgNEG.ObtemUsuariosAssociadosOrg(ref vBanco, vIdOrg);
+            ListUser = vUorgNEG.ObtemUsuariosAssociadosOrg(ref vBanco, vIdOrgSelecionada);
             this.dGvUser.Rows.Clear();
             foreach(var RegUorg in ListUser)
             {
@@ -602,7 +629,7 @@ namespace MCISYS.Negocio.Telas
 
         private void btnAssociaUsu_Click(object sender, EventArgs e)
         {
-            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaORGUsuario, vIdOrg, vIdUsu);
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaORGUsuario, vIdOrgSelecionada, vIdUsu);
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {
                 int vIndex = this.dGvUser.RowCount + 1;
@@ -624,6 +651,12 @@ namespace MCISYS.Negocio.Telas
             {
                 this.dGvUser.Rows.RemoveAt(this.dGvUser.CurrentRow.Index);
             }
+        }
+
+        private void btnLic_Click(object sender, EventArgs e)
+        {
+            Frm_Licenca vFrm_Licenca = new Frm_Licenca(ref vBanco, vIdOrgSelecionada);
+            vFrm_Licenca.ShowDialog();
         }
     }
 }

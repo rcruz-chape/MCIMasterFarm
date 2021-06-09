@@ -73,12 +73,12 @@ namespace MCISYS.Negocio.Telas
             this.txBNmOrg = new System.Windows.Forms.TextBox();
             this.lblORG = new System.Windows.Forms.Label();
             this.grpButtons = new System.Windows.Forms.GroupBox();
+            this.btnLic = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.btnLic = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbP_AssociaOrgPap.SuspendLayout();
@@ -459,6 +459,20 @@ namespace MCISYS.Negocio.Telas
             this.grpButtons.TabIndex = 4;
             this.grpButtons.TabStop = false;
             // 
+            // btnLic
+            // 
+            this.btnLic.Enabled = false;
+            this.btnLic.Image = global::MCISYS.Properties.Resources.icons8_licença_24;
+            this.btnLic.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLic.Location = new System.Drawing.Point(187, 10);
+            this.btnLic.Name = "btnLic";
+            this.btnLic.Size = new System.Drawing.Size(59, 44);
+            this.btnLic.TabIndex = 5;
+            this.btnLic.Text = "Licença";
+            this.btnLic.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLic.UseVisualStyleBackColor = true;
+            this.btnLic.Click += new System.EventHandler(this.btnLic_Click);
+            // 
             // btnSair
             // 
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
@@ -525,19 +539,6 @@ namespace MCISYS.Negocio.Telas
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // btnLic
-            // 
-            this.btnLic.Enabled = false;
-            this.btnLic.Image = global::MCISYS.Properties.Resources.icons8_licença_24;
-            this.btnLic.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLic.Location = new System.Drawing.Point(187, 10);
-            this.btnLic.Name = "btnLic";
-            this.btnLic.Size = new System.Drawing.Size(59, 42);
-            this.btnLic.TabIndex = 5;
-            this.btnLic.Text = "Licença";
-            this.btnLic.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLic.UseVisualStyleBackColor = true;
             // 
             // Frm_CriaOrg
             // 

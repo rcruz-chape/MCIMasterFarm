@@ -15,7 +15,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
     {
         private Boolean bClose;
         private const string CUSERADMIN = "admin";
-        private const int TPORGADMINISTRADORA = 0;
+        private const string TPORGADMINISTRADORA = "A";
         public Boolean ExisteFilhos(ref Banco pBanco, int pIdOrgMae)
         {
             string vsSql = @"SELECT ID_ORG
@@ -71,15 +71,20 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                ,ID_ORG_MAE = @ID_ORG_MAE 
 	                                ,TP_ORG = @TP_ORG
                               WHERE ID_ORG = @ID_ORG";
-            var Parametros = new Dictionary<string, dynamic>()
+            var Parametros = new Dictionary<string, dynamic>();
+            Parametros.Add("NM_ORG_RESUMIDO", pCorOrganizacao.NM_ORG_RESUMIDO);
+            if (pCorOrganizacao.ID_ORG_MAE == 0)
             {
-                {"NM_ORG_RESUMIDO",pCorOrganizacao.NM_ORG_RESUMIDO },
-                {"ID_ORG_MAE",pCorOrganizacao.ID_ORG_MAE },
-                {"ID_ORG",pCorOrganizacao.ID_ORG },
-                {"NM_ORG",pCorOrganizacao.NM_ORG },
-                {"TP_ORG",pCorOrganizacao.TP_ORG }
+                Parametros.Add("ID_ORG_MAE", null);
+            }
+            else
+            {
+                Parametros.Add("ID_ORG_MAE", pCorOrganizacao.ID_ORG_MAE);
+            }
+            Parametros.Add("TP_ORG",pCorOrganizacao.TP_ORG);
+            Parametros.Add("NM_ORG", pCorOrganizacao.NM_ORG);
+            Parametros.Add("ID_ORG", pCorOrganizacao.ID_ORG);
 
-            };
             Connect vConnect = new Connect();
             return vConnect.update(ref pBanco, vsSql, Parametros);
         }
@@ -124,12 +129,12 @@ namespace MCISYS.Negocio.BackOffice.DAL
                          ,  ORG_CAD.NM_ORG_RESUMIDO
                          ,  ORG_CAD.ID_ORG_MAE  
                          ,  ORG_CAD.TP_ORG 
-                      FROM VW_ORG_CADASTRADAS ORG_CAD
-                     INNER JOIN SIS_USUARIO_ORGANIZACAO UORG ON (UORG.ID_ORG = ORG_CAD.ID_ORG)";
+                      FROM VW_ORG_CADASTRADAS ORG_CAD";
             var Parametros = new Dictionary<string, dynamic>();
             if (pIDUsu != CUSERADMIN)
             {
-                vsSql += @"WHERE UORG.ID_USU = @ID_USU";
+                vsSql += @"INNER JOIN SIS_USUARIO_ORGANIZACAO UORG ON (UORG.ID_ORG = ORG_CAD.ID_ORG)
+                           WHERE UORG.ID_USU = @ID_USU";
                 Parametros.Add("ID_USU",pIDUsu);
                 if (pOnlyMae)
                 {

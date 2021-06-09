@@ -86,6 +86,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             var GetResults = vConnect.ObtemFirst(psSql, pParametro, ref vConnectado);
             if (GetResults.HasRows)
             {
+                GetResults.Read();
                 RegOrgLic.ID_ORG = GetResults.GetInt32(0);
                 RegOrgLic.NR_CNPJ_RAIZ = GetResults.GetInt32(1);
                 RegOrgLic.DS_AMBIENTE = GetResults.GetInt32(2);

@@ -16,6 +16,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     {
         private SisModuloOrganizacaoDAL vSisModuloOrganizacaoDAL = new SisModuloOrganizacaoDAL();
         private SisModuloDAL vSisModuloDal = new SisModuloDAL();
+        public Boolean fbRetiraModulos(ref Banco pBanco, int pIdOrg)
+        {
+            return vSisModuloOrganizacaoDAL.fbExcluiModuloOrg(ref pBanco, pIdOrg);
+        }
         public Boolean fbAssociaUpdate(ref Banco pBanco, List<SisModuloOrganizacao> pListModulo)
         {
             return vSisModuloOrganizacaoDAL.fbAssociaListOrg(ref pBanco, pListModulo);
@@ -23,6 +27,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         public List<SisModulo> flistModulosHabilitados(ref Banco pBanco, int pidOrg, int pidSis)
         {
             return vSisModuloDal.ObtemTodosModulosHabilitados(ref pBanco, pidOrg, pidSis);
+        }
+        public List<SisModulo> flistModulos (ref Banco pBanco)
+        {
+            return vSisModuloDal.ObtemTodosModulosAssociada(ref pBanco);
         }
     }
 }
