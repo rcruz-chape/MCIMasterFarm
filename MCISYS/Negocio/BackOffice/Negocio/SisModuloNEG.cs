@@ -15,13 +15,35 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisModuloNEG
     {
         private SisModuloDAL vSisModuloDAL = new SisModuloDAL();
+        private CorOrganizacaoNEG vOrgNEG = new CorOrganizacaoNEG();
+        private const string TPADM = "A";
+        private const string TPOPE = "O";
         public List<SisModulo> ObtemModulos(ref Banco pBanco)
         {
-            return vSisModuloDAL.ObtemTodosModulosAssociada(ref pBanco);
+            return vSisModuloDAL.ObtemTodosModulosAssociados(ref pBanco);
         }
-        public List<SisModulo> ObtemModulosHabilitados(ref Banco pBanco, int pIdOrg, int pIdSis)
+        public List<SisModulo> ObtemModulosHabilitados(ref Banco pBanco, int pIdOrg, int pIdSis, string pTpOrg)
         {
-            return vSisModuloDAL.ObtemTodosModulosHabilitados(ref pBanco, pIdOrg, pIdSis);
+            var vReturn = new List<SisModulo>();
+            Boolean vbMAe = false;
+            int idOrg = pIdOrg;
+
+            while(!vbMAe)
+            {
+                var vOrg = vOrgNEG.OrgSelecionada(ref pBanco, idOrg);
+                if (vOrg.ID_ORG_MAE == 0)
+                {
+                    vbMAe = true;
+                }
+                else
+                {
+                    idOrg = vOrg.ID_ORG_MAE;
+                }
+            }
+            vReturn = vSisModuloDAL.ObtemTodosModulosHabilitados(ref pBanco, idOrg, pIdSis);
+            vReturn = vReturn.FindAll(linha => linha.TP_MOD_ORG == pTpOrg);
+
+            return vReturn;
         }
         
         public  Boolean AlteraModulo(ref Banco pBanco, int pIdSis = 1, int pIdMod = 1)

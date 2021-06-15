@@ -28,9 +28,16 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisModuloDal.ObtemTodosModulosHabilitados(ref pBanco, pidOrg, pidSis);
         }
-        public List<SisModulo> flistModulos (ref Banco pBanco)
+        public List<SisModulo> flistModulos (ref Banco pBanco, string pTPModOrg = null)
         {
-            return vSisModuloDal.ObtemTodosModulosAssociada(ref pBanco);
+            if (pTPModOrg == null)
+            {
+                return vSisModuloDal.ObtemTodosModulosAssociados(ref pBanco);
+            }
+            else
+            {
+                return vSisModuloDal.ObtemModulosAssociadosPorTipo(ref pBanco, pTPModOrg);
+            }
         }
     }
 }

@@ -18,7 +18,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         public string ADMINISTRATIVA = "A";
         public int OPERACIONAL = 1;
         public const int ORGADM = 1;
-
+        public CorOrganizacao OrgSelecionada(ref Banco pBanco, int pIdOrg)
+        {
+            return vCorOrganizacaoDAL.ObtemOrgSelecionada(ref pBanco, pIdOrg);
+        }
         public CorOrganizacao ObtemOrgSelecionada(int pIdOrg, List<CorOrganizacao> plistCorOrganizacao)
         {
             CorOrganizacao RegCorOrganizacao = plistCorOrganizacao.Find(Registro => Registro.ID_ORG == pIdOrg);

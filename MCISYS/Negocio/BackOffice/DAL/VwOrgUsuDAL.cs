@@ -15,6 +15,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             string vsSql = @"select ORG.NM_ORG_RESUMIDO
                               	  , ORG.ID_ORG
                                   , ORG.NM_ORG
+                                  , ORG.TP_ORG
                                from VW_ORG_USUARIO ORG
                               where ORG.ID_USU = @ID_USU
                                 and ORG.ID_ORG = @ID_ORG";
@@ -29,6 +30,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
         {
             string vsSql = @"select ORG.NM_ORG_RESUMIDO
                               	  , ORG.ID_ORG
+                                  , ORG.TP_ORG
                                from VW_ORG_USUARIO ORG
                               where ORG.ID_USU = @ID_USU";
             var Parametros = new Dictionary<string, dynamic>
@@ -51,6 +53,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                     var registro = new VwOrgUsu();
                     registro.NM_ORG_RESUMIDO = GetResult.GetString(0);
                     registro.ID_ORG = GetResult.GetInt32(1);
+                    registro.TP_ORG = GetResult.GetString(2);
                     vList_VwOrgUsu.Add(registro);
                 }
             }
@@ -71,6 +74,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                     vRegistro.NM_ORG_RESUMIDO = GetResult.GetString(0);
                     vRegistro.ID_ORG = GetResult.GetInt32(1);
                     vRegistro.NM_ORG = GetResult.GetString(2);
+                    vRegistro.TP_ORG = GetResult.GetString(3);
                 }
             }
             var close = vConnect.FechaConnection(ref vConnectado);

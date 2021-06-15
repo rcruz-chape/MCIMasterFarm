@@ -13,6 +13,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
 {
     public class SisModuloDAL
     {
+        public string CTPMODADM = "A";
+        public string CTPMMODOP = "O";
         public int GetIdMod(int pIdSis, ref Banco pBanco)
         {
             var vSeqModulo = new SQ.SQModulo();
@@ -99,7 +101,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             Connect vConnect = new Connect();
             return vConnect.insert(ref pBanco,vsSql,Parametros);
         }
-        public List<SisModulo> ObtemTodosModulosAssociada(ref Banco pBanco)
+        public List<SisModulo> ObtemTodosModulosAssociados(ref Banco pBanco)
         {
             string vsSql = @"SELECT ID_MOD
    	                              , NM_MOD
@@ -110,7 +112,10 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , ID_USU_ALT
 	                              , ID_USU_INCL
 	                              , DS_SIGLA_MOD
+                                  , NM_IMAGEM_ICONE
+                                  , TP_MOD_ORG
                                FROM SIS_MODULO";
+
             return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql);
         }
     
@@ -127,6 +132,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                   , modu.id_usu_incl 
                                   , modu.ds_sigla_mod
                                   , modu.nm_imagem_icone
+                                  , modu.tp_mod_org
                                from sis_modulo modu
                                inner join vw_modulo_sistema_habilitado SIS_HAB on (SIS_HAB.id_sis = MODU.id_sis and SIS_HAB.id_mod = modu.id_mod)
                               where SIS_HAB.id_org  = @ID_ORG
@@ -160,12 +166,35 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     RegSisModulo.DT_INCLUSAO = GetResultado.GetDateTime(3);
                     RegSisModulo.ID_USU_ALT = GetResultado.GetString(7);
                     RegSisModulo.ID_USU_INCL = GetResultado.GetString(6);
+                    RegSisModulo.NM_IMAGEM_ICONE = GetResultado.GetString(9);
+                    RegSisModulo.TP_MOD_ORG = GetResultado.GetString(10);
                     vlSisModulo.Add(RegSisModulo);
                 }
             }
             var bClose = vConnect.FechaConnection(ref vConnectado);
             return vlSisModulo;
 
+        }
+        public List<SisModulo> ObtemModulosAssociadosPorTipo(ref Banco pBanco, string pTpModOrg)
+        {
+            string vsSql = @"SELECT ID_MOD
+   	                              , NM_MOD
+	                              , DS_MOD
+	                              , DT_INCLUSAO
+	                              , DT_ALTERACAO
+	                              , ID_SIS
+	                              , ID_USU_ALT
+	                              , ID_USU_INCL
+	                              , DS_SIGLA_MOD
+                                  , NM_IMAGEM_ICONE
+                                  , TP_MOD_ORG
+                               FROM SIS_MODULO
+                              WHERE TP_MOD_ORG = @TP_ORG_MOD";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"TP_MOD_ORG",pTpModOrg }
+            };
+            return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql, Parametro);
         }
     }
 }

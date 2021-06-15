@@ -11,5 +11,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.Model
         public string NM_ORG_RESUMIDO { get; set; }
         public int ID_ORG { set; get; }
         public string NM_ORG { get; set; }
+        public string TP_ORG { get; set; }
     }
 }

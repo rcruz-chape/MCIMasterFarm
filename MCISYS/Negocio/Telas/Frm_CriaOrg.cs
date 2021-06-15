@@ -43,6 +43,7 @@ namespace MCISYS.Negocio.Telas
         private int vIdOrgSelecionada;
         public const int CORGADMIN = 1;
         public const string CTPORGADM = "A";
+        public const string CTPORGOPE = "O";
         public const int iInsert = 1;
         public const int iUpdate = 2;
         public const int iRegNovo = 1;
@@ -51,6 +52,7 @@ namespace MCISYS.Negocio.Telas
         public const int iRegPesquisar = 4;
         public const int iRegGravar = 5;
         public const string FormatOrg = "000";
+        public CorOrganizacaoLicencaNEG OrgLicNEG = new CorOrganizacaoLicencaNEG();
         public Boolean bModoPreGravacao;
         
         public class TP_ORG
@@ -137,7 +139,7 @@ namespace MCISYS.Negocio.Telas
             int inDexFilho = 1;
             this.trvOrgs.Nodes.Clear();
             TreeNode rootNodes = trvOrgs.Nodes.Add("Organizações");
-            var ApenasOrganizacoesSemMae = listCorOrganizacao.FindAll(linhaOrgAdm => linhaOrgAdm.ID_ORG_MAE != null);
+            var ApenasOrganizacoesSemMae = listCorOrganizacao.FindAll(linhaOrgAdm => linhaOrgAdm.ID_ORG_MAE == 0);
             TreeNode[] NosFilhos = new TreeNode[ApenasOrganizacoesSemMae.Count];
             foreach(var linhaOrgSemMae in ApenasOrganizacoesSemMae)
             {
@@ -290,6 +292,7 @@ namespace MCISYS.Negocio.Telas
             this.cbx_OrgMae.SelectedItem = "";
             this.cbx_TpOrg.Text = "";
             this.cbx_TpOrg.SelectedItem = "";
+            this.lbLic.Text = "";
 
 
 
@@ -337,9 +340,17 @@ namespace MCISYS.Negocio.Telas
             if (this.cbx_TpOrg.Text == null)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Deve definiri o tipo de ORG.", "Erro de Validação", buttons);
+                DialogResult result = MessageBox.Show("Deve definir o tipo de ORG.", "Erro de Validação", buttons);
                 this.cbx_TpOrg.Focus();
                 return false;
+            }
+            if (this.cbx_TpOrg.SelectedValue == CTPORGOPE && this.cbx_OrgMae.Text == "")
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show("Organizações do tipo Operacional não podem ser orfãs.", "Erro de Validação",buttons);
+                this.cbx_TpOrg.Focus();
+                return false;
+
             }
             if (this.DtgPapel.RowCount-1 == 0)
             {
@@ -350,6 +361,7 @@ namespace MCISYS.Negocio.Telas
                     return false;
                 }
             }
+            
             if (this.dGvUser.RowCount-1 == 0)
             {
                 MessageBoxButtons buttons1 = MessageBoxButtons.YesNo;
@@ -404,6 +416,10 @@ namespace MCISYS.Negocio.Telas
                         }
                         bInsere = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, new List<SisUsuarioOrganizacao>(), ListUORG);
 
+                    }
+                    if (RegInsereOrg.TP_ORG == "O")
+                    {
+                        Boolean bLicenca = OrgLicNEG.bTemLic(ref vBanco, RegInsereOrg.ID_ORG);
                     }
                     break;
                 case iUpdate:
@@ -514,7 +530,7 @@ namespace MCISYS.Negocio.Telas
                 case iRegNovo:
                 {
                         MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                        DialogResult result = MessageBox.Show("Deseja Cancelar a Inclsuão de ORG?", "Cancelar", buttons);
+                        DialogResult result = MessageBox.Show("Deseja Cancelar a Inclusão de ORG?", "Cancelar", buttons);
                         if (result == DialogResult.Yes)
                         {
                             bModoPreGravacao = false;
@@ -564,6 +580,7 @@ namespace MCISYS.Negocio.Telas
         }
         private Boolean LoadReg()
         {
+            
             this.lblORG.Text = "ORG: " + vIdOrgSelecionada.ToString(FormatOrg);
             if (vIdOrgSelecionada != 0)
             {
@@ -578,6 +595,35 @@ namespace MCISYS.Negocio.Telas
                 }
                 this.cbx_TpOrg.SelectedItem = CorOrg.TP_ORG;
                 this.cbx_TpOrg.Text = TraduzTpOrg(CorOrg.TP_ORG);
+                if (vIdOrgSelecionada != CORGADMIN)
+                {
+                    Boolean vbExistELic;
+                    CorOrganizacaoLicencaNEG vOrgLicNEG = new CorOrganizacaoLicencaNEG();
+                    int vOrgconsulta = vIdOrgSelecionada;
+                    if (CorOrg.TP_ORG == CTPORGADM)
+                    {
+                        if (CorOrg.ID_ORG_MAE != 0)
+                        {
+                            vOrgconsulta = CorOrg.ID_ORG_MAE;
+                        }
+                        vbExistELic = vOrgLicNEG.bTemLic(ref vBanco, vOrgconsulta);
+                        if (vbExistELic)
+                        {
+                            this.lbLic.Text = "LICENCIADA";
+                            this.lbLic.ForeColor = Color.RoyalBlue;
+                        }
+                        else
+                        {
+                            this.lbLic.Text = "PENDENTE DE LICENCIAMENTO";
+                            this.lbLic.ForeColor = Color.DarkRed;
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    this.lbLic.Text = "";   
+                }
             }
             return true;
         }
@@ -657,6 +703,11 @@ namespace MCISYS.Negocio.Telas
         {
             Frm_Licenca vFrm_Licenca = new Frm_Licenca(ref vBanco, vIdOrgSelecionada);
             vFrm_Licenca.ShowDialog();
+            var Habilita = HabilitaBotoes(iRegGravar);
+            Habilita = DesabilitaCamposTela();
+            Habilita = CarregaOrgs();
+            Habilita = CarregaCbxOrgMae();
+            Habilita = LimpaTela();
         }
     }
 }

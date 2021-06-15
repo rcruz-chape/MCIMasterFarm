@@ -16,6 +16,23 @@ namespace MCISYS.Negocio.BackOffice.DAL
         private Boolean bClose;
         private const string CUSERADMIN = "admin";
         private const string TPORGADMINISTRADORA = "A";
+
+        public CorOrganizacao ObtemOrgSelecionada(ref Banco pBanco, int pIdOrg)
+        {
+            string vsSql = @"SELECT  ORG_CAD.ID_ORG
+                         ,  ORG_CAD.NM_ORG 
+                         ,  ORG_CAD.NM_ORG_RESUMIDO
+                         ,  ORG_CAD.ID_ORG_MAE  
+                         ,  ORG_CAD.TP_ORG 
+                      FROM VW_ORG_CADASTRADAS ORG_CAD                     
+                     WHERE ORG_CAD.ID_ORG = @ID_ORG";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"ID_ORG´",pIdOrg }
+            };
+            return RecuperaTodasOrgs(ref pBanco, vsSql, Parametro).Find(linha => linha.ID_ORG == pIdOrg);
+        }
+
         public Boolean ExisteFilhos(ref Banco pBanco, int pIdOrgMae)
         {
             string vsSql = @"SELECT ID_ORG

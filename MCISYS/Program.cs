@@ -28,9 +28,10 @@ namespace MCIMasterFarm
                 {
                     int vIDOrg = Frm_Seleciona_Org.vIdOrgSelecionada;
                     string vIDPapel = Frm_Seleciona_Org.vIdPapelSelecionado;
+                    string vTPOrg = Frm_Seleciona_Org.vTpOrg;
                     Frm_Seleciona_Org = null;
 
-                    Application.Run(new MDIForm(vsIdUsu, vvBanco, vIDOrg, vIDPapel));
+                    Application.Run(new MDIForm(vsIdUsu, vvBanco, vIDOrg, vIDPapel, vTPOrg));
                 }
              }
         }

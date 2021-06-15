@@ -125,7 +125,9 @@
     <Compile Include="Negocio\BackOffice\DAL\SisModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisOrganizacaoPapelDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisPapelDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisPapelFuncaoDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisPapelUsuarioDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisSistemaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisUsuarioLogHistDAL.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="Negocio\BackOffice\DAL\SIS_USUARIO_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\VwOrgPapelDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\VwPUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacaoLicenca.cs" />
@@ -144,13 +147,16 @@
     <Compile Include="Negocio\BackOffice\Model\SisModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModuloOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisOrganizacaoPapel.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisPapelFuncao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisPapelUsuario.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisSistema.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioLog.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuarioOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwFuncaoPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\VwOrgUsu.cs" />
+    <Compile Include="Negocio\BackOffice\Model\VwPUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoLicencaNEG.cs" />
@@ -174,6 +180,8 @@
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloOrganizacaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisOrganizacaoPapelNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisPapelFuncaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisPapelNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisPapelUsuarioNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisSistemaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisUsuarioLogadoHistNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisUsuarioOrganizacaoNEG.cs" />
@@ -182,6 +190,7 @@
     <Compile Include="Negocio\BackOffice\Negocio\SysUsuarioLogNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgPapelNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgUsuNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\VwPUsuNEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\SQ.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
     <Compile Include="Negocio\Telas\FormularioNEG.cs" />
@@ -196,6 +205,12 @@
     </Compile>
     <Compile Include="Negocio\Telas\Frm_CriaOrg.Designer.cs">
       <DependentUpon>Frm_CriaOrg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_CriaPap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_CriaPap.Designer.cs">
+      <DependentUpon>Frm_CriaPap.cs</DependentUpon>
     </Compile>
     <Compile Include="Negocio\Telas\Frm_EsqueciSenha.cs">
       <SubType>Form</SubType>
@@ -240,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_CriaOrg.resx">
       <DependentUpon>Frm_CriaOrg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\Frm_CriaPap.resx">
+      <DependentUpon>Frm_CriaPap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_EsqueciSenha.resx">
       <DependentUpon>Frm_EsqueciSenha.cs</DependentUpon>

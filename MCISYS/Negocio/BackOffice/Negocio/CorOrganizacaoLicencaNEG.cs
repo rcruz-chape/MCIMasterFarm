@@ -15,6 +15,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class CorOrganizacaoLicencaNEG
     {
         private CorOrganizacaoLicencaDAL vOrgLicDAL = new CorOrganizacaoLicencaDAL();
+        public Boolean bTemLic(ref Banco pBanco, int pIdOrg)
+        {
+            return vOrgLicDAL.fbExisteLicenca(ref pBanco, pIdOrg);
+        }
         public CorOrganizacaoLicenca ObtemLic (ref Banco pBanco, int pIdOrg)
         {
             return vOrgLicDAL.ObtemLicencaOrg(ref pBanco, pIdOrg);

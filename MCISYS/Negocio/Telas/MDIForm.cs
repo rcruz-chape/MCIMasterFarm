@@ -30,6 +30,7 @@ namespace MCIMasterFarm.Negocio.Telas
         public ConfiguracaoNEG vConfiguracaoNEG = new ConfiguracaoNEG();
         private Banco vBanco = new Banco();
         private int vIDOrgSelecionada = 0;
+        private string vTPOrg;
         public const int cIDOrgAdm = 1;
         public const string CIDPapel = "1";
         public const string MCISYS = "MCISYS";
@@ -49,13 +50,14 @@ namespace MCIMasterFarm.Negocio.Telas
 
         public string vIdUsu;
 
-        public MDIForm(string pIdUsu, Banco pBanco, int pIdOrg, string pIdPapel)
+        public MDIForm(string pIdUsu, Banco pBanco, int pIdOrg, string pIdPapel,string pTpOrg)
         {
             vIdUsu = pIdUsu;
             vBanco = pBanco;
 
             vIDOrgSelecionada = pIdOrg;
             vIDPapelSelecionado = pIdPapel;
+            vTPOrg = pTpOrg;
             InitializeComponent();
 
             var bConfiguraStatus = ConfiguraBarraStatus();
@@ -75,7 +77,7 @@ namespace MCIMasterFarm.Negocio.Telas
         private Boolean ConfiguraModuloAtivos() 
         {
             Boolean vReturn = false;
-            vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1);
+            vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1,vTPOrg);
             if (vModuloAssociado.Count == 0)
             {
                 if (cIDOrgAdm != vIDOrgSelecionada)
@@ -86,7 +88,7 @@ namespace MCIMasterFarm.Negocio.Telas
                 {
                     CriaEstruturaSisNEG vImplementaSIS = new CriaEstruturaSisNEG();
                     vReturn = vImplementaSIS.CriaEstrutura(ref vBanco, cIDOrgAdm, CIDPapel);
-                    vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1);
+                    vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1, "A");
                 }
             }
             

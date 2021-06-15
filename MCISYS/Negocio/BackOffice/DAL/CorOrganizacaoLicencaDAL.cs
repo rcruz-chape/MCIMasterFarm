@@ -54,6 +54,31 @@ namespace MCISYS.Negocio.BackOffice.DAL
             return vConnect.insert(ref pBanco, vsSql, Parametro);
 
         }
+        private Boolean ExisteRegistro(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametro)
+        {
+            Boolean vbExisteRegistro;
+            Boolean vbClose;
+            Connect vConnect = new Connect();
+            var vConectado = vConnect.GetConnection(ref pBanco);
+            var GetResultado = vConnect.ObtemLista(psSql, ref vConectado, pParametro);
+            vbExisteRegistro = GetResultado.HasRows;
+            vbClose = vConnect.FechaConnection(ref vConectado);
+            return vbExisteRegistro;
+
+        }
+
+        public Boolean fbExisteLicenca(ref Banco pBanco, int pIdOrg)
+        {
+            string vsSql = @"SELECT ID_ORG
+                               FROM COR_ORGANIZACAO_LICENCA
+                              WHERE ID_ORG = @ID_ORG";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"ID_ORG",pIdOrg }
+            };
+            return ExisteRegistro(ref pBanco, vsSql, Parametro);
+
+        }
         
         public CorOrganizacaoLicenca ObtemLicencaOrg(ref Banco pBanco, int pIdOrg)
         {

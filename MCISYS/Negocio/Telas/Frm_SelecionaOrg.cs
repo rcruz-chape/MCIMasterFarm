@@ -18,6 +18,7 @@ namespace MCIMasterFarm.Negocio.Telas
         public int vIdOrgSelecionada = 0;
         public string vIdPapelSelecionado = "0";
         private string vIdUSu;
+        public string vTpOrg;
         private VwOrgPapelNEG vVOrgPapelNEG = new VwOrgPapelNEG();
         private VwOrgUsuNEG VwOrgUsuNEG = new VwOrgUsuNEG();
         private ConfiguraControleNEG vControleNEG = new ConfiguraControleNEG();
@@ -67,6 +68,8 @@ namespace MCIMasterFarm.Negocio.Telas
             if (cbxPapel.Enabled)
             {
                 vIdPapelSelecionado = this.cbxOrg.SelectedValue.ToString();
+
+                
             }
         }
 
@@ -75,6 +78,10 @@ namespace MCIMasterFarm.Negocio.Telas
             if (this.cbxOrg.Enabled)
             {
                 vIdOrgSelecionada = Convert.ToInt32(this.cbxOrg.SelectedValue);
+                var OrgSelecionada = VwOrgUsuNEG.GetOrg(ref vBanco,vIdUSu,vIdOrgSelecionada);
+                vTpOrg = OrgSelecionada.TP_ORG;
+
+
                 Boolean ExistePapelAssociado = vVOrgPapelNEG.fbVerificaPapelAssociado(ref vBanco, vIdUSu, vIdOrgSelecionada);
                 if (!ExistePapelAssociado)
                 {

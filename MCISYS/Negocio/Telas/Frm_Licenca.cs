@@ -48,6 +48,8 @@ namespace MCISYS.Negocio.Telas
             TpAmbiente = new TpAmbiente();
             TpAmbiente.TIPO_AMBIENTE = 2;
             TpAmbiente.DS_TIPO_AMBIENTE = "HOMOLOGACAO";
+            ListTpAmbiente.Add(TpAmbiente);
+            TpAmbiente = new TpAmbiente();
             TpAmbiente.TIPO_AMBIENTE = 3;
             TpAmbiente.DS_TIPO_AMBIENTE = "ACEITE";
             ListTpAmbiente.Add(TpAmbiente);
