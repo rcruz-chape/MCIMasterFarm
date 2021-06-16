@@ -55,6 +55,11 @@ namespace MCIMasterFarm.Negocio.BackOffice.Install
             {
                 return vReturn;
             }
+            vReturn = setupPapelUsuarioADM(ref pBanco, pGlobalInstall);
+            if (!vReturn)
+            {
+                return vReturn;
+            }
             vReturn = setupOrgPapelUsuarioADM(ref pBanco, pGlobalInstall);
             return vReturn;
 
@@ -89,6 +94,26 @@ namespace MCIMasterFarm.Negocio.BackOffice.Install
                 {"dt_inclusao", vGlobalInstall.dtInclusao.ToString("dd/MM/yyyy") },
                 {"id_usu", vGlobalInstall.idUsuAdmin }
             };
+
+
+            var vConnect = new Connect();
+            return vConnect.insert(ref pBanco, vSql, parametros);
+        }
+
+        private Boolean setupPapelUsuarioADM(ref Banco pBanco, GlobalInstall pGlobalInstall)
+        {
+            string vSql = @"insert into sis_papel_usuario 
+                			(id_papel,id_usu)
+			                values
+			                (@id_papel,@id_usu)";
+            var vGlobalInstall = pGlobalInstall;
+            var parametros = new Dictionary<string, dynamic>()
+            {
+                {"id_papel", vGlobalInstall.idPapel },
+                {"id_usu", vGlobalInstall.idUsuAdmin }
+            };
+
+
             var vConnect = new Connect();
             return vConnect.insert(ref pBanco, vSql, parametros);
         }

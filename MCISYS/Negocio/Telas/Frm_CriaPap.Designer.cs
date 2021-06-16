@@ -73,12 +73,20 @@ namespace MCISYS.Negocio.Telas
             this.tstl_OrgDEscricao = new System.Windows.Forms.ToolStripStatusLabel();
             this.TstlPapel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_IDPAPEL = new System.Windows.Forms.TextBox();
-            this.lblID_Papel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbl_NmPapel = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbl_Dt_Alteracao = new System.Windows.Forms.Label();
+            this.lbl_Id_Usu_Alterado = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl_Dt_Inclusao = new System.Windows.Forms.Label();
+            this.lbl_ID_Usu_Incl = new System.Windows.Forms.Label();
+            this.lbl_InclEm = new System.Windows.Forms.Label();
+            this.lbl_IdUsuIncl = new System.Windows.Forms.Label();
+            this.lbl_NmPapel = new System.Windows.Forms.Label();
+            this.txt_NmPapel = new System.Windows.Forms.TextBox();
+            this.lblID_Papel = new System.Windows.Forms.Label();
+            this.txt_IDPAPEL = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPapel)).BeginInit();
             this.grpButtons.SuspendLayout();
@@ -89,6 +97,8 @@ namespace MCISYS.Negocio.Telas
             ((System.ComponentModel.ISupportInitialize)(this.dGvUser)).BeginInit();
             this.StStripDados.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,6 +114,10 @@ namespace MCISYS.Negocio.Telas
             // 
             // dgvPapel
             // 
+            this.dgvPapel.AllowUserToAddRows = false;
+            this.dgvPapel.AllowUserToDeleteRows = false;
+            this.dgvPapel.AllowUserToResizeColumns = false;
+            this.dgvPapel.AllowUserToResizeRows = false;
             this.dgvPapel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPapel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_PAPEL,
@@ -449,7 +463,7 @@ namespace MCISYS.Negocio.Telas
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.lbl_NmPapel);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txt_NmPapel);
             this.groupBox2.Controls.Add(this.lblID_Papel);
             this.groupBox2.Controls.Add(this.txt_IDPAPEL);
             this.groupBox2.Enabled = false;
@@ -461,30 +475,101 @@ namespace MCISYS.Negocio.Telas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Papel Selecionado";
             // 
-            // txt_IDPAPEL
+            // groupBox4
             // 
-            this.txt_IDPAPEL.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.txt_IDPAPEL.Location = new System.Drawing.Point(79, 27);
-            this.txt_IDPAPEL.Name = "txt_IDPAPEL";
-            this.txt_IDPAPEL.Size = new System.Drawing.Size(177, 20);
-            this.txt_IDPAPEL.TabIndex = 0;
+            this.groupBox4.Controls.Add(this.lbl_Dt_Alteracao);
+            this.groupBox4.Controls.Add(this.lbl_Id_Usu_Alterado);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Location = new System.Drawing.Point(250, 72);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(199, 85);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Alterado:";
             // 
-            // lblID_Papel
+            // lbl_Dt_Alteracao
             // 
-            this.lblID_Papel.AutoSize = true;
-            this.lblID_Papel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblID_Papel.Location = new System.Drawing.Point(9, 29);
-            this.lblID_Papel.Name = "lblID_Papel";
-            this.lblID_Papel.Size = new System.Drawing.Size(58, 13);
-            this.lblID_Papel.TabIndex = 1;
-            this.lblID_Papel.Text = "Id Papel:";
+            this.lbl_Dt_Alteracao.AutoSize = true;
+            this.lbl_Dt_Alteracao.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_Dt_Alteracao.Location = new System.Drawing.Point(52, 54);
+            this.lbl_Dt_Alteracao.Name = "lbl_Dt_Alteracao";
+            this.lbl_Dt_Alteracao.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Dt_Alteracao.TabIndex = 4;
             // 
-            // textBox1
+            // lbl_Id_Usu_Alterado
             // 
-            this.textBox1.Location = new System.Drawing.Point(79, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(372, 20);
-            this.textBox1.TabIndex = 2;
+            this.lbl_Id_Usu_Alterado.AutoSize = true;
+            this.lbl_Id_Usu_Alterado.Location = new System.Drawing.Point(52, 28);
+            this.lbl_Id_Usu_Alterado.Name = "lbl_Id_Usu_Alterado";
+            this.lbl_Id_Usu_Alterado.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Id_Usu_Alterado.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Em:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Por:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lbl_Dt_Inclusao);
+            this.groupBox3.Controls.Add(this.lbl_ID_Usu_Incl);
+            this.groupBox3.Controls.Add(this.lbl_InclEm);
+            this.groupBox3.Controls.Add(this.lbl_IdUsuIncl);
+            this.groupBox3.Location = new System.Drawing.Point(6, 72);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(199, 85);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Incluído";
+            // 
+            // lbl_Dt_Inclusao
+            // 
+            this.lbl_Dt_Inclusao.AutoSize = true;
+            this.lbl_Dt_Inclusao.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_Dt_Inclusao.Location = new System.Drawing.Point(45, 53);
+            this.lbl_Dt_Inclusao.Name = "lbl_Dt_Inclusao";
+            this.lbl_Dt_Inclusao.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Dt_Inclusao.TabIndex = 3;
+            // 
+            // lbl_ID_Usu_Incl
+            // 
+            this.lbl_ID_Usu_Incl.AutoSize = true;
+            this.lbl_ID_Usu_Incl.Location = new System.Drawing.Point(44, 29);
+            this.lbl_ID_Usu_Incl.Name = "lbl_ID_Usu_Incl";
+            this.lbl_ID_Usu_Incl.Size = new System.Drawing.Size(0, 13);
+            this.lbl_ID_Usu_Incl.TabIndex = 2;
+            // 
+            // lbl_InclEm
+            // 
+            this.lbl_InclEm.AutoSize = true;
+            this.lbl_InclEm.Location = new System.Drawing.Point(8, 53);
+            this.lbl_InclEm.Name = "lbl_InclEm";
+            this.lbl_InclEm.Size = new System.Drawing.Size(28, 13);
+            this.lbl_InclEm.TabIndex = 1;
+            this.lbl_InclEm.Text = "Em:";
+            // 
+            // lbl_IdUsuIncl
+            // 
+            this.lbl_IdUsuIncl.AutoSize = true;
+            this.lbl_IdUsuIncl.Location = new System.Drawing.Point(8, 28);
+            this.lbl_IdUsuIncl.Name = "lbl_IdUsuIncl";
+            this.lbl_IdUsuIncl.Size = new System.Drawing.Size(30, 13);
+            this.lbl_IdUsuIncl.TabIndex = 0;
+            this.lbl_IdUsuIncl.Text = "Por:";
             // 
             // lbl_NmPapel
             // 
@@ -496,23 +581,30 @@ namespace MCISYS.Negocio.Telas
             this.lbl_NmPapel.TabIndex = 3;
             this.lbl_NmPapel.Text = "Ds Papel:";
             // 
-            // groupBox3
+            // txt_NmPapel
             // 
-            this.groupBox3.Location = new System.Drawing.Point(6, 72);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(199, 85);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Incluído";
+            this.txt_NmPapel.Location = new System.Drawing.Point(79, 46);
+            this.txt_NmPapel.Name = "txt_NmPapel";
+            this.txt_NmPapel.Size = new System.Drawing.Size(372, 20);
+            this.txt_NmPapel.TabIndex = 2;
             // 
-            // groupBox4
+            // lblID_Papel
             // 
-            this.groupBox4.Location = new System.Drawing.Point(250, 72);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(199, 85);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Alterado:";
+            this.lblID_Papel.AutoSize = true;
+            this.lblID_Papel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblID_Papel.Location = new System.Drawing.Point(9, 29);
+            this.lblID_Papel.Name = "lblID_Papel";
+            this.lblID_Papel.Size = new System.Drawing.Size(58, 13);
+            this.lblID_Papel.TabIndex = 1;
+            this.lblID_Papel.Text = "Id Papel:";
+            // 
+            // txt_IDPAPEL
+            // 
+            this.txt_IDPAPEL.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txt_IDPAPEL.Location = new System.Drawing.Point(79, 27);
+            this.txt_IDPAPEL.Name = "txt_IDPAPEL";
+            this.txt_IDPAPEL.Size = new System.Drawing.Size(177, 20);
+            this.txt_IDPAPEL.TabIndex = 0;
             // 
             // Frm_CriaPap
             // 
@@ -540,6 +632,10 @@ namespace MCISYS.Negocio.Telas
             this.StStripDados.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,8 +678,16 @@ namespace MCISYS.Negocio.Telas
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lbl_NmPapel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_NmPapel;
         private System.Windows.Forms.Label lblID_Papel;
         private System.Windows.Forms.TextBox txt_IDPAPEL;
+        private System.Windows.Forms.Label lbl_Dt_Alteracao;
+        private System.Windows.Forms.Label lbl_Id_Usu_Alterado;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_Dt_Inclusao;
+        private System.Windows.Forms.Label lbl_ID_Usu_Incl;
+        private System.Windows.Forms.Label lbl_InclEm;
+        private System.Windows.Forms.Label lbl_IdUsuIncl;
     }
 }

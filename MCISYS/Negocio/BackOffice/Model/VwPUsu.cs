@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace MCISYS.Negocio.BackOffice.Model
 {
-    public class SisOrganizacaoPapel
+    public class VwPUsu
     {
-        public int ID_ORG { set; get; }
         public string ID_PAPEL { set; get; }
-        public string DS_PAPEL { set; get; }
+        public string ID_USU { set; get; }
         public string ID_USU_INCL { set; get; }
         public DateTime DT_INCLUSAO { set; get; }
-        public string NM_ORG { set; get; }
+
     }
 }

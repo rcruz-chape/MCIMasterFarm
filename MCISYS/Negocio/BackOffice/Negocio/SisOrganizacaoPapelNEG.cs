@@ -15,6 +15,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisOrganizacaoPapelNEG
     {
         private SisOrganizacaoPapelDAL vSisOrgPap = new SisOrganizacaoPapelDAL();
+        public List<SisOrganizacaoPapel> ObtemListaOrgsAssociadosPapeis(ref Banco pBanco, string pIdPapel, string pIdUsu)
+        {
+            return vSisOrgPap.RecuperaOrgsAssociadoPapel(ref pBanco, pIdPapel, pIdUsu);
+        }
         public List<SisOrganizacaoPapel> ObtemListaPapeisAssociados(ref Banco pBanco, int pIdOrg, string pIdUsu)
         {
             return vSisOrgPap.RecuperaPapeisAssociadosOrg(ref pBanco, pIdOrg, pIdUsu);

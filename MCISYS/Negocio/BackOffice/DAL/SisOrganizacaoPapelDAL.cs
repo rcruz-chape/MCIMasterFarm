@@ -70,6 +70,33 @@ namespace MCISYS.Negocio.BackOffice.DAL
             vExecutaInsert = vConnect.insert(ref pBanco, vsSql, vParametros);
             return vExecutaInsert;
         }
+        public List<SisOrganizacaoPapel> RecuperaOrgsAssociadoPapel(ref Banco pBanco, string pIdPapel, string pIdUsu)
+        {
+            string vsSql = @"SELECT ID_ORG
+	                                 , ID_PAPEL
+	                                 , DS_PAPEL
+	                                 , ID_USU_INCL
+	                                 , DT_INCLUSAO
+                                     , NM_ORG
+                                  FROM VW_SIS_ORGANIZACAO
+                                 WHERE ID_PAPEL = @ID_PAPEL";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"ID_PAPEL",pIdPapel }
+            };
+            if (pIdUsu != CUSUADMIN)
+            {
+                vsSql += @"        AND EXISTS (SELECT 1
+                                  FROM SIS_ORGANIZACAO_PAPEL_USUARIO OPUSU
+                                 WHERE OPUSU.ID_PAPEL = VSORG.ID_PAPEL
+                                   AND OPUSU.ID_ORG = VSORG.ID_ORG
+                                   AND OPUSU.ID_USU =@ID_USU)";
+                Parametro.Add("ID_USU", pIdUsu);
+            }
+            return RecuperaRegistro(ref pBanco, vsSql, Parametro);
+
+        }
+
         public List<SisOrganizacaoPapel> RecuperaPapeisAssociadosOrg(ref Banco pBanco, int pIDOrg, string pIdUsu)
         {
             string vsSql = @"SELECT ID_ORG
@@ -77,6 +104,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                                 , DS_PAPEL
 	                                 , ID_USU_INCL
 	                                 , DT_INCLUSAO
+                                     , NM_ORG
                                   FROM VW_SIS_ORGANIZACAO
                                  WHERE ID_ORG = @ID_ORG";
             var Parametro = new Dictionary<string, dynamic>()
@@ -119,6 +147,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     {
                         vSisOrganizacaoPapel.DT_INCLUSAO = GetResultado.GetDateTime(4);
                     }
+                    vSisOrganizacaoPapel.NM_ORG = GetResultado.GetString(5);
                     listSisOrganizacaoPapel.Add(vSisOrganizacaoPapel);
 
                 }
