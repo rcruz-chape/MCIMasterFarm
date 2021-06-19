@@ -116,13 +116,14 @@ namespace MCISYS.Negocio.Telas
             // 
             this.dgvPapel.AllowUserToAddRows = false;
             this.dgvPapel.AllowUserToDeleteRows = false;
-            this.dgvPapel.AllowUserToResizeColumns = false;
-            this.dgvPapel.AllowUserToResizeRows = false;
+            this.dgvPapel.AllowUserToOrderColumns = true;
+            this.dgvPapel.CausesValidation = false;
             this.dgvPapel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPapel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_PAPEL,
             this.NM_PAPEL});
             this.dgvPapel.Location = new System.Drawing.Point(7, 20);
+            this.dgvPapel.MultiSelect = false;
             this.dgvPapel.Name = "dgvPapel";
             this.dgvPapel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPapel.Size = new System.Drawing.Size(312, 241);
@@ -136,7 +137,6 @@ namespace MCISYS.Negocio.Telas
             this.ID_PAPEL.DefaultCellStyle = dataGridViewCellStyle1;
             this.ID_PAPEL.HeaderText = "Papel";
             this.ID_PAPEL.Name = "ID_PAPEL";
-            this.ID_PAPEL.ReadOnly = true;
             // 
             // NM_PAPEL
             // 
@@ -144,7 +144,6 @@ namespace MCISYS.Negocio.Telas
             this.NM_PAPEL.DefaultCellStyle = dataGridViewCellStyle2;
             this.NM_PAPEL.HeaderText = "Nome do Papel";
             this.NM_PAPEL.Name = "NM_PAPEL";
-            this.NM_PAPEL.ReadOnly = true;
             this.NM_PAPEL.Width = 200;
             // 
             // grpButtons
@@ -171,6 +170,7 @@ namespace MCISYS.Negocio.Telas
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnGravar
             // 
@@ -184,6 +184,7 @@ namespace MCISYS.Negocio.Telas
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnExcluir
             // 
@@ -197,6 +198,7 @@ namespace MCISYS.Negocio.Telas
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -209,6 +211,7 @@ namespace MCISYS.Negocio.Telas
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
@@ -273,6 +276,10 @@ namespace MCISYS.Negocio.Telas
             // 
             // DtgOrg
             // 
+            this.DtgOrg.AllowUserToAddRows = false;
+            this.DtgOrg.AllowUserToDeleteRows = false;
+            this.DtgOrg.AllowUserToResizeColumns = false;
+            this.DtgOrg.AllowUserToResizeRows = false;
             this.DtgOrg.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -373,6 +380,10 @@ namespace MCISYS.Negocio.Telas
             // 
             // dGvUser
             // 
+            this.dGvUser.AllowUserToAddRows = false;
+            this.dGvUser.AllowUserToDeleteRows = false;
+            this.dGvUser.AllowUserToResizeColumns = false;
+            this.dGvUser.AllowUserToResizeRows = false;
             this.dGvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGvUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_USU,
@@ -466,7 +477,6 @@ namespace MCISYS.Negocio.Telas
             this.groupBox2.Controls.Add(this.txt_NmPapel);
             this.groupBox2.Controls.Add(this.lblID_Papel);
             this.groupBox2.Controls.Add(this.txt_IDPAPEL);
-            this.groupBox2.Enabled = false;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(328, 61);
             this.groupBox2.Name = "groupBox2";

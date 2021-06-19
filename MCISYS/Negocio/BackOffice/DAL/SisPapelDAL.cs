@@ -123,6 +123,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     vRegPapel.DT_ALTERACAO = GetResult.GetDateTime(5);
                 }
             }
+            var bVlose = vConnect.FechaConnection(ref vConnectado);
+
             return vRegPapel;
 
         }
@@ -158,6 +160,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     listSisPapel.Add(vRegPapel);
                 }
             }
+            var bVlose = vConnect.FechaConnection(ref vConnectado);
             return listSisPapel;
 
         }

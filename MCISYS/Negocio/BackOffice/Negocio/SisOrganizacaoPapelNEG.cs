@@ -15,6 +15,28 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisOrganizacaoPapelNEG
     {
         private SisOrganizacaoPapelDAL vSisOrgPap = new SisOrganizacaoPapelDAL();
+
+        public Boolean AtualizaAssociaPapelOrg(ref Banco pBanco,
+            List<SisOrganizacaoPapel> pListSisOrganizacaoInicial
+            , List<SisOrganizacaoPapel> pListSisOrganizacaoFinal)
+        {
+            Boolean vbREsultado = (pListSisOrganizacaoFinal.Count < pListSisOrganizacaoInicial.Count);
+            Boolean vbREturn = true;
+            if (vbREsultado)
+            {
+                vbREturn = RetiraAssociaPapOrg(ref pBanco, pListSisOrganizacaoInicial, pListSisOrganizacaoFinal);
+            }
+            else
+            {
+                if (pListSisOrganizacaoFinal.Count > pListSisOrganizacaoInicial.Count)
+                {
+                    vbREturn = AssociaPapelOrg(ref pBanco, pListSisOrganizacaoInicial, pListSisOrganizacaoFinal);
+                }
+            }
+            return vbREturn;
+
+        }
+
         public List<SisOrganizacaoPapel> ObtemListaOrgsAssociadosPapeis(ref Banco pBanco, string pIdPapel, string pIdUsu)
         {
             return vSisOrgPap.RecuperaOrgsAssociadoPapel(ref pBanco, pIdPapel, pIdUsu);
@@ -48,6 +70,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         public Boolean ExclueAssociaPapelOrg(ref Banco pBanco, int pIdOrg)
         {
             return vSisOrgPap.DeletePapelAssociado(ref pBanco, pIdOrg);
+        }
+        public Boolean ExcluePapeis(ref Banco pBanco, string psIdPapel)
+        {
+            return vSisOrgPap.DeletePapelOrg(ref pBanco, psIdPapel);
         }
 
         public Boolean RetiraAssociacaoPapelOrg(ref Banco pBanco, SisOrganizacaoPapel pSisOrgPapel)

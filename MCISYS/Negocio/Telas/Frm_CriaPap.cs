@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms;
 using MCIMasterFarm.Negocio.Global;
 using MCIMasterFarm.Negocio.BackOffice.Negocio;
 using MCIMasterFarm.Negocio.BackOffice.Model;
@@ -203,7 +202,7 @@ namespace MCISYS.Negocio.Telas
 
         private void btnInclueAssociacao_Click(object sender, EventArgs e)
         {
-            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelOrg, 0, vIdUsu, vIdPapel);
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelOrg, 0, vIdUsu, this.txt_IDPAPEL.Text);
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {
                 int vIndex = this.DtgOrg.RowCount + 1;
@@ -214,7 +213,7 @@ namespace MCISYS.Negocio.Telas
 
         private void btnAssociaUsu_Click(object sender, EventArgs e)
         {
-            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelOrg, 0, vIdUsu, vIdPapel);
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelUsuario, 0, vIdUsu, this.txt_IDPAPEL.Text);
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {
                 int vIndex = this.dGvUser.RowCount + 1;
@@ -225,47 +224,6 @@ namespace MCISYS.Negocio.Telas
 
 
 
-        private void dgvPapel_KeyDown(object sender, KeyEventArgs e)
-        {
-            Boolean vbLoad;
-            var tecla = e.KeyCode;
-            int vIndexRow = 0;
-
-            if (tecla == Keys.Up)
-            {
-
-                vIndexRow = this.dgvPapel.CurrentRow.Index - 1;
-                if (vIndexRow < 0)
-                {
-                    vIndexRow = this.dgvPapel.RowCount - 1;
-                }
-                this.dgvPapel.CurrentCell = this.dgvPapel[0, vIndexRow];
-
-
-                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
-            }
-            else if (tecla == Keys.Down)
-            {
-                vIndexRow = this.dgvPapel.CurrentRow.Index + 1;
-                if (vIndexRow >= this.dgvPapel.RowCount)
-                {
-                    vIndexRow = 0;
-                }
-                this.dgvPapel.CurrentCell = this.dgvPapel[0, vIndexRow];
-
-                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
-            }
-            else if (tecla == Keys.Enter)
-            {
-                if (this.dgvPapel.CurrentRow == null)
-                {
-                    this.dgvPapel.CurrentCell = this.dgvPapel[0, 0];
-                }
-                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
-            }
-
-
-        }
         private void dgvPapel_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Boolean vbLoad;
@@ -279,12 +237,13 @@ namespace MCISYS.Negocio.Telas
             {
                 if (this.dgvPapel.CurrentRow == null)
                 {
-                    this.dgvPapel.CurrentCell = this.dgvPapel[0, 0];
+                    this.dgvPapel.CurrentCell = this.dgvPapel.Rows[0].Cells[0];
+                    //this.dgvPapel.Rows.GetLastRow(DataGridViewElementStates.None);
                 }
 
-                vIdPapel = this.dgvPapel.CurrentRow.Cells[0].Value.ToString();
+                vidPapel = this.dgvPapel.CurrentRow.Cells[0].Value.ToString();
             }
-            vSisPapel = vPapNeg.ObtemPapelSelecionado(ref vBanco, vIdPapel);
+            vSisPapel = vPapNeg.ObtemPapelSelecionado(ref vBanco, vidPapel);
             this.txt_IDPAPEL.Text = vSisPapel.ID_PAPEL;
             this.txt_NmPapel.Text = vSisPapel.DS_PAPEL;
             this.lbl_ID_Usu_Incl.Text = vSisPapel.ID_USU_INCL;
@@ -298,9 +257,10 @@ namespace MCISYS.Negocio.Telas
             {
                 this.lbl_Dt_Alteracao.Text = "";
             }
-            
-            vbLoad = CarregaOrgsAssociados(vIdPapel);
-            vbLoad = CarregaUsuAssociados(vIdPapel);
+
+            vbLoad = CarregaOrgsAssociados(vidPapel);
+            vbLoad = CarregaUsuAssociados(vidPapel);
+            vbLoad = DesabilitaCamposTela();
             return vbLoad;
         }
         public Boolean LimpaTela()
@@ -407,7 +367,7 @@ namespace MCISYS.Negocio.Telas
                 this.txt_NmPapel.Focus();
                 return false;
             }
-            if (this.DtgOrg.RowCount - 1 == 0)
+            if (this.DtgOrg.RowCount < 1)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show("Não Há Orgs Associadas Deseja Continuar?", "Papel Sem Orgs Associadas", buttons);
@@ -416,7 +376,7 @@ namespace MCISYS.Negocio.Telas
                     return false;
                 }
             }
-            if (this.dGvUser.RowCount - 1 == 0)
+            if (this.dGvUser.RowCount < 1)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show("Não Há Usuários Associados Deseja Continuar?", "Papel Sem Usuários Associados", buttons);
@@ -441,7 +401,7 @@ namespace MCISYS.Negocio.Telas
                         {
                             var RegPorg = new SisOrganizacaoPapel();
                             RegPorg.ID_PAPEL = this.txt_IDPAPEL.Text;
-                            RegPorg.ID_ORG = Convert.ToInt32(this.DtgOrg.Rows[linha].Cells[0].Value.ToString());
+                            RegPorg.ID_ORG = Convert.ToInt32(DtgOrg.Rows[linha].Cells[0].Value.ToString());
                             RegPorg.ID_USU_INCL = this.DtgOrg.Rows[linha].Cells[2].Value.ToString();
                             RegPorg.DT_INCLUSAO = Convert.ToDateTime(this.DtgOrg.Rows[linha].Cells[3].Value.ToString());
                             ListPapelAssociado.Add(RegPorg);
@@ -458,7 +418,7 @@ namespace MCISYS.Negocio.Telas
                             RegPusu.ID_USU = this.dGvUser.Rows[linha].Cells[0].Value.ToString();
                             ListPapelUsuario.Add(RegPusu);
                         }
-                        bAcao = vSisPapelUsuarioNEG.AssociaPapelUsuario(ref vBanco, new List<SisPapelUsuario>(),ListPapelUsuario);
+                        bAcao = vSisPapelUsuarioNEG.AssociaPapelUsuario(ref vBanco, new List<SisPapelUsuario>(), ListPapelUsuario);
 
                     }
                     break;
@@ -480,7 +440,7 @@ namespace MCISYS.Negocio.Telas
                             RegPorg.DT_INCLUSAO = Convert.ToDateTime(this.DtgOrg.Rows[linha].Cells[3].Value.ToString());
                             ListPapelAssociado.Add(RegPorg);
                         }
-                        bAcao = vSisOrganizacaoPapelNEG.AssociaPapelOrg(ref vBanco, ListOrgPapel, ListPapelAssociado);
+                        bAcao = vSisOrganizacaoPapelNEG.AtualizaAssociaPapelOrg(ref vBanco, ListOrgPapel, ListPapelAssociado);
                     }
                     if (this.dGvUser.RowCount > 0)
                     {
@@ -492,13 +452,150 @@ namespace MCISYS.Negocio.Telas
                             RegPusu.ID_USU = this.dGvUser.Rows[linha].Cells[0].Value.ToString();
                             ListPapelUsuario.Add(RegPusu);
                         }
-                        bAcao = vSisPapelUsuarioNEG.AssociaPapelUsuario(ref vBanco, ListPapUsu, ListPapelUsuario);
+                        bAcao = vSisPapelUsuarioNEG.AtualizaPapelUsuario(ref vBanco, ListPapUsu, ListPapelUsuario);
 
                     }
                     break;
             }
             return CarregaPapeis();
+           
 
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var bAlterar = RegAlterar();
+        }
+
+        public Boolean RegAlterar()
+        {
+            Comando = iRegAlterar;
+            bModoPreGravacao = true;
+            var Habilita = HabilitaBotoes(iRegAlterar);
+            Habilita = HabilitaCamposTela();
+            return true;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var bExcluir = RegExcluir();
+            bExcluir = HabilitaBotoes(iRegExcluir);
+        }
+        public Boolean RegExcluir()
+        {
+            Boolean bExcluir = true;
+            switch(Comando)
+            {
+                case iRegAlterar:
+                {
+                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                     DialogResult result = MessageBox.Show("Deseja Excluir Papel?", "Exclusão", buttons);
+                     if (result == DialogResult.Yes)
+                     {
+                            bExcluir = false;
+                            string vMsg;
+                            SisPapelUsuario PapUSu = new SisPapelUsuario();
+                            PapUSu.ID_PAPEL = this.txt_IDPAPEL.Text;
+                            
+                            bExcluir = vSisOrganizacaoPapelNEG.ExcluePapeis(ref vBanco, PapUSu.ID_PAPEL);
+                            bExcluir = vSisPapelUsuarioNEG.bExcluePapel(ref vBanco, PapUSu.ID_PAPEL);
+                            bExcluir = vPapNeg.ExcluiPapel(ref vBanco, PapUSu.ID_PAPEL);
+
+                     }
+                     break;
+                }
+                case iRegNovo:
+                {
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show("Deseja Cancelar a Inclusão de Papel?", "Cancelar", buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        bModoPreGravacao = false;
+                        bExcluir = LimpaTela();
+                        bExcluir = DesabilitaCamposTela();
+                    }
+                    break;
+                }
+                bExcluir = CarregaPapeis();
+            }
+
+
+            return bExcluir;
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            var Habilita = HabilitaBotoes(iRegGravar);
+            Habilita = RegSalvar();
+            Habilita = DesabilitaCamposTela();
+            //Habilita = LimpaTela();
+            bModoPreGravacao = false;
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            if (bModoPreGravacao)
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons);
+                if (result == DialogResult.Yes)
+                {
+                    var bSalvar = RegSalvar();
+                }
+
+            }
+            this.Dispose();
+
+        }
+
+        private void dgvPapel_KeyDown(object sender, KeyEventArgs e)
+        {
+            Boolean vbLoad;
+            var tecla = e.KeyCode;
+            int vIndexRow = 0;
+
+            if (tecla == Keys.Up)
+            {
+
+                vIndexRow = this.dgvPapel.CurrentRow.Index;
+                vIndexRow = this.dgvPapel.Rows.GetPreviousRow(vIndexRow, DataGridViewElementStates.None);
+                if (vIndexRow < 0)
+                {
+                    vIndexRow = this.dgvPapel.Rows.GetLastRow(DataGridViewElementStates.None);
+                }
+                this.dgvPapel.CurrentCell = this.dgvPapel.Rows[vIndexRow].Cells[0];
+     
+                if (vIndexRow < 0)
+                {
+                    vIndexRow = this.dgvPapel.RowCount - 1;
+                }
+                     //dgvPapel.FirstDisplayedScrollingRowIndex.Equals = vIndexRow;
+
+                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
+            }
+            else if (tecla == Keys.Down)
+            {
+                vIndexRow = this.dgvPapel.CurrentRow.Index + 1;
+                if (vIndexRow >= this.dgvPapel.RowCount)
+                {
+                    vIndexRow = 0;
+                }
+                this.dgvPapel.CurrentCell = this.dgvPapel.Rows[vIndexRow].Cells[0];
+                dgvPapel.FirstDisplayedScrollingRowIndex = vIndexRow;
+
+                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
+
+
+
+            }
+            else if (tecla == Keys.Enter)
+            {
+                if (this.dgvPapel.CurrentRow == null)
+                {
+                    this.dgvPapel.CurrentCell = this.dgvPapel[0, 0];
+                }
+                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
+            }
         }
     }
 }

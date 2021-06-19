@@ -15,6 +15,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisPapelUsuarioNEG
     {
         private SisPapelUsuarioDAL vSisPapelUsuarioDAL = new SisPapelUsuarioDAL();
+        public Boolean bExcluePapel(ref Banco pBanco, string psIdPapel)
+        {
+            return vSisPapelUsuarioDAL.bExcluePapel(ref pBanco, psIdPapel);
+        }
         public Boolean DesassociaPapelUsuario(ref Banco pBanco,
                                            List<SisPapelUsuario> pListInicialPUsu,
                                            List<SisPapelUsuario> PListFinalPUsu)
@@ -34,6 +38,26 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             }
 
             return vbExclue;
+        }
+        public Boolean AtualizaPapelUsuario(ref Banco pBanco,
+                                           List<SisPapelUsuario> pListInicialPUsu,
+                                           List<SisPapelUsuario> PListFinalPUsu)
+        {
+            Boolean vbREturn = true;
+            if(pListInicialPUsu.Count > PListFinalPUsu.Count)
+            {
+                vbREturn = DesassociaPapelUsuario(ref pBanco, pListInicialPUsu, PListFinalPUsu);
+            }
+            else if(pListInicialPUsu.Count < PListFinalPUsu.Count)
+            {
+                vbREturn = AssociaPapelUsuario(ref pBanco, pListInicialPUsu, PListFinalPUsu);
+            }
+            else
+            {
+                vbREturn = true;
+            }
+
+            return vbREturn;
         }
 
         public Boolean AssociaPapelUsuario(ref Banco pBanco, 

@@ -28,6 +28,20 @@ namespace MCISYS.Negocio.BackOffice.DAL
             return vExecuteDelete;
 
         }
+        public Boolean DeletePapelOrg(ref Banco pBanco, string psIdPapel)
+        {
+            Boolean vExecuteDelete = true;
+            string vsSql = @"DELETE FROM SIS_ORGANIZACAO_PAPEL
+                              WHERE ID_PAPEL = @ID_PAPEL";
+            var vParametros = new Dictionary<string, dynamic>()
+            {
+                {"ID_PAPEL", psIdPapel }
+            };
+            var vConnect = new Connect();
+            vExecuteDelete = vConnect.delete(ref pBanco, vsSql, vParametros);
+            return vExecuteDelete;
+
+        }
         public Boolean DeletePapelAssociadoOrg(ref Banco pBanco, SisOrganizacaoPapel pOrganizacaoPapel)
         {
             Boolean vExecuteDelete = true;

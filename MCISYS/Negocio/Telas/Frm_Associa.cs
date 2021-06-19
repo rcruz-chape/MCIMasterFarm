@@ -52,7 +52,15 @@ namespace MCISYS.Negocio.Telas
             vIdUsu = psIdUsu;
             vBanco = pBanco;
             vIdPapel = psIdPapel;
-            this.lblOrg.Text = "Organização:  " + vIdOrg.ToString("000");
+            if (vTipoAssociacao == AssociaORGPapel || vTipoAssociacao == AssociaORGUsuario)
+            {
+                this.lblOrg.Text = "Organização:  " + vIdOrg.ToString("000");
+            }
+            else if (vTipoAssociacao == AssociaPapelOrg || vTipoAssociacao == AssociaPapelUsuario)
+            {
+                this.lblOrg.Text = "Papel:   " + vIdPapel;
+
+            }
             if (vTipoAssociacao == AssociaORGPapel || vTipoAssociacao == AssociaPapelOrg)
             {
                 Boolean vbAssocia = bCOnfiguraAssociaPapel();
@@ -86,7 +94,7 @@ namespace MCISYS.Negocio.Telas
         public Boolean bCOnfiguraAssociaPapel()
         {
             
-            if (vTipoAssociacao == AssociaPapelOrg)
+            if (vTipoAssociacao == AssociaORGPapel)
             {
                 this.Text = "Associar Papel a Org " + vIdOrg.ToString("00000");
                 this.lblCbx.Text = "Papel:   ";

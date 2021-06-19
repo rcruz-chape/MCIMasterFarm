@@ -39,5 +39,16 @@ namespace MCISYS.Negocio.BackOffice.DAL
             };
             return vConnect.delete(ref pBanco, vsSql, Parametro);
         }
+        public Boolean bExcluePapel(ref Banco pBanco, string psIdPapel)
+        {
+            string vsSql = @"DELETE FROM SIS_PAPEL_USUARIO
+                              WHERE ID_PAPEL = @ID_PAPEL";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"ID_PAPEL", psIdPapel }
+            };
+            return vConnect.delete(ref pBanco, vsSql, Parametro);
+
+        }
     }
 }

@@ -173,6 +173,26 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_adicionar_usuário_masculino_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_adicionar_usuário_masculino_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_adicionar_usuário_masculino_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_adicionar_usuário_masculino_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_alterar_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_alterar_24", resourceCulture);
@@ -463,6 +483,26 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_interface_de_usuário_natural_2_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_interface_de_usuário_natural_2_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_interface_de_usuário_natural_2_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_interface_de_usuário_natural_2_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_licença_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-licença-24", resourceCulture);
@@ -646,6 +686,26 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_reiniciar_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8_reiniciar_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_remover_usuário_masculino_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_remover_usuário_masculino_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_remover_usuário_masculino_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_remover_usuário_masculino_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

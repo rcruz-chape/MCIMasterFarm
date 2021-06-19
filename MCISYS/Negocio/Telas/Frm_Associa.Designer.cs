@@ -31,10 +31,10 @@ namespace MCISYS.Negocio.Telas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Associa));
             this.grpBox = new System.Windows.Forms.GroupBox();
-            this.btnAssocia = new System.Windows.Forms.Button();
-            this.cbxGeneral = new System.Windows.Forms.ComboBox();
-            this.lblOrg = new System.Windows.Forms.Label();
             this.lblCbx = new System.Windows.Forms.Label();
+            this.lblOrg = new System.Windows.Forms.Label();
+            this.cbxGeneral = new System.Windows.Forms.ComboBox();
+            this.btnAssocia = new System.Windows.Forms.Button();
             this.grpBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,33 @@ namespace MCISYS.Negocio.Telas
             this.grpBox.TabStop = false;
             this.grpBox.Text = "groupBox1";
             // 
+            // lblCbx
+            // 
+            this.lblCbx.AutoSize = true;
+            this.lblCbx.Location = new System.Drawing.Point(162, 30);
+            this.lblCbx.Name = "lblCbx";
+            this.lblCbx.Size = new System.Drawing.Size(35, 13);
+            this.lblCbx.TabIndex = 3;
+            this.lblCbx.Text = "label2";
+            // 
+            // lblOrg
+            // 
+            this.lblOrg.AutoSize = true;
+            this.lblOrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrg.Location = new System.Drawing.Point(19, 27);
+            this.lblOrg.Name = "lblOrg";
+            this.lblOrg.Size = new System.Drawing.Size(60, 16);
+            this.lblOrg.TabIndex = 2;
+            this.lblOrg.Text = "ID. Org.";
+            // 
+            // cbxGeneral
+            // 
+            this.cbxGeneral.FormattingEnabled = true;
+            this.cbxGeneral.Location = new System.Drawing.Point(245, 28);
+            this.cbxGeneral.Name = "cbxGeneral";
+            this.cbxGeneral.Size = new System.Drawing.Size(239, 21);
+            this.cbxGeneral.TabIndex = 1;
+            // 
             // btnAssocia
             // 
             this.btnAssocia.Image = global::MCISYS.Properties.Resources.icons8_sair_48;
@@ -62,33 +89,6 @@ namespace MCISYS.Negocio.Telas
             this.btnAssocia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAssocia.UseVisualStyleBackColor = true;
             this.btnAssocia.Click += new System.EventHandler(this.btnAssocia_Click);
-            // 
-            // cbxGeneral
-            // 
-            this.cbxGeneral.FormattingEnabled = true;
-            this.cbxGeneral.Location = new System.Drawing.Point(245, 28);
-            this.cbxGeneral.Name = "cbxGeneral";
-            this.cbxGeneral.Size = new System.Drawing.Size(239, 21);
-            this.cbxGeneral.TabIndex = 1;
-            // 
-            // lblOrg
-            // 
-            this.lblOrg.AutoSize = true;
-            this.lblOrg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrg.Location = new System.Drawing.Point(19, 27);
-            this.lblOrg.Name = "lblOrg";
-            this.lblOrg.Size = new System.Drawing.Size(60, 16);
-            this.lblOrg.TabIndex = 2;
-            this.lblOrg.Text = "ID. Org.";
-            // 
-            // lblCbx
-            // 
-            this.lblCbx.AutoSize = true;
-            this.lblCbx.Location = new System.Drawing.Point(182, 30);
-            this.lblCbx.Name = "lblCbx";
-            this.lblCbx.Size = new System.Drawing.Size(35, 13);
-            this.lblCbx.TabIndex = 3;
-            this.lblCbx.Text = "label2";
             // 
             // Frm_Associa
             // 

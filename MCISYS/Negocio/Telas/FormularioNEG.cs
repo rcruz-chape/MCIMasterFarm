@@ -15,6 +15,7 @@ namespace MCISYS.Negocio.Telas
     {
         public const string CriaOrg = "CriaOrg";
         public const string CriaPap = "CriaPap";
+        public const string CriaUsu = "CriaUsu";
 
 
         public Form ChamaForm(string pTag, ref Banco pBanco, int pIdOrg, string pIdPapel, string pIdUSU, string pNmOrg, string pDSPApel)
@@ -27,6 +28,9 @@ namespace MCISYS.Negocio.Telas
                     break;
                 case CriaPap:
                     vnForm = new Frm_CriaPap(ref pBanco, pIdOrg, pIdPapel, pIdUSU, pNmOrg, pDSPApel);
+                    break;
+                case CriaUsu:
+                    vnForm = new Frm_CriaUsu(ref pBanco, pIdOrg, pIdPapel, pIdUSU, pNmOrg, pDSPApel);
                     break;
             }
             return vnForm;
