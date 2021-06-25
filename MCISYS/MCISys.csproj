@@ -147,6 +147,7 @@
     <Compile Include="Negocio\BackOffice\Model\SisModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisModuloOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisOrganizacaoPapel.cs" />
+    <Compile Include="Negocio\BackOffice\Model\SisOrganizacaoPapelUsuario.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisPapel.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisPapelFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisPapelUsuario.cs" />
@@ -531,6 +532,9 @@
     <None Include="Imagens\icons8-organization-chart-people-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Imagens\icons8-reiniciar-48.png" />
+    <None Include="Imagens\icons8-reiniciar-24.png" />
+    <None Include="Imagens\icons8-reiniciar-12.png" />
     <None Include="Imagens\icons8-remover-usuário-masculino-48.png" />
     <None Include="Imagens\icons8-remover-usuário-masculino-24.png" />
     <None Include="Imagens\icons8-mais-16.png" />

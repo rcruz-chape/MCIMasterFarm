@@ -15,6 +15,12 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisPapelUsuarioNEG
     {
         private SisPapelUsuarioDAL vSisPapelUsuarioDAL = new SisPapelUsuarioDAL();
+        public List<VwPUsu> ObtemListaPapelAssociadoUsu(ref Banco pbAnco, string pIdUsu)
+        {
+            var vPapUsuDal = new VwPUsuDAL();
+            return vPapUsuDal.ObtemPapelAssociadoUsuario(ref pbAnco, pIdUsu);
+        }
+
         public Boolean bExcluePapel(ref Banco pBanco, string psIdPapel)
         {
             return vSisPapelUsuarioDAL.bExcluePapel(ref pBanco, psIdPapel);

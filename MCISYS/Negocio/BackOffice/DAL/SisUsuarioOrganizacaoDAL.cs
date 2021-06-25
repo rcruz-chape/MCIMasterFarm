@@ -48,17 +48,23 @@ namespace MCISYS.Negocio.BackOffice.DAL
             return vConnect.insert(ref pBanco, vsSql, vParametros);
         }
 
-        public List<SisUsuarioOrganizacao> ObtemUsuariosAssociadosOrg(ref Banco pBanco, int pIdOrg)
+        public List<SisUsuarioOrganizacao> ObtemUsuariosAssociadosOrg(ref Banco pBanco, int pIdOrg = 0, string pIdUsu = null)
         {
             string vsSql = @"SELECT UORG.ID_ORG
 	                              , UORG.ID_USU
 	                              , UORG.ID_USU_INCL
 	                              , UORG.DT_INCLUSAO
-                               FROM SIS_USUARIO_ORGANIZACAO UORG
-                              WHERE UORG.ID_ORG = @ID_ORG;";
-            var Parametros = new Dictionary<string, dynamic>()
+                               FROM SIS_USUARIO_ORGANIZACAO UORG";
+            var Parametros = new Dictionary<string, dynamic>();
+            if (pIdOrg != 0)
             {
-                {"ID_ORG",pIdOrg }
+                vsSql = "WHERE UORG.ID_ORG = @ID_ORG";
+                Parametros.Add("ID_ORG", pIdOrg);
+            }
+            else if (pIdUsu != null)
+            {
+                vsSql = "WHERE UORG.ID_USU = @ID_USU";
+                Parametros.Add("ID_USU", pIdUsu);
             };
             return GetRegistros(ref pBanco, vsSql, Parametros);
         }

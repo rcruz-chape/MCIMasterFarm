@@ -20,6 +20,15 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vPapDAL.ObtemListaPapel(ref pBanco);
         }
+        public Boolean ExistePapelInformado(ref Banco pBanco, string pIdPapel)
+        {
+            Boolean vbExistePapel = false;
+            var vSisPapel = ObtemPapelSelecionado(ref pBanco, pIdPapel);
+            vbExistePapel = (vSisPapel.ID_PAPEL == pIdPapel);
+            return vbExistePapel;
+
+
+        }
         public SisPapel ObtemPapelSelecionado(ref Banco pBanco, string pIdPapel)
         {
             return vPapDAL.ObtemPapel(ref pBanco, pIdPapel);

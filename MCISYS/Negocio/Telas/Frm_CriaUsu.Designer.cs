@@ -30,23 +30,24 @@ namespace MCISYS.Negocio.Telas
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CriaUsu));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.StStripDados = new System.Windows.Forms.StatusStrip();
             this.tstlUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.tstlOrgSelecionadaNumero = new System.Windows.Forms.ToolStripStatusLabel();
             this.tstl_OrgDEscricao = new System.Windows.Forms.ToolStripStatusLabel();
             this.TstlPapel = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpButtons = new System.Windows.Forms.GroupBox();
+            this.btnSenha = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnDesativar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -75,6 +76,27 @@ namespace MCISYS.Negocio.Telas
             this.NM_PAPEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_USU_INCL_PAP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DT_INCLUSAO_PAP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpDadoUsers = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbl_Dt_Alteracao = new System.Windows.Forms.Label();
+            this.lbl_Id_Usu_Alterado = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grp_Incluido = new System.Windows.Forms.GroupBox();
+            this.lbl_Dt_Inclusao = new System.Windows.Forms.Label();
+            this.lbl_ID_Usu_Incl = new System.Windows.Forms.Label();
+            this.lbl_InclEm = new System.Windows.Forms.Label();
+            this.lbl_IdUsuIncl = new System.Windows.Forms.Label();
+            this.lbl_Email = new System.Windows.Forms.Label();
+            this.txt_Email = new System.Windows.Forms.TextBox();
+            this.lbl_QTD_LOGIN_SEM_SUCESSO = new System.Windows.Forms.Label();
+            this.lbl_Motivo_Bloqueio = new System.Windows.Forms.Label();
+            this.lbl_Status = new System.Windows.Forms.Label();
+            this.lbl_NMUsu = new System.Windows.Forms.Label();
+            this.txt_NMUsu = new System.Windows.Forms.TextBox();
+            this.lbl_DtLastLogin = new System.Windows.Forms.Label();
+            this.lbl_IDUsu = new System.Windows.Forms.Label();
+            this.txt_IDUSER = new System.Windows.Forms.TextBox();
             this.StStripDados.SuspendLayout();
             this.grpButtons.SuspendLayout();
             this.grpUsers.SuspendLayout();
@@ -84,6 +106,9 @@ namespace MCISYS.Negocio.Telas
             ((System.ComponentModel.ISupportInitialize)(this.DtvOrgUsu)).BeginInit();
             this.tPage_AssociaPapUsu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvUserPapel)).BeginInit();
+            this.grpDadoUsers.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.grp_Incluido.SuspendLayout();
             this.SuspendLayout();
             // 
             // StStripDados
@@ -135,6 +160,7 @@ namespace MCISYS.Negocio.Telas
             // 
             // grpButtons
             // 
+            this.grpButtons.Controls.Add(this.btnSenha);
             this.grpButtons.Controls.Add(this.btnGravar);
             this.grpButtons.Controls.Add(this.btnDesativar);
             this.grpButtons.Controls.Add(this.btnSair);
@@ -148,12 +174,25 @@ namespace MCISYS.Negocio.Telas
             this.grpButtons.TabIndex = 9;
             this.grpButtons.TabStop = false;
             // 
+            // btnSenha
+            // 
+            this.btnSenha.Enabled = false;
+            this.btnSenha.Image = global::MCISYS.Properties.Resources.icons8_reiniciar_24;
+            this.btnSenha.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSenha.Location = new System.Drawing.Point(252, 9);
+            this.btnSenha.Name = "btnSenha";
+            this.btnSenha.Size = new System.Drawing.Size(56, 44);
+            this.btnSenha.TabIndex = 7;
+            this.btnSenha.Text = "Senha";
+            this.btnSenha.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSenha.UseVisualStyleBackColor = true;
+            // 
             // btnGravar
             // 
             this.btnGravar.Enabled = false;
             this.btnGravar.Image = ((System.Drawing.Image)(resources.GetObject("btnGravar.Image")));
             this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGravar.Location = new System.Drawing.Point(253, 9);
+            this.btnGravar.Location = new System.Drawing.Point(314, 9);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(48, 44);
             this.btnGravar.TabIndex = 6;
@@ -178,7 +217,7 @@ namespace MCISYS.Negocio.Telas
             // 
             this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSair.Location = new System.Drawing.Point(361, 10);
+            this.btnSair.Location = new System.Drawing.Point(361, 9);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(48, 44);
             this.btnSair.TabIndex = 4;
@@ -235,6 +274,7 @@ namespace MCISYS.Negocio.Telas
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // grpUsers
             // 
@@ -266,15 +306,15 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_USER
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ID_USER.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ID_USER.DefaultCellStyle = dataGridViewCellStyle12;
             this.ID_USER.HeaderText = "Usuário";
             this.ID_USER.Name = "ID_USER";
             // 
             // NM_USUARIO
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.NM_USUARIO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.NM_USUARIO.DefaultCellStyle = dataGridViewCellStyle13;
             this.NM_USUARIO.HeaderText = "Nome do Usuário";
             this.NM_USUARIO.Name = "NM_USUARIO";
             this.NM_USUARIO.Width = 200;
@@ -332,14 +372,14 @@ namespace MCISYS.Negocio.Telas
             this.DtvOrgUsu.AllowUserToResizeColumns = false;
             this.DtvOrgUsu.AllowUserToResizeRows = false;
             this.DtvOrgUsu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtvOrgUsu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtvOrgUsu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.DtvOrgUsu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtvOrgUsu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -348,29 +388,29 @@ namespace MCISYS.Negocio.Telas
             this.DT_INCLUSAO});
             this.DtvOrgUsu.Location = new System.Drawing.Point(3, 3);
             this.DtvOrgUsu.Name = "DtvOrgUsu";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(1);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.Window;
-            this.DtvOrgUsu.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(1);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.Window;
+            this.DtvOrgUsu.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.DtvOrgUsu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtvOrgUsu.Size = new System.Drawing.Size(743, 234);
             this.DtvOrgUsu.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn1.HeaderText = "Org ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // NM_ORG
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.NM_ORG.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.NM_ORG.DefaultCellStyle = dataGridViewCellStyle16;
             this.NM_ORG.HeaderText = "Org";
             this.NM_ORG.Name = "NM_ORG";
             this.NM_ORG.ReadOnly = true;
@@ -378,17 +418,17 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_USU_INCL
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID_USU_INCL.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID_USU_INCL.DefaultCellStyle = dataGridViewCellStyle17;
             this.ID_USU_INCL.HeaderText = "Incluído Por";
             this.ID_USU_INCL.Name = "ID_USU_INCL";
             // 
             // DT_INCLUSAO
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "g";
-            dataGridViewCellStyle7.NullValue = null;
-            this.DT_INCLUSAO.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "g";
+            dataGridViewCellStyle18.NullValue = null;
+            this.DT_INCLUSAO.DefaultCellStyle = dataGridViewCellStyle18;
             this.DT_INCLUSAO.HeaderText = "Incluído EM";
             this.DT_INCLUSAO.Name = "DT_INCLUSAO";
             this.DT_INCLUSAO.Width = 200;
@@ -447,8 +487,8 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_PAPEL
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID_PAPEL.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID_PAPEL.DefaultCellStyle = dataGridViewCellStyle20;
             this.ID_PAPEL.HeaderText = "Papel Associado";
             this.ID_PAPEL.Name = "ID_PAPEL";
             this.ID_PAPEL.ReadOnly = true;
@@ -461,31 +501,249 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_USU_INCL_PAP
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID_USU_INCL_PAP.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID_USU_INCL_PAP.DefaultCellStyle = dataGridViewCellStyle21;
             this.ID_USU_INCL_PAP.HeaderText = "Incluído Por";
             this.ID_USU_INCL_PAP.Name = "ID_USU_INCL_PAP";
             this.ID_USU_INCL_PAP.ReadOnly = true;
-            this.ID_USU_INCL_PAP.Width = 200;
             // 
             // DT_INCLUSAO_PAP
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.DT_INCLUSAO_PAP.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.DT_INCLUSAO_PAP.DefaultCellStyle = dataGridViewCellStyle22;
             this.DT_INCLUSAO_PAP.HeaderText = "Incluído Em:";
             this.DT_INCLUSAO_PAP.Name = "DT_INCLUSAO_PAP";
             this.DT_INCLUSAO_PAP.ReadOnly = true;
             this.DT_INCLUSAO_PAP.Width = 200;
+            // 
+            // grpDadoUsers
+            // 
+            this.grpDadoUsers.Controls.Add(this.groupBox4);
+            this.grpDadoUsers.Controls.Add(this.grp_Incluido);
+            this.grpDadoUsers.Controls.Add(this.lbl_Email);
+            this.grpDadoUsers.Controls.Add(this.txt_Email);
+            this.grpDadoUsers.Controls.Add(this.lbl_QTD_LOGIN_SEM_SUCESSO);
+            this.grpDadoUsers.Controls.Add(this.lbl_Motivo_Bloqueio);
+            this.grpDadoUsers.Controls.Add(this.lbl_Status);
+            this.grpDadoUsers.Controls.Add(this.lbl_NMUsu);
+            this.grpDadoUsers.Controls.Add(this.txt_NMUsu);
+            this.grpDadoUsers.Controls.Add(this.lbl_DtLastLogin);
+            this.grpDadoUsers.Controls.Add(this.lbl_IDUsu);
+            this.grpDadoUsers.Controls.Add(this.txt_IDUSER);
+            this.grpDadoUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDadoUsers.Location = new System.Drawing.Point(380, 61);
+            this.grpDadoUsers.Name = "grpDadoUsers";
+            this.grpDadoUsers.Size = new System.Drawing.Size(407, 205);
+            this.grpDadoUsers.TabIndex = 12;
+            this.grpDadoUsers.TabStop = false;
+            this.grpDadoUsers.Text = "Dados do Usuário";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lbl_Dt_Alteracao);
+            this.groupBox4.Controls.Add(this.lbl_Id_Usu_Alterado);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Location = new System.Drawing.Point(200, 130);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(199, 70);
+            this.groupBox4.TabIndex = 24;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Alterado:";
+            // 
+            // lbl_Dt_Alteracao
+            // 
+            this.lbl_Dt_Alteracao.AutoSize = true;
+            this.lbl_Dt_Alteracao.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_Dt_Alteracao.Location = new System.Drawing.Point(52, 50);
+            this.lbl_Dt_Alteracao.Name = "lbl_Dt_Alteracao";
+            this.lbl_Dt_Alteracao.Size = new System.Drawing.Size(104, 13);
+            this.lbl_Dt_Alteracao.TabIndex = 4;
+            this.lbl_Dt_Alteracao.Text = "DT_ALTERACAO";
+            // 
+            // lbl_Id_Usu_Alterado
+            // 
+            this.lbl_Id_Usu_Alterado.AutoSize = true;
+            this.lbl_Id_Usu_Alterado.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_Id_Usu_Alterado.Location = new System.Drawing.Point(52, 28);
+            this.lbl_Id_Usu_Alterado.Name = "lbl_Id_Usu_Alterado";
+            this.lbl_Id_Usu_Alterado.Size = new System.Drawing.Size(83, 13);
+            this.lbl_Id_Usu_Alterado.TabIndex = 5;
+            this.lbl_Id_Usu_Alterado.Text = "ID_USU_ALT";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Em:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Por:";
+            // 
+            // grp_Incluido
+            // 
+            this.grp_Incluido.Controls.Add(this.lbl_Dt_Inclusao);
+            this.grp_Incluido.Controls.Add(this.lbl_ID_Usu_Incl);
+            this.grp_Incluido.Controls.Add(this.lbl_InclEm);
+            this.grp_Incluido.Controls.Add(this.lbl_IdUsuIncl);
+            this.grp_Incluido.Location = new System.Drawing.Point(10, 130);
+            this.grp_Incluido.Name = "grp_Incluido";
+            this.grp_Incluido.Size = new System.Drawing.Size(169, 69);
+            this.grp_Incluido.TabIndex = 23;
+            this.grp_Incluido.TabStop = false;
+            this.grp_Incluido.Text = "Incluído";
+            // 
+            // lbl_Dt_Inclusao
+            // 
+            this.lbl_Dt_Inclusao.AutoSize = true;
+            this.lbl_Dt_Inclusao.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_Dt_Inclusao.Location = new System.Drawing.Point(45, 50);
+            this.lbl_Dt_Inclusao.Name = "lbl_Dt_Inclusao";
+            this.lbl_Dt_Inclusao.Size = new System.Drawing.Size(93, 13);
+            this.lbl_Dt_Inclusao.TabIndex = 3;
+            this.lbl_Dt_Inclusao.Text = "DT_INCLUSAO";
+            // 
+            // lbl_ID_Usu_Incl
+            // 
+            this.lbl_ID_Usu_Incl.AutoSize = true;
+            this.lbl_ID_Usu_Incl.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_ID_Usu_Incl.Location = new System.Drawing.Point(44, 28);
+            this.lbl_ID_Usu_Incl.Name = "lbl_ID_Usu_Incl";
+            this.lbl_ID_Usu_Incl.Size = new System.Drawing.Size(88, 13);
+            this.lbl_ID_Usu_Incl.TabIndex = 2;
+            this.lbl_ID_Usu_Incl.Text = "ID_USU_INCL";
+            // 
+            // lbl_InclEm
+            // 
+            this.lbl_InclEm.AutoSize = true;
+            this.lbl_InclEm.Location = new System.Drawing.Point(8, 50);
+            this.lbl_InclEm.Name = "lbl_InclEm";
+            this.lbl_InclEm.Size = new System.Drawing.Size(28, 13);
+            this.lbl_InclEm.TabIndex = 1;
+            this.lbl_InclEm.Text = "Em:";
+            // 
+            // lbl_IdUsuIncl
+            // 
+            this.lbl_IdUsuIncl.AutoSize = true;
+            this.lbl_IdUsuIncl.Location = new System.Drawing.Point(8, 28);
+            this.lbl_IdUsuIncl.Name = "lbl_IdUsuIncl";
+            this.lbl_IdUsuIncl.Size = new System.Drawing.Size(30, 13);
+            this.lbl_IdUsuIncl.TabIndex = 0;
+            this.lbl_IdUsuIncl.Text = "Por:";
+            // 
+            // lbl_Email
+            // 
+            this.lbl_Email.AutoSize = true;
+            this.lbl_Email.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_Email.Location = new System.Drawing.Point(10, 107);
+            this.lbl_Email.Name = "lbl_Email";
+            this.lbl_Email.Size = new System.Drawing.Size(45, 13);
+            this.lbl_Email.TabIndex = 22;
+            this.lbl_Email.Text = "E-mail:";
+            // 
+            // txt_Email
+            // 
+            this.txt_Email.Enabled = false;
+            this.txt_Email.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_Email.Location = new System.Drawing.Point(107, 104);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(284, 20);
+            this.txt_Email.TabIndex = 21;
+            // 
+            // lbl_QTD_LOGIN_SEM_SUCESSO
+            // 
+            this.lbl_QTD_LOGIN_SEM_SUCESSO.AutoSize = true;
+            this.lbl_QTD_LOGIN_SEM_SUCESSO.Location = new System.Drawing.Point(12, 43);
+            this.lbl_QTD_LOGIN_SEM_SUCESSO.Name = "lbl_QTD_LOGIN_SEM_SUCESSO";
+            this.lbl_QTD_LOGIN_SEM_SUCESSO.Size = new System.Drawing.Size(154, 13);
+            this.lbl_QTD_LOGIN_SEM_SUCESSO.TabIndex = 20;
+            this.lbl_QTD_LOGIN_SEM_SUCESSO.Text = "Qtd. Login Sem Sucesso: ";
+            // 
+            // lbl_Motivo_Bloqueio
+            // 
+            this.lbl_Motivo_Bloqueio.AutoSize = true;
+            this.lbl_Motivo_Bloqueio.Location = new System.Drawing.Point(175, 21);
+            this.lbl_Motivo_Bloqueio.Name = "lbl_Motivo_Bloqueio";
+            this.lbl_Motivo_Bloqueio.Size = new System.Drawing.Size(98, 13);
+            this.lbl_Motivo_Bloqueio.TabIndex = 19;
+            this.lbl_Motivo_Bloqueio.Text = "Motivo Bloqueio";
+            // 
+            // lbl_Status
+            // 
+            this.lbl_Status.AutoSize = true;
+            this.lbl_Status.Location = new System.Drawing.Point(11, 21);
+            this.lbl_Status.Name = "lbl_Status";
+            this.lbl_Status.Size = new System.Drawing.Size(43, 13);
+            this.lbl_Status.TabIndex = 18;
+            this.lbl_Status.Text = "Status";
+            // 
+            // lbl_NMUsu
+            // 
+            this.lbl_NMUsu.AutoSize = true;
+            this.lbl_NMUsu.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_NMUsu.Location = new System.Drawing.Point(10, 87);
+            this.lbl_NMUsu.Name = "lbl_NMUsu";
+            this.lbl_NMUsu.Size = new System.Drawing.Size(90, 13);
+            this.lbl_NMUsu.TabIndex = 17;
+            this.lbl_NMUsu.Text = "Nome Usuário:";
+            // 
+            // txt_NMUsu
+            // 
+            this.txt_NMUsu.Enabled = false;
+            this.txt_NMUsu.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_NMUsu.Location = new System.Drawing.Point(107, 84);
+            this.txt_NMUsu.Name = "txt_NMUsu";
+            this.txt_NMUsu.Size = new System.Drawing.Size(284, 20);
+            this.txt_NMUsu.TabIndex = 16;
+            // 
+            // lbl_DtLastLogin
+            // 
+            this.lbl_DtLastLogin.AutoSize = true;
+            this.lbl_DtLastLogin.Location = new System.Drawing.Point(252, 66);
+            this.lbl_DtLastLogin.Name = "lbl_DtLastLogin";
+            this.lbl_DtLastLogin.Size = new System.Drawing.Size(81, 13);
+            this.lbl_DtLastLogin.TabIndex = 15;
+            this.lbl_DtLastLogin.Text = "Último Login:";
+            // 
+            // lbl_IDUsu
+            // 
+            this.lbl_IDUsu.AutoSize = true;
+            this.lbl_IDUsu.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_IDUsu.Location = new System.Drawing.Point(10, 66);
+            this.lbl_IDUsu.Name = "lbl_IDUsu";
+            this.lbl_IDUsu.Size = new System.Drawing.Size(54, 13);
+            this.lbl_IDUsu.TabIndex = 14;
+            this.lbl_IDUsu.Text = "User ID:";
+            // 
+            // txt_IDUSER
+            // 
+            this.txt_IDUSER.Enabled = false;
+            this.txt_IDUSER.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_IDUSER.Location = new System.Drawing.Point(107, 64);
+            this.txt_IDUSER.Name = "txt_IDUSER";
+            this.txt_IDUSER.Size = new System.Drawing.Size(128, 20);
+            this.txt_IDUSER.TabIndex = 13;
             // 
             // Frm_CriaUsu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 569);
+            this.Controls.Add(this.grpDadoUsers);
             this.Controls.Add(this.tBAssociados);
             this.Controls.Add(this.grpUsers);
             this.Controls.Add(this.grpButtons);
             this.Controls.Add(this.StStripDados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_CriaUsu";
             this.Text = "Cadastro de Usuários";
             this.StStripDados.ResumeLayout(false);
@@ -498,6 +756,12 @@ namespace MCISYS.Negocio.Telas
             ((System.ComponentModel.ISupportInitialize)(this.DtvOrgUsu)).EndInit();
             this.tPage_AssociaPapUsu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtvUserPapel)).EndInit();
+            this.grpDadoUsers.ResumeLayout(false);
+            this.grpDadoUsers.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.grp_Incluido.ResumeLayout(false);
+            this.grp_Incluido.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,6 +799,28 @@ namespace MCISYS.Negocio.Telas
         private System.Windows.Forms.Button btnREtiraAssociaOrgUsu;
         private System.Windows.Forms.Button btnAssociaUsu;
         private System.Windows.Forms.DataGridView dtvUserPapel;
+        private System.Windows.Forms.GroupBox grpDadoUsers;
+        private System.Windows.Forms.TextBox txt_IDUSER;
+        private System.Windows.Forms.Label lbl_IDUsu;
+        private System.Windows.Forms.Label lbl_DtLastLogin;
+        private System.Windows.Forms.Label lbl_Status;
+        private System.Windows.Forms.Label lbl_NMUsu;
+        private System.Windows.Forms.TextBox txt_NMUsu;
+        private System.Windows.Forms.Label lbl_Email;
+        private System.Windows.Forms.TextBox txt_Email;
+        private System.Windows.Forms.Label lbl_QTD_LOGIN_SEM_SUCESSO;
+        private System.Windows.Forms.Label lbl_Motivo_Bloqueio;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label lbl_Dt_Alteracao;
+        private System.Windows.Forms.Label lbl_Id_Usu_Alterado;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox grp_Incluido;
+        private System.Windows.Forms.Label lbl_Dt_Inclusao;
+        private System.Windows.Forms.Label lbl_ID_Usu_Incl;
+        private System.Windows.Forms.Label lbl_InclEm;
+        private System.Windows.Forms.Label lbl_IdUsuIncl;
+        private System.Windows.Forms.Button btnSenha;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_PAPEL;
         private System.Windows.Forms.DataGridViewTextBoxColumn NM_PAPEL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_USU_INCL_PAP;

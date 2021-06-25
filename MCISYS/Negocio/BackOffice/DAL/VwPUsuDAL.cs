@@ -13,6 +13,20 @@ namespace MCISYS.Negocio.BackOffice.DAL
 {
     public class VwPUsuDAL
     {
+        public List<VwPUsu> ObtemPapelAssociadoUsuario(ref Banco pBanco, string pIdUsu)
+        {
+            string vsSql = @"SELECT ID_PAPEL
+	                                ,ID_USU
+	                                ,ID_USU_INCL
+	                                ,DT_INCLUSAO
+                                FROM VW_SIS_PAP_USU
+                                WHERE ID_USU = @ID_USU";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"ID_USU",pIdUsu }
+            };
+            return ObtemListaRegistro(ref pBanco, vsSql, Parametro);
+        }
         public List<VwPUsu> ObtemUsuariosAssociadoPapel(ref Banco pBanco, string pIdPapel)
         {
             string vsSql = @"SELECT ID_PAPEL

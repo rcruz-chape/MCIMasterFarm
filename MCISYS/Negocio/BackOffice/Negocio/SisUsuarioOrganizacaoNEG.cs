@@ -20,6 +20,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vUORGDAL.ExclueOrgUsu(ref pBanco, pIdOrg, pIdUsu);
         }
+        public List<SisUsuarioOrganizacao> ObtemOrgsAssociadosUSuario(ref Banco pBanco, string pIdUsu)
+        {
+            return vUORGDAL.ObtemUsuariosAssociadosOrg(ref pBanco, 0, pIdUsu);
+        }
         public List<SisUsuarioOrganizacao> ObtemUsuariosAssociadosOrg(ref Banco pBanco, int pIdOrg)
         {
             return vUORGDAL.ObtemUsuariosAssociadosOrg(ref pBanco, pIdOrg);

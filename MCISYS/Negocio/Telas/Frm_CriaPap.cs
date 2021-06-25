@@ -51,6 +51,8 @@ namespace MCISYS.Negocio.Telas
         public Boolean bModoPreGravacao;
 
 
+        private MessageBoxIcon Alert = MessageBoxIcon.Question;
+
         public const string PAPADM = "1";
         public const int iInsert = 1;
         public const int iUpdate = 2;
@@ -74,6 +76,7 @@ namespace MCISYS.Negocio.Telas
             bExecuta = CarregaBarraStatus();
             bExecuta = bConfiguraTituloDbGrid();
             bExecuta = CarregaPapeis();
+            bExecuta = LimpaTela();
             bExecuta = LoadReg();
 
         }
@@ -172,13 +175,13 @@ namespace MCISYS.Negocio.Telas
             if (bModoPreGravacao)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons);
+                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons, Alert);
                 if (result == DialogResult.Yes)
                 {
                     var bSalvar = RegSalvar();
                 }
             }
-            Comando = iInsert;
+            Comando = iRegNovo;
             Boolean bNovo = RegNovo();
             bModoPreGravacao = true;
             bNovo = HabilitaBotoes(iRegNovo);
@@ -351,26 +354,41 @@ namespace MCISYS.Negocio.Telas
             var RegPapel = new SisPapel();
             var ListPapelAssociado = new List<SisOrganizacaoPapel>();
             var ListPapelUsuario = new List<SisPapelUsuario>();
+            MessageBoxIcon iError = MessageBoxIcon.Error;
+            MessageBoxIcon iWarning = MessageBoxIcon.Warning;
             Boolean bAcao;
             if (this.txt_IDPAPEL.Text == "")
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Código do Papel Obrigatório.", "Erro de Validação", buttons);
+                DialogResult result = MessageBox.Show("Código do Papel Obrigatório.", "Erro de Validação", buttons, iError);
                 this.txt_IDPAPEL.Focus();
                 return false;
-
+            }
+            else
+            {
+                if (Comando == iRegNovo)
+                {
+                    bAcao = vPapNeg.ExistePapelInformado(ref vBanco, txt_IDPAPEL.Text);
+                    if (bAcao)
+                    {
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        DialogResult result = MessageBox.Show("Papel Informado já está cadastrado.", "Erro de Validação", buttons, iError);
+                        this.txt_IDPAPEL.Focus();
+                        return false;
+                    }
+                }
             }
             if (this.txt_NmPapel.Text == "")
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Nome do Papel Obrigatório.", "Erro de Validação", buttons);
+                DialogResult result = MessageBox.Show("Nome do Papel Obrigatório.", "Erro de Validação", buttons, iError);
                 this.txt_NmPapel.Focus();
                 return false;
             }
             if (this.DtgOrg.RowCount < 1)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Não Há Orgs Associadas Deseja Continuar?", "Papel Sem Orgs Associadas", buttons);
+                DialogResult result = MessageBox.Show("Não Há Orgs Associadas Deseja Continuar?", "Papel Sem Orgs Associadas", buttons, iWarning);
                 if (result == DialogResult.No)
                 {
                     return false;
@@ -379,7 +397,7 @@ namespace MCISYS.Negocio.Telas
             if (this.dGvUser.RowCount < 1)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Não Há Usuários Associados Deseja Continuar?", "Papel Sem Usuários Associados", buttons);
+                DialogResult result = MessageBox.Show("Não Há Usuários Associados Deseja Continuar?", "Papel Sem Usuários Associados", buttons, iWarning);
                 if (result == DialogResult.No)
                 {
                     return false;
@@ -525,11 +543,15 @@ namespace MCISYS.Negocio.Telas
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            var Habilita = HabilitaBotoes(iRegGravar);
-            Habilita = RegSalvar();
-            Habilita = DesabilitaCamposTela();
-            //Habilita = LimpaTela();
-            bModoPreGravacao = false;
+            var Habilita = RegSalvar();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iRegGravar);
+                Habilita = DesabilitaCamposTela();
+                bModoPreGravacao = false;
+                //Habilita = LimpaTela();
+            }
+           
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -537,7 +559,7 @@ namespace MCISYS.Negocio.Telas
             if (bModoPreGravacao)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons);
+                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons, Alert);
                 if (result == DialogResult.Yes)
                 {
                     var bSalvar = RegSalvar();

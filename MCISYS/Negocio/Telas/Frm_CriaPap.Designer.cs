@@ -504,16 +504,19 @@ namespace MCISYS.Negocio.Telas
             this.lbl_Dt_Alteracao.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_Dt_Alteracao.Location = new System.Drawing.Point(52, 54);
             this.lbl_Dt_Alteracao.Name = "lbl_Dt_Alteracao";
-            this.lbl_Dt_Alteracao.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Dt_Alteracao.Size = new System.Drawing.Size(104, 13);
             this.lbl_Dt_Alteracao.TabIndex = 4;
+            this.lbl_Dt_Alteracao.Text = "DT_ALTERACAO";
             // 
             // lbl_Id_Usu_Alterado
             // 
             this.lbl_Id_Usu_Alterado.AutoSize = true;
+            this.lbl_Id_Usu_Alterado.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_Id_Usu_Alterado.Location = new System.Drawing.Point(52, 28);
             this.lbl_Id_Usu_Alterado.Name = "lbl_Id_Usu_Alterado";
-            this.lbl_Id_Usu_Alterado.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Id_Usu_Alterado.Size = new System.Drawing.Size(83, 13);
             this.lbl_Id_Usu_Alterado.TabIndex = 5;
+            this.lbl_Id_Usu_Alterado.Text = "ID_USU_ALT";
             // 
             // label1
             // 
@@ -552,16 +555,19 @@ namespace MCISYS.Negocio.Telas
             this.lbl_Dt_Inclusao.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_Dt_Inclusao.Location = new System.Drawing.Point(45, 53);
             this.lbl_Dt_Inclusao.Name = "lbl_Dt_Inclusao";
-            this.lbl_Dt_Inclusao.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Dt_Inclusao.Size = new System.Drawing.Size(93, 13);
             this.lbl_Dt_Inclusao.TabIndex = 3;
+            this.lbl_Dt_Inclusao.Text = "DT_INCLUSAO";
             // 
             // lbl_ID_Usu_Incl
             // 
             this.lbl_ID_Usu_Incl.AutoSize = true;
+            this.lbl_ID_Usu_Incl.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_ID_Usu_Incl.Location = new System.Drawing.Point(44, 29);
             this.lbl_ID_Usu_Incl.Name = "lbl_ID_Usu_Incl";
-            this.lbl_ID_Usu_Incl.Size = new System.Drawing.Size(0, 13);
+            this.lbl_ID_Usu_Incl.Size = new System.Drawing.Size(88, 13);
             this.lbl_ID_Usu_Incl.TabIndex = 2;
+            this.lbl_ID_Usu_Incl.Text = "ID_USU_INCL";
             // 
             // lbl_InclEm
             // 

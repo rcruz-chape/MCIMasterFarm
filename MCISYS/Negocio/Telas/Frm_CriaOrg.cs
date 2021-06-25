@@ -38,6 +38,7 @@ namespace MCISYS.Negocio.Telas
         private SisUsuarioOrganizacaoNEG vUorgNEG = new SisUsuarioOrganizacaoNEG();
         private ConfiguraControleNEG vControleNEG = new ConfiguraControleNEG();
         private CorOrganizacao CorOrg = new CorOrganizacao();
+        private MessageBoxIcon Alert = MessageBoxIcon.Question;
         private Boolean bExecuta;
         private int Comando;
         private int vIdOrgSelecionada;
@@ -124,7 +125,7 @@ namespace MCISYS.Negocio.Telas
             if (bModoPreGravacao)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons);
+                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons,Alert);
                 if (result == DialogResult.Yes)
                 {
                     var bSalvar = RegSalvar();
@@ -306,7 +307,7 @@ namespace MCISYS.Negocio.Telas
             if (bModoPreGravacao)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons);
+                DialogResult result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons,Alert);
                 if (result == DialogResult.Yes)
                 {
                     var bSalvar = RegSalvar();
@@ -322,10 +323,12 @@ namespace MCISYS.Negocio.Telas
         public Boolean RegSalvar()
         {
             int vTotLoop = 0;
+            MessageBoxIcon iError = MessageBoxIcon.Error;
+            MessageBoxIcon iWarning = MessageBoxIcon.Warning;
             if (this.txBNmOrg.Text == "")
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Nome de Org Obrigatório.", "Erro de Validação", buttons);
+                DialogResult result = MessageBox.Show("Nome de Org Obrigatório.", "Erro de Validação", buttons,iError);
                 this.txBNmOrg.Focus();
                 return false;
 
@@ -333,7 +336,7 @@ namespace MCISYS.Negocio.Telas
             if (this.txb_OrgResumido.Text == "")
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Nome Resumido de Org Obrigatório.", "Erro de Validação", buttons);
+                DialogResult result = MessageBox.Show("Nome Resumido de Org Obrigatório.", "Erro de Validação", buttons, iError);
                 this.txBNmOrg.Focus();
                 return false;
             }
@@ -347,7 +350,7 @@ namespace MCISYS.Negocio.Telas
             if (this.cbx_TpOrg.SelectedValue == CTPORGOPE && this.cbx_OrgMae.Text == "")
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show("Organizações do tipo Operacional não podem ser orfãs.", "Erro de Validação",buttons);
+                DialogResult result = MessageBox.Show("Organizações do tipo Operacional não podem ser orfãs.", "Erro de Validação",buttons, iWarning);
                 this.cbx_TpOrg.Focus();
                 return false;
 
@@ -355,7 +358,7 @@ namespace MCISYS.Negocio.Telas
             if (this.DtgPapel.RowCount-1 == 0)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Não Há Papeis Associados Deseja Continuar?", "Org Sem Papel Associado", buttons);
+                DialogResult result = MessageBox.Show("Não Há Papeis Associados Deseja Continuar?", "Org Sem Papel Associado", buttons, iWarning);
                 if (result == DialogResult.No)
                 {
                     return false;
@@ -546,13 +549,16 @@ namespace MCISYS.Negocio.Telas
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            var Habilita = HabilitaBotoes(iRegGravar);
-            Habilita = RegSalvar();
-            Habilita = DesabilitaCamposTela(); 
-            Habilita = CarregaOrgs();
-            Habilita = CarregaCbxOrgMae();
-            Habilita = LimpaTela();
-            bModoPreGravacao = false;
+            var Habilita = RegSalvar();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iRegGravar);
+                Habilita = DesabilitaCamposTela();
+                Habilita = CarregaOrgs();
+                Habilita = CarregaCbxOrgMae();
+                Habilita = LimpaTela();
+                bModoPreGravacao = false;
+            }
         }
 
         private void btnInclueAssociacao_Click(object sender, EventArgs e)

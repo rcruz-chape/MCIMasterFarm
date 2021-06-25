@@ -40,6 +40,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 		                                )";
                 Parametro.Add("ID_ORG", pIdOrg);
             }
+            vsSql += @" ORDER BY DT_INCLUSAO";
             return RecuperaListaRegistro(ref pBanco, vsSql, Parametro);
 
 
