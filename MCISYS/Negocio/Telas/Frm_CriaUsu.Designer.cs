@@ -186,6 +186,7 @@ namespace MCISYS.Negocio.Telas
             this.btnSenha.Text = "Senha";
             this.btnSenha.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSenha.UseVisualStyleBackColor = true;
+            this.btnSenha.Click += new System.EventHandler(this.btnSenha_Click);
             // 
             // btnGravar
             // 
@@ -199,6 +200,7 @@ namespace MCISYS.Negocio.Telas
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnDesativar
             // 
@@ -212,6 +214,7 @@ namespace MCISYS.Negocio.Telas
             this.btnDesativar.Text = "Desativar";
             this.btnDesativar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDesativar.UseVisualStyleBackColor = true;
+            this.btnDesativar.Click += new System.EventHandler(this.btnDesativar_Click);
             // 
             // btnSair
             // 
@@ -224,6 +227,7 @@ namespace MCISYS.Negocio.Telas
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnAtivar
             // 
@@ -237,6 +241,7 @@ namespace MCISYS.Negocio.Telas
             this.btnAtivar.Text = "Ativar";
             this.btnAtivar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAtivar.UseVisualStyleBackColor = true;
+            this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
             // 
             // btnCriar
             // 
@@ -250,6 +255,7 @@ namespace MCISYS.Negocio.Telas
             this.btnCriar.Text = "Criar";
             this.btnCriar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCriar.UseVisualStyleBackColor = true;
+            this.btnCriar.Click += new System.EventHandler(this.btnCriar_Click);
             // 
             // btnEditar
             // 
@@ -262,6 +268,7 @@ namespace MCISYS.Negocio.Telas
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
@@ -303,6 +310,7 @@ namespace MCISYS.Negocio.Telas
             this.dtvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvUsers.Size = new System.Drawing.Size(357, 241);
             this.dtvUsers.TabIndex = 0;
+            this.dtvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvUsers_CellContentClick);
             // 
             // ID_USER
             // 

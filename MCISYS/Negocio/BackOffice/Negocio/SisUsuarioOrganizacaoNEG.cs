@@ -16,6 +16,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisUsuarioOrganizacaoNEG
     {
         private SisUsuarioOrganizacaoDAL vUORGDAL = new SisUsuarioOrganizacaoDAL();
+        private SisOrganizacaoPapelUsuarioNEG vOPusuNEG = new SisOrganizacaoPapelUsuarioNEG();
         public Boolean DeleteOrgUsu(ref Banco pBanco, int pIdOrg, string pIdUsu)
         {
             return vUORGDAL.ExclueOrgUsu(ref pBanco, pIdOrg, pIdUsu);
@@ -37,6 +38,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                 if (!pSisUsuOrganizacaoFinal.Exists(UORGFinal => UORGFinal.ID_ORG == linhaUORG_Inicial.ID_ORG && UORGFinal.ID_USU == linhaUORG_Inicial.ID_USU))
                 {
                     vbAssocia = vUORGDAL.ExclueOrgUsu(ref pBanco, linhaUORG_Inicial.ID_ORG, linhaUORG_Inicial.ID_USU);
+                    vbAssocia = vOPusuNEG.RetiraAssociadoORgPapel(ref pBanco, linhaUORG_Inicial.ID_ORG, linhaUORG_Inicial.ID_USU);
                 }
             }
 

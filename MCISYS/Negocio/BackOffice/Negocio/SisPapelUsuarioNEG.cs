@@ -30,6 +30,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                                            List<SisPapelUsuario> PListFinalPUsu)
         {
             Boolean vbExclue = true;
+            var vOrgPUsu = new SisOrganizacaoPapelUsuarioNEG();
             foreach(var Pusu in pListInicialPUsu)
             {
                 if (!PListFinalPUsu.Exists(vLinhaPUsuFinal => vLinhaPUsuFinal.ID_PAPEL == Pusu.ID_PAPEL
@@ -40,6 +41,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                     {
                         break;
                     }
+                    vbExclue = vOrgPUsu.RetiraAssociadoORgPapel(ref pBanco, 0, Pusu.ID_USU, Pusu.ID_PAPEL);
                 }
             }
 

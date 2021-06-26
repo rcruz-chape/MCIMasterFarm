@@ -43,6 +43,19 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             var vSysDal = new SIS_USUARIO_DAL();
             return vSysDal.GetListaUsuario(ref pBanco, pIdUSu, pIdOrg);
         }
+        public Boolean GeraNovaSenha(SisUsuario pSisUsuario, ref Banco pBanco)
+        {
+            Boolean vbNovaSenha;
+            var vSisUsuarioDal = new SIS_USUARIO_DAL();
+            var SisParametroNEG = new SIS_PARAMETRO_NEG();
+            var SisParametroREG = SisParametroNEG.ObtemParametro(ref pBanco);
+            var vSisUsuario = pSisUsuario;
+            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario);
+            vbNovaSenha = EnviaNovaSenha(vSisUsuario, ref pBanco);
+            vbNovaSenha = bloqueiaSenhaExpirada(vSisUsuario, ref pBanco);
+            return vbNovaSenha;
+
+        }
         public Boolean CriaUsuario(SisUsuario pSisUsuario,ref Banco pBanco)
         {
             Boolean bcria;
@@ -50,16 +63,17 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             var SisParametroNEG = new SIS_PARAMETRO_NEG();
             var SisParametroREG = SisParametroNEG.ObtemParametro(ref pBanco);
             var vSisUsuario = pSisUsuario;
-            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG,ref vSisUsuario, true);
+            vSisUsuario.ds_pwd = "w";
             vSisUsuario.ind_bloqueado = sUsuarioBloqueado;
             vSisUsuario.ind_motivo_bloqueio = iSenhaExpirada;
             vSisUsuario.dt_inclusao = DateTime.Now;
             vSisUsuario.qtd_login_sem_sucesso = 0;
             bcria = vSisUsuarioDal.insereUsuario(vSisUsuario, ref pBanco);
-            bcria = EnviaNovaSenha(pSisUsuario, ref pBanco);
+            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario, true);
+            bcria = EnviaNovaSenha(vSisUsuario, ref pBanco);
             return bcria;
         }
-        private Boolean EnviaNovaSenha(SisUsuario pSisUsuario, ref Banco pBanco)
+        public Boolean EnviaNovaSenha(SisUsuario pSisUsuario, ref Banco pBanco)
         {
             
             var SisEmailNEG = new EmailNeg();            
@@ -205,6 +219,11 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             var SisUsuarioDAL = new SIS_USUARIO_DAL();
             return SisUsuarioDAL.atualizaUsuario(pUsu, ref pBanco);
+        }
+        public SisUsuario ObtemRegistroUsuario(string pIdUsu, ref Banco pBanco)
+        {
+            var SisUsuarioDAL = new SIS_USUARIO_DAL();
+            return SisUsuarioDAL.obtemUsuario(pIdUsu, ref pBanco);
         }
 
     }

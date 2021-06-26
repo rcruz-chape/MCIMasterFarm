@@ -48,6 +48,8 @@ namespace MCISYS.Negocio.Telas
         private CorOrganizacaoNEG vOrgNEG = new CorOrganizacaoNEG();
         private SisPapelNEG vPapNEG = new SisPapelNEG();
 
+        private List<SisOrganizacaoPapelUsuario> vListSisOPusu = new List<SisOrganizacaoPapelUsuario>();
+
         public Boolean bModoPreGravacao;
 
         public const string DTLASTLOGIN = "Último Login";
@@ -149,11 +151,11 @@ namespace MCISYS.Negocio.Telas
             {
                 var LinhaReg = new SisPapelUsuario();
                 var PAPEL = vPapNEG.ObtemPapelSelecionado(ref vBanco, RPusu.ID_PAPEL);
-                this.dtvUserPapel.Rows.Add(RPusu.ID_PAPEL,PAPEL.DS_PAPEL,RPusu.ID_USU_INCL, RPusu.DT_INCLUSAO.ToString("dd/MM/yyyy"));
+                this.dtvUserPapel.Rows.Add(RPusu.ID_PAPEL, PAPEL.DS_PAPEL, RPusu.ID_USU_INCL, RPusu.DT_INCLUSAO.ToString("dd/MM/yyyy"));
                 LinhaReg.ID_PAPEL = RPusu.ID_PAPEL;
                 LinhaReg.ID_USU = RPusu.ID_USU;
                 vListPUSU.Add(LinhaReg);
-            
+
             }
             return true;
         }
@@ -161,24 +163,30 @@ namespace MCISYS.Negocio.Telas
         {
             this.DtvOrgUsu.Rows.Clear();
             vListUORG = vUorgNEG.ObtemOrgsAssociadosUSuario(ref vBanco, pIdUsu);
-            foreach(var UORG in vListUORG)
+            foreach (var UORG in vListUORG)
             {
                 var ORgSelec = vOrgNEG.OrgSelecionada(ref vBanco, UORG.ID_ORG);
 
-                this.DtvOrgUsu.Rows.Add(UORG.ID_ORG, ORgSelec.NM_ORG,UORG.ID_USU_INCL, UORG.DT_INCLUSAO.ToString("dd/MM/yyyy"));
+                this.DtvOrgUsu.Rows.Add(UORG.ID_ORG, ORgSelec.NM_ORG, UORG.ID_USU_INCL, UORG.DT_INCLUSAO.ToString("dd/MM/yyyy"));
             }
             return true;
         }
-        public Boolean LoadReg(SisUsuario pUsu)
+        public Boolean LoadReg(SisUsuario pUsu = null, string pIdUsu = null)
         {
             string sDtLastLogin;
             Boolean vbExecuta;
-            this.lbl_Status.Text = vSisUsuNeg.DicStatusUsu[pUsu.ind_bloqueado];
-            if (pUsu.ind_bloqueado == vSisUsuNeg.sUsuarioBloqueado)
+            var vUsu = pUsu;
+            if (pUsu == null)
             {
+                UsuDetalhe = vSisUsuNeg.ObtemRegistroUsuario(pIdUsu, ref vBanco);
+            }
+            this.lbl_Status.Text = vSisUsuNeg.DicStatusUsu[pUsu.ind_bloqueado];
+            if (vUsu.ind_bloqueado == vSisUsuNeg.sUsuarioBloqueado)
+            {
+
                 this.lbl_Status.ForeColor = Color.Maroon;
-                this.lbl_Motivo_Bloqueio.Text = vSisUsuNeg.DicMotivoBloqueado[pUsu.ind_motivo_bloqueio];
-                switch (pUsu.ind_motivo_bloqueio)
+                this.lbl_Motivo_Bloqueio.Text = vSisUsuNeg.DicMotivoBloqueado[vUsu.ind_motivo_bloqueio];
+                switch (vUsu.ind_motivo_bloqueio)
                 {
                     case 0: // inatividade
                         this.lbl_Motivo_Bloqueio.ForeColor = Color.Black;
@@ -198,39 +206,39 @@ namespace MCISYS.Negocio.Telas
                 this.lbl_Motivo_Bloqueio.Text = "";
                 this.lbl_Motivo_Bloqueio.ForeColor = Color.Black;
             }
-            this.txt_IDUSER.Text = pUsu.id_usu;
-            this.txt_NMUsu.Text = pUsu.nm_usu;
-            this.txt_Email.Text = pUsu.ds_email;
-            if (pUsu.dt_last_login.HasValue)
+            this.txt_IDUSER.Text = vUsu.id_usu;
+            this.txt_NMUsu.Text = vUsu.nm_usu;
+            this.txt_Email.Text = vUsu.ds_email;
+            if (vUsu.dt_last_login.HasValue)
             {
-                this.lbl_DtLastLogin.Text = DTLASTLOGIN + ": " + pUsu.dt_last_login.Value.ToString("dd/MM/yyyy");
+                this.lbl_DtLastLogin.Text = DTLASTLOGIN + ": " + vUsu.dt_last_login.Value.ToString("dd/MM/yyyy");
             }
             else
             {
                 this.lbl_DtLastLogin.Text = "";
             }
-            this.lbl_ID_Usu_Incl.Text = pUsu.id_usu_incl;
-            if (pUsu.dt_inclusao.HasValue)
+            this.lbl_ID_Usu_Incl.Text = vUsu.id_usu_incl;
+            if (vUsu.dt_inclusao.HasValue)
             {
-                this.lbl_Dt_Inclusao.Text = pUsu.dt_inclusao.Value.ToString("dd/MM/yyyy");
+                this.lbl_Dt_Inclusao.Text = vUsu.dt_inclusao.Value.ToString("dd/MM/yyyy");
             }
             else
             {
                 this.lbl_Dt_Inclusao.Text = "";
             }
-            this.lbl_ID_Usu_Incl.Text = pUsu.id_usu_alt;
-            if (pUsu.dt_alteracao.HasValue)
+            this.lbl_ID_Usu_Incl.Text = vUsu.id_usu_alt;
+            if (vUsu.dt_alteracao.HasValue)
             {
-                this.lbl_Dt_Alteracao.Text = pUsu.dt_alteracao.Value.ToString("dd/MM/yyyy");
+                this.lbl_Dt_Alteracao.Text = vUsu.dt_alteracao.Value.ToString("dd/MM/yyyy");
             }
             else
             {
                 this.lbl_Dt_Alteracao.Text = "";
             }
-            if (pUsu.qtd_login_sem_sucesso.HasValue)
+            if (vUsu.qtd_login_sem_sucesso.HasValue)
             {
-                this.lbl_QTD_LOGIN_SEM_SUCESSO.Text = QTDLOGINSEMSUCESSO + pUsu.qtd_login_sem_sucesso.Value.ToString();
-                if (pUsu.qtd_login_sem_sucesso >= 2)
+                this.lbl_QTD_LOGIN_SEM_SUCESSO.Text = QTDLOGINSEMSUCESSO + vUsu.qtd_login_sem_sucesso.Value.ToString();
+                if (vUsu.qtd_login_sem_sucesso >= 2)
                 {
                     this.lbl_QTD_LOGIN_SEM_SUCESSO.ForeColor = Color.Maroon;
                 }
@@ -245,8 +253,8 @@ namespace MCISYS.Negocio.Telas
                 this.lbl_QTD_LOGIN_SEM_SUCESSO.Text = "";
                 this.lbl_QTD_LOGIN_SEM_SUCESSO.ForeColor = Color.Black;
             }
-            vbExecuta = CarregaOrgsAssociadasUsu(pUsu.id_usu);
-            vbExecuta = CarregaPapelAssociadoUSu(pUsu.id_usu);
+            vbExecuta = CarregaOrgsAssociadasUsu(vUsu.id_usu);
+            vbExecuta = CarregaPapelAssociadoUSu(vUsu.id_usu);
 
             return vbExecuta;
 
@@ -419,7 +427,7 @@ namespace MCISYS.Negocio.Telas
                 return false;
 
             }
-            else 
+            else
             {
                 bValida = (this.txt_Email.Text.Contains("@"));
                 if (!bValida)
@@ -487,12 +495,53 @@ namespace MCISYS.Negocio.Telas
             UsuDetalhe.ds_email = this.txt_Email.Text;
             UsuDetalhe.id_usu_incl = vIdUsu;
             vbValida = vSisUsuNeg.CriaUsuario(UsuDetalhe, ref vBanco);
-            vbValida = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, new List<SisUsuarioOrganizacao>(),MontaRegListUsuOrg());
+            vbValida = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, new List<SisUsuarioOrganizacao>(), MontaRegListUsuOrg());
             vbValida = vPusuNEG.AssociaPapelUsuario(ref vBanco, new List<SisPapelUsuario>(), MontaListaRegListUSuPapel());
+            vbValida = AtualizaAssociacaoOrgPapel();
             vbValida = LoadGeral();
 
             return vbValida;
 
+        }
+        public Boolean AtualizaAssociacaoOrgPapel()
+        {
+            int vTotRowCount;
+            int VtotRC;
+            SisOrganizacaoPapelUsuarioNEG vsOrgPapUsuNEG = new SisOrganizacaoPapelUsuarioNEG();
+            Boolean vbExiste = true;
+            List<SisOrganizacaoPapelUsuario> lOPusu = new List<SisOrganizacaoPapelUsuario>();
+            if (this.DtvOrgUsu.Rows.Count > 0)
+            {
+                vTotRowCount = this.DtvOrgUsu.Rows.Count;
+                for (int linha = 0; linha < vTotRowCount; linha++)
+                {
+                    int iIdOrg = Convert.ToInt32(this.DtvOrgUsu.Rows[linha].Cells[0].Value);
+                    if (this.dtvUserPapel.Rows.Count > 0)
+                    {
+                        VtotRC = this.dtvUserPapel.Rows.Count;
+                        for (int reg = 0; reg < VtotRC; linha++)
+                        {
+                            string vsPapel = this.dtvUserPapel.Rows[reg].Cells[0].Value.ToString();
+                            vbExiste = vsOrgPapUsuNEG.UsuarioAssociadoORgPapel(ref vBanco, iIdOrg, this.txt_IDUSER.Text, vsPapel);
+                            if (!vbExiste)
+                            {
+                                var vSisOrganizacaoPapelUsuario = new SisOrganizacaoPapelUsuario();
+                                vSisOrganizacaoPapelUsuario.ID_ORG = iIdOrg;
+                                vSisOrganizacaoPapelUsuario.ID_PAPEL = vsPapel;
+                                vSisOrganizacaoPapelUsuario.ID_USU = this.txt_IDUSER.Text;
+                                vSisOrganizacaoPapelUsuario.ID_USU_INCL = vIdUsu;
+                                vSisOrganizacaoPapelUsuario.DT_INCLUSAO = DateTime.Now;
+                                lOPusu.Add(vSisOrganizacaoPapelUsuario);
+                            }
+                        }
+                    }
+                }
+                if (lOPusu.Count > 0)
+                {
+                    vbExiste = vsOrgPapUsuNEG.RealizaAssociacaoUsuario(ref vBanco, lOPusu);
+                }
+            }
+            return vbExiste;
         }
         public Boolean AtualizaListaOrg(List<SisUsuarioOrganizacao> Pusu)
         {
@@ -521,7 +570,7 @@ namespace MCISYS.Negocio.Telas
 
             vbValida = vSisUsuNeg.AlteraDadosUsuario(UsuDetalhe, ref vBanco);
             vbValida = AtualizaListaOrg(LocalListUorg);
-
+            vbValida = LoadGeral();
 
 
             return true;
@@ -531,7 +580,7 @@ namespace MCISYS.Negocio.Telas
             var vbReturn = true;
             if (vListPUSU.Count < PUorg.Count)
             {
-                vbReturn = vPusuNEG.AssociaPapelUsuario(ref vBanco, vListPUSU, PUorg); 
+                vbReturn = vPusuNEG.AssociaPapelUsuario(ref vBanco, vListPUSU, PUorg);
             }
             else if (vListPUSU.Count > PUorg.Count)
             {
@@ -561,10 +610,10 @@ namespace MCISYS.Negocio.Telas
             List<SisUsuarioOrganizacao> vListSisUsuarioOrganizacoes = new List<SisUsuarioOrganizacao>();
             int vTotCountRow = 0;
 
-            if(this.DtvOrgUsu.Rows.Count > 0)
+            if (this.DtvOrgUsu.Rows.Count > 0)
             {
                 vTotCountRow = this.DtvOrgUsu.Rows.Count;
-                for(int linha = 0; linha < vTotCountRow; linha ++)
+                for (int linha = 0; linha < vTotCountRow; linha++)
                 {
                     var vSisUORG = new SisUsuarioOrganizacao();
                     vSisUORG.ID_ORG = Convert.ToInt32(this.DtvOrgUsu.Rows[linha].Cells[0].Value);
@@ -575,6 +624,138 @@ namespace MCISYS.Negocio.Telas
             }
 
             return vListSisUsuarioOrganizacoes;
+        }
+
+        private void dtvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Boolean vbLoad;
+
+            vbLoad = LoadReg(null, this.dtvUsers.CurrentRow.Cells[0].Value.ToString());
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var bAlterar = RegAlterar();
+        }
+        public Boolean RegAlterar()
+        {
+            Comando = iRegAlterar;
+            bModoPreGravacao = true;
+            var Habilita = HabilitaBotoes(iRegAlterar);
+            Habilita = HabilitaCamposTela();
+            return true;
+        }
+
+        private void btnCriar_Click(object sender, EventArgs e)
+        {
+            var Habilita = RegCriar();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iRegCriar);
+                Habilita = DesabilitaCamposTela();
+                bModoPreGravacao = false;
+                //Habilita = LimpaTela();
+            }
+        }
+
+
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+            var Habilita = RegAtivar();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iRegAtivar);
+                Habilita = DesabilitaCamposTela();
+                Habilita = LoadReg(null, this.txt_IDUSER.Text);
+                bModoPreGravacao = false;
+                //Habilita = LimpaTela();
+            }
+        }
+        public Boolean RegAtivar()
+        {
+            var vSisUsuario = new SisUsuario();
+
+            vSisUsuario.id_usu = this.txt_IDUSER.Text;
+            return vSisUsuNeg.RealizaDesbloqueio(vSisUsuario, ref vBanco);
+        }
+
+        private void btnDesativar_Click(object sender, EventArgs e)
+        {
+            var Habilita = RegDesativar();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iRegDesativar);
+                Habilita = DesabilitaCamposTela();
+                Habilita = LoadReg(null, this.txt_IDUSER.Text);
+                bModoPreGravacao = false;
+                //Habilita = LimpaTela();
+            }
+        }
+
+        public Boolean RegDesativar()
+        {
+            var vSisUsuario = new SisUsuario();
+            vSisUsuario.id_usu = this.txt_IDUSER.Text;
+            return vSisUsuNeg.BloqueiaUsuario(vSisUsuario, ref vBanco, vSisUsuNeg.iInatividade);
+        }
+
+        private void btnSenha_Click(object sender, EventArgs e)
+        {
+            var Habilita = RegNovaSenha();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iSenha);
+                Habilita = DesabilitaCamposTela();
+                Habilita = LoadReg(null, this.txt_IDUSER.Text);
+                bModoPreGravacao = false;
+                //Habilita = LimpaTela();
+            }
+        }
+
+        public Boolean RegNovaSenha()
+        {
+            var vSisUsuario = new SisUsuario();
+            vSisUsuario.id_usu = this.txt_IDUSER.Text;
+            return vSisUsuNeg.GeraNovaSenha(vSisUsuario, ref vBanco);
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            var Habilita = RegSalvar();
+            if (Habilita)
+            {
+                Habilita = HabilitaBotoes(iRegGravar);
+                Habilita = DesabilitaCamposTela();
+                bModoPreGravacao = false;
+                //Habilita = LimpaTela();
+            }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            if (bModoPreGravacao)
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = new DialogResult();
+                if (Comando == iInsert)
+                {
+                    result = MessageBox.Show("Deseja Criar Usuário?", "Sem Salvar", buttons, Alert);
+                    if (result == DialogResult.Yes)
+                    {
+                        var bSalvar = RegCriar();
+                    }
+                }
+                else
+                {
+                    result = MessageBox.Show("Deseja Salvar?", "Sem Salvar", buttons, Alert);
+                    if (result == DialogResult.Yes)
+                    {
+                        var bSalvar = RegSalvar();
+                    }
+                }
+
+            }
+            this.Dispose();
         }
     }
 }

@@ -125,6 +125,7 @@
     <Compile Include="Negocio\BackOffice\DAL\SisModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisModuloOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisOrganizacaoPapelDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\SisOrganizacaoPapelUsuarioDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisPapelDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisPapelFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisPapelUsuarioDAL.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisModuloOrganizacaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisOrganizacaoPapelNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\SisOrganizacaoPapelUsuarioNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisPapelFuncaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisPapelNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisPapelUsuarioNEG.cs" />
