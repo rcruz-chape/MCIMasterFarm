@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace MCISYS.Negocio.BackOffice.Model
 {
-    public class SisPapel
+    public class CorUnidadeMedida
     {
-        public string ID_PAPEL { set; get; }
-        public string DS_PAPEL { set; get; }
+        public int ID_ORG { set; get; }
+        public string COD_UM { set; get; }
+        public string DESC_UM { set; get; }
         public string ID_USU_INCL { set; get; }
         public DateTime DT_INCLUSAO { set; get; }
-        public Nullable<DateTime> DT_ALTERACAO { set; get; }
         public string ID_USU_ALT { set; get; }
-        public int TP_PAPEL { set; get; }
-
+        public Nullable<DateTime> DT_ALTERACAO { set; get; }
     }
 }

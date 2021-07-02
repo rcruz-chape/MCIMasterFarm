@@ -146,16 +146,16 @@ namespace MCISYS.Negocio.BackOffice.DAL
                          ,  ORG_CAD.NM_ORG_RESUMIDO
                          ,  ORG_CAD.ID_ORG_MAE  
                          ,  ORG_CAD.TP_ORG 
-                      FROM VW_ORG_CADASTRADAS ORG_CAD";
+                      FROM VW_ORG_CADASTRADAS ORG_CAD ";
             var Parametros = new Dictionary<string, dynamic>();
             if (pIDUsu != CUSERADMIN)
             {
                 vsSql += @"INNER JOIN SIS_USUARIO_ORGANIZACAO UORG ON (UORG.ID_ORG = ORG_CAD.ID_ORG)
-                           WHERE UORG.ID_USU = @ID_USU";
+                           WHERE UORG.ID_USU = @ID_USU ";
                 Parametros.Add("ID_USU",pIDUsu);
                 if (pOnlyMae)
                 {
-                    vsSql += @"AND ORG_CAD.TP_ORG = @TP_ORG";
+                    vsSql += @"AND ORG_CAD.TP_ORG = @TP_ORG ";
                     Parametros.Add("TP_ORG", TPORGADMINISTRADORA);
                 }
             }

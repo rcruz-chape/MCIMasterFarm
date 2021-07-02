@@ -18,7 +18,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                         , PAP.ID_USU_INCL 
                                         , PAP.DT_INCLUSAO 
                                         , PAP.ID_USU_ALT 
-                                        , PAP.DT_ALTERACAO 
+                                        , PAP.DT_ALTERACAO
+                                        , PAP.TP_PAPEL
                                      FROM SIS_PAPEL PAP";
         private Connect vConnect = new Connect();
         public Boolean DeletePapel(ref Banco pBanco, string pIdPapel)
@@ -38,13 +39,15 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                 SET DS_PAPEL = @DS_PAPEL
                                   , ID_USU_ALT = @ID_USU_ALT
                                   , DT_ALTERACAO = @DT_ALTERACAO
+                                  , TP_PAPEL = @TP_PAPEL
                               WHERE ID_PAPEL = @ID_PAPEL";
             var Parametro = new Dictionary<string, dynamic>()
             {
                 {"ID_PAPEL", pRegSisPapel.ID_PAPEL },
                 {"DS_PAPEL", pRegSisPapel.DS_PAPEL },
                 {"ID_USU_ALT", pRegSisPapel.ID_USU_ALT },
-                {"DT_ALTERACAO", pRegSisPapel.DT_ALTERACAO}
+                {"DT_ALTERACAO", pRegSisPapel.DT_ALTERACAO},
+                {"TP_PAPEL", pRegSisPapel.TP_PAPEL }
             };
             return vConnect.update(ref pBanco,vsSql,Parametro);
                                 
@@ -58,18 +61,21 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                   , DS_PAPEL
                                   , ID_USU_INCL
                                   , DT_INCLUSAO
+                                  , TP_PAPEL
                                     )
                             VALUES( @ID_PAPEL
                                   , @DS_PAPEL
                                   , @ID_USU_INCL
                                   , @DT_INCLUSAO
+                                  , @TP_PAPEL
                                     )";
             var Parametro = new Dictionary<string, dynamic>()
             {
                 {"ID_PAPEL", pRegSisPapel.ID_PAPEL },
                 {"DS_PAPEL", pRegSisPapel.DS_PAPEL },
                 {"ID_USU_INCL", pRegSisPapel.ID_USU_INCL },
-                {"DT_INCLUSAO", pRegSisPapel.DT_INCLUSAO }
+                {"DT_INCLUSAO", pRegSisPapel.DT_INCLUSAO },
+                {"TP_PAPEL", pRegSisPapel.TP_PAPEL }
             };
             return vConnect.insert(ref pBanco, vsSql, Parametro);
 
@@ -132,7 +138,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
         {
             List<SisPapel> listSisPapel = new List<SisPapel>();
             var vConnectado = vConnect.GetConnection(ref pBanco);
-            var GetResult = vConnect.ObtemFirst(vsSql, pParametro, ref vConnectado);
+            var GetResult = vConnect.ObtemLista(vsSql,ref vConnectado,pParametro);
             if (GetResult.HasRows)
             {
                 while (GetResult.Read())

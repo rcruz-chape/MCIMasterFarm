@@ -85,9 +85,14 @@ namespace MCISYS.Negocio.Telas
             bExecuta = bConfiguraTituloDbGrid();
             bExecuta = LoadGeral(); ;
         }
-        private Boolean LoadGeral()
+        private Boolean LoadGeral(Boolean pLimpaTela = false)
         {
-            Boolean bExecuta = CarregaUsuariosCadastrados();
+            Boolean bExecuta;
+            if (pLimpaTela)
+            {
+                bExecuta = LimpaTela();
+            }
+            bExecuta = CarregaUsuariosCadastrados();
             bExecuta = CarregaDbCridUser();
             return bExecuta;
         }
@@ -105,6 +110,7 @@ namespace MCISYS.Negocio.Telas
             this.lbl_Motivo_Bloqueio.Text = "";
             this.lbl_ID_Usu_Incl.Text = "";
             this.lbl_Id_Usu_Alterado.Text = "";
+            this.lbl_DtLastLogin.Text = "";
             this.lbl_Dt_Inclusao.Text = "";
             this.lbl_Dt_Alteracao.Text = "";
             this.txt_IDUSER.Clear();
@@ -112,6 +118,7 @@ namespace MCISYS.Negocio.Telas
             this.txt_Email.Clear();
             this.dtvUserPapel.Rows.Clear();
             this.DtvOrgUsu.Rows.Clear();
+            this.dtvUsers.Rows.Clear();
             return true;
         }
         public Boolean bConfiguraTituloDbGrid()
@@ -146,6 +153,7 @@ namespace MCISYS.Negocio.Telas
         private Boolean CarregaPapelAssociadoUSu(string pIdUsu)
         {
             this.dtvUserPapel.Rows.Clear();
+			vListPUSU = new List<SisPapelUsuario>();
             var ListP = vPusuNEG.ObtemListaPapelAssociadoUsu(ref vBanco, pIdUsu);
             foreach (var RPusu in ListP)
             {
@@ -171,7 +179,7 @@ namespace MCISYS.Negocio.Telas
             }
             return true;
         }
-        public Boolean LoadReg(SisUsuario pUsu = null, string pIdUsu = null)
+        public Boolean LoadReg( SisUsuario pUsu = null, string pIdUsu = null)
         {
             string sDtLastLogin;
             Boolean vbExecuta;
@@ -179,8 +187,10 @@ namespace MCISYS.Negocio.Telas
             if (pUsu == null)
             {
                 UsuDetalhe = vSisUsuNeg.ObtemRegistroUsuario(pIdUsu, ref vBanco);
+                vUsu = UsuDetalhe;
+
             }
-            this.lbl_Status.Text = vSisUsuNeg.DicStatusUsu[pUsu.ind_bloqueado];
+            this.lbl_Status.Text = vSisUsuNeg.DicStatusUsu[vUsu.ind_bloqueado];
             if (vUsu.ind_bloqueado == vSisUsuNeg.sUsuarioBloqueado)
             {
 
@@ -408,19 +418,19 @@ namespace MCISYS.Negocio.Telas
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result = new DialogResult();
 
-            if (this.txt_IDUSER.Text == null)
+            if (this.txt_IDUSER.Text == "")
             {
                 result = MessageBox.Show("User ID Obrigatório", "Erro de Validação", buttons, Error);
                 this.txt_IDUSER.Focus();
                 return false;
             }
-            if (this.txt_NMUsu.Text == null)
+            if (this.txt_NMUsu.Text == "")
             {
                 result = MessageBox.Show("Nome do Usuário Obrigatório", "Erro de Validação", buttons, Error);
                 this.txt_NMUsu.Focus();
                 return false;
             }
-            if (this.txt_Email == null)
+            if (this.txt_Email.Text == "")
             {
                 result = MessageBox.Show("Email Obrigatório", "Erro de Validação", buttons, Error);
                 this.txt_Email.Focus();
@@ -434,6 +444,7 @@ namespace MCISYS.Negocio.Telas
                 {
                     result = MessageBox.Show("Email Inválido", "Erro de Validação", buttons, Error);
                     this.txt_Email.Focus();
+                    return false;
                 }
             }
             if (this.DtvOrgUsu.Rows.Count < 1)
@@ -498,6 +509,7 @@ namespace MCISYS.Negocio.Telas
             vbValida = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, new List<SisUsuarioOrganizacao>(), MontaRegListUsuOrg());
             vbValida = vPusuNEG.AssociaPapelUsuario(ref vBanco, new List<SisPapelUsuario>(), MontaListaRegListUSuPapel());
             vbValida = AtualizaAssociacaoOrgPapel();
+            vbValida = LimpaTela();
             vbValida = LoadGeral();
 
             return vbValida;
@@ -519,7 +531,7 @@ namespace MCISYS.Negocio.Telas
                     if (this.dtvUserPapel.Rows.Count > 0)
                     {
                         VtotRC = this.dtvUserPapel.Rows.Count;
-                        for (int reg = 0; reg < VtotRC; linha++)
+                        for (int reg = 0; reg < VtotRC; reg++)
                         {
                             string vsPapel = this.dtvUserPapel.Rows[reg].Cells[0].Value.ToString();
                             vbExiste = vsOrgPapUsuNEG.UsuarioAssociadoORgPapel(ref vBanco, iIdOrg, this.txt_IDUSER.Text, vsPapel);
@@ -570,7 +582,8 @@ namespace MCISYS.Negocio.Telas
 
             vbValida = vSisUsuNeg.AlteraDadosUsuario(UsuDetalhe, ref vBanco);
             vbValida = AtualizaListaOrg(LocalListUorg);
-            vbValida = LoadGeral();
+            vbValida = AtualizaListaPapel(LocalListUPap);
+            vbValida = LoadGeral(true);
 
 
             return true;
@@ -581,6 +594,7 @@ namespace MCISYS.Negocio.Telas
             if (vListPUSU.Count < PUorg.Count)
             {
                 vbReturn = vPusuNEG.AssociaPapelUsuario(ref vBanco, vListPUSU, PUorg);
+                vbReturn = AtualizaAssociacaoOrgPapel();
             }
             else if (vListPUSU.Count > PUorg.Count)
             {
@@ -654,7 +668,6 @@ namespace MCISYS.Negocio.Telas
                 Habilita = HabilitaBotoes(iRegCriar);
                 Habilita = DesabilitaCamposTela();
                 bModoPreGravacao = false;
-                //Habilita = LimpaTela();
             }
         }
 
@@ -716,6 +729,8 @@ namespace MCISYS.Negocio.Telas
         {
             var vSisUsuario = new SisUsuario();
             vSisUsuario.id_usu = this.txt_IDUSER.Text;
+            vSisUsuario.ds_email = this.txt_Email.Text;
+            vSisUsuario.nm_usu = this.txt_NMUsu.Text;
             return vSisUsuNeg.GeraNovaSenha(vSisUsuario, ref vBanco);
         }
 
@@ -756,6 +771,94 @@ namespace MCISYS.Negocio.Telas
 
             }
             this.Dispose();
+        }
+
+        private void btnRetiraAssociacao_Click(object sender, EventArgs e)
+        {
+            if (this.DtvOrgUsu.CurrentRow != null)
+            {
+                this.DtvOrgUsu.Rows.RemoveAt(this.DtvOrgUsu.CurrentRow.Index);
+            }
+        }
+
+        private void btnREtiraAssociaOrgUsu_Click(object sender, EventArgs e)
+        {
+
+            if (this.dtvUserPapel.CurrentRow != null)
+            {
+                this.dtvUserPapel.Rows.RemoveAt(this.dtvUserPapel.CurrentRow.Index);
+            }
+        }
+
+        private void btnAssociaUsu_Click(object sender, EventArgs e)
+        {
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaUsuarioPapel, 0, vIdUsu, "", this.txt_IDUSER.Text);
+            if (FrmAssocia.ShowDialog() == DialogResult.OK)
+            {
+                var PAPEL = vPapNEG.ObtemPapelSelecionado(ref vBanco, FrmAssocia.vPUsu.ID_PAPEL);
+                this.dtvUserPapel.Rows.Add(FrmAssocia.vPUsu.ID_PAPEL, PAPEL.DS_PAPEL, FrmAssocia.vPUsu.ID_USU_INCL, FrmAssocia.vPUsu.DT_INCLUSAO);
+            }
+            FrmAssocia = null;
+        }
+
+        private void btnInclueAssociacao_Click(object sender, EventArgs e)
+        {
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaUsuarioOrg,0,vIdUsu,"",this.txt_IDUSER.Text);
+            if (FrmAssocia.ShowDialog() == DialogResult.OK)
+            {
+                var ORgSelec = vOrgNEG.OrgSelecionada(ref vBanco, FrmAssocia.vUorg.ID_ORG);
+                this.DtvOrgUsu.Rows.Add(FrmAssocia.vUorg.ID_ORG, ORgSelec.NM_ORG, FrmAssocia.vUorg.ID_USU_INCL, FrmAssocia.vUorg.DT_INCLUSAO);
+            }
+            FrmAssocia = null;
+        }
+
+        private void dtvUsers_KeyDown(object sender, KeyEventArgs e)
+        {
+            Boolean vbLoad;
+            var tecla = e.KeyCode;
+            int vIndexRow = 0;
+            if (tecla == Keys.Up)
+            {
+                vIndexRow = this.dtvUsers.CurrentRow.Index;
+                vIndexRow = this.dtvUsers.Rows.GetPreviousRow(vIndexRow, DataGridViewElementStates.None);
+                if (vIndexRow < 0)
+                {
+                    vIndexRow = this.dtvUsers.Rows.GetLastRow(DataGridViewElementStates.None);
+                }
+                this.dtvUsers.CurrentCell = this.dtvUsers.Rows[vIndexRow].Cells[0];
+
+                if (vIndexRow < 0)
+                {
+                    vIndexRow = this.dtvUsers.RowCount - 1;
+                }
+            }
+            else if (tecla == Keys.Down)
+            {
+                vIndexRow = this.dtvUsers.CurrentRow.Index;
+                vIndexRow = this.dtvUsers.Rows.GetNextRow(vIndexRow, DataGridViewElementStates.None);
+                if (vIndexRow < 0)
+                {
+                    vIndexRow = this.dtvUsers.Rows.GetFirstRow(DataGridViewElementStates.None);
+                }
+                this.dtvUsers.CurrentCell = this.dtvUsers.Rows[vIndexRow].Cells[0];
+
+                if (vIndexRow < 0)
+                {
+                    vIndexRow = this.dtvUsers.RowCount - 1;
+                }
+            }
+            else if (tecla == Keys.Enter)
+            {
+                if (this.dtvUsers.CurrentRow == null)
+                {
+                    this.dtvUsers.CurrentCell = this.dtvUsers[0, 0];
+                }
+            }
+
+
+
+            var bLoad = LoadReg(null, this.dtvUsers.CurrentRow.Cells[0].Value.ToString());
+           
         }
     }
 }

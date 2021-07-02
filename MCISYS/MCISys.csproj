@@ -141,6 +141,7 @@
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacaoLicenca.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorUnidadeMedida.cs" />
     <Compile Include="Negocio\BackOffice\Model\ImagensModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisFuncaoImplementar.cs" />

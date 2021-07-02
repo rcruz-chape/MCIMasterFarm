@@ -26,9 +26,9 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             return vVwOrgPapelDAL.ObtemPapelSelecionado(ref pBanco, pIDOrg, pIDUsu, pidPapel);
         }
-        public List<VwOrgPapel> ObtemListaPapeis(ref Banco pBanco, string pIDUsu, int pIDOrg)
+        public List<VwOrgPapel> ObtemListaPapeis(ref Banco pBanco, string pIDUsu, int pIDOrg, int pTpPapel=9)
         {
-            return vVwOrgPapelDAL.ObtemListOrgPapel(ref pBanco, pIDOrg, pIDUsu);
+            return vVwOrgPapelDAL.ObtemListOrgPapel(ref pBanco, pIDOrg, pIDUsu,pTpPapel);
         }
     }
 }

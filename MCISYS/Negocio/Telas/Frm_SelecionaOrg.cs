@@ -62,13 +62,15 @@ namespace MCIMasterFarm.Negocio.Telas
                 this.Dispose();
             }
         }
-
+            
         private void cbxPapel_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbxPapel.Enabled)
             {
-                vIdPapelSelecionado = this.cbxOrg.SelectedValue.ToString();
-
+                if (this.cbxPapel.SelectedValue != null)
+                {
+                    vIdPapelSelecionado = this.cbxPapel.SelectedValue.ToString();
+                }
                 
             }
         }

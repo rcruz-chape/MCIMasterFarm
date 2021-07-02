@@ -27,9 +27,12 @@ namespace MCISYS.Negocio.Telas
         public const int AssociaORGUsuario = 2;
         public const int AssociaPapelOrg = 3;
         public const int AssociaPapelUsuario = 4;
+        public const int AssociaUsuarioOrg = 5;
+        public const int AssociaUsuarioPapel = 6;
         private int vIdOrg = 0;
         private int vTipoAssociacao;
         private string vIdUsu;
+        private string vIdUsuSelecionado;
         private string vIdPapel;
         private Banco vBanco = new Banco();
         public SisOrganizacaoPapel vSysOrg = new SisOrganizacaoPapel();
@@ -37,14 +40,16 @@ namespace MCISYS.Negocio.Telas
         public VwPUsu vPUsu = new VwPUsu();
         public VwOrgPapel vSisPapel = new VwOrgPapel();
         public CorOrganizacao vOrg = new CorOrganizacao();
+        public SisPapel vPapel = new SisPapel();
         public SisUsuario regUsu = new SisUsuario();
         public List<VwOrgPapel> ListPap = new List<VwOrgPapel>();
         public List<SisUsuario> ListUsu = new List<SisUsuario>();
+        public List<SisPapel> ListPapel = new List<SisPapel>();
         public List<CorOrganizacao> ListOrg = new List<CorOrganizacao>();
         private ConfiguraControleNEG vControleNEG = new ConfiguraControleNEG();
         private CorOrganizacaoNEG vCorOrgNeg = new CorOrganizacaoNEG();
-
-        public Frm_Associa(ref Banco pBanco, int pIdTipoAssocia, int pIdOrg = 0, string psIdUsu = "", string psIdPapel = "")
+        private SisPapelNEG vPapNeg = new SisPapelNEG();
+        public Frm_Associa(ref Banco pBanco, int pIdTipoAssocia, int pIdOrg = 0, string psIdUsu = "", string psIdPapel = "", string psIdUsuSelecionado = "")
         {
             InitializeComponent();
             vTipoAssociacao = pIdTipoAssocia;
@@ -52,6 +57,7 @@ namespace MCISYS.Negocio.Telas
             vIdUsu = psIdUsu;
             vBanco = pBanco;
             vIdPapel = psIdPapel;
+            vIdUsuSelecionado = psIdUsuSelecionado;
             if (vTipoAssociacao == AssociaORGPapel || vTipoAssociacao == AssociaORGUsuario)
             {
                 this.lblOrg.Text = "Organização:  " + vIdOrg.ToString("000");
@@ -61,7 +67,13 @@ namespace MCISYS.Negocio.Telas
                 this.lblOrg.Text = "Papel:   " + vIdPapel;
 
             }
-            if (vTipoAssociacao == AssociaORGPapel || vTipoAssociacao == AssociaPapelOrg)
+            else if (vTipoAssociacao == AssociaUsuarioOrg || vTipoAssociacao == AssociaUsuarioPapel)
+            {
+                this.lblOrg.Text = "Usuário:   " + vIdUsuSelecionado;
+
+            }
+
+            if (vTipoAssociacao == AssociaORGPapel || vTipoAssociacao == AssociaPapelOrg || vTipoAssociacao == AssociaUsuarioPapel)
             {
                 Boolean vbAssocia = bCOnfiguraAssociaPapel();
             }
@@ -69,6 +81,23 @@ namespace MCISYS.Negocio.Telas
             {
                 Boolean vbAssocia = bCOnfiguraAssociaUsuario();
             }
+
+            else if (vTipoAssociacao == AssociaUsuarioOrg)
+            {
+                Boolean vbAssocia = bCOnfiguraAssociaORg();
+            }
+        }
+        public Boolean bCOnfiguraAssociaORg()
+        {
+            this.Text = "Associar Org ao Usuário " + vIdUsuSelecionado;
+            this.lblCbx.Text = "Org:  ";
+            this.grpBox.Text = "Associação de Organizações";
+            ListOrg = vCorOrgNeg.ObtemListaOrg(ref vBanco, vIdUsu);
+            this.cbxGeneral.DataSource = ListOrg;
+            var Controle = vControleNEG.SetComboBox(cbxGeneral, nameof(vOrg.NM_ORG), nameof(vOrg.ID_ORG));
+
+            return true;
+
 
         }
 
@@ -99,22 +128,53 @@ namespace MCISYS.Negocio.Telas
                 this.Text = "Associar Papel a Org " + vIdOrg.ToString("00000");
                 this.lblCbx.Text = "Papel:   ";
                 this.grpBox.Text = "Associação de Papel";
+                vOrg = vCorOrgNeg.OrgSelecionada(ref vBanco, vIdOrg);
                 var VwOrgPapNEG = new VwOrgPapelNEG();
-                ListPap = VwOrgPapNEG.ObtemListaPapeis(ref vBanco, vIdUsu, vIdOrg);
+                
+
+                if (vOrg.TP_ORG == vCorOrgNeg.ADMINISTRATIVA)
+                {
+                    ListPap = VwOrgPapNEG.ObtemListaPapeis(ref vBanco, vIdUsu, vIdOrg, 0);
+                }
+                else
+                {
+                    ListPap = VwOrgPapNEG.ObtemListaPapeis(ref vBanco, vIdUsu, vIdOrg,1);
+                }
 
                 this.cbxGeneral.DataSource = ListPap;
                 var Controle = vControleNEG.SetComboBox(cbxGeneral, nameof(vSisPapel.DS_PAPEL), nameof(vSisPapel.ID_PAPEL));
 
             }
-            else
+            else if (vTipoAssociacao == AssociaPapelOrg)
             {
                 this.Text = "Associar Organização ao Papel " + vIdPapel;
                 this.lblCbx.Text = "Organização:   ";
                 this.grpBox.Text = "Associação de ORGs";
+                vPapel = vPapNeg.ObtemPapelSelecionado(ref vBanco, vIdPapel);
                 ListOrg = vCorOrgNeg.ObtemListaOrg(ref vBanco, vIdUsu);
+
+                if (vPapel.TP_PAPEL == 0)
+                {
+                    ListOrg = ListOrg.FindAll(Org => Org.TP_ORG == vCorOrgNeg.ADMINISTRATIVA);
+                }
+                else if(vPapel.TP_PAPEL == 1)
+                {
+                    ListOrg = ListOrg.FindAll(Org => Org.TP_ORG == vCorOrgNeg.TOPERACIONAL);
+                }
 
                 this.cbxGeneral.DataSource = ListOrg;
                 var Controle = vControleNEG.SetComboBox(cbxGeneral, nameof(vOrg.NM_ORG_RESUMIDO), nameof(vOrg.ID_ORG));
+
+            } else
+            {
+                this.Text = "Associar Papel ao Usuário " + vIdUsuSelecionado;
+                this.lblCbx.Text = "Papel:   ";
+                this.grpBox.Text = "Associação de Papel";
+                var VwPapel = new SisPapelNEG();
+                ListPapel = VwPapel.ObtemTodosPapeis(ref vBanco);
+
+                this.cbxGeneral.DataSource = ListPapel;
+                var Controle = vControleNEG.SetComboBox(cbxGeneral, nameof(vSisPapel.DS_PAPEL), nameof(vSisPapel.ID_PAPEL));
 
             }
 
@@ -155,6 +215,23 @@ namespace MCISYS.Negocio.Telas
                 vSysOrg.ID_USU_INCL = vIdUsu;
                 vSysOrg.DT_INCLUSAO = DateTime.Now;
             }
+
+            else if (vTipoAssociacao == AssociaUsuarioOrg)
+            {
+                vUorg.ID_ORG = Convert.ToInt32(this.cbxGeneral.SelectedValue.ToString());
+                vUorg.ID_USU = vIdUsuSelecionado;
+                vUorg.ID_USU_INCL = vIdUsu;
+                vUorg.DT_INCLUSAO = DateTime.Now;
+            }
+
+            else if (vTipoAssociacao == AssociaUsuarioPapel)
+            {
+                vPUsu.ID_PAPEL = this.cbxGeneral.SelectedValue.ToString();
+                vPUsu.ID_USU = vIdUsuSelecionado;
+                vPUsu.ID_USU_INCL = vIdUsu;
+                vPUsu.DT_INCLUSAO = DateTime.Now;
+            }
+
 
             this.DialogResult = DialogResult.OK;
             this.Dispose();

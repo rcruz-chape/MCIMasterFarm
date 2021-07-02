@@ -35,6 +35,7 @@ namespace MCISYS.Negocio.Telas
         private int Comando;
         private string vIdPapelSelecionada;
 
+        private ConfiguraControleNEG vControleNEG = new ConfiguraControleNEG();
         private List<VwOrgPapel> ListPapel = new List<VwOrgPapel>();
         private List<VwPUsu> ListPapelUsu = new List<VwPUsu>();
         private List<SisOrganizacaoPapel> ListOrgPapel = new List<SisOrganizacaoPapel>();
@@ -50,6 +51,11 @@ namespace MCISYS.Negocio.Telas
 
         public Boolean bModoPreGravacao;
 
+        private Dictionary<int, string> DicTpPapel = new Dictionary<int, string>
+        {
+            {0,"Administrativo" },
+            {1,"Operacional" }
+        };
 
         private MessageBoxIcon Alert = MessageBoxIcon.Question;
 
@@ -75,6 +81,7 @@ namespace MCISYS.Negocio.Telas
             vDsPapel = psDSPapel;
             bExecuta = CarregaBarraStatus();
             bExecuta = bConfiguraTituloDbGrid();
+            bExecuta = CarregaCBxTpOrg();
             bExecuta = CarregaPapeis();
             bExecuta = LimpaTela();
             bExecuta = LoadReg();
@@ -252,6 +259,10 @@ namespace MCISYS.Negocio.Telas
             this.lbl_ID_Usu_Incl.Text = vSisPapel.ID_USU_INCL;
             this.lbl_Dt_Inclusao.Text = vSisPapel.DT_INCLUSAO.ToString("dd/MM/yyyy");
             this.lbl_Id_Usu_Alterado.Text = vSisPapel.ID_USU_ALT;
+            this.cbxTpOrg.SelectedItem = vSisPapel.TP_PAPEL;
+            this.cbxTpOrg.Text = DicTpPapel[vSisPapel.TP_PAPEL];
+            //this.cbx_TpOrg.SelectedItem = CorOrg.TP_ORG;
+            //this.cbx_TpOrg.Text = TraduzTpOrg(CorOrg.TP_ORG);
             if (vSisPapel.DT_ALTERACAO.HasValue)
             {
                 this.lbl_Dt_Alteracao.Text = vSisPapel.DT_ALTERACAO.Value.ToString("dd/MM/yyyy");
@@ -340,12 +351,14 @@ namespace MCISYS.Negocio.Telas
         {
             this.txt_IDPAPEL.Enabled = true;
             this.txt_NmPapel.Enabled = true;
+            this.cbxTpOrg.Enabled = true;
             return true;
         }
         public Boolean DesabilitaCamposTela()
         {
             this.txt_IDPAPEL.Enabled = false;
             this.txt_NmPapel.Enabled = false;
+            this.cbxTpOrg.Enabled = false;
             return true;
         }
         public Boolean RegSalvar()
@@ -410,6 +423,7 @@ namespace MCISYS.Negocio.Telas
                     RegPapel.DS_PAPEL = this.txt_NmPapel.Text;
                     RegPapel.ID_USU_INCL = vIdUsu;
                     RegPapel.DT_INCLUSAO = DateTime.Now;
+                    RegPapel.TP_PAPEL = Convert.ToInt32(this.cbxTpOrg.SelectedValue);
                     RegPapel.DT_ALTERACAO = null;
                     bAcao = vPapNeg.CriaPapel(ref vBanco, RegPapel);
                     if (this.DtgOrg.RowCount > 0)
@@ -444,6 +458,7 @@ namespace MCISYS.Negocio.Telas
                     RegPapel.ID_PAPEL = this.txt_IDPAPEL.Text;
                     RegPapel.DS_PAPEL = this.txt_NmPapel.Text;
                     RegPapel.ID_USU_ALT = vIdUsu;
+                    RegPapel.TP_PAPEL = Convert.ToInt32(this.cbxTpOrg.SelectedValue);
                     RegPapel.DT_ALTERACAO = DateTime.Now;
                     bAcao = vPapNeg.AlteraPapel(ref vBanco, RegPapel);
                     if (this.DtgOrg.RowCount > 0)
@@ -618,6 +633,13 @@ namespace MCISYS.Negocio.Telas
                 }
                 vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
             }
+        }
+        private Boolean CarregaCBxTpOrg()
+        {
+            var List = DicTpPapel.ToList();
+            this.cbxTpOrg.DataSource = List;
+            var vControle = vControleNEG.SetComboBox(cbxTpOrg,"Value","Key");
+            return true;
         }
     }
 }

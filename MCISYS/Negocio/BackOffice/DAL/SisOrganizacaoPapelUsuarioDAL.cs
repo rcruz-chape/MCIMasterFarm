@@ -19,7 +19,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
         {
 			Boolean vbResult;
 			Boolean vbClose;
-			string vsSql = @"SELECT 1 FROM SIS_ORGANIZACAO_PAPEL 
+			string vsSql = @"SELECT 1 FROM SIS_ORGANIZACAO_PAPEL_USUARIO 
 							  WHERE ID_USU = @ID_USU
 								AND ID_ORG = @ID_ORG
 								AND ID_PAPEL = @ID_PAPEL";
@@ -40,7 +40,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 
 		public Boolean fbExcluiAssociacao(ref Banco pBanco, string pIDUsu = null, int pIdOrg = 0, string pIDPapel = null)
         {
-			string vsSql = @"DELETE FROM SIS_ORGANIZACAO_PAPEL";
+			string vsSql = @"DELETE FROM SIS_ORGANIZACAO_PAPEL_USUARIO";
 			var Parametro = new Dictionary<string, dynamic>();
 			if (pIdOrg != 0)
             {
@@ -82,7 +82,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
 		}
 		public Boolean fbExclueAssocia(ref Banco pBanco, SisOrganizacaoPapelUsuario pOPUsu)
         {
-			string vsSql = @"DELETE FROM SIS_ORGANIZACAO_PAPEL
+			string vsSql = @"DELETE FROM SIS_ORGANIZACAO_PAPEL_USUARIO
 						      WHERE ID_ORG = @ID_ORG
 								AND ID_PAPEL = @ID_PAPEL
 								AND ID_USU = @ID_USU";

@@ -450,7 +450,18 @@ namespace MCISYS.Negocio.Telas
                             vLinhaOPap.DT_INCLUSAO = Convert.ToDateTime(DtgPapel.Rows[linha].Cells[3].Value.ToString());
                             ListPapelAssociado.Add(vLinhaOPap);
                         }
-                        bInsere = vOrgPapelNEG.AssociaPapelOrg(ref vBanco, ListPapel, ListPapelAssociado);
+                        if (ListPapel.Count > ListPapelAssociado.Count)
+                        {
+                            bInsere = vOrgPapelNEG.RetiraAssociaPapOrg(ref vBanco, ListPapel,ListPapelAssociado);
+                        }
+                        else if (ListPapel.Count < ListPapelAssociado.Count)
+                        {
+                            bInsere = vOrgPapelNEG.AssociaPapelOrg(ref vBanco, ListPapel, ListPapelAssociado);
+                        }
+                        else
+                        {
+                            bInsere = true;
+                        }
                     }
                     if (this.dGvUser.Rows.Count-1 > 0)
                     {
@@ -461,12 +472,27 @@ namespace MCISYS.Negocio.Telas
                             var LinhaUORG = new SisUsuarioOrganizacao();
                             LinhaUORG.ID_ORG = vIdOrgSelecionada;
                             LinhaUORG.ID_USU = dGvUser.Rows[linha].Cells[0].Value.ToString();
-                            LinhaUORG.ID_USU_INCL = dGvUser.Rows[linha].Cells[1].Value.ToString();
+                            if (dGvUser.Rows[linha].Cells[1].Value != null)
+                            {
+                                LinhaUORG.ID_USU_INCL = dGvUser.Rows[linha].Cells[1].Value.ToString();
+                            }
+                            
                             LinhaUORG.DT_INCLUSAO = Convert.ToDateTime(dGvUser.Rows[linha].Cells[2].Value.ToString());
                             ListUORG.Add(LinhaUORG);
                         }
-                        bInsere = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, ListUser, ListUORG);
+                        if (ListUser.Count > ListUORG.Count)
+                        {
+                            bInsere = vUorgNEG.bDesassociaUsuarioOrg(ref vBanco, ListUser, ListUORG);
 
+                        }
+                        else if (ListUser.Count < ListUORG.Count)
+                        {
+                            bInsere = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, ListUser, ListUORG);
+                        }
+                        else
+                        {
+                            bInsere = true;
+                        }
                     }
                     break;    
 

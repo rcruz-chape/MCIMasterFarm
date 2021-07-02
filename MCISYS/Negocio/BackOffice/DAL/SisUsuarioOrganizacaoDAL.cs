@@ -54,16 +54,16 @@ namespace MCISYS.Negocio.BackOffice.DAL
 	                              , UORG.ID_USU
 	                              , UORG.ID_USU_INCL
 	                              , UORG.DT_INCLUSAO
-                               FROM SIS_USUARIO_ORGANIZACAO UORG";
+                               FROM SIS_USUARIO_ORGANIZACAO UORG ";
             var Parametros = new Dictionary<string, dynamic>();
             if (pIdOrg != 0)
             {
-                vsSql = "WHERE UORG.ID_ORG = @ID_ORG";
+                vsSql += "WHERE UORG.ID_ORG = @ID_ORG";
                 Parametros.Add("ID_ORG", pIdOrg);
             }
             else if (pIdUsu != null)
             {
-                vsSql = "WHERE UORG.ID_USU = @ID_USU";
+                vsSql += "WHERE UORG.ID_USU = @ID_USU";
                 Parametros.Add("ID_USU", pIdUsu);
             };
             return GetRegistros(ref pBanco, vsSql, Parametros);

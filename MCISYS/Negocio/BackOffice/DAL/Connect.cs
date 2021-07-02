@@ -90,7 +90,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             
             return dataReader;
         }
-        public string montaSql(string pSql, Dictionary<string, dynamic> pParametros)
+        public string montaSql(string pSql, Dictionary<string, dynamic> pParametros = null)
         {
             string vSql = pSql;
             foreach (var item in pParametros)            

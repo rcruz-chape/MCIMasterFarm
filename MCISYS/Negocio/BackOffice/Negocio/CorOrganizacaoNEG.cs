@@ -16,6 +16,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     {
         private CorOrganizacaoDAL vCorOrganizacaoDAL = new CorOrganizacaoDAL();
         public string ADMINISTRATIVA = "A";
+        public string TOPERACIONAL = "O";
         public int OPERACIONAL = 1;
         public const int ORGADM = 1;
         public CorOrganizacao OrgSelecionada(ref Banco pBanco, int pIdOrg)

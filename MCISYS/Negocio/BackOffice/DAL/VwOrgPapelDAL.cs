@@ -11,20 +11,44 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
     public class VwOrgPapelDAL
     {
         public const string CADMIN = "admin";
-        public List<VwOrgPapel> ObtemListOrgPapel(ref Banco pBanco, int pIdOrg, string pIdUsu)
+        public List<VwOrgPapel> ObtemListOrgPapel(ref Banco pBanco, int pIdOrg, string pIdUsu,int pTpPapel)
         {
-            string vsSql = @"select PAP.DS_PAPEL
+            string vsSql;
+            var Parametros = new Dictionary<string, dynamic>();
+            if (pIdUsu == CADMIN)
+            {
+                vsSql = @"select DS_PAPEL
+                               , ID_PAPEL
+                            from SIS_PAPEL";
+                if (pTpPapel == 0 || pTpPapel == 1)
+                {
+                    vsSql += Environment.NewLine + @"where TP_PAPEL = @TP_PAPEL ";
+                    Parametros.Add("TP_PAPEL", pTpPapel);
+                }
+                else
+                {
+                    vsSql += Environment.NewLine + @"where TP_PAPEL IN (0,1) ";
+                }
+
+            }
+            else
+            {
+                vsSql = @"select PAP.DS_PAPEL
                               	  , PAP.ID_PAPEL
                                from VW_PAP_USUARIO PAP";
-            var Parametros = new Dictionary<string, dynamic>();
-
-
-            if (pIdUsu != CADMIN)
-            {
-                vsSql += @"where PAP.ID_USU = @ID_USU
+                if (pTpPapel == 0 || pTpPapel == 1)
+                {
+                    vsSql += Environment.NewLine + @"where TP_PAPEL = @TP_PAPEL ";
+                    Parametros.Add("TP_PAPEL", pTpPapel);
+                }
+                else
+                {
+                    vsSql += Environment.NewLine + @"where TP_PAPEL IN (0,1) ";
+                }
+                vsSql += Environment.NewLine + @"and PAP.ID_USU = @ID_USU
                                 AND PAP.ID_ORG = @ID_ORG";
                 Parametros.Add("ID_USU", pIdUsu);
-                Parametros.Add("ID_ORG", pIdOrg);
+                Parametros.Add("ID_ORG", pIdOrg);               
             }
             return RecuperaListaPapel(ref pBanco, vsSql, Parametros);
 

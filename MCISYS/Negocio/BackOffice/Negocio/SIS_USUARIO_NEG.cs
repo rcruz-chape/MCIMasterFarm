@@ -50,7 +50,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             var SisParametroNEG = new SIS_PARAMETRO_NEG();
             var SisParametroREG = SisParametroNEG.ObtemParametro(ref pBanco);
             var vSisUsuario = pSisUsuario;
-            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario);
+            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario,false);
             vbNovaSenha = EnviaNovaSenha(vSisUsuario, ref pBanco);
             vbNovaSenha = bloqueiaSenhaExpirada(vSisUsuario, ref pBanco);
             return vbNovaSenha;
@@ -63,13 +63,12 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             var SisParametroNEG = new SIS_PARAMETRO_NEG();
             var SisParametroREG = SisParametroNEG.ObtemParametro(ref pBanco);
             var vSisUsuario = pSisUsuario;
-            vSisUsuario.ds_pwd = "w";
+            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario, true); 
             vSisUsuario.ind_bloqueado = sUsuarioBloqueado;
             vSisUsuario.ind_motivo_bloqueio = iSenhaExpirada;
             vSisUsuario.dt_inclusao = DateTime.Now;
             vSisUsuario.qtd_login_sem_sucesso = 0;
             bcria = vSisUsuarioDal.insereUsuario(vSisUsuario, ref pBanco);
-            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario, true);
             bcria = EnviaNovaSenha(vSisUsuario, ref pBanco);
             return bcria;
         }
@@ -77,8 +76,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             
             var SisEmailNEG = new EmailNeg();            
-            string vsMensagem = @" Prezado   " + pSisUsuario.nm_usu + @" segue a sua nova senha: 
-                        " + pSisUsuario.ds_pwd + " A Senha reiniciada já estará expirada e deve ser altarada no primerio login.";
+            string vsMensagem = @" Prezado   " + pSisUsuario.nm_usu + @" segue a sua nova senha: " + pSisUsuario.ds_pwd + Environment.NewLine + " A Senha reiniciada já estará expirada e deve ser altarada no primerio login.";
             Boolean Send = SisEmailNEG.SendEmail("Envio de Nova Senha", vsMensagem, pSisUsuario.ds_email, pSisUsuario.nm_usu, ref pBanco);
             return Send;
         }
@@ -163,7 +161,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         }
         public string defineSenhaUsuario(ref Banco pBanco, SisParametro sisParametro,  ref SisUsuario pSisUSuario, Boolean vbInsert = false)
         {
-            string caracteresPermitidos = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@$?_ - ";
+            string caracteresPermitidos = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@$?_-";
             SisUsuario vSisUsuario = pSisUSuario;
             char[] chars = new char[sisParametro.ind_total_car];
             Random sRd = new Random();
@@ -176,7 +174,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
 
             vSisUsuario.ds_pwd = Criptografia.CritografiaDados(senhaAlterada);
             var vSisUsuDal = new SIS_USUARIO_DAL();
-            if (vbInsert = false)
+            if (vbInsert == false)
             {
                 Boolean vbAlteraSenha = vSisUsuDal.AtualizaSenha(pSisUSuario, ref pBanco);
             }
@@ -212,7 +210,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             var SisUsuarioDAL = new SIS_USUARIO_DAL();
             SisUsuario vSisUsuario = SisUsuarioDAL.obtemUsuario(pIdUsu, ref pBanco);
-            return (vSisUsuario != null);
+            return (vSisUsuario.id_usu != null);
             
         }
         public Boolean AlteraDadosUsuario(SisUsuario pUsu, ref Banco pBanco)

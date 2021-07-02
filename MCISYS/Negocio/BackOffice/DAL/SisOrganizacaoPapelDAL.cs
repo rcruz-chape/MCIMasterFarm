@@ -102,9 +102,9 @@ namespace MCISYS.Negocio.BackOffice.DAL
             {
                 vsSql += @"        AND EXISTS (SELECT 1
                                   FROM SIS_ORGANIZACAO_PAPEL_USUARIO OPUSU
-                                 WHERE OPUSU.ID_PAPEL = VSORG.ID_PAPEL
-                                   AND OPUSU.ID_ORG = VSORG.ID_ORG
-                                   AND OPUSU.ID_USU =@ID_USU)";
+                                 WHERE OPUSU.ID_PAPEL = VW_SIS_ORGANIZACAO.ID_PAPEL
+                                   AND OPUSU.ID_ORG = VW_SIS_ORGANIZACAO.ID_ORG
+                                   AND OPUSU.ID_USU = @ID_USU)";
                 Parametro.Add("ID_USU", pIdUsu);
             }
             return RecuperaRegistro(ref pBanco, vsSql, Parametro);
@@ -129,8 +129,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
             {
                 vsSql += @"        AND EXISTS (SELECT 1
                                   FROM SIS_ORGANIZACAO_PAPEL_USUARIO OPUSU
-                                 WHERE OPUSU.ID_PAPEL = VSORG.ID_PAPEL
-                                   AND OPUSU.ID_ORG = VSORG.ID_ORG
+                                 WHERE OPUSU.ID_PAPEL = VW_SIS_ORGANIZACAO.ID_PAPEL
+                                   AND OPUSU.ID_ORG = VW_SIS_ORGANIZACAO.ID_ORG
                                    AND OPUSU.ID_USU =@ID_USU)";
                 Parametro.Add("ID_USU", pIdUsu);
             }

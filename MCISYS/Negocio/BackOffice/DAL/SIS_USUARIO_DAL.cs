@@ -32,7 +32,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             var Parametro = new Dictionary<string, dynamic>();
             if (pIdUsu != CUSUADMIN) 
             {
-                vsSql += @"WHERE EXISTS (
+                vsSql += Environment.NewLine + @"WHERE EXISTS (
 		                                SELECT 1
 		                                FROM SIS_ORGANIZACAO_PAPEL_USUARIO OPUSU
 		                                WHERE OPUSU.ID_ORG = @ID_ORG
@@ -185,6 +185,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                                  )";
             var parametros = new Dictionary<string, dynamic>()
             {
+                { "ID_USU_ALT", sisUSu.id_usu_alt },
+                { "ID_USU_INCL", sisUSu.id_usu_incl },
                 { "ID_USU", sisUSu.id_usu },
                 { "NM_USU", sisUSu.nm_usu },
                 { "DS_EMAIL", sisUSu.ds_email },
@@ -195,9 +197,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 { "QTD_LOGIN_SEM_SUCESSO", sisUSu.qtd_login_sem_sucesso },
                 { "ID_PESSOA_FISICA", sisUSu.id_pessoa_fisica },
                 { "DT_INCLUSAO", sisUSu.dt_inclusao },
-                { "DT_ALTERACAO", sisUSu.dt_alteracao },
-                { "ID_USU_ALT", sisUSu.id_usu_alt },
-                { "ID_USU_INCL", sisUSu.id_usu_incl }
+                { "DT_ALTERACAO", sisUSu.dt_alteracao }
+                
             };
             var Connect = new Connect();
             return Connect.insert(ref pBanco, vSql, parametros);
