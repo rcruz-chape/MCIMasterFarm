@@ -142,6 +142,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                FROM SIS_FUNCAO";
             return GetListaFuncao(ref pBanco, vsSql);
         }
+        
         private List<SisFuncao> GetListaFuncao(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null)
         {
             Connect vConnect = new Connect();
@@ -162,8 +163,14 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     rSisFuncao.ind_cons_reg = GetResultado.GetString(6);
                     rSisFuncao.ind_execute = GetResultado.GetString(7);
                     rSisFuncao.dt_inclusao = GetResultado.GetDateTime(8);
-                    rSisFuncao.dt_alteracao = GetResultado.GetDateTime(9);
-                    rSisFuncao.id_usu_alt = GetResultado.GetString(10);
+                    if (!GetResultado.IsDBNull(9))
+                    { 
+                        rSisFuncao.dt_alteracao = GetResultado.GetDateTime(9);
+                    }
+                    if (!GetResultado.IsDBNull(10))
+                    {
+                        rSisFuncao.id_usu_alt = GetResultado.GetString(10);
+                    }
                     rSisFuncao.id_usu_incl = GetResultado.GetString(11);
                     rSisFuncao.ind_tipo_funcao = GetResultado.GetString(12);
                     rSisFuncao.NM_IMAGEM_ICONE = GetResultado.GetString(13);

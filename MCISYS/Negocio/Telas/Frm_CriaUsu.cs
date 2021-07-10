@@ -353,6 +353,21 @@ namespace MCISYS.Negocio.Telas
                     this.btnREtiraAssociaOrgUsu.Enabled = false;
                     break;
 
+                case iRegGravar:
+
+                    this.btnNovo.Enabled = true;
+                    this.btnEditar.Enabled = true;
+                    this.btnCriar.Enabled = false;
+                    this.btnAtivar.Enabled = false;
+                    this.btnDesativar.Enabled = false;
+                    this.btnSenha.Enabled = false;
+                    this.btnGravar.Enabled = false;
+                    this.btnInclueAssociacao.Enabled = false;
+                    this.btnRetiraAssociacao.Enabled = false;
+                    this.btnAssociaUsu.Enabled = false;
+                    this.btnREtiraAssociaOrgUsu.Enabled = false;
+                    break;
+
             }
             return true;
 
@@ -528,13 +543,34 @@ namespace MCISYS.Negocio.Telas
                 for (int linha = 0; linha < vTotRowCount; linha++)
                 {
                     int iIdOrg = Convert.ToInt32(this.DtvOrgUsu.Rows[linha].Cells[0].Value);
+                    var RegOrg = vOrgNEG.OrgSelecionada(ref vBanco, iIdOrg);
                     if (this.dtvUserPapel.Rows.Count > 0)
                     {
                         VtotRC = this.dtvUserPapel.Rows.Count;
                         for (int reg = 0; reg < VtotRC; reg++)
                         {
                             string vsPapel = this.dtvUserPapel.Rows[reg].Cells[0].Value.ToString();
-                            vbExiste = vsOrgPapUsuNEG.UsuarioAssociadoORgPapel(ref vBanco, iIdOrg, this.txt_IDUSER.Text, vsPapel);
+                            var RegPapel = vPapNEG.ObtemPapelSelecionado(ref vBanco, vsPapel);
+                            if (RegOrg.TP_ORG == "A" && RegPapel.TP_PAPEL == 0)
+                            {
+                                vbExiste = true;
+                            }
+                            else if (RegOrg.TP_ORG == "O" && RegPapel.TP_PAPEL == 1)
+                            {
+                                vbExiste = true;
+                            }
+                            else
+                            {
+                                vbExiste = false;
+                            }
+                            if (vbExiste)
+                            {
+                                vbExiste = vsOrgPapUsuNEG.UsuarioAssociadoORgPapel(ref vBanco, iIdOrg, this.txt_IDUSER.Text, vsPapel);
+                            }
+                            else
+                            {
+                                vbExiste = true;
+                            }
                             if (!vbExiste)
                             {
                                 var vSisOrganizacaoPapelUsuario = new SisOrganizacaoPapelUsuario();
@@ -594,12 +630,12 @@ namespace MCISYS.Negocio.Telas
             if (vListPUSU.Count < PUorg.Count)
             {
                 vbReturn = vPusuNEG.AssociaPapelUsuario(ref vBanco, vListPUSU, PUorg);
-                vbReturn = AtualizaAssociacaoOrgPapel();
             }
             else if (vListPUSU.Count > PUorg.Count)
             {
                 vbReturn = vPusuNEG.DesassociaPapelUsuario(ref vBanco, vListPUSU, PUorg);
             }
+            vbReturn = AtualizaAssociacaoOrgPapel();
             return vbReturn;
         }
         public List<SisPapelUsuario> MontaListaRegListUSuPapel()

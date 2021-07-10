@@ -589,7 +589,7 @@ namespace MCISYS.Negocio.Telas
 
         private void btnInclueAssociacao_Click(object sender, EventArgs e)
         {
-            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco,Frm_Associa.AssociaORGPapel, vIdOrgSelecionada, vIdUsu);
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco,Frm_Associa.AssociaORGPapel, vIdOrgSelecionada, vIdUsu,"","",9,this.cbx_TpOrg.SelectedValue.ToString());
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {
                 int vIndex = this.DtgPapel.RowCount + 1;

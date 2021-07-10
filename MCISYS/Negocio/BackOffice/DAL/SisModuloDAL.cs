@@ -162,10 +162,16 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     RegSisModulo.ID_SIS = GetResultado.GetInt32(5);
                     RegSisModulo.DS_MOD = GetResultado.GetString(2);
                     RegSisModulo.DS_SIGLA_MOD = GetResultado.GetString(8);
-                    RegSisModulo.DT_ALTERACAO = GetResultado.GetDateTime(4);
+                    if (!GetResultado.IsDBNull(4))
+                    {
+                        RegSisModulo.DT_ALTERACAO = GetResultado.GetDateTime(4);
+                    }
                     RegSisModulo.DT_INCLUSAO = GetResultado.GetDateTime(3);
-                    RegSisModulo.ID_USU_ALT = GetResultado.GetString(7);
-                    RegSisModulo.ID_USU_INCL = GetResultado.GetString(6);
+                    if (!GetResultado.IsDBNull(6))
+                    {
+                        RegSisModulo.ID_USU_ALT = GetResultado.GetString(6);
+                    }
+                    RegSisModulo.ID_USU_INCL = GetResultado.GetString(7);
                     RegSisModulo.NM_IMAGEM_ICONE = GetResultado.GetString(9);
                     RegSisModulo.TP_MOD_ORG = GetResultado.GetString(10);
                     vlSisModulo.Add(RegSisModulo);

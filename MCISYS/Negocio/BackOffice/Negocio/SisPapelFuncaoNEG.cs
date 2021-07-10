@@ -23,5 +23,29 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisPapelFuncaoDAL.fbInsereFuncaoPapel(ref pBanco, pSisPapelFuncao);
         }
+        public Boolean fbAssociaFuncaoPapelCriado(ref Banco pBanco, string pIdPapel, int pTpPapel)
+        {
+            List<SisPapelFuncao> vListSisPapel = new List<SisPapelFuncao>();
+            Boolean bInsert = true;
+            SisModuloFuncaoNEG vSisFuncaoNeg = new SisModuloFuncaoNEG();
+            var ListFuncao = vSisFuncaoNeg.ListaModuloFuncao(ref pBanco, pTpPapel);
+            foreach(var Funcao in ListFuncao)
+            {
+                SisPapelFuncao vPapelFuncao = new SisPapelFuncao();
+                vPapelFuncao.ID_PAPEL = pIdPapel;
+                vPapelFuncao.ID_SIS = Funcao.ID_SIS;
+                vPapelFuncao.ID_MOD = Funcao.ID_MOD;
+                vPapelFuncao.ID_FUNCAO = Funcao.ID_FUNCAO;
+                vPapelFuncao.ind_cons_reg = "S";
+                vPapelFuncao.ind_excl_reg = "S";
+                vPapelFuncao.ind_execute = "S";
+                vPapelFuncao.ind_incl_alt = "S";
+                vPapelFuncao.ind_incl_reg = "S";
+                vListSisPapel.Add(vPapelFuncao);
+            }
+            bInsert = fbAssociaListaFuncaoPapel(ref pBanco, vListSisPapel);
+
+            return bInsert;
+        }
     }
 }

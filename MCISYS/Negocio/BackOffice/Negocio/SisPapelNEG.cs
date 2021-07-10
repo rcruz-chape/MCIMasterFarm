@@ -35,7 +35,14 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         }
         public Boolean CriaPapel(ref Banco pBanco, SisPapel pPap)
         {
-            return vPapDAL.InsertPapel(ref pBanco, pPap);
+            Boolean vbInsert;
+            vbInsert = vPapDAL.InsertPapel(ref pBanco, pPap);
+            if (vbInsert)
+            {
+                SisPapelFuncaoNEG vSisPapelFuncaoNEG = new SisPapelFuncaoNEG();
+                vbInsert = vSisPapelFuncaoNEG.fbAssociaFuncaoPapelCriado(ref pBanco, pPap.ID_PAPEL, pPap.TP_PAPEL);
+            }
+            return vbInsert;
         }
         public Boolean AlteraPapel(ref Banco pBanco, SisPapel pPap)
         {

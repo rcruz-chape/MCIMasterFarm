@@ -61,9 +61,13 @@ namespace MCIMasterFarm.Negocio.Telas
             InitializeComponent();
 
             var bConfiguraStatus = ConfiguraBarraStatus();
+
             var bConfiguraModulo = ConfiguraModuloAtivos();
-            var bConfiguraFuncao = ConfiguraFuncaoAtiva();
-            var bMontaTreeList = AlimentaMCITreeList();
+            if (bConfiguraModulo)
+            {
+                var bConfiguraFuncao = ConfiguraFuncaoAtiva();
+                var bMontaTreeList = AlimentaMCITreeList();
+            }
         }
         private Boolean ConfiguraFuncaoAtiva()
         {
@@ -78,11 +82,13 @@ namespace MCIMasterFarm.Negocio.Telas
         {
             Boolean vReturn = false;
             vModuloAssociado = vSisModuloNeg.ObtemModulosHabilitados(ref vBanco, vIDOrgSelecionada, 1,vTPOrg);
+            vReturn = vModuloAssociado.Count != 0;
             if (vModuloAssociado.Count == 0)
             {
                 if (cIDOrgAdm != vIDOrgSelecionada)
                 {
                     vReturn = vErro.DisplayErrorModulo(vIDOrgSelecionada, vwOrgUsu.NM_ORG);
+
                 }
                 else
                 {
@@ -257,12 +263,18 @@ namespace MCIMasterFarm.Negocio.Telas
             {
                 vIDOrgSelecionada = vFrm_SelecionaOrg.vIdOrgSelecionada;
                 vIDPapelSelecionado = vFrm_SelecionaOrg.vIdPapelSelecionado;
+                var REgOrgNEG = new CorOrganizacaoNEG();
+                var RegOrg = REgOrgNEG.OrgSelecionada(ref vBanco, vIDOrgSelecionada);
+                vTPOrg = RegOrg.TP_ORG;
                 vFrm_SelecionaOrg = null;
                 var bCOnfiguraStatus = ConfiguraBarraStatus();
                 var bConfiguraModulo = ConfiguraModuloAtivos();
-                var bConfiguraFuncao = ConfiguraFuncaoAtiva();
-                var bMontaTreeList = AlimentaMCITreeList();
-            }
+                if (bConfiguraModulo)
+                {
+                    var bConfiguraFuncao = ConfiguraFuncaoAtiva();
+                    var bMontaTreeList = AlimentaMCITreeList();
+                }
+             }
         }
 
         private void trv_MCISYS_AfterSelect(object sender, TreeViewEventArgs e)

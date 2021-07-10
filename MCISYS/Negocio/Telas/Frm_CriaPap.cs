@@ -211,8 +211,8 @@ namespace MCISYS.Negocio.Telas
         }
 
         private void btnInclueAssociacao_Click(object sender, EventArgs e)
-        {
-            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelOrg, 0, vIdUsu, this.txt_IDPAPEL.Text);
+        {   
+            Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelOrg, 0, vIdUsu, this.txt_IDPAPEL.Text,"",Convert.ToInt32(this.cbxTpOrg.SelectedValue),"");
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {
                 int vIndex = this.DtgOrg.RowCount + 1;
@@ -223,6 +223,7 @@ namespace MCISYS.Negocio.Telas
 
         private void btnAssociaUsu_Click(object sender, EventArgs e)
         {
+
             Frm_Associa FrmAssocia = new Frm_Associa(ref vBanco, Frm_Associa.AssociaPapelUsuario, 0, vIdUsu, this.txt_IDPAPEL.Text);
             if (FrmAssocia.ShowDialog() == DialogResult.OK)
             {

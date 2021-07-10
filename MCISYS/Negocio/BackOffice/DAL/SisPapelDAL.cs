@@ -128,6 +128,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {
                     vRegPapel.DT_ALTERACAO = GetResult.GetDateTime(5);
                 }
+                vRegPapel.TP_PAPEL = GetResult.GetInt32(6);
             }
             var bVlose = vConnect.FechaConnection(ref vConnectado);
 

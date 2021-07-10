@@ -26,7 +26,7 @@ namespace MCIMasterFarm.Negocio.BackOffice
             vMEssagem += "Favor providenciar o licenciamento da Respectiva Organização Mãe";
             var vDialog = MessageBox.Show(vMEssagem, "Licenciamento", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            return true;
+            return false;
         }
     }
 }

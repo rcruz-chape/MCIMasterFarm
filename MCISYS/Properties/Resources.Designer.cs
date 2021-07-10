@@ -63,6 +63,106 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap CadEmpresa {
+            get {
+                object obj = ResourceManager.GetObject("CadEmpresa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CadEstabelecimento {
+            get {
+                object obj = ResourceManager.GetObject("CadEstabelecimento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CadMercadoria {
+            get {
+                object obj = ResourceManager.GetObject("CadMercadoria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CadPessoa {
+            get {
+                object obj = ResourceManager.GetObject("CadPessoa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CadUnidadeMedida {
+            get {
+                object obj = ResourceManager.GetObject("CadUnidadeMedida", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EntMercadoria {
+            get {
+                object obj = ResourceManager.GetObject("EntMercadoria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EstDashboard {
+            get {
+                object obj = ResourceManager.GetObject("EstDashboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EstDashboard1 {
+            get {
+                object obj = ResourceManager.GetObject("EstDashboard1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EstMovCaixa {
+            get {
+                object obj = ResourceManager.GetObject("EstMovCaixa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EstMovCaixa1 {
+            get {
+                object obj = ResourceManager.GetObject("EstMovCaixa1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap GrupoNegocio_Big {
             get {
                 object obj = ResourceManager.GetObject("GrupoNegocio_Big", resourceCulture);
@@ -193,6 +293,36 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_agrupar_objetos_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_agrupar_objetos_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_agrupar_objetos_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_agrupar_objetos_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_agrupar_objetos_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_agrupar_objetos_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_alterar_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_alterar_24", resourceCulture);
@@ -246,6 +376,126 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_botão_continuar_36 {
             get {
                 object obj = ResourceManager.GetObject("icons8_botão_continuar_36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_entrada_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_caixa_de_entrada_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_entrada_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_caixa_de_entrada_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_entrada_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_caixa_de_entrada_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_saída_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_caixa_de_saída_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_saída_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_caixa_de_saída_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_saída_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_caixa_de_saída_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_dashboard_layout_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_dashboard_layout_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_dashboard_layout_121 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_dashboard_layout_121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_dashboard_layout_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_dashboard_layout_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_dashboard_layout_241 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_dashboard_layout_241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_dashboard_layout_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_dashboard_layout_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_dashboard_layout_481 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_dashboard_layout_481", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,6 +583,116 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_e_aprendizagem_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_e_aprendizagem_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_e_aprendizagem_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_e_aprendizagem_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_e_aprendizagem_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_e_aprendizagem_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_edifícios_da_cidade_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_edifícios_da_cidade_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_edifícios_da_cidade_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_edifícios_da_cidade_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_edifícios_da_cidade_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_edifícios_da_cidade_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_empresa_cliente_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_empresa_cliente_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_empresa_cliente_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_empresa_cliente_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_empresa_cliente_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_empresa_cliente_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_empresas_relacionadas_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_empresas_relacionadas_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_empresas_relacionadas_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_empresas_relacionadas_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_entrar_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_entrar_24", resourceCulture);
@@ -356,6 +716,36 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_entrar_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_entrar_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_escala_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_escala_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_escala_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_escala_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_escala_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_escala_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,6 +903,66 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_livro_de_caixa_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_livro_de_caixa_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_livro_de_caixa_121 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_livro_de_caixa_121", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_livro_de_caixa_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_livro_de_caixa_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_livro_de_caixa_241 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_livro_de_caixa_241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_livro_de_caixa_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_livro_de_caixa_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_livro_de_caixa_481 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_livro_de_caixa_481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_mais_12 {
             get {
                 object obj = ResourceManager.GetObject("icons8_mais_12", resourceCulture);
@@ -546,6 +996,36 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_menos_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8-menos-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_mercadoria_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_mercadoria_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_mercadoria_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_mercadoria_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_mercadoria_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_mercadoria_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -656,6 +1136,36 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_planilha_de_posicionamento_thumnail_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_planilha_de_posicionamento_thumnail_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_praça_do_mercado_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_praça_do_mercado_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_praça_do_mercado_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_praça_do_mercado_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_praça_do_mercado_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_praça_do_mercado_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -793,6 +1303,36 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_subscrição_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_subscrição_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_subscrição_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_subscrição_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_subscrição_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_subscrição_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_user_folder_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_user_folder_48", resourceCulture);
@@ -823,9 +1363,69 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Mci_Cad {
+            get {
+                object obj = ResourceManager.GetObject("Mci_Cad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Mci_Merc {
+            get {
+                object obj = ResourceManager.GetObject("Mci_Merc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Mci_Par {
+            get {
+                object obj = ResourceManager.GetObject("Mci_Par", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ParGrupoMercadoria {
+            get {
+                object obj = ResourceManager.GetObject("ParGrupoMercadoria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ParSubGrupoMercadoria {
+            get {
+                object obj = ResourceManager.GetObject("ParSubGrupoMercadoria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap realPapelaria {
             get {
                 object obj = ResourceManager.GetObject("realPapelaria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SaiMercadoria {
+            get {
+                object obj = ResourceManager.GetObject("SaiMercadoria", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

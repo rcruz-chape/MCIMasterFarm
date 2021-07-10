@@ -349,4 +349,184 @@
   <data name="icons8-reiniciar-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-reiniciar-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_praça_do_mercado_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-praça-do-mercado-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_praça_do_mercado_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-praça-do-mercado-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_praça_do_mercado_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-praça-do-mercado-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mci_Merc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\Mci_Merc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EstDashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\EstDashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EstMovCaixa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\EstMovCaixa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_livro_de_caixa_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-livro-de-caixa-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_livro_de_caixa_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-livro-de-caixa-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_livro_de_caixa_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-livro-de-caixa-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_subscrição_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-subscrição-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_subscrição_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-subscrição-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_subscrição_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-subscrição-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mci_Cad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\Mci_Cad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CadEmpresa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\CadEmpresa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CadEstabelecimento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\CadEstabelecimento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CadMercadoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\CadMercadoria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CadPessoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\CadPessoa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CadUnidadeMedida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\CadUnidadeMedida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EntMercadoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\EntMercadoria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EstDashboard1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\EstDashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EstMovCaixa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\EstMovCaixa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_caixa_de_entrada_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-caixa-de-entrada-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_caixa_de_entrada_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-caixa-de-entrada-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_caixa_de_entrada_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-caixa-de-entrada-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_caixa_de_saída_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-caixa-de-saída-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_caixa_de_saída_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-caixa-de-saída-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_caixa_de_saída_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-caixa-de-saída-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_121" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_edifícios_da_cidade_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-edifícios-da-cidade-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_edifícios_da_cidade_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-edifícios-da-cidade-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_edifícios_da_cidade_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-edifícios-da-cidade-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_empresas_relacionadas_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-empresas-relacionadas-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_empresas_relacionadas_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-empresas-relacionadas-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_empresa_cliente_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-empresa-cliente-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_empresa_cliente_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-empresa-cliente-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_empresa_cliente_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-empresa-cliente-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_escala_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-escala-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_escala_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-escala-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_escala_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-escala-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_livro_de_caixa_121" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-livro-de-caixa-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_livro_de_caixa_241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-livro-de-caixa-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_livro_de_caixa_481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-livro-de-caixa-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_mercadoria_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-mercadoria-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_mercadoria_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-mercadoria-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_mercadoria_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-mercadoria-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SaiMercadoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\SaiMercadoria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_agrupar_objetos_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-agrupar-objetos-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_agrupar_objetos_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-agrupar-objetos-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_agrupar_objetos_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-agrupar-objetos-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_e_aprendizagem_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-e-aprendizagem-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_e_aprendizagem_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-e-aprendizagem-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_e_aprendizagem_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-e-aprendizagem-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mci_Par" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\Mci_Par.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ParGrupoMercadoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\ParGrupoMercadoria.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ParSubGrupoMercadoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\ParGrupoMercadoria1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

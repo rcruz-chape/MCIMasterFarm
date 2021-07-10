@@ -19,6 +19,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisFuncaoDAL.ObtemListaFuncao(ref pBanco);
         }
+        
         public List<SisFuncao> GetFuncaoHabilitada(ref Banco pBanco, string pidPapel, int pidMod, int pidSIS)
         {
             return vSisFuncaoDAL.ObtemListaFuncaoHabilitados(ref pBanco, pidPapel, pidMod, pidSIS);

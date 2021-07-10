@@ -19,5 +19,9 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisFuncaoDAL.fbAssociaListaFuncaoModulo(ref pBanco, plistModuloFuncao);
         }
+        public List<SisModuloFuncao> ListaModuloFuncao(ref Banco pBanco, int piTpMod)
+        {
+            return vSisFuncaoDAL.ObtemFuncaoAssociar(ref pBanco, piTpMod);
+        }
     }
 }
