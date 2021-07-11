@@ -535,6 +535,7 @@
     <None Include="Imagens\icons8-organization-chart-people-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Imagens\ParSubGrupoMercadoria.png" />
     <None Include="Imagens\ParGrupoMercadoria1.png" />
     <None Include="Imagens\ParGrupoMercadoria.png" />
     <None Include="Imagens\Mci_Par.png" />

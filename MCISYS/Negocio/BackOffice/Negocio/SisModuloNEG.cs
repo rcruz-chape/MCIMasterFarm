@@ -22,6 +22,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisModuloDAL.ObtemTodosModulosAssociados(ref pBanco);
         }
+        public SisModulo ObtemModuloSelecionado(ref Banco pBanco, int pIdModulo)
+        {
+            return vSisModuloDAL.ObtemModuloSelecionado(ref pBanco, pIdModulo);
+        }
         public List<SisModulo> ObtemModulosHabilitados(ref Banco pBanco, int pIdOrg, int pIdSis, string pTpOrg)
         {
             var vReturn = new List<SisModulo>();

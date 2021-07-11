@@ -68,5 +68,58 @@ namespace MCISYS.Negocio.BackOffice.DAL
 			var vConnect = new Connect();
 			return vConnect.insert(ref pBanco, vsSql, Parametros);
 		}
-    }
+		public List<SisPapelFuncao> GetFuncaoLicenciar(ref Banco pBanco, string psIdPapel, int piIdMod)
+        {
+			string vsSql = @"SELECT MFUNC.ID_SIS
+  								  , MFUNC.ID_MOD 
+								  , MFUNC.ID_FUNCAO 
+								  , 'S' AS IND_INCL_REG
+								  , 'S' AS IND_INCL_ALT
+								  , 'S' AS IND_EXCL_REG
+								  , 'S' AS IND_CONS_REG
+								  , 'S' AS IND_EXECUTE
+							   FROM SIS_MODULO_FUNCAO MFUNC 
+							  INNER JOIN SIS_MODULO MODU ON (MFUNC.ID_SIS = MODU.ID_SIS AND MFUNC.ID_MOD = MODU.ID_MOD)
+							  INNER JOIN SIS_FUNCAO FUNC ON (FUNC.ID_FUNCAO = MFUNC.ID_FUNCAO)
+							   LEFT JOIN SIS_PAPEL_FUNCAO PFUNC ON (MFUNC.ID_FUNCAO = PFUNC.ID_FUNCAO  
+							    AND MFUNC.ID_MOD = PFUNC.ID_MOD 
+							    AND MFUNC.ID_SIS = PFUNC.ID_SIS)
+							  WHERE PFUNC.ID_FUNCAO IS NULL
+							    AND MODU.ID_MOD  = @ID_MOD";
+			var Parametros = new Dictionary<string, dynamic>()
+			{
+				{"ID_MOD",piIdMod }
+			};
+
+
+			return ObtemRegistroPapelFuncaoLicenciar(ref pBanco, vsSql, psIdPapel, Parametros);
+
+        }
+		private List<SisPapelFuncao> ObtemRegistroPapelFuncaoLicenciar(ref Banco pBanco, string psSql, string psIdPapel, Dictionary<string, dynamic> Parametro)
+        {
+			var listSisPapelFuncao = new List<SisPapelFuncao>();
+			var vConnect = new Connect();
+			var vConnectado = vConnect.GetConnection(ref pBanco);
+			var GetResults = vConnect.ObtemLista(psSql, ref vConnectado, Parametro);
+			if (GetResults.HasRows)
+            {
+				while (GetResults.Read())
+	            {
+					var vRegSisPapelFuncao = new SisPapelFuncao();
+					vRegSisPapelFuncao.ID_PAPEL = psIdPapel;
+					vRegSisPapelFuncao.ID_SIS = GetResults.GetInt32(0);
+					vRegSisPapelFuncao.ID_MOD = GetResults.GetInt32(1);
+					vRegSisPapelFuncao.ID_FUNCAO = GetResults.GetInt32(2);
+					vRegSisPapelFuncao.ind_incl_reg = GetResults.GetString(3);
+					vRegSisPapelFuncao.ind_incl_alt = GetResults.GetString(4);
+					vRegSisPapelFuncao.ind_excl_reg = GetResults.GetString(5);
+					vRegSisPapelFuncao.ind_cons_reg = GetResults.GetString(6);
+					vRegSisPapelFuncao.ind_execute = GetResults.GetString(7);
+					listSisPapelFuncao.Add(vRegSisPapelFuncao);
+				}
+            }
+			return listSisPapelFuncao;
+
+        }
+	}
 }

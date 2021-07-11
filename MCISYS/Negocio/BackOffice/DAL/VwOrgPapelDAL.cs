@@ -45,10 +45,8 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 {
                     vsSql += Environment.NewLine + @"where TP_PAPEL IN (0,1) ";
                 }
-                vsSql += Environment.NewLine + @"and PAP.ID_USU = @ID_USU
-                                AND PAP.ID_ORG = @ID_ORG";
+                vsSql += Environment.NewLine + @"and PAP.ID_USU = @ID_USU";
                 Parametros.Add("ID_USU", pIdUsu);
-                Parametros.Add("ID_ORG", pIdOrg);               
             }
             return RecuperaListaPapel(ref pBanco, vsSql, Parametros);
 

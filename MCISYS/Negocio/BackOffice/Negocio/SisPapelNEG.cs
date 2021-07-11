@@ -46,7 +46,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         }
         public Boolean AlteraPapel(ref Banco pBanco, SisPapel pPap)
         {
-            return vPapDAL.UpdatePapel(ref pBanco, pPap);
+            Boolean vbUpdate;
+            vbUpdate = vPapDAL.UpdatePapel(ref pBanco, pPap);
+            
+            return vbUpdate;
         }
         public Boolean ExcluiPapel(ref Banco pBanco, string pIdPapel)
         {

@@ -26,7 +26,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                                   , ref pBanco);
             return Convert.ToInt16(vIdMod);
         }
-        
+
         public Boolean fbAlteraModulo(ref Banco pBanco, int pIdSis = 1, int pIdMod = 1)
         {
             string vsSql = @"UPDATE SIS_MODULO
@@ -42,13 +42,13 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {"DT_ALTERACAO",DateTime.Now }
             };
             Connect vConnect = new Connect();
-            return vConnect.update(ref pBanco,vsSql,Parametros);
+            return vConnect.update(ref pBanco, vsSql, Parametros);
 
         }
         public Boolean fbInsereModuloLista(ref Banco pBanco, List<SisModulo> plisSisModulo)
         {
             Boolean vReturn = true;
-            foreach(var linhaSisModulo in plisSisModulo)
+            foreach (var linhaSisModulo in plisSisModulo)
             {
                 vReturn = fbInsereModulo(ref pBanco, linhaSisModulo);
                 if (vReturn == false)
@@ -99,7 +99,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {"NM_IMAGEM_ICONE", pSisModulo.NM_IMAGEM_ICONE }
             };
             Connect vConnect = new Connect();
-            return vConnect.insert(ref pBanco,vsSql,Parametros);
+            return vConnect.insert(ref pBanco, vsSql, Parametros);
         }
         public List<SisModulo> ObtemTodosModulosAssociados(ref Banco pBanco)
         {
@@ -118,8 +118,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
 
             return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql);
         }
-    
-        public List<SisModulo> ObtemTodosModulosHabilitados(ref Banco pBanco,int pidOrg, int pidSis)
+
+        public List<SisModulo> ObtemTodosModulosHabilitados(ref Banco pBanco, int pidOrg, int pidSis)
         {
             string vsSql = @"select distinct 
                                     modu.id_mod 
@@ -145,8 +145,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
             };
             return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql, Parametros);
         }
-    
-        private List<SisModulo> RecuperaTodosOsModulosHabilitados(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null )
+
+        private List<SisModulo> RecuperaTodosOsModulosHabilitados(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null)
         {
             Connect vConnect = new Connect();
             List<SisModulo> vlSisModulo = new List<SisModulo>();
@@ -154,7 +154,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             var GetResultado = vConnect.ObtemLista(psSql, ref vConnectado, pParametros);
             if (GetResultado.HasRows)
             {
-                while(GetResultado.Read())
+                while (GetResultado.Read())
                 {
                     var RegSisModulo = new SisModulo();
                     RegSisModulo.ID_MOD = GetResultado.GetInt32(0);
@@ -201,6 +201,63 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {"TP_MOD_ORG",pTpModOrg }
             };
             return RecuperaTodosOsModulosHabilitados(ref pBanco, vsSql, Parametro);
+        }
+        public SisModulo ObtemModuloSelecionado(ref Banco pBanco, int pIdMod)
+        {
+            string vsSql = @"SELECT ID_MOD
+   	                              , NM_MOD
+	                              , DS_MOD
+	                              , DT_INCLUSAO
+	                              , DT_ALTERACAO
+	                              , ID_SIS
+	                              , ID_USU_ALT
+	                              , ID_USU_INCL
+	                              , DS_SIGLA_MOD
+                                  , NM_IMAGEM_ICONE
+                                  , TP_MOD_ORG
+                               FROM SIS_MODULO
+                              WHERE ID_MOD = @ID_MOD";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {
+                    "ID_MOD", pIdMod
+                }
+            };
+            return RecuperaModuloUnico(ref pBanco, vsSql, Parametro);
+
+        }
+        private SisModulo RecuperaModuloUnico(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros)
+        {
+            Connect vConnect = new Connect();
+            SisModulo vSisModulo = new SisModulo();
+            var vConnectado = vConnect.GetConnection(ref pBanco);
+            var GetResultado = vConnect.ObtemFirst(psSql, pParametros, ref vConnectado);
+            if (GetResultado.HasRows)
+            {
+                GetResultado.Read();
+                vSisModulo.ID_MOD = GetResultado.GetInt32(0);
+                vSisModulo.NM_MOD = GetResultado.GetString(1);
+                vSisModulo.ID_SIS = GetResultado.GetInt32(5);
+                vSisModulo.DS_MOD = GetResultado.GetString(2);
+                vSisModulo.DS_SIGLA_MOD = GetResultado.GetString(8);
+                if (!GetResultado.IsDBNull(4))
+                {
+                    vSisModulo.DT_ALTERACAO = GetResultado.GetDateTime(4);
+                }
+                vSisModulo.DT_INCLUSAO = GetResultado.GetDateTime(3);
+                if (!GetResultado.IsDBNull(6))
+                {
+                    vSisModulo.ID_USU_ALT = GetResultado.GetString(6);
+                }
+                vSisModulo.ID_USU_INCL = GetResultado.GetString(7);
+                vSisModulo.NM_IMAGEM_ICONE = GetResultado.GetString(9);
+                vSisModulo.TP_MOD_ORG = GetResultado.GetString(10);
+            }
+            
+            vConnect.FechaConnection(ref vConnectado);
+            return vSisModulo;
+
+
         }
     }
 }

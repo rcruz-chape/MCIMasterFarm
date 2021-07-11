@@ -597,31 +597,26 @@ namespace MCISYS.Negocio.Telas
 
                 vIndexRow = this.dgvPapel.CurrentRow.Index;
                 vIndexRow = this.dgvPapel.Rows.GetPreviousRow(vIndexRow, DataGridViewElementStates.None);
-                if (vIndexRow < 0)
+                if (vIndexRow > -1)
                 {
-                    vIndexRow = this.dgvPapel.Rows.GetLastRow(DataGridViewElementStates.None);
+                    vbLoad = LoadReg(this.dgvPapel.Rows[vIndexRow].Cells[0].Value.ToString());
                 }
-                this.dgvPapel.CurrentCell = this.dgvPapel.Rows[vIndexRow].Cells[0];
      
-                if (vIndexRow < 0)
-                {
-                    vIndexRow = this.dgvPapel.RowCount - 1;
-                }
+               
                      //dgvPapel.FirstDisplayedScrollingRowIndex.Equals = vIndexRow;
 
-                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
             }
             else if (tecla == Keys.Down)
             {
-                vIndexRow = this.dgvPapel.CurrentRow.Index + 1;
-                if (vIndexRow >= this.dgvPapel.RowCount)
-                {
-                    vIndexRow = 0;
-                }
-                this.dgvPapel.CurrentCell = this.dgvPapel.Rows[vIndexRow].Cells[0];
-                dgvPapel.FirstDisplayedScrollingRowIndex = vIndexRow;
+                vIndexRow = this.dgvPapel.CurrentRow.Index;
+                vIndexRow = this.dgvPapel.Rows.GetNextRow(vIndexRow, DataGridViewElementStates.None);
 
-                vbLoad = LoadReg(this.dgvPapel.CurrentRow.Cells[0].Value.ToString());
+
+                //dgvPapel.FirstDisplayedScrollingRowIndex = vIndexRow;
+                if (vIndexRow > -1)
+                {
+                    vbLoad = LoadReg(this.dgvPapel.Rows[vIndexRow].Cells[0].Value.ToString());
+                }
 
 
 

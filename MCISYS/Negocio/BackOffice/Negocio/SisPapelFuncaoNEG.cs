@@ -15,14 +15,25 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class SisPapelFuncaoNEG
     {
         private SisPapelFuncaoDAL vSisPapelFuncaoDAL = new SisPapelFuncaoDAL();
+        public Boolean fbFuncaoLicenciada(ref Banco pBanco, int pIdOrg, int pidMod)
+        {
+            Boolean vbLicencia = true;
+
+            var vModuloNEG = new SisModuloNEG();
+            var vSisModulo = vModuloNEG.ObtemModuloSelecionado(ref pBanco, pidMod);
+
+            var vListFuncaoLicenciar = vSisPapelFuncaoDAL.GetFuncaoLicenciar(ref pBanco, "0", pidMod);
+            if (vListFuncaoLicenciar.Count > 0)
+            {
+                vbLicencia = fbAssociaListaFuncaoPapel(ref pBanco, vListFuncaoLicenciar);
+            }
+            return vbLicencia;
+        }
         public Boolean fbAssociaListaFuncaoPapel(ref Banco pBanco, List<SisPapelFuncao> pSisPapelFuncao)
         {
             return vSisPapelFuncaoDAL.AssociaFuncoesPapeis(ref pBanco, pSisPapelFuncao);
         }
-        public Boolean fbAssociaListaFuncaoPapel(ref Banco pBanco, SisPapelFuncao pSisPapelFuncao)
-        {
-            return vSisPapelFuncaoDAL.fbInsereFuncaoPapel(ref pBanco, pSisPapelFuncao);
-        }
+        
         public Boolean fbAssociaFuncaoPapelCriado(ref Banco pBanco, string pIdPapel, int pTpPapel)
         {
             List<SisPapelFuncao> vListSisPapel = new List<SisPapelFuncao>();

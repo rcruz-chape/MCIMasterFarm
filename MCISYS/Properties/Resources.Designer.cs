@@ -903,6 +903,16 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_licença_241 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-licença-241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_livro_de_caixa_12 {
             get {
                 object obj = ResourceManager.GetObject("icons8_livro_de_caixa_12", resourceCulture);

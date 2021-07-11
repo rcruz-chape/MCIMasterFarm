@@ -857,31 +857,22 @@ namespace MCISYS.Negocio.Telas
             {
                 vIndexRow = this.dtvUsers.CurrentRow.Index;
                 vIndexRow = this.dtvUsers.Rows.GetPreviousRow(vIndexRow, DataGridViewElementStates.None);
-                if (vIndexRow < 0)
+                if (vIndexRow > -1 )
                 {
-                    vIndexRow = this.dtvUsers.Rows.GetLastRow(DataGridViewElementStates.None);
+                    var bLoad = LoadReg(null, this.dtvUsers.CurrentRow.Cells[0].Value.ToString());
                 }
-                this.dtvUsers.CurrentCell = this.dtvUsers.Rows[vIndexRow].Cells[0];
-
-                if (vIndexRow < 0)
-                {
-                    vIndexRow = this.dtvUsers.RowCount - 1;
-                }
+           
             }
             else if (tecla == Keys.Down)
             {
                 vIndexRow = this.dtvUsers.CurrentRow.Index;
                 vIndexRow = this.dtvUsers.Rows.GetNextRow(vIndexRow, DataGridViewElementStates.None);
-                if (vIndexRow < 0)
+                if (vIndexRow > -1)
                 {
-                    vIndexRow = this.dtvUsers.Rows.GetFirstRow(DataGridViewElementStates.None);
+                    var bLoad = LoadReg(null, this.dtvUsers.CurrentRow.Cells[0].Value.ToString());
                 }
-                this.dtvUsers.CurrentCell = this.dtvUsers.Rows[vIndexRow].Cells[0];
 
-                if (vIndexRow < 0)
-                {
-                    vIndexRow = this.dtvUsers.RowCount - 1;
-                }
+
             }
             else if (tecla == Keys.Enter)
             {
@@ -889,12 +880,12 @@ namespace MCISYS.Negocio.Telas
                 {
                     this.dtvUsers.CurrentCell = this.dtvUsers[0, 0];
                 }
+                var bLoad = LoadReg(null, this.dtvUsers.CurrentRow.Cells[0].Value.ToString());
             }
 
 
 
-            var bLoad = LoadReg(null, this.dtvUsers.CurrentRow.Cells[0].Value.ToString());
-           
+
         }
     }
 }

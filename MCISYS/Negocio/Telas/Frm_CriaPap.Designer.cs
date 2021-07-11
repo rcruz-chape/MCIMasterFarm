@@ -29,18 +29,18 @@ namespace MCISYS.Negocio.Telas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CriaPap));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPapel = new System.Windows.Forms.DataGridView();
             this.ID_PAPEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -135,15 +135,15 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_PAPEL
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ID_PAPEL.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ID_PAPEL.DefaultCellStyle = dataGridViewCellStyle23;
             this.ID_PAPEL.HeaderText = "Papel";
             this.ID_PAPEL.Name = "ID_PAPEL";
             // 
             // NM_PAPEL
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.NM_PAPEL.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.NM_PAPEL.DefaultCellStyle = dataGridViewCellStyle24;
             this.NM_PAPEL.HeaderText = "Nome do Papel";
             this.NM_PAPEL.Name = "NM_PAPEL";
             this.NM_PAPEL.Width = 200;
@@ -283,14 +283,14 @@ namespace MCISYS.Negocio.Telas
             this.DtgOrg.AllowUserToResizeColumns = false;
             this.DtgOrg.AllowUserToResizeRows = false;
             this.DtgOrg.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtgOrg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtgOrg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.DtgOrg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DtgOrg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -299,29 +299,29 @@ namespace MCISYS.Negocio.Telas
             this.DT_INCLUSAO});
             this.DtgOrg.Location = new System.Drawing.Point(3, 3);
             this.DtgOrg.Name = "DtgOrg";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(1);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.Window;
-            this.DtgOrg.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.Padding = new System.Windows.Forms.Padding(1);
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.Window;
+            this.DtgOrg.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.DtgOrg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgOrg.Size = new System.Drawing.Size(743, 234);
             this.DtgOrg.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridViewTextBoxColumn1.HeaderText = "Org ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // NM_ORG
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.NM_ORG.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.NM_ORG.DefaultCellStyle = dataGridViewCellStyle27;
             this.NM_ORG.HeaderText = "Org";
             this.NM_ORG.Name = "NM_ORG";
             this.NM_ORG.ReadOnly = true;
@@ -329,17 +329,17 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_USU_INCL
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID_USU_INCL.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID_USU_INCL.DefaultCellStyle = dataGridViewCellStyle28;
             this.ID_USU_INCL.HeaderText = "Incluído Por";
             this.ID_USU_INCL.Name = "ID_USU_INCL";
             // 
             // DT_INCLUSAO
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "g";
-            dataGridViewCellStyle7.NullValue = null;
-            this.DT_INCLUSAO.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle29.Format = "g";
+            dataGridViewCellStyle29.NullValue = null;
+            this.DT_INCLUSAO.DefaultCellStyle = dataGridViewCellStyle29;
             this.DT_INCLUSAO.HeaderText = "Incluído EM";
             this.DT_INCLUSAO.Name = "DT_INCLUSAO";
             this.DT_INCLUSAO.Width = 200;
@@ -399,8 +399,8 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_USU
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID_USU.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID_USU.DefaultCellStyle = dataGridViewCellStyle31;
             this.ID_USU.HeaderText = "Usuário Associado";
             this.ID_USU.Name = "ID_USU";
             this.ID_USU.ReadOnly = true;
@@ -408,8 +408,8 @@ namespace MCISYS.Negocio.Telas
             // 
             // ID_USU_INCL_PAP
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID_USU_INCL_PAP.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID_USU_INCL_PAP.DefaultCellStyle = dataGridViewCellStyle32;
             this.ID_USU_INCL_PAP.HeaderText = "Incluído Por";
             this.ID_USU_INCL_PAP.Name = "ID_USU_INCL_PAP";
             this.ID_USU_INCL_PAP.ReadOnly = true;
@@ -417,8 +417,8 @@ namespace MCISYS.Negocio.Telas
             // 
             // DT_INCLUSAO_PAP
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.DT_INCLUSAO_PAP.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.DT_INCLUSAO_PAP.DefaultCellStyle = dataGridViewCellStyle33;
             this.DT_INCLUSAO_PAP.HeaderText = "Incluído Em:";
             this.DT_INCLUSAO_PAP.Name = "DT_INCLUSAO_PAP";
             this.DT_INCLUSAO_PAP.ReadOnly = true;
