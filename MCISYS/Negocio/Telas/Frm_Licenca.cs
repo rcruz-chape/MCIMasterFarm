@@ -180,14 +180,29 @@ namespace MCISYS.Negocio.Telas
             vOrgLic.DT_LICENCIAMENTO = this.dt_Lic.Value;
 
             var bExecuta = vOrgLicNEG.IncluiLicencaOrg(ref vBanco, vOrgLic);
-            bLicenciado = true;
+            bLicenciado = bExecuta;
+            if (!bExecuta)
+            {
+                vMsg = $"Erro de Licenciamento.{Environment.NewLine}Favor Contatar o Suporte. ";
+                buttons = MessageBoxButtons.OK;
+                result = MessageBox.Show(vMsg, "Erro de Licenciamento", buttons);
+            }
+            else
+            {
+
+                vMsg = $"Licenciamento Realizado. ";
+                buttons = MessageBoxButtons.OK;
+                result = MessageBox.Show(vMsg, "Sucesso", buttons);
+            }
             return bExecuta;
         }
 
         private void btnLic_Click(object sender, EventArgs e)
         {
+           
             var bLicenciar = RegSalvar();
             bLicenciar = HabilitaBotoes();
+            
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

@@ -19,10 +19,40 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             Boolean vbLicencia = true;
 
-            var vModuloNEG = new SisModuloNEG();
-            var vSisModulo = vModuloNEG.ObtemModuloSelecionado(ref pBanco, pidMod);
+            var vSisModuloNEG = new SisModuloNEG();
+            var vCorOrganizacaoNEG = new CorOrganizacaoNEG();
+            var vSisOrganizacaoPapelNEG = new SisOrganizacaoPapelNEG();
+            List<SisPapelFuncao> vListFuncaoLicenciar = new List<SisPapelFuncao>();
+            var vSisModulo = vSisModuloNEG.ObtemModuloSelecionado(ref pBanco, pidMod);
+            var vCorOrganizacao = vCorOrganizacaoNEG.OrgSelecionada(ref pBanco, pIdOrg);
 
-            var vListFuncaoLicenciar = vSisPapelFuncaoDAL.GetFuncaoLicenciar(ref pBanco, "0", pidMod);
+            if (vSisModulo.TP_MOD_ORG == vSisModuloNEG.TPADM)
+            {
+                var vSisPOrg = vSisOrganizacaoPapelNEG.RecuperaPapeisAssociados(ref pBanco, pIdOrg);
+                foreach(var SisOrganizacaoPapel in vSisPOrg)
+                {
+                    var vListPapelFuncLicenciar = vSisPapelFuncaoDAL.GetFuncaoLicenciar(ref pBanco, 
+                        SisOrganizacaoPapel.ID_PAPEL, 
+                        pidMod);
+                    vListFuncaoLicenciar.AddRange(vListPapelFuncLicenciar);
+                }
+            }
+            else
+            {
+                List<CorOrganizacao> vListOrgFilhos = vCorOrganizacaoNEG.OrgsFilhas(ref pBanco, pIdOrg);
+                foreach(var orgFilho in vListOrgFilhos)
+                {
+                    var vSisPorg = vSisOrganizacaoPapelNEG.RecuperaPapeisAssociados(ref pBanco, orgFilho.ID_ORG);
+                    foreach(var SisOpap in vSisPorg)
+                    {
+                       var vListPapelFuncLicenciar = vSisPapelFuncaoDAL.GetFuncaoLicenciar(ref pBanco,
+                       SisOpap.ID_PAPEL,
+                       pidMod);
+                       vListFuncaoLicenciar.AddRange(vListPapelFuncLicenciar);
+                    }
+                }
+            }
+
             if (vListFuncaoLicenciar.Count > 0)
             {
                 vbLicencia = fbAssociaListaFuncaoPapel(ref pBanco, vListFuncaoLicenciar);

@@ -25,22 +25,30 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         }
         public Boolean IncluiLicencaOrg(ref Banco pBanco, CorOrganizacaoLicenca pOrgLic)
         {
-            Boolean vInclui;
+            Boolean vInclui = false;
             var vModDAL = new SisModuloDAL();
             var vMORGNEG = new SisModuloOrganizacaoNEG();
             var vOLICDAL = new CorOrganizacaoLicencaDAL();
             var vListMod = vMORGNEG.flistModulos(ref pBanco);
             var vListModOrg = new List<SisModuloOrganizacao>();
+            var vListPFunc = new SisPapelFuncaoNEG();
             foreach(var Mod in vListMod)
             {
                 var ModOrg = new SisModuloOrganizacao();
                 ModOrg.ID_ORG = pOrgLic.ID_ORG;
                 ModOrg.ID_MOD = Mod.ID_MOD;
                 ModOrg.ID_SIS = Mod.ID_SIS;
+                vInclui = vListPFunc.fbFuncaoLicenciada(ref pBanco, ModOrg.ID_ORG,Mod.ID_MOD);
                 vListModOrg.Add(ModOrg);
             }
-            vInclui = vMORGNEG.fbAssociaUpdate(ref pBanco, vListModOrg);
-            vInclui = vOLICDAL.InclueRegistroLicOrg(ref pBanco, pOrgLic);
+            if (vInclui)
+            {
+                vInclui = vMORGNEG.fbAssociaUpdate(ref pBanco, vListModOrg);
+            }
+            if (vInclui)
+            {
+                vInclui = vOLICDAL.InclueRegistroLicOrg(ref pBanco, pOrgLic);
+            }
             return vInclui;
         }
         public Boolean ExclueLicencaOrg(ref Banco pBanco, int pIdOrg)

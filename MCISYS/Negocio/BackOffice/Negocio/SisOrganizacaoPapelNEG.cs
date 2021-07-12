@@ -99,5 +99,9 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             }
             return vbRetira;
         }
+        public List<SisOrganizacaoPapel> RecuperaPapeisAssociados(ref Banco pBanco, int pIdOrg)
+        {
+            return vSisOrgPap.ObtemPapeisAssociadosOrg(ref pBanco, pIdOrg);
+        }
     }
 }

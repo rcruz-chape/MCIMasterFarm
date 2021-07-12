@@ -139,7 +139,24 @@ namespace MCISYS.Negocio.BackOffice.DAL
             return vConnect.insert(ref pBanco, vsSql, Parametros);
 
         }
-        public List<CorOrganizacao> ObtemListaOrganizacao(ref Banco pBanco, string pIDUsu, Boolean pOnlyMae = false)
+        public List<CorOrganizacao> ObtemOrgsFilhos(ref Banco pBanco, int pIdOrg)
+        {
+            string vsSql = @"SELECT ORG_CAD.ID_ORG
+                                  , ORG_CAD.NM_ORG 
+                                  , ORG_CAD.NM_ORG_RESUMIDO
+                                  , ORG_CAD.ID_ORG_MAE  
+                                  , ORG_CAD.TP_ORG 
+                               FROM VW_ORG_CADASTRADAS ORG_CAD 
+                              WHERE ORG_CAD.ID_ORG_MAE = @ID_ORG";
+            var Parametros = new Dictionary<string, dynamic>()
+            {
+                {"ID_ORG", pIdOrg }
+            };
+
+            return RecuperaTodasOrgs(ref pBanco, vsSql, Parametros);
+        }
+
+        public List<CorOrganizacao> ObtemListaOrganizacao(ref Banco pBanco, string pIDUsu = null, Boolean pOnlyMae = false)
         {
             string vsSql = @"SELECT  ORG_CAD.ID_ORG
                          ,  ORG_CAD.NM_ORG 
@@ -148,7 +165,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                          ,  ORG_CAD.TP_ORG 
                       FROM VW_ORG_CADASTRADAS ORG_CAD ";
             var Parametros = new Dictionary<string, dynamic>();
-            if (pIDUsu != CUSERADMIN)
+            if (pIDUsu != CUSERADMIN )
             {
                 vsSql += @"INNER JOIN SIS_USUARIO_ORGANIZACAO UORG ON (UORG.ID_ORG = ORG_CAD.ID_ORG)
                            WHERE UORG.ID_USU = @ID_USU ";

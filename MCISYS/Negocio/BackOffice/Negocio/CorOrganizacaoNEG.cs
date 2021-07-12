@@ -23,6 +23,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vCorOrganizacaoDAL.ObtemOrgSelecionada(ref pBanco, pIdOrg);
         }
+        public List<CorOrganizacao> OrgsFilhas(ref Banco pBanco, int pIdOrg)
+        {
+            return vCorOrganizacaoDAL.ObtemOrgsFilhos(ref pBanco, pIdOrg);
+        }
         public CorOrganizacao ObtemOrgSelecionada(int pIdOrg, List<CorOrganizacao> plistCorOrganizacao)
         {
             CorOrganizacao RegCorOrganizacao = plistCorOrganizacao.Find(Registro => Registro.ID_ORG == pIdOrg);

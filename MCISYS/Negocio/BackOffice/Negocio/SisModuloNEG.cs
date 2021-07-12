@@ -16,8 +16,8 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     {
         private SisModuloDAL vSisModuloDAL = new SisModuloDAL();
         private CorOrganizacaoNEG vOrgNEG = new CorOrganizacaoNEG();
-        private const string TPADM = "A";
-        private const string TPOPE = "O";
+        public string TPADM = "A";
+        public string TPOPE = "O";
         public List<SisModulo> ObtemModulos(ref Banco pBanco)
         {
             return vSisModuloDAL.ObtemTodosModulosAssociados(ref pBanco);

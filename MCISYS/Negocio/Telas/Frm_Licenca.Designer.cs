@@ -71,7 +71,7 @@ namespace MCISYS.Negocio.Telas
             this.mTxtRaiz.Mask = "00.000.000";
             this.mTxtRaiz.Name = "mTxtRaiz";
             this.mTxtRaiz.Size = new System.Drawing.Size(196, 20);
-            this.mTxtRaiz.TabIndex = 16;
+            this.mTxtRaiz.TabIndex = 0;
             this.mTxtRaiz.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblRaiz
@@ -98,14 +98,14 @@ namespace MCISYS.Negocio.Telas
             this.cbxAmbiente.Location = new System.Drawing.Point(157, 42);
             this.cbxAmbiente.Name = "cbxAmbiente";
             this.cbxAmbiente.Size = new System.Drawing.Size(196, 21);
-            this.cbxAmbiente.TabIndex = 13;
+            this.cbxAmbiente.TabIndex = 1;
             // 
             // txtSigla
             // 
             this.txtSigla.Location = new System.Drawing.Point(157, 63);
             this.txtSigla.Name = "txtSigla";
             this.txtSigla.Size = new System.Drawing.Size(110, 20);
-            this.txtSigla.TabIndex = 12;
+            this.txtSigla.TabIndex = 2;
             // 
             // lblSigla
             // 
@@ -130,7 +130,7 @@ namespace MCISYS.Negocio.Telas
             this.dt_Lic.Location = new System.Drawing.Point(157, 85);
             this.dt_Lic.Name = "dt_Lic";
             this.dt_Lic.Size = new System.Drawing.Size(228, 20);
-            this.dt_Lic.TabIndex = 9;
+            this.dt_Lic.TabIndex = 4;
             this.dt_Lic.Value = new System.DateTime(2021, 6, 7, 22, 2, 17, 0);
             // 
             // btnLic
@@ -138,10 +138,10 @@ namespace MCISYS.Negocio.Telas
             this.btnLic.Enabled = false;
             this.btnLic.Image = global::MCISYS.Properties.Resources.icons8_licença_24;
             this.btnLic.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLic.Location = new System.Drawing.Point(222, 109);
+            this.btnLic.Location = new System.Drawing.Point(214, 109);
             this.btnLic.Name = "btnLic";
             this.btnLic.Size = new System.Drawing.Size(59, 44);
-            this.btnLic.TabIndex = 8;
+            this.btnLic.TabIndex = 5;
             this.btnLic.Text = "Licenciar";
             this.btnLic.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLic.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@ namespace MCISYS.Negocio.Telas
             this.btnExcluir.Enabled = false;
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(279, 109);
+            this.btnExcluir.Location = new System.Drawing.Point(277, 109);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(58, 44);
             this.btnExcluir.TabIndex = 6;

@@ -138,6 +138,22 @@ namespace MCISYS.Negocio.BackOffice.DAL
 
             return RecuperaRegistro(ref pBanco, vsSql, Parametro);
         }
+        public List<SisOrganizacaoPapel> ObtemPapeisAssociadosOrg(ref Banco pBanco, int pIdOrg)
+        {
+            string vsSql = @"SELECT ID_ORG
+	                                 , ID_PAPEL
+	                                 , DS_PAPEL
+	                                 , ID_USU_INCL
+	                                 , DT_INCLUSAO
+                                     , NM_ORG
+                                  FROM VW_SIS_ORGANIZACAO
+                                 WHERE ID_ORG = @ID_ORG";
+            var Parametro = new Dictionary<string, dynamic>()
+            {
+                {"ID_ORG", pIdOrg }
+            };
+            return RecuperaRegistro(ref pBanco, vsSql, Parametro);
+        }
         private List<SisOrganizacaoPapel> RecuperaRegistro(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametro)
         {
             Boolean bClose;
