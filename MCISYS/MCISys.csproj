@@ -240,6 +240,12 @@
     <Compile Include="Negocio\Telas\frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Telas\Frm_ParCadUnidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_ParCadUnidade.Designer.cs">
+      <DependentUpon>Frm_ParCadUnidade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Telas\Frm_SelecionaOrg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\Frm_ParCadUnidade.resx">
+      <DependentUpon>Frm_ParCadUnidade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_SelecionaOrg.resx">
       <DependentUpon>Frm_SelecionaOrg.cs</DependentUpon>
