@@ -156,7 +156,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             {
                 var vError = new Error();
                 vbInsert = vError.DisplayErrorGrave("Connect.Insert", ex.Message, "Erro ao Inserir");
-                throw ex;
                 vbInsert = false;
                 
             }
@@ -184,12 +183,18 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                 cmd.ExecuteNonQuery();
 
             }
-            catch (Exception ex)
+            catch (NpgsqlException ex)
             {
 
                 var vError = new Error();
-                vbDelete = vError.DisplayErrorGrave("Connect.Delete", ex.Message, "Erro ao Excluir");
-                throw ex;
+                if (ex.ErrorCode == 23503 || ex.ErrorCode == 23000)
+                {
+                    vbDelete = vError.DisplayErrorGrave("Connect.Delete", "Não foi possível realizar a exclusão", "Erro ao Excluir"); ;
+                }
+                else
+                {
+                    vbDelete = vError.DisplayErrorGrave("Connect.Delete", ex.Message, "Erro ao Excluir");
+                }
                 vbDelete = false;
 
             }
@@ -222,7 +227,6 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 
                 var vError = new Error();
                 vbUpdate = vError.DisplayErrorGrave("Connect.Update", ex.Message, "Erro ao Atualizar");
-                throw ex;
                 vbUpdate = false;
 
             }

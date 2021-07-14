@@ -116,6 +116,7 @@
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoLicencaDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\CorUnidadeMedidaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ImagemModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoLicencaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CorUnidadeMedidaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CriaEstruturaSisNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\DefaultNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
