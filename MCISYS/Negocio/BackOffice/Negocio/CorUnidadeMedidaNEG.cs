@@ -17,6 +17,12 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     {
         private CorUnidadeMedidaDAL vCorUnidadeMedidaDAL = new CorUnidadeMedidaDAL();
 
+        public Boolean bExisteCorUnidade(ref Banco pBanco, int pIdOrg, string psCodUm)
+        {
+            var VerificaCorUnidade = vCorUnidadeMedidaDAL.ObtemUnidadeMedidaSelecionado(ref pBanco, psCodUm, pIdOrg);
+            return VerificaCorUnidade == null;
+        }
+
         public CorUnidadeMedida Obtem_UM(ref Banco pBanco, int pIdOrg, string psCodUm)
         {
             return vCorUnidadeMedidaDAL.ObtemUnidadeMedidaSelecionado(ref pBanco, psCodUm, pIdOrg);

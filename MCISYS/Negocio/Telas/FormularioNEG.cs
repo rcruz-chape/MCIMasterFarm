@@ -17,6 +17,7 @@ namespace MCISYS.Negocio.Telas
         public const string CriaPap = "CriaPap";
         public const string CriaUsu = "CriaUsu";
         public const string ParCadUnidade = "ParCadUnidade";
+        public const string ParCadGrupo = "ParCadGrupo";
 
 
         public Form ChamaForm(string pTag, ref Banco pBanco, int pIdOrg, string pIdPapel, string pIdUSU, string pNmOrg, string pDSPApel)
@@ -35,6 +36,9 @@ namespace MCISYS.Negocio.Telas
                     break;
                 case ParCadUnidade:
                     vnForm = new Frm_ParCadUnidade(ref pBanco, pIdOrg, pIdPapel, pIdUSU, pNmOrg, pDSPApel);
+                    break;
+                case ParCadGrupo:
+                    vnForm = new Frm_ParCadGrupo(ref pBanco, pIdOrg, pIdPapel, pIdUSU, pNmOrg, pDSPApel);
                     break;
             }
             return vnForm;

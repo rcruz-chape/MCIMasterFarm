@@ -20,7 +20,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
         public Boolean InsereCorUnidadeMedida(ref Banco pBanco, CorUnidadeMedida corUnidadeMedida)
         {
             string vsSql = @"INSERT INTO COR_UNIDADE_MEDIDA
-                                SET ( ID_ORG
+                                    ( ID_ORG
                                     , COD_UM
                                     , DESC_UM
                                     , ID_USU_INCL
@@ -59,7 +59,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
         {
             string vsSql = @"UPDATE COR_UNIDADE_MEDIDA
                                 SET DESC_UM = @DESC_UM
-                                  , ID_USU_AL = @ID_USU_ALT
+                                  , ID_USU_ALT = @ID_USU_ALT
                                   , DT_ALTERACAO = @DT_ALTERACAO
                               WHERE ID_ORG = @ID_ORG
                                 AND COD_UM = @COD_UM";
@@ -127,8 +127,11 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 vCorUnidadeMedida.COD_UM = GetResults.GetString(1);
                 vCorUnidadeMedida.DESC_UM = GetResults.GetString(2);
                 vCorUnidadeMedida.ID_USU_INCL = GetResults.GetString(3);
-                vCorUnidadeMedida.DT_INCLUSAO = GetResults.GetDateTime(4);
-                vCorUnidadeMedida.ID_USU_ALT = GetResults.GetString(5);
+                vCorUnidadeMedida.DT_INCLUSAO = GetResults.GetDateTime(4); 
+                if (!GetResults.IsDBNull(5))
+                {
+                    vCorUnidadeMedida.ID_USU_ALT = GetResults.GetString(5);
+                }
                 if (!GetResults.IsDBNull(6))
                 {
                     vCorUnidadeMedida.DT_ALTERACAO = GetResults.GetDateTime(6);
@@ -153,7 +156,10 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     registro.DESC_UM = GetResults.GetString(2);
                     registro.ID_USU_INCL = GetResults.GetString(3);
                     registro.DT_INCLUSAO = GetResults.GetDateTime(4);
-                    registro.ID_USU_ALT = GetResults.GetString(5);
+                    if (!GetResults.IsDBNull(5))
+                    {
+                        registro.ID_USU_ALT = GetResults.GetString(5);
+                    }
                     if (!GetResults.IsDBNull(6))
                     {
                         registro.DT_ALTERACAO = GetResults.GetDateTime(6);

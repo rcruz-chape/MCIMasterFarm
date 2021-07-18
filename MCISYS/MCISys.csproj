@@ -114,6 +114,7 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\CorGrupoMercadoriaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoLicencaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorUnidadeMedidaDAL.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\VwPUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorGrupoMercadoria.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacaoLicenca.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorUnidadeMedida.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Negocio\BackOffice\Model\VwPUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CorGrupoMercadoriaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoLicencaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorUnidadeMedidaNEG.cs" />
@@ -242,6 +245,12 @@
     <Compile Include="Negocio\Telas\frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Telas\Frm_ParCadGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_ParCadGrupo.Designer.cs">
+      <DependentUpon>Frm_ParCadGrupo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Telas\Frm_ParCadUnidade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\Frm_ParCadGrupo.resx">
+      <DependentUpon>Frm_ParCadGrupo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_ParCadUnidade.resx">
       <DependentUpon>Frm_ParCadUnidade.cs</DependentUpon>
@@ -611,6 +623,12 @@
     <None Include="Imagens\icons8-agrupar-objetos-12.png" />
     <None Include="Imagens\icons8-agrupar-objetos-24.png" />
     <None Include="Imagens\icons8-agrupar-objetos-48.png" />
+    <None Include="Imagens\icons8-interruptor-de-luz-12-up.png" />
+    <None Include="Imagens\icons8-interruptor-de-luz-24-up.png" />
+    <None Include="Imagens\icons8-interruptor-de-luz-48-up.png" />
+    <None Include="Imagens\icons8-interruptor-de-luz-48.png" />
+    <None Include="Imagens\icons8-interruptor-de-luz-24.png" />
+    <None Include="Imagens\icons8-interruptor-de-luz-12.png" />
     <Content Include="Imagens\icons8-organization-chart-people-48.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
