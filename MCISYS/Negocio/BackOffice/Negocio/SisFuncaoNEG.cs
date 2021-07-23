@@ -27,7 +27,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         public Boolean bInserePapel(ref Banco pBanco, SisFuncao pSisFuncao)
         {
             var vSisFuncao = pSisFuncao;
-            if (vSisFuncao.id_funcao == null)
+            if (vSisFuncao.id_funcao == 0)
             {
                 vSisFuncao.id_funcao = Convert.ToInt32(vSisFuncaoDAL.vSequence.sqMax(vSisFuncaoDAL.vSeq.NomeColuna,
                                                                                      vSisFuncaoDAL.vSeq.NomeTabela, ref pBanco));

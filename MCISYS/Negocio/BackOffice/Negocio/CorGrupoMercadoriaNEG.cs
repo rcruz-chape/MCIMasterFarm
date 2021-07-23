@@ -15,6 +15,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
     public class CorGrupoMercadoriaNEG
     {
         private CorGrupoMercadoriaDAL vCorGrupoMercadoriaDAL = new CorGrupoMercadoriaDAL();
+        private CorSubGrupoMercadoriaNEG vCorSubGrupoMercadoriaNEG = new CorSubGrupoMercadoriaNEG();
         public string ATIVO = "S";
         public string DESATIVO = "N";
 
@@ -29,7 +30,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         }
         public Boolean DesAtivaGrupoMercadoria(ref Banco pBanco, int pIdOrg, int pIdGrpMerc)
         {
-            return vCorGrupoMercadoriaDAL.fbUpdateAtivaInativaGrupoMercadoria(ref pBanco, pIdOrg, pIdGrpMerc, DESATIVO);
+            Boolean vbDesativa;
+            vbDesativa = vCorSubGrupoMercadoriaNEG.bDesativaSubGrupoMercadoria(ref pBanco, pIdOrg, pIdGrpMerc);
+            vbDesativa = vCorGrupoMercadoriaDAL.fbUpdateAtivaInativaGrupoMercadoria(ref pBanco, pIdOrg, pIdGrpMerc, DESATIVO);
+            return vbDesativa;
         }
         public Boolean DeleteGrupoMercadoria(ref Banco pBanco, int pIdOrg, int pIdGrpMerc)
         {

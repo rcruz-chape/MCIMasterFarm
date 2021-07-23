@@ -79,9 +79,15 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
                     RegSisUsuarioLog.DT_LOGIN = GetResult.GetDateTime(1);
                     RegSisUsuarioLog.DS_HOSTNAME = GetResult.GetString(2);
                     RegSisUsuarioLog.DS_OS = GetResult.GetString(3);
-                    RegSisUsuarioLog.DS_MAC_ADDRESS = GetResult.GetString(4);
-                    RegSisUsuarioLog.DS_IP_ADDRESS = GetResult.GetString(5);
+                    if (!GetResult.IsDBNull(4))
+                    {
+                        RegSisUsuarioLog.DS_MAC_ADDRESS = GetResult.GetString(4);
+                    }
+                    if (!GetResult.IsDBNull(5))
+                    {
 
+                        RegSisUsuarioLog.DS_IP_ADDRESS = GetResult.GetString(5);
+                    }
                 }
             }
 

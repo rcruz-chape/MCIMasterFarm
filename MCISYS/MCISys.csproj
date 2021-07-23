@@ -117,6 +117,7 @@
     <Compile Include="Negocio\BackOffice\DAL\CorGrupoMercadoriaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoLicencaDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\CorSubGrupoMercadoriaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorUnidadeMedidaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ImagemModuloFuncaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Negocio\BackOffice\Model\CorGrupoMercadoria.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacaoLicenca.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorSubGrupoMercadoria.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorUnidadeMedida.cs" />
     <Compile Include="Negocio\BackOffice\Model\ImagensModuloFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisConfiguracaoEmail.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="Negocio\BackOffice\Negocio\CorGrupoMercadoriaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoLicencaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CorSubGrupoMercadoriaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorUnidadeMedidaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CriaEstruturaSisNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\DefaultNEG.cs" />
@@ -257,6 +260,12 @@
     <Compile Include="Negocio\Telas\Frm_ParCadUnidade.Designer.cs">
       <DependentUpon>Frm_ParCadUnidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\Telas\Frm_ParSubGrupoMerc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_ParSubGrupoMerc.Designer.cs">
+      <DependentUpon>Frm_ParSubGrupoMerc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Telas\Frm_SelecionaOrg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_ParCadUnidade.resx">
       <DependentUpon>Frm_ParCadUnidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\Frm_ParSubGrupoMerc.resx">
+      <DependentUpon>Frm_ParSubGrupoMerc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_SelecionaOrg.resx">
       <DependentUpon>Frm_SelecionaOrg.cs</DependentUpon>

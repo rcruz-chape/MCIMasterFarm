@@ -50,8 +50,8 @@ namespace MCISYS.Negocio.Telas
         public const string FormatGrp = "0000";
         public Boolean bModoPreGravacao = false;
 
-        MessageBoxIcon iError = MessageBoxIcon.Error;
-        MessageBoxIcon iWarning = MessageBoxIcon.Warning;
+        private MessageBoxIcon iError = MessageBoxIcon.Error;
+        private MessageBoxIcon iWarning = MessageBoxIcon.Warning;
 
         public CorGrupoMercadoriaNEG vCorGrupoMercadoriaNEG = new CorGrupoMercadoriaNEG();
         public List<CorGrupoMercadoria> vListCorGrupoMercadoria = new List<CorGrupoMercadoria>();
@@ -345,7 +345,7 @@ namespace MCISYS.Negocio.Telas
         }
         public Boolean RegAlterar()
         {
-            Comando = iRegAlterar;
+            Comando = iUpdate;
             bModoPreGravacao = true;
             var Habilita = HabilitaBotoes(iRegAlterar);
             Habilita = HabilitaCamposTela();
@@ -362,7 +362,7 @@ namespace MCISYS.Negocio.Telas
             Boolean bExcluir = true;
             switch (Comando)
             {
-                case iRegAlterar:
+                case iUpdate:
                     {
                         MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                         DialogResult result = MessageBox.Show("Deseja Excluir o Grupo de Mercadoria?", "Exclusão", buttons);
@@ -377,7 +377,7 @@ namespace MCISYS.Negocio.Telas
                         }
                         break;
                     }
-                case iRegNovo:
+                case iInsert:
                     {
                         MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                         DialogResult result = MessageBox.Show("Deseja Cancelar a Inclusão do Grupo de Mercadoria?", "Cancelar", buttons);

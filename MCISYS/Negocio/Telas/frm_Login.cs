@@ -124,6 +124,12 @@ namespace MCIMasterFarm
                         var vMAC = vNetwork.MAC();
                         var OS = vNetwork.OS();
                         var HostName = vNetwork.HostName();
+                        if (vIP == null)
+                        {
+                            vDialog = MessageBox.Show("Rede Indisponível ", "Logon Não Realizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.DialogResult = DialogResult.None;
+
+                        }
                         var vTsisUsuarioLogado = MontaUsuarioLogado(vIP, vMAC, OS, HostName, UsuarioLogado.id_usu);
                         var bVerificaUsuarioLogado = vSisUsuarioLogado.fVerificaSeUsuarioLogado(ref vBanco, vTsisUsuarioLogado, UsuarioLogado.id_usu);
                         if (!bVerificaUsuarioLogado)

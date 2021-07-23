@@ -10,6 +10,40 @@ namespace MCISYS.Negocio.BackOffice.DAL
 {
     public class Sequences
     {
+        public long sqNextCompostaMultipla(string pNomeColuna
+                                         , string pNomeTabela
+                                         , Dictionary<string,dynamic> Parametro
+                                         , ref Banco pBanco)
+        {
+            string vsSql = "SELECT COALESCE(MAX(";
+            long vReturn = 1;
+            int viLoop = 1;
+            var Conect = new Connect();
+            var vConnectado = Conect.GetConnection(ref pBanco);
+            vsSql += pNomeColuna + "),0) + 1";
+            vsSql += " FROM " + pNomeTabela;
+            if (Parametro.Count() != 0)
+            {
+                vsSql += " WHERE ";
+                foreach (var linha in Parametro)
+                {
+                    vsSql += linha.Key + " = @" + linha.Key;
+                    if (viLoop < Parametro.Count())
+                    {
+                        viLoop += 1;
+                        vsSql += " AND ";
+                    }
+                }
+            }
+            var vRecord = Conect.ObtemFirst(vsSql, Parametro, ref vConnectado);
+            if (vRecord != null)
+            {
+                vRecord.Read();
+                vReturn = vRecord.GetInt32(0);
+            }
+            var bClose = Conect.FechaConnection(ref vConnectado);
+            return vReturn;
+        }
         public long sqNextComposta(string pNomeColuna
                                  , string pNomeTabela
                                  , string pNomeColunaWhere

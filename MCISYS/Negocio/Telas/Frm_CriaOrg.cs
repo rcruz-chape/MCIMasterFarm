@@ -618,7 +618,7 @@ namespace MCISYS.Negocio.Telas
             {
                 this.txBNmOrg.Text = CorOrg.NM_ORG;
                 this.txb_OrgResumido.Text = CorOrg.NM_ORG_RESUMIDO;
-                if (CorOrg.ID_ORG_MAE != null && CorOrg.ID_ORG_MAE != 0)
+                if (CorOrg.ID_ORG_MAE != 0)
                 {
                     var OrgMae = listOrgMae.Find(LinhaOrgMae => LinhaOrgMae.ID_ORG == CorOrg.ID_ORG_MAE);
                     this.cbx_OrgMae.SelectedItem = CorOrg.ID_ORG_MAE;

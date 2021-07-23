@@ -8,6 +8,12 @@ namespace MCIMasterFarm.Negocio.BackOffice.Sequence
 {
     public class SQ
     {
+        public class SQsubGrupoMercadoria
+        {
+            public string NomeColuna = "ID_SUBGRP_MERC";
+            public string NomeTabela = "COR_SUB_GRUPO_MERCADORIA";
+
+        }
         public class SQGrupoMercadoria
         {
             public string NomeColuna = "ID_GRP_MERC";
