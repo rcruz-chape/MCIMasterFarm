@@ -114,7 +114,9 @@
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Connect.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\CorGeneroMercadoriaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorGrupoMercadoriaDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\CorNcmMercadoriaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorOrganizacaoLicencaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorSubGrupoMercadoriaDAL.cs" />
@@ -142,7 +144,12 @@
     <Compile Include="Negocio\BackOffice\DAL\VwOrgUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\VwPUsuDAL.cs" />
     <Compile Include="Negocio\BackOffice\Model\Configuracao.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorConjuntoMercadoria.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorGeneroMercadoria.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorGrupoMercadoria.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorMercadoria.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorMercadoriaVigencia.cs" />
+    <Compile Include="Negocio\BackOffice\Model\CorNcmMercadoria.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacao.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorOrganizacaoLicenca.cs" />
     <Compile Include="Negocio\BackOffice\Model\CorSubGrupoMercadoria.cs" />
@@ -167,7 +174,9 @@
     <Compile Include="Negocio\BackOffice\Model\VwPUsu.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguracaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ConfiguraControleNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CorGeneroMercadoriaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorGrupoMercadoriaNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\CorNcmMercadoriaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoLicencaNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorOrganizacaoNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\CorSubGrupoMercadoriaNEG.cs" />

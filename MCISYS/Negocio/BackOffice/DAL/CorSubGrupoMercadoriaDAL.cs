@@ -117,6 +117,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                 {"ID_USU_INCL", pCorSubGrupoMercadoria.ID_USU_INCL },
                 {"DT_INCLUSAO", pCorSubGrupoMercadoria.DT_INCLUSAO },
             };
+
             return vConnect.insert(ref pBanco, vsSql, Parametro);
         }
         public CorSubGrupoMercadoria ObtemSubGrupoMercadoria(ref Banco pBanco, int pIdOrg, int pIdGRpMErc, int pIdSubGrpMerc)
@@ -197,6 +198,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     vSubGrupoMercadoria.DT_ALTERACAO = GetResults.GetDateTime(8);
                 }
             }
+            var vbClose = vConnect.FechaConnection(ref vConnected);
             return vSubGrupoMercadoria;
         }
         private List<CorSubGrupoMercadoria> GetRegistros(ref Banco pBanco, string psSql, Dictionary<string,dynamic> Parametro)
@@ -228,6 +230,8 @@ namespace MCISYS.Negocio.BackOffice.DAL
 
                 }
             }
+
+            var vbClose = vConnect.FechaConnection(ref vConnected);
             return vListSubGrupoMercadoria;
         }
         public long lGetIDSubGrupoMercadoria(ref Banco pBanco, Dictionary<string, dynamic> Parametro)
@@ -238,6 +242,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                                   , vSeqSubGrupoMercadoria.NomeTabela
                                                   , Parametro
                                                   , ref pBanco);
+
             return Convert.ToInt16(vIdGrpMerc);
         }
     }

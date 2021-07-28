@@ -528,6 +528,20 @@ namespace MCISYS.Negocio.Telas
                         vIdSubGrp_Merc = Convert.ToInt32(this.dtgGrpSGrp.Rows[vIndexRowAtu].Cells[1].Value.ToString());
                     }
                     break;
+                case Keys.Down:
+                    vIndexRowAtu = this.dtgGrpSGrp.CurrentRow.Index;
+                    vIndexRow = this.dtgGrpSGrp.Rows.GetNextRow(vIndexRowAtu, DataGridViewElementStates.None);
+                    if (vIndexRow > -1)
+                    {
+                        vIdGrp_Merc = Convert.ToInt32(this.dtgGrpSGrp.Rows[vIndexRow].Cells[0].Value.ToString());
+                        vIdSubGrp_Merc = Convert.ToInt32(this.dtgGrpSGrp.Rows[vIndexRow].Cells[1].Value.ToString());
+                    }
+                    else
+                    {
+                        vIdGrp_Merc = Convert.ToInt32(this.dtgGrpSGrp.Rows[vIndexRowAtu].Cells[0].Value.ToString());
+                        vIdSubGrp_Merc = Convert.ToInt32(this.dtgGrpSGrp.Rows[vIndexRowAtu].Cells[1].Value.ToString());
+                    }
+                    break;
             }
             vbLoad = LoadReg(vIdGrp_Merc, vIdSubGrp_Merc);
         }
