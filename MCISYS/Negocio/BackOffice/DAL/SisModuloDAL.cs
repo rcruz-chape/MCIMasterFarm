@@ -173,7 +173,10 @@ namespace MCISYS.Negocio.BackOffice.DAL
                     }
                     RegSisModulo.ID_USU_INCL = GetResultado.GetString(7);
                     RegSisModulo.NM_IMAGEM_ICONE = GetResultado.GetString(9);
-                    RegSisModulo.TP_MOD_ORG = GetResultado.GetString(10);
+                    if (!GetResultado.IsDBNull(10))
+                    {
+                        RegSisModulo.TP_MOD_ORG = GetResultado.GetString(10);
+                    }
                     vlSisModulo.Add(RegSisModulo);
                 }
             }

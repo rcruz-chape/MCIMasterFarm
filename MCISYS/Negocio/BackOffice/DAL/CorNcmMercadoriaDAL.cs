@@ -73,7 +73,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             var GetResults = vConnect.ObtemLista(psSql, ref vConnectado, pParametro);
             if (GetResults.HasRows)
             {
-                foreach(GetResults.Read())
+                while(GetResults.Read())
                 {
                     var vCorNcmMercadoria = new CorNcmMercadoria();
                     vCorNcmMercadoria.COD_NCM = GetResults.GetString(0);
