@@ -135,9 +135,12 @@ namespace MCISYS.Negocio.Telas
                 this.grpBox.Text = "Associação de Papel";
                 vOrg = vCorOrgNeg.OrgSelecionada(ref vBanco, vIdOrg);
                 var VwOrgPapNEG = new VwOrgPapelNEG();
-                if (vOrg.ID_ORG != 0)
+                if (vOrg != null)
                 {
-                    vTPOrg = vOrg.TP_ORG;
+                    if (vOrg.ID_ORG != 0)
+                    {
+                        vTPOrg = vOrg.TP_ORG;
+                    }
                 }
 
 
