@@ -176,7 +176,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             var vSisUsuDal = new SIS_USUARIO_DAL();
             if (vbInsert == false)
             {
-                Boolean vbAlteraSenha = vSisUsuDal.AtualizaSenha(pSisUSuario, ref pBanco);
+                Boolean vbAlteraSenha = vSisUsuDal.AtualizaSenha(vSisUsuario, ref pBanco);
             }
             pSisUSuario = vSisUsuario;
 

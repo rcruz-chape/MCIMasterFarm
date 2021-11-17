@@ -56,6 +56,10 @@ namespace MCIMasterFarm.Negocio.Telas
                     string vsMensagem = @" Prezado   " + SisUSuarioREG.nm_usu + @" segue a sua nova senha: 
                         " + vsSenhaAlterada + " A Senha reiniciada já estará expirada e deve ser altarada no primerio login.";
                     Boolean Send = SisEmailNEG.SendEmail("Envio de Nova Senha", vsMensagem, SisUSuarioREG.ds_email, SisUSuarioREG.nm_usu, ref vBanco);
+                    if (Send)
+                    {
+                        var vDialog = MessageBox.Show("Senha Reiniciada com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
                 }
             }

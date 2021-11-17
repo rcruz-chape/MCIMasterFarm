@@ -524,6 +524,12 @@ namespace MCISYS.Negocio.Telas
             vbValida = vUorgNEG.bAssociaUsuarioOrg(ref vBanco, new List<SisUsuarioOrganizacao>(), MontaRegListUsuOrg());
             vbValida = vPusuNEG.AssociaPapelUsuario(ref vBanco, new List<SisPapelUsuario>(), MontaListaRegListUSuPapel());
             vbValida = AtualizaAssociacaoOrgPapel();
+            if (vbValida)
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = new DialogResult();
+                result = MessageBox.Show("Usuário " + UsuDetalhe.id_usu + " criado com sucesso.", "Criação Completada", buttons, iWarning);
+            }
             vbValida = LimpaTela();
             vbValida = LoadGeral();
 

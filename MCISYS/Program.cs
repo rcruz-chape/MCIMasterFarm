@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MCIMasterFarm.Negocio.Telas;
+using MCISYS.Negocio.BackOffice.Version;
 
 namespace MCIMasterFarm
 {
@@ -18,6 +19,8 @@ namespace MCIMasterFarm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             frn_MCILogin frmLogin = new frn_MCILogin();
+            VersionSis vVersao = new VersionSis();
+            string vnVersao = vVersao.GetVersionString();
             if (frmLogin.ShowDialog() == DialogResult.OK)
             {
                 var vvBanco = frmLogin.vBanco;
@@ -33,7 +36,7 @@ namespace MCIMasterFarm
 
                     Application.Run(new MDIForm(vsIdUsu, vvBanco, vIDOrg, vIDPapel, vTPOrg));
                 }
-             }
+            }
         }
     }
 }

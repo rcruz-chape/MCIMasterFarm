@@ -139,6 +139,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionarysVersion\V_1_0_0_0.cs" />
     <Compile Include="Negocio\BackOffice\DadosAcesso\Criptografia.cs" />
     <Compile Include="Negocio\BackOffice\DadosAcesso\RecuperarDadosAcesso.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ConfiguracaoDAL.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="Negocio\BackOffice\Negocio\VwOrgUsuNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\VwPUsuNEG.cs" />
     <Compile Include="Negocio\BackOffice\Sequence\SQ.cs" />
+    <Compile Include="Negocio\BackOffice\Version\VersionSis.cs" />
     <Compile Include="Negocio\Global\Banco.cs" />
     <Compile Include="Negocio\Telas\FormularioNEG.cs" />
     <Compile Include="Negocio\Telas\Frm_Associa.cs">

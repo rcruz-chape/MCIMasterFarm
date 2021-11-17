@@ -38,7 +38,9 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 		                                WHERE OPUSU.ID_ORG = @ID_ORG
 			                                AND OPUSU.ID_USU = USU.ID_USU
 		                                )";
+                vsSql += Environment.NewLine + @" OR ID_USU_INCL = @ID_USU";
                 Parametro.Add("ID_ORG", pIdOrg);
+                Parametro.Add("ID_USU", pIdUsu);
             }
             vsSql += @" ORDER BY DT_INCLUSAO";
             return RecuperaListaRegistro(ref pBanco, vsSql, Parametro);
