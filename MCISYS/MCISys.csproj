@@ -216,7 +216,6 @@
     <Compile Include="Negocio\BackOffice\Negocio\EmailNeg.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Error.cs" />
     <Compile Include="Negocio\BackOffice\Install\GlobalInstall.cs" />
-    <Compile Include="Negocio\BackOffice\Install\InstallSCA.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisFuncao.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
