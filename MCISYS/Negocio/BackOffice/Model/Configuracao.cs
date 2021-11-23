@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace MCIMasterFarm.Negocio.BackOffice.Model
 {
+    public class ConfiguracaoTecla
+    {
+        public int NR_KEYCODE { set; get; }
+        public string DS_TECLA { set; get; }
+    }
+
     public class Configuracao
     {   
         public string DS_ACAO { set; get; }

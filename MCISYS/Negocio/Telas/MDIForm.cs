@@ -38,6 +38,7 @@ namespace MCIMasterFarm.Negocio.Telas
         private DialogResult vDialog = new DialogResult();
         private VwOrgPapel vwOrgPapel = new VwOrgPapel();
         private VwOrgUsu vwOrgUsu = new VwOrgUsu();
+        private DefaultNEG vDefaultNEG = new DefaultNEG();
         private VwOrgPapelNEG vOrgPapelNEG = new VwOrgPapelNEG();
         private VwOrgUsuNEG vOrgUsuNEG = new VwOrgUsuNEG();
         private SisModuloNEG vSisModuloNeg = new SisModuloNEG();
@@ -62,12 +63,20 @@ namespace MCIMasterFarm.Negocio.Telas
 
             var bConfiguraStatus = ConfiguraBarraStatus();
 
+            var bParametrizaEmail = ConfiguraEmailParametrizado();
+
             var bConfiguraModulo = ConfiguraModuloAtivos();
             if (bConfiguraModulo)
             {
                 var bConfiguraFuncao = ConfiguraFuncaoAtiva();
                 var bMontaTreeList = AlimentaMCITreeList();
             }
+        }
+        private Boolean ConfiguraEmailParametrizado()
+        {
+            this.parametrizarEmailtoolStripMenuItem.Enabled = (vIdUsu == vDefaultNEG.USERADMIN);
+            this.parametrizarEmailtoolStripMenuItem.Visible = (vIdUsu == vDefaultNEG.USERADMIN);
+            return (vIdUsu == vDefaultNEG.USERADMIN);
         }
         private Boolean ConfiguraFuncaoAtiva()
         {
@@ -293,6 +302,12 @@ namespace MCIMasterFarm.Negocio.Telas
             vForm = vFormularioNEG.ChamaForm(pTag, ref vBanco, vIDOrgSelecionada, vIDPapelSelecionado, vIdUsu, vwOrgUsu.NM_ORG, vwOrgPapel.DS_PAPEL);
             vForm.ShowDialog();
             return true;
+        }
+
+        private void parametrizarEmailtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Email vFrm_Email = new frm_Email(ref vBanco, true);
+            vFrm_Email.ShowDialog();
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MCIMasterFarm.Negocio.Telas;
 using MCISYS.Negocio.BackOffice.Version;
+using MCIMasterFarm.Negocio.BackOffice;
+using MCIMasterFarm.Negocio.Global;
 
 namespace MCIMasterFarm
 {
@@ -14,13 +16,26 @@ namespace MCIMasterFarm
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             frn_MCILogin frmLogin = new frn_MCILogin();
+
+
+            Banco vBanco = new Banco();
+
+
+            var vREcuperaDadosAcesso = new DadosACessos();
+            var vREcupera = vREcuperaDadosAcesso.RecuperarDadosAcesso(ref vBanco);
             VersionSis vVersao = new VersionSis();
             string vnVersao = vVersao.GetVersionString();
+            string vnVersaoDB = vVersao.GetVersionBD(ref vBanco);
+            if (!vVersao.VersaoEquivalente(vnVersao,vnVersaoDB))
+            {
+
+            }
             if (frmLogin.ShowDialog() == DialogResult.OK)
             {
                 var vvBanco = frmLogin.vBanco;

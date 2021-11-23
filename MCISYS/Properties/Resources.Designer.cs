@@ -443,6 +443,26 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_seleção_marcada_36 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-caixa-de-seleção-marcada-36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_caixa_de_seleção_marcada_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-caixa-de-seleção-marcada-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_dashboard_layout_12 {
             get {
                 object obj = ResourceManager.GetObject("icons8_dashboard_layout_12", resourceCulture);
@@ -716,6 +736,26 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_entrar_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_entrar_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_enviar_e_mail_em_massa_36 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-enviar-e-mail-em-massa-36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_enviar_e_mail_em_massa_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-enviar-e-mail-em-massa-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1416,6 +1456,26 @@ namespace MCISYS.Properties {
         public static System.Drawing.Bitmap icons8_user_group_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_user_group_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_versão_de_teste_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-versão-de-teste-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_versão_de_teste_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-versão-de-teste-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

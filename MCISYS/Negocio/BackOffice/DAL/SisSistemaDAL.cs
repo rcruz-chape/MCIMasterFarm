@@ -11,6 +11,24 @@ namespace MCISYS.Negocio.BackOffice.DAL
 {
     public class SisSistemaDAL
     {
+        public String ObtemVersaoSistema(ref Banco pBanco)
+        {
+            string vNrVersao = "1.0.0.0";
+            string vsSql = @"SELECT NR_VERSAO
+                               FROM SIS_SISTEMA";
+            Connect vConnect = new Connect();
+            var vConnectado = vConnect.GetConnection(ref pBanco);
+            var GetResultado = vConnect.ObtemDistinct(vsSql, null, ref vConnectado);
+            if (GetResultado.HasRows)
+            {
+                GetResultado.Read();
+                vNrVersao = GetResultado.GetString(0);
+
+            }
+            return vNrVersao;
+
+
+        }
         public SisSistema ObtemSistema(ref Banco pBanco)
         {
             string vsSql = @"SELECT ID_SIS
@@ -46,6 +64,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             };
             return SelectSistemaHabilitado(ref pBanco, vsSql, Parametros);
         }
+        
         private SisSistema SelectSistemaHabilitado(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros = null)
         {
             Connect vConnect = new Connect();

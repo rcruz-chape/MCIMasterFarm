@@ -17,6 +17,35 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
     {
         private SmtpClient vsSmtp = new SmtpClient();
         private SisConfiguracaoEmail vConfiguracaoEmail = new SisConfiguracaoEmail();
+        private SisConfiguracaoEmail_DAL vConfiEMailDal = new SisConfiguracaoEmail_DAL();
+        public Boolean NegInsereMail(ref Banco pBanco, SisConfiguracaoEmail pConfiguracaoEmail)
+        {
+            return vConfiEMailDal.bInsereCOnfiguracaoEMail(ref pBanco, pConfiguracaoEmail);
+        }
+        public Boolean SendEmailTeste(SisConfiguracaoEmail pConfiguracaoEmail)
+        {
+            Boolean vReturn;
+            try
+            {
+                string sTitulo = "Envio de E-mail teste";
+                string sMessagem = "Parabéns!";
+                sMessagem += Environment.NewLine + "Você recebeu esse e-mail como sinal positivo do teste de envio de e-mail durante a configuração do MCISYS";
+                Boolean vbReturn = true;
+                MailMessage mail = MontaEmail(sTitulo, sMessagem, pConfiguracaoEmail.DS_EMAIL, pConfiguracaoEmail.DS_EMAIL, pConfiguracaoEmail);
+                vsSmtp.Host = pConfiguracaoEmail.DS_HOST;
+                vsSmtp.EnableSsl = pConfiguracaoEmail.BO_ENABLE_SSL;
+                vsSmtp.Port = pConfiguracaoEmail.NR_PORT;
+                vsSmtp.UseDefaultCredentials = pConfiguracaoEmail.BO_USE_DEFAULT_CREDENTIALS;
+                vsSmtp.Credentials = new NetworkCredential(vConfiguracaoEmail.DS_EMAIL, vConfiguracaoEmail.DS_SENHA);
+                vsSmtp.Send(mail);
+                vReturn = true;
+            }
+            catch (Exception e)
+            {
+                vReturn = false;
+            }
+            return vReturn;
+        }
         public Boolean SendEmail(string psTitulo, string psMessagem, string psDestinatario, string psnMDestinario, ref Banco pBanco)
         {
             Boolean vbReturn = true;
@@ -41,7 +70,7 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             vMessageMail.Priority = MailPriority.High;
             return vMessageMail;
         }
-        private SisConfiguracaoEmail MontaConfiguracaoEmail(ref Banco pBanco)
+        public SisConfiguracaoEmail MontaConfiguracaoEmail(ref Banco pBanco)
         {
             var vSisConfigDAL = new SisConfiguracaoEmail_DAL();
             return vSisConfigDAL.ObtemCOnfiguracaoEmail(ref pBanco);

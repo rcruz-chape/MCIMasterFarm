@@ -8,6 +8,7 @@ namespace MCISYS.Negocio.BackOffice.Negocio
 {
     public class DefaultNEG
     {
+        public string USERADMIN = "admin";
         public object NVL(object ParametroNull, object ParametroREtorno)
         {
             if (ParametroNull == null)

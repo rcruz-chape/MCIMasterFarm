@@ -7,45 +7,284 @@ using MCISYS.Negocio.BackOffice.Model;
 using MCIMasterFarm.Negocio.BackOffice.Model;
 
 namespace MCISYS.DictionarysVersion
-{
-    
-    public class tables
-    {
-        public int idTable { get; set; }
-        public string table_name { get; set; }
-    }
-    public class constraint
-    {
-        public string table_name { get; set; }
-        public string constraint_Name { set; get; }
-        public string constraint_type { set; get; }
-        public string command_constraint { set; get; }
-    }
-    public class columns
-    {
-        public string table_name { get; set; }
-        public int indice_col { set; get; }
-        public string column_name { get; set; }
-        public string column_type { get; set; }
-        public Boolean isNull { get; set; }
-        public int? column_lenght { set; get; }
-        public int? column_precision { set; get; }
-
-    }
-
-    public class sequence
-    {
-        public string sequence_name { get; set; }
-        public string comand_sequence { get; set; }
-    }
-
-    public class views
-    {
-        public string view_name { get; set; }
-        public string view_command { get; set; }
-    }
+{  
     public class V_1_0_0_0
     {
+		public List<ConfiguracaoTecla> MontaConfiguracaoTeclado()
+        {
+			List<ConfiguracaoTecla> vLisConfigAcao = new List<ConfiguracaoTecla>();
+			int viTotConfigAcao = 8;
+			int viIndice = 1;
+			while (viIndice < viTotConfigAcao)
+            {
+				ConfiguracaoTecla vConfiAcao = new ConfiguracaoTecla();
+				switch(viIndice)
+                {
+					case 1:
+						vConfiAcao.DS_TECLA = "ENTER";
+						vConfiAcao.NR_KEYCODE = 13;
+						break;
+					case 2:
+						vConfiAcao.DS_TECLA = "LEFT";
+						vConfiAcao.NR_KEYCODE = 37;
+						break;
+					case 3:
+						vConfiAcao.DS_TECLA = "RIGHT";
+						vConfiAcao.NR_KEYCODE = 39;
+						break;
+					case 4:
+						vConfiAcao.DS_TECLA = "F2";
+						vConfiAcao.NR_KEYCODE = 113;
+						break;
+					case 5:
+						vConfiAcao.DS_TECLA = "F3";
+						vConfiAcao.NR_KEYCODE = 114;
+						break;
+					case 6:
+						vConfiAcao.DS_TECLA = "F4";
+						vConfiAcao.NR_KEYCODE = 115;
+						break;
+					case 7:
+						vConfiAcao.DS_TECLA = "F5";
+						vConfiAcao.NR_KEYCODE = 116;
+						break;
+					case 8:
+						vConfiAcao.DS_TECLA = "F8";
+						vConfiAcao.NR_KEYCODE = 119;
+						break;
+				}
+				viIndice += 1;
+				vLisConfigAcao.Add(vConfiAcao);
+            }
+			return vLisConfigAcao;
+		}
+		public List<Configuracao> MontaConfiguracao()
+        {
+			List<Configuracao> vListSisCOnfiguracao = new List<Configuracao>();
+			int viTotConfiguracao = 9;
+			int viIndice = 1;
+
+			 while(viIndice < viTotConfiguracao)
+             {
+				Configuracao vSisConfiguracao = new Configuracao();
+
+				switch(viIndice)
+                {
+					case 1:
+						vSisConfiguracao.NM_FUNCAO = "DS_PESQ_ANTERIOR";
+						vSisConfiguracao.NR_KEYCODE = 37;
+						vSisConfiguracao.DS_ACAO = "ANTERIOR";
+						break;
+					case 2:
+						vSisConfiguracao.NM_FUNCAO = "DS_PESQ_PROXIMO";
+						vSisConfiguracao.NR_KEYCODE = 39;
+						vSisConfiguracao.DS_ACAO = "PROXIMO";
+						break;
+					case 3:
+						vSisConfiguracao.NM_FUNCAO = "DS_PESQ_REGISTRO";
+						vSisConfiguracao.NR_KEYCODE = 13;
+						vSisConfiguracao.DS_ACAO = "PESQUISA";
+						break;
+					case 4:
+						vSisConfiguracao.NM_FUNCAO = "DS_PESQ_REGISTRO";
+						vSisConfiguracao.NR_KEYCODE = 119;
+						vSisConfiguracao.DS_ACAO = "PESQUISA";
+						break;
+					case 5:
+						vSisConfiguracao.NM_FUNCAO = "DS_TECLA_CAMPOPESQ";
+						vSisConfiguracao.NR_KEYCODE = 116;
+						vSisConfiguracao.DS_ACAO = "ABRE_LISTA";
+						break;
+					case 6:
+						vSisConfiguracao.NM_FUNCAO = "DS_TECLA_EXCLUIR";
+						vSisConfiguracao.NR_KEYCODE = 113;
+						vSisConfiguracao.DS_ACAO = "EXCLUIR";
+						break;
+					case 7:
+						vSisConfiguracao.NM_FUNCAO = "DS_TECLA_NOVO";
+						vSisConfiguracao.NR_KEYCODE = 114;
+						vSisConfiguracao.DS_ACAO = "NOVO";
+						break;
+					case 8:
+						vSisConfiguracao.NM_FUNCAO = "DS_TECLA_SALVAR";
+						vSisConfiguracao.NR_KEYCODE = 115;
+						vSisConfiguracao.DS_ACAO = "SALVAR";
+						break;
+					case 9:
+						vSisConfiguracao.NM_FUNCAO = "DS_TECLA_SALVAR";
+						vSisConfiguracao.NR_KEYCODE = 13;
+						vSisConfiguracao.DS_ACAO = "SALVAR";
+						break;
+				}
+
+				viIndice += 1;
+				vListSisCOnfiguracao.Add(vSisConfiguracao);
+            }
+
+			return vListSisCOnfiguracao;
+        }
+		
+		public List<SisPapelFuncao> MontaSisPapelFuncao()
+        {
+			List<SisPapelFuncao> vListSisPapelFuncao = new List<SisPapelFuncao>();
+			int viTotPapelFuncao = 8;
+			int viIndice = 1;
+			while (viIndice <= viTotPapelFuncao)
+            {
+				SisPapelFuncao vSisPapelFuncao = new SisPapelFuncao();
+
+				switch (viIndice)
+                {
+					case 1:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 1;
+						vSisPapelFuncao.ind_incl_reg = "S";
+						vSisPapelFuncao.ind_incl_alt = "S";
+						vSisPapelFuncao.ind_excl_reg = "S";
+						vSisPapelFuncao.ind_cons_reg = "S";
+						vSisPapelFuncao.ind_execute = "N";
+						break;
+					case 2:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 2;
+						vSisPapelFuncao.ind_incl_reg = "N";
+						vSisPapelFuncao.ind_incl_alt = "N";
+						vSisPapelFuncao.ind_excl_reg = "N";
+						vSisPapelFuncao.ind_cons_reg = "N";
+						vSisPapelFuncao.ind_execute = "S";
+						break;
+					case 3:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 3;
+						vSisPapelFuncao.ind_incl_reg = "N";
+						vSisPapelFuncao.ind_incl_alt = "N";
+						vSisPapelFuncao.ind_excl_reg = "N";
+						vSisPapelFuncao.ind_cons_reg = "N";
+						vSisPapelFuncao.ind_execute = "S";
+						break;
+					case 4:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 4;
+						vSisPapelFuncao.ind_incl_reg = "S";
+						vSisPapelFuncao.ind_incl_alt = "S";
+						vSisPapelFuncao.ind_excl_reg = "S";
+						vSisPapelFuncao.ind_cons_reg = "S";
+						vSisPapelFuncao.ind_execute = "N";
+						break;
+					case 5:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 5;
+						vSisPapelFuncao.ind_incl_reg = "N";
+						vSisPapelFuncao.ind_incl_alt = "N";
+						vSisPapelFuncao.ind_excl_reg = "N";
+						vSisPapelFuncao.ind_cons_reg = "N";
+						vSisPapelFuncao.ind_execute = "S";
+						break;
+					case 6:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 6;
+						vSisPapelFuncao.ind_incl_reg = "N";
+						vSisPapelFuncao.ind_incl_alt = "N";
+						vSisPapelFuncao.ind_excl_reg = "N";
+						vSisPapelFuncao.ind_cons_reg = "N";
+						vSisPapelFuncao.ind_execute = "S";
+						break;
+					case 7:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 7;
+						vSisPapelFuncao.ind_incl_reg = "S";
+						vSisPapelFuncao.ind_incl_alt = "S";
+						vSisPapelFuncao.ind_excl_reg = "S";
+						vSisPapelFuncao.ind_cons_reg = "S";
+						vSisPapelFuncao.ind_execute = "N";
+						break;
+					case 8:
+						vSisPapelFuncao.ID_PAPEL = "1";
+						vSisPapelFuncao.ID_SIS = 1;
+						vSisPapelFuncao.ID_MOD = 1;
+						vSisPapelFuncao.ID_FUNCAO = 8;
+						vSisPapelFuncao.ind_incl_reg = "N";
+						vSisPapelFuncao.ind_incl_alt = "N";
+						vSisPapelFuncao.ind_excl_reg = "N";
+						vSisPapelFuncao.ind_cons_reg = "N";
+						vSisPapelFuncao.ind_execute = "S";
+						break;
+				}
+
+				viIndice += 1;
+				vListSisPapelFuncao.Add(vSisPapelFuncao);
+			}
+			return vListSisPapelFuncao;
+
+		}
+		public SisOrganizacaoPapelUsuario MontaSisOrgPapelUsu()
+        {
+			SisOrganizacaoPapelUsuario vSisOrgPapelUsu = new SisOrganizacaoPapelUsuario();
+			vSisOrgPapelUsu.ID_ORG = 1;
+			vSisOrgPapelUsu.ID_PAPEL = "1";
+			vSisOrgPapelUsu.ID_USU = "admin";
+			vSisOrgPapelUsu.ID_USU_INCL = "admin";
+			vSisOrgPapelUsu.DT_INCLUSAO = DateTime.Now;
+
+			return vSisOrgPapelUsu;
+        }
+		public SisOrganizacaoPapel MontaSisOrgPapel()
+        {
+			SisOrganizacaoPapel vSisOrgPapel = new SisOrganizacaoPapel();
+			vSisOrgPapel.ID_ORG = 1;
+			vSisOrgPapel.ID_PAPEL = "1";
+			vSisOrgPapel.ID_USU_INCL = "admin";
+			vSisOrgPapel.DT_INCLUSAO = DateTime.Now;
+
+
+			return vSisOrgPapel;
+        }
+		public SisPapel MontaSisPapel()
+        {
+			SisPapel vSisPapel = new SisPapel();
+			vSisPapel.ID_PAPEL = "1";
+			vSisPapel.DS_PAPEL = "ADMINISTRADOR";
+			vSisPapel.TP_PAPEL = 0;
+			vSisPapel.ID_USU_INCL = "admin";
+			vSisPapel.DT_INCLUSAO = DateTime.Now;
+			vSisPapel.ID_USU_ALT = "admin";
+
+			return vSisPapel;
+        }
+		public SisModuloOrganizacao MontaSisModuloOrganizacao()
+        {
+			SisModuloOrganizacao vSisModuloOrganizacao = new SisModuloOrganizacao();
+			vSisModuloOrganizacao.ID_ORG = 1;
+			vSisModuloOrganizacao.ID_SIS = 1;
+			vSisModuloOrganizacao.ID_MOD = 1;
+			return vSisModuloOrganizacao;
+
+		}
+		public CorOrganizacao MontaCorOrganizacaoAdm()
+        {
+			CorOrganizacao vSisCorOrganizacao = new CorOrganizacao();
+
+			vSisCorOrganizacao.ID_ORG = 1;
+			vSisCorOrganizacao.NM_ORG = "Organização Administradora da Instância";
+			vSisCorOrganizacao.NM_ORG_RESUMIDO = "ORG ADM";
+			vSisCorOrganizacao.TP_ORG = "A";
+
+			return vSisCorOrganizacao;
+	    }
 		public List<SisModuloFuncao> MontaModuloFuncao()
         {
 			List<SisModuloFuncao> vListSisModuloFuncao = new List<SisModuloFuncao>();
@@ -1667,7 +1906,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = true;
 						column.column_lenght = 2;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 2:
@@ -1708,7 +1947,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_GRUPO_MERCADORIA";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -1718,7 +1957,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_GRUPO_MERCADORIA";
 						column.indice_col = 2;
 						column.column_name = "ID_GRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -1780,7 +2019,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -1793,7 +2032,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = true;
 						column.column_lenght = 7;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 16:
@@ -1809,7 +2048,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA";
 						column.indice_col = 4;
 						column.column_name = "COD_GENE_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -1819,7 +2058,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA";
 						column.indice_col = 5;
 						column.column_name = "ID_GRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -1829,7 +2068,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA";
 						column.indice_col = 6;
 						column.column_name = "ID_SUBGRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -1914,7 +2153,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 29:
@@ -1924,7 +2163,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 30:
@@ -1934,7 +2173,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 31:
@@ -1944,7 +2183,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 32:
@@ -1954,7 +2193,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 33:
@@ -1964,7 +2203,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 34:
@@ -1974,17 +2213,17 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 35:
 						column.table_name = "COR_MERCADORIA";
-						column.indice_col = 22;
+						column.indice_col = 22;	
 						column.column_name = "VL_ALI_ISS";
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 36:
@@ -1994,7 +2233,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 37:
@@ -2004,7 +2243,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 38:
@@ -2014,7 +2253,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 39:
@@ -2024,7 +2263,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 40:
@@ -2034,7 +2273,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 41:
@@ -2044,7 +2283,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 42:
@@ -2054,7 +2293,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 5;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 43:
@@ -2064,7 +2303,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 44:
@@ -2074,7 +2313,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 45:
@@ -2084,7 +2323,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 46:
@@ -2094,7 +2333,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 47:
@@ -2104,7 +2343,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 48:
@@ -2114,7 +2353,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = false;
 						column.column_lenght = 9;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 49:
@@ -2169,7 +2408,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA_VIGENCIA";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2182,7 +2421,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = true;
 						column.column_lenght = 7;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 57:
@@ -2217,7 +2456,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = true;
 						column.column_lenght = 2;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 61:
@@ -2233,7 +2472,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA_VIGENCIA";
 						column.indice_col = 8;
 						column.column_name = "ID_GRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2243,7 +2482,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA_VIGENCIA";
 						column.indice_col = 9;
 						column.column_name = "ID_SUBGRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2292,7 +2531,7 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "NUMERIC";
 						column.isNull = true;
 						column.column_lenght = 2;
-						column.column_precision = 10;
+						column.column_precision = 4;
 						break;
 
 					case 69:
@@ -2324,7 +2563,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_ORGANIZACAO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2352,7 +2591,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_ORGANIZACAO";
 						column.indice_col = 4;
 						column.column_name = "ID_ORG_MAE";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2379,7 +2618,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_ORGANIZACAO_LICENCA";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2389,7 +2628,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_ORGANIZACAO_LICENCA";
 						column.indice_col = 2;
 						column.column_name = "NR_CNPJ_RAIZ";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2399,7 +2638,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_ORGANIZACAO_LICENCA";
 						column.indice_col = 3;
 						column.column_name = "DS_AMBIENTE";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2425,7 +2664,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_SUB_GRUPO_MERCADORIA";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2435,7 +2674,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_SUB_GRUPO_MERCADORIA";
 						column.indice_col = 2;
 						column.column_name = "ID_GRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2445,7 +2684,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_SUB_GRUPO_MERCADORIA";
 						column.indice_col = 3;
 						column.column_name = "ID_SUBGRP_MERC";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2505,7 +2744,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_UNIDADE_MEDIDA";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2574,7 +2813,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_CONFIGURACAO";
 						column.indice_col = 2;
 						column.column_name = "NR_KEYCODE";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2602,7 +2841,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_CONFIGURACAO_EMAIL";
 						column.indice_col = 2;
 						column.column_name = "NR_PORT";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2646,7 +2885,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_CONFIGURACAO_TECLA";
 						column.indice_col = 1;
 						column.column_name = "NR_KEYCODE";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2665,7 +2904,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_FUNCAO";
 						column.indice_col = 1;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2807,7 +3046,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_FUNCAO_IMPLEMENTADA";
 						column.indice_col = 1;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2817,7 +3056,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO";
 						column.indice_col = 1;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2861,7 +3100,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO";
 						column.indice_col = 6;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2916,7 +3155,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO_FUNCAO";
 						column.indice_col = 1;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2926,7 +3165,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO_FUNCAO";
 						column.indice_col = 2;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2936,7 +3175,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO_FUNCAO";
 						column.indice_col = 3;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2946,7 +3185,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO_ORGANIZACAO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2956,7 +3195,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO_ORGANIZACAO";
 						column.indice_col = 2;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2966,7 +3205,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_MODULO_ORGANIZACAO";
 						column.indice_col = 3;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -2976,7 +3215,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_ORGANIZACAO_PAPEL";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3012,7 +3251,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_ORGANIZACAO_PAPEL_USUARIO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3109,7 +3348,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PAPEL";
 						column.indice_col = 7;
 						column.column_name = "TP_PAPEL";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3128,7 +3367,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PAPEL_FUNCAO";
 						column.indice_col = 2;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3138,7 +3377,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PAPEL_FUNCAO";
 						column.indice_col = 3;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3148,7 +3387,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PAPEL_FUNCAO";
 						column.indice_col = 4;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3229,7 +3468,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PARAMETRO";
 						column.indice_col = 2;
 						column.column_name = "IND_CAR_MAIUSCULO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3239,7 +3478,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PARAMETRO";
 						column.indice_col = 3;
 						column.column_name = "IND_CAR_MINUSCULO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3249,7 +3488,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PARAMETRO";
 						column.indice_col = 4;
 						column.column_name = "IND_NUMERO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3259,7 +3498,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_PARAMETRO";
 						column.indice_col = 5;
 						column.column_name = "IND_TOTAL_CAR";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3269,7 +3508,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_SISTEMA";
 						column.indice_col = 1;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3393,7 +3632,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_USUARIO";
 						column.indice_col = 7;
 						column.column_name = "IND_MOTIVO_BLOQUEIO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3403,7 +3642,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_USUARIO";
 						column.indice_col = 8;
 						column.column_name = "QTD_LOGIN_SEM_SUCESSO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3413,7 +3652,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_USUARIO";
 						column.indice_col = 9;
 						column.column_name = "ID_PESSOA_FISICA";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3563,7 +3802,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_USUARIO_ORGANIZACAO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3608,7 +3847,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_FUNCAO_HABILITADA_PAPEL";
 						column.indice_col = 2;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3618,7 +3857,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_FUNCAO_HABILITADA_PAPEL";
 						column.indice_col = 3;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3637,7 +3876,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_FUNCAO_HABILITADA_PAPEL";
 						column.indice_col = 5;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3779,7 +4018,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_MODULO_FUNCAO";
 						column.indice_col = 2;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3789,7 +4028,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_MODULO_FUNCAO";
 						column.indice_col = 3;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3799,7 +4038,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_MODULO_FUNCAO";
 						column.indice_col = 4;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3826,7 +4065,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_MODULO_SISTEMA_HABILITADO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3845,7 +4084,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_MODULO_SISTEMA_HABILITADO";
 						column.indice_col = 3;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3863,7 +4102,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_MODULO_SISTEMA_HABILITADO";
 						column.indice_col = 5;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3881,7 +4120,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_ORG_CADASTRADAS";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3926,7 +4165,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_ORG_CADASTRADAS";
 						column.indice_col = 6;
 						column.column_name = "ID_ORG_MAE";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -3944,7 +4183,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_ORG_USUARIO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -4008,7 +4247,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_PAP_USUARIO";
 						column.indice_col = 3;
 						column.column_name = "TP_PAPEL";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -4018,7 +4257,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_PAP_USUARIO";
 						column.indice_col = 4;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -4037,7 +4276,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_SIS_FUNCAO_IMPLEMENTAR";
 						column.indice_col = 1;
 						column.column_name = "ID_SIS";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -4047,7 +4286,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_SIS_FUNCAO_IMPLEMENTAR";
 						column.indice_col = 2;
 						column.column_name = "ID_MOD";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -4057,7 +4296,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_SIS_FUNCAO_IMPLEMENTAR";
 						column.indice_col = 3;
 						column.column_name = "ID_FUNCAO";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;
@@ -4130,7 +4369,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "VW_SIS_ORGANIZACAO";
 						column.indice_col = 1;
 						column.column_name = "ID_ORG";
-						column.column_type = "INT4";
+						column.column_type = "INT";
 						column.isNull = false;
 						column.column_lenght = 32;
 						column.column_precision = 2;

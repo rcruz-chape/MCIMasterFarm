@@ -44,5 +44,37 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
             var vClose = vConnect.FechaConnection(ref vConnect.vConnect);
             return RegConfiguracaoEmail;
         }
+        public Boolean bInsereCOnfiguracaoEMail(ref Banco pBanco, SisConfiguracaoEmail pSisConfiguracaoEmail)
+        {
+            string vsSql = @"INSERT INTO SIS_CONFIGURACAO_EMAIL (
+                                                                 DS_HOST
+                                                                 ,NR_PORT
+                                                                 ,BO_ENABLE_SSL
+                                                                 ,BO_USE_DEFAULT_CREDENTIALS
+                                                                 ,DS_EMAIL
+                                                                 ,DS_SENHA
+                                                                 )
+                                                                 VALUES
+                                                                 (
+                                                                 @DS_HOST
+                                                                 ,@NR_PORT
+                                                                 ,@BO_ENABLE_SSL
+                                                                 ,@BO_USE_DEFAULT_CREDENTIALS
+                                                                 ,@DS_EMAIL
+                                                                 ,@DS_SENHA
+                                                                 )";
+            var Parametros = new Dictionary<string, dynamic>()
+            {
+                {"DS_HOST", pSisConfiguracaoEmail.DS_HOST },
+                {"NR_PORT", pSisConfiguracaoEmail.NR_PORT },
+                {"BO_ENABLE_SSL", pSisConfiguracaoEmail.BO_ENABLE_SSL },
+                {"BO_USE_DEFAULT_CREDENTIALS", pSisConfiguracaoEmail.BO_USE_DEFAULT_CREDENTIALS },
+                {"DS_EMAIL", pSisConfiguracaoEmail.DS_EMAIL },
+                {"DS_SENHA", pSisConfiguracaoEmail.DS_SENHA }
+            };
+
+            var vConnect = new Connect();
+            return vConnect.insert(ref pBanco, vsSql, Parametros);
+        }
     }
 }

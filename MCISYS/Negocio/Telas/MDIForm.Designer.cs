@@ -42,6 +42,7 @@ namespace MCIMasterFarm.Negocio.Telas
             this.btnExit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.trv_MCISYS = new System.Windows.Forms.TreeView();
+            this.parametrizarEmailtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,7 +66,8 @@ namespace MCIMasterFarm.Negocio.Telas
             // 
             this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trocarOrgEPapelToolStripMenuItem});
+            this.trocarOrgEPapelToolStripMenuItem,
+            this.parametrizarEmailtoolStripMenuItem});
             this.toolStripSplitButton1.Image = global::MCISYS.Properties.Resources.icons8_grupo_de_negócios_16;
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
@@ -76,7 +78,7 @@ namespace MCIMasterFarm.Negocio.Telas
             // trocarOrgEPapelToolStripMenuItem
             // 
             this.trocarOrgEPapelToolStripMenuItem.Name = "trocarOrgEPapelToolStripMenuItem";
-            this.trocarOrgEPapelToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.trocarOrgEPapelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.trocarOrgEPapelToolStripMenuItem.Text = "Trocar Org e Papel";
             this.trocarOrgEPapelToolStripMenuItem.Click += new System.EventHandler(this.trocarOrgEPapelToolStripMenuItem_Click);
             // 
@@ -158,6 +160,15 @@ namespace MCIMasterFarm.Negocio.Telas
             this.trv_MCISYS.TabIndex = 0;
             this.trv_MCISYS.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv_MCISYS_AfterSelect);
             // 
+            // parametrizarEmailtoolStripMenuItem
+            // 
+            this.parametrizarEmailtoolStripMenuItem.Enabled = false;
+            this.parametrizarEmailtoolStripMenuItem.Name = "parametrizarEmailtoolStripMenuItem";
+            this.parametrizarEmailtoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parametrizarEmailtoolStripMenuItem.Text = "Parametrizar Email";
+            this.parametrizarEmailtoolStripMenuItem.Visible = false;
+            this.parametrizarEmailtoolStripMenuItem.Click += new System.EventHandler(this.parametrizarEmailtoolStripMenuItem_Click);
+            // 
             // MDIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +202,7 @@ namespace MCIMasterFarm.Negocio.Telas
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TreeView trv_MCISYS;
+        private System.Windows.Forms.ToolStripMenuItem parametrizarEmailtoolStripMenuItem;
     }
 }
 
