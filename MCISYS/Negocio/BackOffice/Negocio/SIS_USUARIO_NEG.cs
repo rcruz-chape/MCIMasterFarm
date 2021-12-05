@@ -56,20 +56,26 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
             return vbNovaSenha;
 
         }
-        public Boolean CriaUsuario(SisUsuario pSisUsuario,ref Banco pBanco)
+        public Boolean CriaUsuario(SisUsuario pSisUsuario,ref Banco pBanco, Boolean bImplementa = false)
         {
             Boolean bcria;
             var vSisUsuarioDal = new SIS_USUARIO_DAL();
             var SisParametroNEG = new SIS_PARAMETRO_NEG();
             var SisParametroREG = SisParametroNEG.ObtemParametro(ref pBanco);
             var vSisUsuario = pSisUsuario;
-            vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario, true); 
+            if (!bImplementa)
+            {
+                vSisUsuario.ds_pwd = defineSenhaUsuario(ref pBanco, SisParametroREG, ref vSisUsuario, true);
+            }
             vSisUsuario.ind_bloqueado = sUsuarioBloqueado;
             vSisUsuario.ind_motivo_bloqueio = iSenhaExpirada;
             vSisUsuario.dt_inclusao = DateTime.Now;
             vSisUsuario.qtd_login_sem_sucesso = 0;
             bcria = vSisUsuarioDal.insereUsuario(vSisUsuario, ref pBanco);
-            bcria = EnviaNovaSenha(vSisUsuario, ref pBanco);
+            if (!bImplementa)
+            {
+                bcria = EnviaNovaSenha(vSisUsuario, ref pBanco);
+            }
             return bcria;
         }
         public Boolean EnviaNovaSenha(SisUsuario pSisUsuario, ref Banco pBanco)

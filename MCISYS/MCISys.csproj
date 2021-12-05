@@ -141,6 +141,9 @@
   <ItemGroup>
     <Compile Include="DictionarysVersion\columns.cs" />
     <Compile Include="DictionarysVersion\constraint.cs" />
+    <Compile Include="DictionarysVersion\DicVersionImplemented.cs" />
+    <Compile Include="DictionarysVersion\extesion.cs" />
+    <Compile Include="DictionarysVersion\schemas.cs" />
     <Compile Include="DictionarysVersion\sequence.cs" />
     <Compile Include="DictionarysVersion\tables.cs" />
     <Compile Include="DictionarysVersion\VersionDict.cs" />
@@ -159,10 +162,13 @@
     <Compile Include="Negocio\BackOffice\DAL\CorSubGrupoMercadoriaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\CorUnidadeMedidaDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\DictionaryColumnsDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\DictionaryConstraintDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\DictionaryDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\DictionarySequenceDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\DictionaryTablesDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\DictionaryViewDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\ImagemModuloFuncaoDAL.cs" />
+    <Compile Include="Negocio\BackOffice\DAL\ImplementaDDLDAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\Sequences.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisConfiguracaoEmail_DAL.cs" />
     <Compile Include="Negocio\BackOffice\DAL\SisFuncaoDAL.cs" />
@@ -231,6 +237,7 @@
     <Compile Include="Negocio\BackOffice\Model\SisParametro.cs" />
     <Compile Include="Negocio\BackOffice\Model\SisUsuario.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ImagemModuloFuncaoNEG.cs" />
+    <Compile Include="Negocio\BackOffice\Negocio\ImplementaDDLNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\SisFuncaoImplementarNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\ModIconsNEG.cs" />
     <Compile Include="Negocio\BackOffice\Negocio\Network.cs" />
@@ -291,6 +298,12 @@
     </Compile>
     <Compile Include="Negocio\Telas\Frm_EsqueciSenha.Designer.cs">
       <DependentUpon>Frm_EsqueciSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_Implementa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Negocio\Telas\Frm_Implementa.Designer.cs">
+      <DependentUpon>Frm_Implementa.cs</DependentUpon>
     </Compile>
     <Compile Include="Negocio\Telas\Frm_Licenca.cs">
       <SubType>Form</SubType>
@@ -359,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_EsqueciSenha.resx">
       <DependentUpon>Frm_EsqueciSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Negocio\Telas\Frm_Implementa.resx">
+      <DependentUpon>Frm_Implementa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Negocio\Telas\Frm_Licenca.resx">
       <DependentUpon>Frm_Licenca.cs</DependentUpon>
@@ -707,6 +723,10 @@
     <None Include="Imagens\icons8-caixa-de-seleção-marcada-36.png" />
     <None Include="Imagens\icons8-enviar-e-mail-em-massa-36.png" />
     <None Include="Imagens\icons8-enviar-e-mail-em-massa-48.png" />
+    <None Include="Imagens\icons8-instalador-de-software-12.png" />
+    <None Include="Imagens\icons8-instalador-de-software-24.png" />
+    <None Include="Imagens\icons8-instalador-de-software-32.png" />
+    <None Include="Imagens\icons8-instalador-de-software-48.png" />
     <Content Include="Imagens\icons8-organization-chart-people-48.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

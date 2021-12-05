@@ -87,9 +87,12 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                 var vDefaulNEg = new DefaultNEG();
                 foreach(var RegSisModulo in plSisModulo)
                 {
-                    int vIDMOD = Convert.ToInt32(vDefaulNEg.NVL(vListSisModuloNew.FindLast(linha => linha.ID_SIS == RegSisModulo.ID_SIS).ID_MOD,0));
-                    vIDMOD += 1;
-                    RegSisModulo.ID_MOD = vIDMOD;
+                    if (Convert.ToInt32(vDefaulNEg.NVL(RegSisModulo.ID_MOD,0)) == 0)
+                    {
+                        int vIDMOD = Convert.ToInt32(vDefaulNEg.NVL(vListSisModuloNew.FindLast(linha => linha.ID_SIS == RegSisModulo.ID_SIS).ID_MOD, 0));
+                        vIDMOD += 1;
+                        RegSisModulo.ID_MOD = vIDMOD;
+                    }
                     vListSisModuloNew.Add(RegSisModulo);
                     
                 }

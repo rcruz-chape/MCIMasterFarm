@@ -19,6 +19,10 @@ namespace MCISYS.Negocio.BackOffice.Negocio
         {
             return vSisSistemaDAL.bUpdateSistema(ref pBanco);
         }
+        public Boolean AtualizaSistemaVersao(ref Banco pBanco, SisSistema pSisSistema, string pNrVersao, string pIdUsuAlt)
+        {
+            return vSisSistemaDAL.bUpdateSistemaVersao(ref pBanco, pSisSistema, pNrVersao, pIdUsuAlt);
+        }
         public SisSistema OtemSis(ref Banco pBanco)
         {
             return vSisSistemaDAL.ObtemSistema(ref pBanco);

@@ -20,5 +20,23 @@ namespace MCIMasterFarm.Negocio.BackOffice.Negocio
         {
             return vConfiguracaoDAL.RetornaConfigAcao();
         }
+        public Boolean InsertConftECLA(ref Banco pBanco, List<ConfiguracaoTecla> pListConfiguracao)
+        {
+            Boolean vInsert = true;
+            foreach (var RecConf in pListConfiguracao)
+            {
+                vInsert = vConfiguracaoDAL.InsereCOnfiguracaoTecla(ref pBanco, RecConf);
+            }
+            return vInsert;
+        }
+        public Boolean InsertConf(ref Banco pBanco, List<Configuracao> pListConfiguracao)
+        {
+            Boolean vInsert = true;
+            foreach(var RecConf in pListConfiguracao)
+            {
+                vInsert = vConfiguracaoDAL.InsereCOnfiguracao(ref pBanco, RecConf);
+            }
+            return vInsert;
+        }
     }
 }

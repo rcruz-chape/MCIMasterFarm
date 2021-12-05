@@ -28,7 +28,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
                      WHERE ORG_CAD.ID_ORG = @ID_ORG";
             var Parametro = new Dictionary<string, dynamic>()
             {
-                {"ID_ORG´",pIdOrg }
+                {"ID_ORG",pIdOrg }
             };
             return RecuperaTodasOrgs(ref pBanco, vsSql, Parametro).Find(linha => linha.ID_ORG == pIdOrg);
         }

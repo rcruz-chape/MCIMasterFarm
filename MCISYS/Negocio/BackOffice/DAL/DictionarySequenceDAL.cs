@@ -23,7 +23,10 @@ namespace MCISYS.Negocio.BackOffice.DAL
                                   , 'create sequence '||b.sequence_name ||' start with '||b.start_value as comand_sequence
                                from information_schema.sequences b
                               where b.sequence_schema = @sequence_schema";
-            var vParametros = new Dictionary<string, dynamic>();
+            var vParametros = new Dictionary<string, dynamic>()
+            {
+                { "sequence_schema","mcisys"}
+            };
             return GetSequences(ref pBanco, vsSql, vParametros);
         }
         private List<sequence> GetSequences(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametro)

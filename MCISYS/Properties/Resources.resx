@@ -160,8 +160,8 @@
   <data name="icons8_caixa_de_saída_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-caixa-de-saída-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_dashboard_layout_121" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-dashboard-layout-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_interruptor_de_luz_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-interruptor-de-luz-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_esqueci_a_senha_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-esqueci-a-senha-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,8 +181,8 @@
   <data name="icons8_alterar_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-alterar-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_interruptor_de_luz_12_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-interruptor-de-luz-12-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_esqueci_a_senha_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-esqueci-a-senha-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_novo_documento_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-novo-documento-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -261,6 +261,9 @@
   </data>
   <data name="icons8-menos-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-menos-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_dashboard_layout_121" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-dashboard-layout-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_mais_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-mais-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -349,6 +352,9 @@
   <data name="icons8_documento_estatístico_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-documento-estatístico-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-reiniciar-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-reiniciar-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_user_folder_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-user-folder-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -378,6 +384,9 @@
   </data>
   <data name="icons8_mercadoria_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-mercadoria-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-enviar-e-mail-em-massa-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-enviar-e-mail-em-massa-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_excluir_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-excluir-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -421,9 +430,6 @@
   <data name="icons8_remover_usuário_masculino_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-remover-usuário-masculino-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_esqueci_a_senha_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-esqueci-a-senha-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-versão-de-teste-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-versão-de-teste-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -448,9 +454,6 @@
   <data name="icons8_novo_documento_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-novo-documento-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_duplo_para_a_direita_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-duplo-para-a-direita-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_alterar_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-alterar-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -459,6 +462,9 @@
   </data>
   <data name="icons8-licença-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-licença-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_interruptor_de_luz_12_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-interruptor-de-luz-12-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EstMovCaixa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\EstMovCaixa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -478,8 +484,11 @@
   <data name="icons8_adicionar_arquivo_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-adicionar-arquivo-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_interruptor_de_luz_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-interruptor-de-luz-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_duplo_para_a_direita_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-duplo-para-a-direita-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-enviar-e-mail-em-massa-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-enviar-e-mail-em-massa-36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_subscrição_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-subscrição-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -517,9 +526,6 @@
   <data name="GrupoNegocio_Big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\GrupoNegocio_Big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_sair_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-sair-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8_interface_de_usuário_natural_2_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-interface-de-usuário-natural-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -541,8 +547,8 @@
   <data name="icons8_botão_continuar_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-botão-continuar-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-reiniciar-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-reiniciar-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_sair_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-sair-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_documento_estatístico_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-documento-estatístico-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -562,10 +568,16 @@
   <data name="icons8-licença-241" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagens\icons8-licença-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-enviar-e-mail-em-massa-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-enviar-e-mail-em-massa-36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-instalador-de-software-12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-instalador-de-software-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-enviar-e-mail-em-massa-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagens\icons8-enviar-e-mail-em-massa-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-instalador-de-software-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-instalador-de-software-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-instalador-de-software-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-instalador-de-software-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-instalador-de-software-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagens\icons8-instalador-de-software-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

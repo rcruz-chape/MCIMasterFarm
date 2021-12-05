@@ -12,6 +12,33 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
     public class ConfiguracaoDAL
     {
         Connect vConnect = new Connect();
+        public Boolean InsereCOnfiguracaoTecla(ref Banco pBanco, ConfiguracaoTecla configuracao)
+        {
+            string vsSql = $@"INSERT INTO SIS_CONFIGURACAO
+                             (NR_KEYCODE, DS_TECLA)
+                             VALUES
+                             (@NR_KEYCODE, @DS_TECLA)";
+            var Parametro = new Dictionary<string, object>()
+            {
+                {"NR_KEYCODE",configuracao.NR_KEYCODE },
+                {"DS_TECLA",configuracao.DS_TECLA }
+            };
+            return vConnect.insert(ref pBanco, vsSql, Parametro);
+        }
+        public Boolean InsereCOnfiguracao(ref Banco pBanco, Configuracao configuracao)
+        {
+            string vsSql = $@"INSERT INTO SIS_CONFIGURACAO
+                             (NM_FUNCAO, NR_KEYCODE, DS_ACAO)
+                             VALUES
+                             (@NM_FUNCAO, @NR_KEYCODE, @DS_ACAO)";
+            var Parametro = new Dictionary<string, object>()
+            {
+                {"NM_FUNCAO",configuracao.NM_FUNCAO },
+                {"NR_KEYCODE",configuracao.NR_KEYCODE },
+                {"DS_ACAO",configuracao.DS_ACAO }
+            };
+            return vConnect.insert(ref pBanco, vsSql, Parametro);
+        }
         private List<Configuracao> GetConfig (string psSql, ref Banco pBanco)
         {
             NpgsqlConnection vConexao = vConnect.GetConnection(ref pBanco);

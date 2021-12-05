@@ -93,44 +93,47 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
         public string montaSql(string pSql, Dictionary<string, dynamic> pParametros = null)
         {
             string vSql = pSql;
-            foreach (var item in pParametros)            
+            if (pParametros != null)
             {
-                //  if (item.Value.getType() == typeof(string))
-                if (item.Value == null)
+                foreach (var item in pParametros)
                 {
-                        vSql = vSql.Replace("@" + item.Key, "null"); 
-                }
-                else
-                {
-                    var sitem = item.Value;
-                    var sitemType = sitem.GetType();
-                    if (sitemType == typeof(string))
+                    //  if (item.Value.getType() == typeof(string))
+                    if (item.Value == null)
                     {
-                        vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
+                        vSql = vSql.Replace("@" + item.Key, "null");
                     }
-                    else if (sitemType == typeof(DateTime))
+                    else
                     {
-                        vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
-                    }
-                    else if (sitemType == typeof(int))
-                    {
-                        int variavel = item.Value;
-                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
-                    }
-                    else if (sitemType == typeof(double))
-                    {
-                        int variavel = item.Value;
-                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
-                    }
-                    else if (sitemType == typeof(long))
-                    {
-                        long variavel = item.Value;
-                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
-                    }
-                    else if (sitemType == typeof(decimal))
-                    {
-                        decimal variavel = item.Value;
-                        vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                        var sitem = item.Value;
+                        var sitemType = sitem.GetType();
+                        if (sitemType == typeof(string))
+                        {
+                            vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
+                        }
+                        else if (sitemType == typeof(DateTime))
+                        {
+                            vSql = vSql.Replace("@" + item.Key, "'" + item.Value + "'");
+                        }
+                        else if (sitemType == typeof(int))
+                        {
+                            int variavel = item.Value;
+                            vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                        }
+                        else if (sitemType == typeof(double))
+                        {
+                            int variavel = item.Value;
+                            vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                        }
+                        else if (sitemType == typeof(long))
+                        {
+                            long variavel = item.Value;
+                            vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                        }
+                        else if (sitemType == typeof(decimal))
+                        {
+                            decimal variavel = item.Value;
+                            vSql = vSql.Replace("@" + item.Key, variavel.ToString());
+                        }
                     }
                 }
             }
@@ -205,6 +208,34 @@ namespace MCIMasterFarm.Negocio.BackOffice.DAL
 
             }
             return vbDelete;
+        }
+        public Boolean executeDdl(ref Banco pBanco, string psSql)
+        {
+            NpgsqlConnection conn = null;
+            NpgsqlCommand cmd = null;
+            Boolean vbUpdate = true;
+            try
+            {
+                conn = GetConnection(ref pBanco);
+                cmd = new NpgsqlCommand(psSql, conn);
+                cmd.Prepare();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                var vError = new Error();
+                vbUpdate = vError.DisplayErrorGrave("Connect.execuDdl", ex.Message, "Erro ao Implementar");
+                vbUpdate = false;
+            }
+            finally
+            {
+                if (cmd != null) cmd.Dispose();
+                if (conn != null) vbUpdate = FechaConnection(ref conn);
+
+            }
+            return vbUpdate;
         }
         public Boolean update(ref Banco pBanco, string psSql, Dictionary<string, dynamic> pParametros)
         {

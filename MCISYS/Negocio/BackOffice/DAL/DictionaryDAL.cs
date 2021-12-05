@@ -21,7 +21,7 @@ namespace MCISYS.Negocio.BackOffice.DAL
             }
             else
             {
-                return "1.0.0.0";
+                return "0.0.0.0";
             }
 
         }

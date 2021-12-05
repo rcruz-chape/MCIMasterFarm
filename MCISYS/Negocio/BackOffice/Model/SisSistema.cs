@@ -12,6 +12,7 @@ namespace MCISYS.Negocio.BackOffice.Model
         public string NM_SIS { set; get; }
         public string DS_SIS { set; get; }
         public string SG_SIS { set; get; }
+        public string NR_VERSAO { set; get; }
         public DateTime DT_INCLUSAO { set; get; }
         public DateTime DT_ALTERACAO { set; get; }
         public string ID_USU_ALT { set; get; }

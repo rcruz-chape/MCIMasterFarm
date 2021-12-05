@@ -5,11 +5,60 @@ using System.Text;
 using System.Threading.Tasks;
 using MCISYS.Negocio.BackOffice.Model;
 using MCIMasterFarm.Negocio.BackOffice.Model;
+using MCISYS.Negocio.BackOffice.Negocio;
+using MCIMasterFarm.Negocio.BackOffice.Negocio;
+using MCIMasterFarm.Negocio.BackOffice.DadosAcesso;
 
 namespace MCISYS.DictionarysVersion
 {  
+
     public class V_1_0_0_0
     {
+		public extesion MontaExtension()
+        {
+			var vExtension = new extesion();
+			vExtension.extension_name = "ltree";
+			vExtension.extension_schema = "mcisys";
+			vExtension.version = "1.2";
+			return vExtension;
+        }
+		public schemas MontaSchema()
+        {
+			var vSchema = new schemas();
+			vSchema.schema_name = "mcisys";
+			vSchema.schema_autorization = "mcisys";
+			return vSchema;
+        }
+		public SisPapelUsuario CriaPapelUsuario()
+        {
+			SisPapelUsuario vSisPapelUsuario = new SisPapelUsuario();
+
+			vSisPapelUsuario.ID_PAPEL = "1";
+			vSisPapelUsuario.ID_USU = "admin";
+
+			return vSisPapelUsuario;
+        }
+		public SisUsuarioOrganizacao CriaOrgAdmUsu()
+        {
+			SisUsuarioOrganizacao vSisUsuarioOrganizacao = new SisUsuarioOrganizacao();
+			vSisUsuarioOrganizacao.ID_ORG = 1;
+			vSisUsuarioOrganizacao.ID_USU = "admin";
+			vSisUsuarioOrganizacao.DT_INCLUSAO = DateTime.Now;
+			vSisUsuarioOrganizacao.ID_USU_INCL = "admin";
+
+			return vSisUsuarioOrganizacao;
+        }
+		public SisUsuario CriaUsuarioAdmin()
+        {
+			SisUsuario vUsuarioAdmin = new SisUsuario();
+			var Criptografia = new Criptografia();
+			vUsuarioAdmin.id_usu = "admin";
+			vUsuarioAdmin.nm_usu = "Usuário Administrador da Instância";
+			vUsuarioAdmin.ds_pwd = Criptografia.CritografiaDados("1234");
+			vUsuarioAdmin.ds_email = "renatomics28@gmail.com";
+			return vUsuarioAdmin;
+        }
+
 		public List<ConfiguracaoTecla> MontaConfiguracaoTeclado()
         {
 			List<ConfiguracaoTecla> vLisConfigAcao = new List<ConfiguracaoTecla>();
@@ -393,7 +442,7 @@ namespace MCISYS.DictionarysVersion
 						vSisModuloFuncao.ID_FUNCAO = 16;
 						break;
 				}
-
+				viIndice += 1;
 				vListSisModuloFuncao.Add(vSisModuloFuncao);
 			}
 			return vListSisModuloFuncao;
@@ -409,6 +458,7 @@ namespace MCISYS.DictionarysVersion
 			while (viIndice <= viTotModulo)
             {
 				SisModulo vSisModulo = new SisModulo();
+				vSisModulo.ID_SIS = 1;
 				switch(viIndice)
                 {
 					case 1:
@@ -447,6 +497,18 @@ namespace MCISYS.DictionarysVersion
 						vSisModulo.NM_IMAGEM_ICONE = "Mci_Merc";
 						vSisModulo.TP_MOD_ORG = "O";
 						break;
+					case 4:
+						vSisModulo.ID_MOD = 4;
+						vSisModulo.NM_MOD = "MCISYS Par";
+						vSisModulo.DS_MOD = "Módulo de Parametros";
+						vSisModulo.DT_INCLUSAO = DateTime.Now;
+						vSisModulo.DT_ALTERACAO = DateTime.Now;
+						vSisModulo.ID_USU_INCL = "admin";
+						vSisModulo.ID_USU_ALT = "admin";
+						vSisModulo.DS_SIGLA_MOD = "MPar";
+						vSisModulo.NM_IMAGEM_ICONE = "Mci_Par";
+						vSisModulo.TP_MOD_ORG = "O";
+						break;
 				}
 
 
@@ -463,10 +525,12 @@ namespace MCISYS.DictionarysVersion
 			vSisSistema.ID_SIS = 1;
 			vSisSistema.DS_SIS = "Sistema de Gestão Empresarial MCISYS";
 			vSisSistema.SG_SIS = "MCISYS";
+			vSisSistema.NM_SIS = "MCISYS Gestor";
 			vSisSistema.DT_INCLUSAO = DateTime.Now;
 			vSisSistema.DT_ALTERACAO = DateTime.Now;
 			vSisSistema.ID_USU_ALT = "admin";
 			vSisSistema.ID_USU_INCL = "admin";
+			vSisSistema.NR_VERSAO = "1.0.0.0";
 			return vSisSistema;
 		}
 		public List<SisFuncao> MontaFuncao()
@@ -814,98 +878,102 @@ namespace MCISYS.DictionarysVersion
 				switch(indice)
                 {
 					case 1:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT modu_func.id_sis,
-												modu_func.id_mod,
+						view.view_name = "vw_funcao_habilitada_papel";
+						view.view_command = @" SELECT pap_func.id_papel,
+												mod_func.id_sis,
+												mod_func.id_mod,
+												modu.ds_sigla_mod,
 												func.id_funcao,
+												func.ind_tipo_funcao,
 												func.nm_funcao,
 												func.ds_funcao,
 												func.ind_incl_reg,
 												func.ind_incl_alt,
 												func.ind_excl_reg,
 												func.ind_cons_reg,
-												func.ind_execute
-											   FROM ((sis_funcao func
-												 JOIN sis_modulo_funcao modu_func ON ((modu_func.id_funcao = func.id_funcao)))
-												 LEFT JOIN sis_papel_funcao pap_func ON (((func.id_funcao = pap_func.id_funcao) AND (pap_func.id_mod = modu_func.id_mod) AND (pap_func.id_sis = modu_func.id_sis))))
-											  WHERE (pap_func.id_funcao IS NULL);";
+												func.ind_execute,
+												func.dt_inclusao,
+												func.dt_alteracao,
+												func.id_usu_alt,
+												func.id_usu_incl,
+												func.nm_imagem_icone,
+												func.nm_funcao_resumido
+											   FROM (((sis_papel_funcao pap_func
+												 JOIN sis_modulo_funcao mod_func ON (((pap_func.id_funcao = mod_func.id_funcao) AND (pap_func.id_mod = mod_func.id_mod) AND (pap_func.id_sis = mod_func.id_sis))))
+												 JOIN sis_modulo modu ON (((modu.id_mod = mod_func.id_mod) AND (modu.id_sis = mod_func.id_sis))))
+												 JOIN sis_funcao func ON ((func.id_funcao = mod_func.id_funcao)));";
 						break;
 					case 2:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT opap.id_org,
-												opap.id_papel,
-												pap.ds_papel,
-												opap.id_usu_incl,
-												opap.dt_inclusao,
-												org.nm_org
-											   FROM ((sis_organizacao_papel opap
-												 JOIN sis_papel pap ON (((pap.id_papel)::text = (opap.id_papel)::text)))
-												 JOIN cor_organizacao org ON ((org.id_org = opap.id_org)));";
+						view.view_name = "vw_modulo_funcao";
+						view.view_command = @" SELECT pfun.id_papel,
+											mod.id_sis,
+											mod.id_mod,
+											0 AS id_funcao,
+											mod.ds_sigla_mod AS nome,
+											mod.nm_imagem_icone
+										   FROM (sis_modulo mod
+											 JOIN sis_papel_funcao pfun ON (((pfun.id_mod = mod.id_mod) AND (pfun.id_sis = mod.id_sis))))
+										UNION
+										 SELECT pfun.id_papel,
+											mod_func.id_sis,
+											mod_func.id_mod,
+											mod_func.id_funcao,
+											func.nm_funcao AS nome,
+											func.nm_imagem_icone
+										   FROM ((sis_funcao func
+											 JOIN sis_modulo_funcao mod_func ON ((mod_func.id_funcao = func.id_funcao)))
+											 JOIN sis_papel_funcao pfun ON (((pfun.id_sis = mod_func.id_sis) AND (pfun.id_mod = mod_func.id_mod) AND (pfun.id_funcao = mod_func.id_funcao))))
+										  WHERE ((func.ind_tipo_funcao)::text <> 'I'::text)
+										  ORDER BY 2, 3, 4;";
 						break;
 					case 3:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT pap_func.id_papel,
-														mod_func.id_sis,
-														mod_func.id_mod,
-														modu.ds_sigla_mod,
-														func.id_funcao,
-														func.ind_tipo_funcao,
-														func.nm_funcao,
-														func.ds_funcao,
-														func.ind_incl_reg,
-														func.ind_incl_alt,
-														func.ind_excl_reg,
-														func.ind_cons_reg,
-														func.ind_execute,
-														func.dt_inclusao,
-														func.dt_alteracao,
-														func.id_usu_alt,
-														func.id_usu_incl,
-														func.nm_imagem_icone,
-														func.nm_funcao_resumido
-													   FROM (((sis_papel_funcao pap_func
-														 JOIN sis_modulo_funcao mod_func ON (((pap_func.id_funcao = mod_func.id_funcao) AND (pap_func.id_mod = mod_func.id_mod) AND (pap_func.id_sis = mod_func.id_sis))))
-														 JOIN sis_modulo modu ON (((modu.id_mod = mod_func.id_mod) AND (modu.id_sis = mod_func.id_sis))))
-														 JOIN sis_funcao func ON ((func.id_funcao = mod_func.id_funcao)));";
+						view.view_name = "vw_modulo_sistema_habilitado";
+						view.view_command = @" SELECT mod_org.id_org,
+														org.nm_org,
+														mod_org.id_sis,
+														(((sis.sg_sis)::text || ' - '::text) || (sis.nm_sis)::text) AS sistema,
+														mod_org.id_mod,
+														(((modu.ds_sigla_mod)::text || ' - '::text) || (modu.nm_mod)::text) AS modulo
+													   FROM (((sis_modulo_organizacao mod_org
+														 JOIN sis_modulo modu ON (((modu.id_mod = mod_org.id_mod) AND (modu.id_sis = mod_org.id_sis))))
+														 JOIN sis_sistema sis ON ((sis.id_sis = modu.id_sis)))
+														 JOIN cor_organizacao org ON ((org.id_org = mod_org.id_org)));";
 						break;
 					case 4:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT pfun.id_papel,
-												mod.id_sis,
-												mod.id_mod,
-												0 AS id_funcao,
-												mod.ds_sigla_mod AS nome,
-												mod.nm_imagem_icone
-											   FROM (sis_modulo mod
-												 JOIN sis_papel_funcao pfun ON (((pfun.id_mod = mod.id_mod) AND (pfun.id_sis = mod.id_sis))))
-											UNION
-											 SELECT pfun.id_papel,
-												mod_func.id_sis,
-												mod_func.id_mod,
-												mod_func.id_funcao,
-												func.nm_funcao AS nome,
-												func.nm_imagem_icone
-											   FROM ((sis_funcao func
-												 JOIN sis_modulo_funcao mod_func ON ((mod_func.id_funcao = func.id_funcao)))
-												 JOIN sis_papel_funcao pfun ON (((pfun.id_sis = mod_func.id_sis) AND (pfun.id_mod = mod_func.id_mod) AND (pfun.id_funcao = mod_func.id_funcao))))
-											  WHERE ((func.ind_tipo_funcao)::text <> 'I'::text)
-											  ORDER BY 2, 3, 4;";
+						view.view_name = "vw_org_cadastradas";
+						view.view_command = @" WITH RECURSIVE orgs_cadastradas AS (
+											 SELECT org.id_org,
+												org.nm_org,
+												org.nm_org_resumido,
+												org.tp_org,
+												org.nm_org_path,
+												org.id_org_mae,
+												(org.nm_org_resumido)::text AS desci
+											   FROM cor_organizacao org
+											  WHERE ((org.id_org_mae IS NULL) AND ((org.tp_org)::text = 'A'::text))
+											UNION ALL
+											 SELECT org_filho.id_org,
+												org_filho.nm_org,
+												org_filho.nm_org_resumido,
+												org_filho.tp_org,
+												org_filho.nm_org_path,
+												org_filho.id_org_mae,
+												((orgs_cadastradas_1.desci || '>'::text) || (org_filho.nm_org_resumido)::text) AS desci
+											   FROM (cor_organizacao org_filho
+												 JOIN orgs_cadastradas orgs_cadastradas_1 ON ((orgs_cadastradas_1.id_org = org_filho.id_org_mae)))
+											)
+									 SELECT orgs_cadastradas.id_org,
+										orgs_cadastradas.nm_org,
+										orgs_cadastradas.nm_org_resumido,
+										orgs_cadastradas.tp_org,
+										orgs_cadastradas.nm_org_path,
+										orgs_cadastradas.id_org_mae,
+										orgs_cadastradas.desci
+									   FROM orgs_cadastradas
+									  ORDER BY orgs_cadastradas.desci;";
 						break;
 					case 5:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT mod_org.id_org,
-												org.nm_org,
-												mod_org.id_sis,
-												(((sis.sg_sis)::text || ' - '::text) || (sis.nm_sis)::text) AS sistema,
-												mod_org.id_mod,
-												(((modu.ds_sigla_mod)::text || ' - '::text) || (modu.nm_mod)::text) AS modulo
-											   FROM (((sis_modulo_organizacao mod_org
-												 JOIN sis_modulo modu ON (((modu.id_mod = mod_org.id_mod) AND (modu.id_sis = mod_org.id_sis))))
-												 JOIN sis_sistema sis ON ((sis.id_sis = modu.id_sis)))
-												 JOIN cor_organizacao org ON ((org.id_org = mod_org.id_org)));";
-						break;
-					case 6:
-						view.view_name = "MCISYS";
+						view.view_name = "vw_org_usuario";
 						view.view_command = @" SELECT org.id_org,
 													org.nm_org_resumido,
 													org.nm_org,
@@ -914,59 +982,55 @@ namespace MCISYS.DictionarysVersion
 												   FROM (cor_organizacao org
 													 JOIN sis_usuario_organizacao usu_org ON ((usu_org.id_org = org.id_org)));";
 						break;
+					case 6:
+						view.view_name = "vw_pap_usuario";
+						view.view_command = @" SELECT DISTINCT pap.id_papel,
+												 pap.ds_papel,
+												pap.tp_papel,
+												COALESCE(org_pap_usu.id_org, opap.id_org) AS id_org,
+												COALESCE(org_pap_usu.id_usu, pusu.id_usu) AS id_usu
+											   FROM (((sis_papel pap
+												 LEFT JOIN sis_organizacao_papel_usuario org_pap_usu ON (((org_pap_usu.id_papel)::text = (pap.id_papel)::text)))
+												 LEFT JOIN sis_organizacao_papel opap ON (((opap.id_papel)::text = (org_pap_usu.id_papel)::text)))
+												 LEFT JOIN sis_papel_usuario pusu ON (((pusu.id_papel)::text = (org_pap_usu.id_papel)::text)));";
+						break;
 					case 7:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT pusu.id_papel,
-													pusu.id_usu,
-													usu.id_usu_incl,
-													usu.dt_inclusao
-												   FROM (sis_papel_usuario pusu
-													 JOIN sis_usuario usu ON (((pusu.id_usu)::text = (usu.id_usu)::text)));";
+						view.view_name = "vw_sis_funcao_implementar";
+						view.view_command = @" SELECT modu_func.id_sis,
+														modu_func.id_mod,
+														func.id_funcao,
+														func.nm_funcao,
+														func.ds_funcao,
+														func.ind_incl_reg,
+														func.ind_incl_alt,
+														func.ind_excl_reg,
+														func.ind_cons_reg,
+														func.ind_execute
+													   FROM ((sis_funcao func
+														 JOIN sis_modulo_funcao modu_func ON ((modu_func.id_funcao = func.id_funcao)))
+														 LEFT JOIN sis_papel_funcao pap_func ON (((func.id_funcao = pap_func.id_funcao) AND (pap_func.id_mod = modu_func.id_mod) AND (pap_func.id_sis = modu_func.id_sis))))
+													  WHERE (pap_func.id_funcao IS NULL);";
 						break;
 					case 8:
-						view.view_name = "MCISYS";
-						view.view_command = @" SELECT DISTINCT pap.id_papel,
-																pap.ds_papel,
-																pap.tp_papel,
-																COALESCE(org_pap_usu.id_org, opap.id_org) AS id_org,
-																COALESCE(org_pap_usu.id_usu, pusu.id_usu) AS id_usu
-															   FROM (((sis_papel pap
-																 LEFT JOIN sis_organizacao_papel_usuario org_pap_usu ON (((org_pap_usu.id_papel)::text = (pap.id_papel)::text)))
-																 LEFT JOIN sis_organizacao_papel opap ON (((opap.id_papel)::text = (org_pap_usu.id_papel)::text)))
-																 LEFT JOIN sis_papel_usuario pusu ON (((pusu.id_papel)::text = (org_pap_usu.id_papel)::text)));";
+						view.view_name = "vw_sis_organizacao";
+						view.view_command = @" SELECT opap.id_org,
+														opap.id_papel,
+														pap.ds_papel,
+														opap.id_usu_incl,
+														opap.dt_inclusao,
+														org.nm_org
+													   FROM ((sis_organizacao_papel opap
+														 JOIN sis_papel pap ON (((pap.id_papel)::text = (opap.id_papel)::text)))
+														 JOIN cor_organizacao org ON ((org.id_org = opap.id_org)));";
 						break;
 					case 9:
-						view.view_name = "MCISYS";
-						view.view_command = @" WITH RECURSIVE orgs_cadastradas AS (
-												 SELECT org.id_org,
-													org.nm_org,
-													org.nm_org_resumido,
-													org.tp_org,
-													org.nm_org_path,
-													org.id_org_mae,
-													(org.nm_org_resumido)::text AS desci
-												   FROM cor_organizacao org
-												  WHERE ((org.id_org_mae IS NULL) AND ((org.tp_org)::text = 'A'::text))
-												UNION ALL
-												 SELECT org_filho.id_org,
-													org_filho.nm_org,
-													org_filho.nm_org_resumido,
-													org_filho.tp_org,
-													org_filho.nm_org_path,
-													org_filho.id_org_mae,
-													((orgs_cadastradas_1.desci || '>'::text) || (org_filho.nm_org_resumido)::text) AS desci
-												   FROM (cor_organizacao org_filho
-													 JOIN orgs_cadastradas orgs_cadastradas_1 ON ((orgs_cadastradas_1.id_org = org_filho.id_org_mae)))
-												)
-										 SELECT orgs_cadastradas.id_org,
-											orgs_cadastradas.nm_org,
-											orgs_cadastradas.nm_org_resumido,
-											orgs_cadastradas.tp_org,
-											orgs_cadastradas.nm_org_path,
-											orgs_cadastradas.id_org_mae,
-											orgs_cadastradas.desci
-										   FROM orgs_cadastradas
-										  ORDER BY orgs_cadastradas.desci;";
+						view.view_name = "vw_sis_pap_usu";
+						view.view_command = @" SELECT pusu.id_papel,
+												pusu.id_usu,
+												usu.id_usu_incl,
+												usu.dt_inclusao
+											   FROM (sis_papel_usuario pusu
+												 JOIN sis_usuario usu ON (((pusu.id_usu)::text = (usu.id_usu)::text)));";
 						break;
 				}
 				indice += 1;
@@ -976,7 +1040,7 @@ namespace MCISYS.DictionarysVersion
         }
 		public List<constraint> MontaConstraint()
         {
-			int tot_constraint = 124;
+			int tot_constraint = 95;
 			int indice = 1;
 			List<constraint> ListConstraint = new List<constraint>();
 			while(indice <= tot_constraint)
@@ -1384,467 +1448,264 @@ namespace MCISYS.DictionarysVersion
 
 					case 58:
 						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
+						constraint.constraint_Name = "unidade_fk_mercadoria";
 						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
+						constraint.command_constraint = "FOREIGN KEY (cod_um, id_org) REFERENCES cor_unidade_medida(cod_um, id_org)";
 						break;
 
 					case 59:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 60:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 61:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 62:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 63:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 64:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 65:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "subgrupo_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_grp_merc, id_org, id_subgrp_merc) REFERENCES cor_sub_grupo_mercadoria(id_grp_merc, id_org, id_subgrp_merc)";
-						break;
-
-					case 66:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "unidade_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (cod_um, id_org) REFERENCES cor_unidade_medida(cod_um, id_org)";
-						break;
-
-					case 67:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "unidade_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (cod_um, id_org) REFERENCES cor_unidade_medida(cod_um, id_org)";
-						break;
-
-					case 68:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "unidade_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (cod_um, id_org) REFERENCES cor_unidade_medida(cod_um, id_org)";
-						break;
-
-					case 69:
-						constraint.table_name = "COR_MERCADORIA";
-						constraint.constraint_Name = "unidade_fk_mercadoria";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (cod_um, id_org) REFERENCES cor_unidade_medida(cod_um, id_org)";
-						break;
-
-					case 70:
 						constraint.table_name = "COR_NCM_MERCADORIA";
 						constraint.constraint_Name = "fk_gmerc_ncm";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (cod_gene_merc) REFERENCES cor_genero_mercadoria(cod_gene_merc)";
 						break;
 
-					case 71:
+					case 60:
 						constraint.table_name = "COR_ORGANIZACAO";
 						constraint.constraint_Name = "org_adm_fk_org";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org_mae) REFERENCES cor_organizacao(id_org) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 72:
+					case 61:
 						constraint.table_name = "COR_ORGANIZACAO_LICENCA";
 						constraint.constraint_Name = "orglic_fk_org";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org) ON DELETE CASCADE";
 						break;
 
-					case 73:
+					case 62:
 						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
 						constraint.constraint_Name = "gmerc_fk_sub_gmerc";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org, id_grp_merc) REFERENCES cor_grupo_mercadoria(id_org, id_grp_merc)";
 						break;
 
-					case 74:
-						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
-						constraint.constraint_Name = "gmerc_fk_sub_gmerc";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_org, id_grp_merc) REFERENCES cor_grupo_mercadoria(id_org, id_grp_merc)";
-						break;
-
-					case 75:
-						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
-						constraint.constraint_Name = "gmerc_fk_sub_gmerc";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_org, id_grp_merc) REFERENCES cor_grupo_mercadoria(id_org, id_grp_merc)";
-						break;
-
-					case 76:
-						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
-						constraint.constraint_Name = "gmerc_fk_sub_gmerc";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_org, id_grp_merc) REFERENCES cor_grupo_mercadoria(id_org, id_grp_merc)";
-						break;
-
-					case 77:
-						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
-						constraint.constraint_Name = "org_fk_sub_gmerc";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org)";
-						break;
-
-					case 78:
-						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
-						constraint.constraint_Name = "usu_alt_fk_sub_gmerc";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu)";
-						break;
-
-					case 79:
-						constraint.table_name = "COR_SUB_GRUPO_MERCADORIA";
-						constraint.constraint_Name = "usu_incl_fk_sub_gmerc";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu)";
-						break;
-
-					case 80:
+					case 63:
 						constraint.table_name = "COR_UNIDADE_MEDIDA";
 						constraint.constraint_Name = "org_fk_um";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org)";
 						break;
 
-					case 81:
+					case 64:
 						constraint.table_name = "COR_UNIDADE_MEDIDA";
 						constraint.constraint_Name = "usu_alt_fk_um";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu)";
 						break;
 
-					case 82:
+					case 65:
 						constraint.table_name = "COR_UNIDADE_MEDIDA";
 						constraint.constraint_Name = "usu_incl_fk_um";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu)";
 						break;
 
-					case 83:
+					case 66:
 						constraint.table_name = "SIS_FUNCAO";
 						constraint.constraint_Name = "func_alt_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 84:
+					case 67:
 						constraint.table_name = "SIS_FUNCAO";
 						constraint.constraint_Name = "func_incl_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 85:
+					case 68:
 						constraint.table_name = "SIS_FUNCAO_IMPLEMENTADA";
 						constraint.constraint_Name = "func_fk_impl";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_funcao) REFERENCES sis_funcao(id_funcao)";
 						break;
 
-					case 86:
+					case 69:
 						constraint.table_name = "SIS_MODULO";
 						constraint.constraint_Name = "mod_alt_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 87:
+					case 70:
 						constraint.table_name = "SIS_MODULO";
 						constraint.constraint_Name = "mod_fk_sis";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_sis) REFERENCES sis_sistema(id_sis) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 88:
+					case 71:
 						constraint.table_name = "SIS_MODULO";
 						constraint.constraint_Name = "mod_incl_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 89:
+					case 72:
 						constraint.table_name = "SIS_MODULO_FUNCAO";
 						constraint.constraint_Name = "funcao_fk_mod_func";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_funcao) REFERENCES sis_funcao(id_funcao)";
 						break;
 
-					case 90:
+					case 73:
 						constraint.table_name = "SIS_MODULO_FUNCAO";
 						constraint.constraint_Name = "mod_fk_mod_func";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
 						break;
 
-					case 91:
-						constraint.table_name = "SIS_MODULO_FUNCAO";
-						constraint.constraint_Name = "mod_fk_mod_func";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
-						break;
-
-					case 92:
-						constraint.table_name = "SIS_MODULO_FUNCAO";
-						constraint.constraint_Name = "mod_fk_mod_func";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
-						break;
-
-					case 93:
-						constraint.table_name = "SIS_MODULO_FUNCAO";
-						constraint.constraint_Name = "mod_fk_mod_func";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
-						break;
-
-					case 94:
+					case 74:
 						constraint.table_name = "SIS_MODULO_ORGANIZACAO";
 						constraint.constraint_Name = "mod_fk_mod_org";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
 						break;
 
-					case 95:
-						constraint.table_name = "SIS_MODULO_ORGANIZACAO";
-						constraint.constraint_Name = "mod_fk_mod_org";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
-						break;
-
-					case 96:
-						constraint.table_name = "SIS_MODULO_ORGANIZACAO";
-						constraint.constraint_Name = "mod_fk_mod_org";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
-						break;
-
-					case 97:
-						constraint.table_name = "SIS_MODULO_ORGANIZACAO";
-						constraint.constraint_Name = "mod_fk_mod_org";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_sis, id_mod) REFERENCES sis_modulo(id_sis, id_mod)";
-						break;
-
-					case 98:
-						constraint.table_name = "SIS_MODULO_ORGANIZACAO";
-						constraint.constraint_Name = "org_fk_mod_org";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org) ON DELETE CASCADE";
-						break;
-
-					case 99:
+					case 75:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL";
 						constraint.constraint_Name = "org_fk_org_pap";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org) ON DELETE CASCADE";
 						break;
 
-					case 100:
+					case 76:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL";
 						constraint.constraint_Name = "pap_fk_org_pap";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_papel) REFERENCES sis_papel(id_papel) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 101:
+					case 77:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL";
 						constraint.constraint_Name = "usu_incl_fk_org_pap";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 102:
+					case 78:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL_USUARIO";
 						constraint.constraint_Name = "org_fk_org_pap_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org) ON DELETE CASCADE";
 						break;
 
-					case 103:
+					case 79:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL_USUARIO";
 						constraint.constraint_Name = "pap_fk_org_pap_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_papel) REFERENCES sis_papel(id_papel) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 104:
+					case 80:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL_USUARIO";
 						constraint.constraint_Name = "sis_fk_org_pap_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 105:
+					case 81:
 						constraint.table_name = "SIS_ORGANIZACAO_PAPEL_USUARIO";
 						constraint.constraint_Name = "usu_incl_fk_org_pap_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 106:
+					case 82:
 						constraint.table_name = "SIS_PAPEL";
 						constraint.constraint_Name = "pap_alt_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 107:
+					case 83:
 						constraint.table_name = "SIS_PAPEL";
 						constraint.constraint_Name = "pap_incl_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 108:
+					case 84:
 						constraint.table_name = "SIS_PAPEL_FUNCAO";
 						constraint.constraint_Name = "pap_funcao_fk_funcao";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_funcao) REFERENCES sis_funcao(id_funcao)";
 						break;
 
-					case 109:
+					case 85:
 						constraint.table_name = "SIS_PAPEL_FUNCAO";
 						constraint.constraint_Name = "pap_funcao_fk_modulo";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_mod, id_sis) REFERENCES sis_modulo(id_mod, id_sis)";
 						break;
 
-					case 110:
-						constraint.table_name = "SIS_PAPEL_FUNCAO";
-						constraint.constraint_Name = "pap_funcao_fk_modulo";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_mod, id_sis) REFERENCES sis_modulo(id_mod, id_sis)";
-						break;
-
-					case 111:
-						constraint.table_name = "SIS_PAPEL_FUNCAO";
-						constraint.constraint_Name = "pap_funcao_fk_modulo";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_mod, id_sis) REFERENCES sis_modulo(id_mod, id_sis)";
-						break;
-
-					case 112:
-						constraint.table_name = "SIS_PAPEL_FUNCAO";
-						constraint.constraint_Name = "pap_funcao_fk_modulo";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_mod, id_sis) REFERENCES sis_modulo(id_mod, id_sis)";
-						break;
-
-					case 113:
+					case 86:
 						constraint.table_name = "SIS_PAPEL_FUNCAO";
 						constraint.constraint_Name = "pap_funcao_fk_papel";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_papel) REFERENCES sis_papel(id_papel)";
 						break;
 
-					case 114:
+					case 87:
 						constraint.table_name = "SIS_PAPEL_USUARIO";
 						constraint.constraint_Name = "papel_usu_fk_papel";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_papel) REFERENCES sis_papel(id_papel) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 115:
+					case 88:
 						constraint.table_name = "SIS_PAPEL_USUARIO";
 						constraint.constraint_Name = "papel_usu_fk_usu";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 116:
+					case 89:
 						constraint.table_name = "SIS_SISTEMA";
 						constraint.constraint_Name = "sis_fk_usu_alt";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 117:
+					case 90:
 						constraint.table_name = "SIS_SISTEMA";
 						constraint.constraint_Name = "sis_fk_usu_incl";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 118:
-						constraint.table_name = "SIS_USUARIO";
-						constraint.constraint_Name = "sis_usuario_id_usu_alt_e8051b66_fk_sis_usuario_id_usu";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_usu_alt) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
-						break;
-
-					case 119:
-						constraint.table_name = "SIS_USUARIO";
-						constraint.constraint_Name = "sis_usuario_id_usu_incl_e534d3b2_fk_sis_usuario_id_usu";
-						constraint.constraint_type = "FK";
-						constraint.command_constraint = "FOREIGN KEY (id_usu_incl) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
-						break;
-
-					case 120:
+					case 91:
 						constraint.table_name = "SIS_USUARIO_HIST";
 						constraint.constraint_Name = "usu_fk_uhist";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 121:
+					case 92:
 						constraint.table_name = "SIS_USUARIO_LOG";
 						constraint.constraint_Name = "usu_fk_ulog";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 122:
+					case 93:
 						constraint.table_name = "SIS_USUARIO_ORGANIZACAO";
 						constraint.constraint_Name = "org_fk_usu_org";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_org) REFERENCES cor_organizacao(id_org) ON DELETE CASCADE";
 						break;
 
-					case 123:
+					case 94:
 						constraint.table_name = "SIS_USUARIO_ORGANIZACAO";
 						constraint.constraint_Name = "usu_fk_usu_org";
 						constraint.constraint_type = "FK";
 						constraint.command_constraint = "FOREIGN KEY (id_usu) REFERENCES sis_usuario(id_usu) DEFERRABLE INITIALLY DEFERRED";
 						break;
 
-					case 124:
+					case 95:
 						constraint.table_name = "SIS_USUARIO_ORGANIZACAO";
 						constraint.constraint_Name = "usu_incl_fk_usu_org";
 						constraint.constraint_type = "FK";
@@ -1890,7 +1751,7 @@ namespace MCISYS.DictionarysVersion
         }
         public List<columns> MontaColunas()
         {
-            int tot_colunas = 280;
+            int tot_colunas = 283;
             int indice = 1;
             List<columns> ListColumns = new List<columns>();
 
@@ -1903,10 +1764,8 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_GENERO_MERCADORIA";
 						column.indice_col = 1;
 						column.column_name = "COD_GENE_MERC";
-						column.column_type = "NUMERIC";
+						column.column_type = "INT";
 						column.isNull = true;
-						column.column_lenght = 2;
-						column.column_precision = 4;
 						break;
 
 					case 2:
@@ -2029,7 +1888,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA";
 						column.indice_col = 2;
 						column.column_name = "COD_MERC";
-						column.column_type = "NUMERIC";
+						column.column_type = "INT";
 						column.isNull = true;
 						column.column_lenght = 7;
 						column.column_precision = 4;
@@ -2453,10 +2312,8 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_MERCADORIA_VIGENCIA";
 						column.indice_col = 6;
 						column.column_name = "COD_GENE_MERC";
-						column.column_type = "NUMERIC";
+						column.column_type = "INT";
 						column.isNull = true;
-						column.column_lenght = 2;
-						column.column_precision = 4;
 						break;
 
 					case 61:
@@ -2528,10 +2385,8 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "COR_NCM_MERCADORIA";
 						column.indice_col = 2;
 						column.column_name = "COD_GENE_MERC";
-						column.column_type = "NUMERIC";
+						column.column_type = "INT";
 						column.isNull = true;
-						column.column_lenght = 2;
-						column.column_precision = 4;
 						break;
 
 					case 69:
@@ -2851,7 +2706,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_CONFIGURACAO_EMAIL";
 						column.indice_col = 3;
 						column.column_name = "BO_ENABLE_SSL";
-						column.column_type = "BOOL";
+						column.column_type = "BOOLEAN";
 						column.isNull = true;
 						break;
 
@@ -2859,7 +2714,7 @@ namespace MCISYS.DictionarysVersion
 						column.table_name = "SIS_CONFIGURACAO_EMAIL";
 						column.indice_col = 4;
 						column.column_name = "BO_USE_DEFAULT_CREDENTIALS";
-						column.column_type = "BOOL";
+						column.column_type = "BOOLEAN";
 						column.isNull = true;
 						break;
 
@@ -3543,7 +3398,7 @@ namespace MCISYS.DictionarysVersion
 
 					case 180:
 						column.table_name = "SIS_SISTEMA";
-						column.indice_col = 5;
+						column.indice_col = 6;
 						column.column_name = "DT_INCLUSAO";
 						column.column_type = "DATE";
 						column.isNull = true;
@@ -3551,7 +3406,7 @@ namespace MCISYS.DictionarysVersion
 
 					case 181:
 						column.table_name = "SIS_SISTEMA";
-						column.indice_col = 6;
+						column.indice_col = 7;
 						column.column_name = "DT_ALTERACAO";
 						column.column_type = "DATE";
 						column.isNull = false;
@@ -3559,7 +3414,7 @@ namespace MCISYS.DictionarysVersion
 
 					case 182:
 						column.table_name = "SIS_SISTEMA";
-						column.indice_col = 7;
+						column.indice_col = 8;
 						column.column_name = "ID_USU_ALT";
 						column.column_type = "VARCHAR";
 						column.isNull = false;
@@ -3568,7 +3423,7 @@ namespace MCISYS.DictionarysVersion
 
 					case 183:
 						column.table_name = "SIS_SISTEMA";
-						column.indice_col = 8;
+						column.indice_col = 9;
 						column.column_name = "ID_USU_INCL";
 						column.column_type = "VARCHAR";
 						column.isNull = true;
@@ -4453,10 +4308,35 @@ namespace MCISYS.DictionarysVersion
 						column.column_type = "DATE";
 						column.isNull = false;
 						break;
+					case 281:
+						column.table_name = "SIS_SISTEMA";
+						column.indice_col = 5;
+						column.column_name = "NR_VERSAO";
+						column.column_type = "VARCHAR";
+						column.column_lenght = 10;
+						column.isNull = true;
+						break;
+					case 282:
+						column.table_name = "SIS_SISTEMA_VERSAO_IMPLEMENTADO";
+						column.indice_col = 2;
+						column.column_name = "NR_VERSAO";
+						column.column_type = "VARCHAR";
+						column.column_lenght = 10;
+						column.isNull = true;
+						break;
+					case 284:
+						column.table_name = "SIS_SISTEMA_VERSAO_IMPLEMENTADO";
+						column.indice_col = 1;
+						column.column_name = "ID_SIS";
+						column.column_type = "INT";
+						column.isNull = true;
+						break;
+
+
 
 				}
 
-
+				ListColumns.Add(column);
 				indice += 1;
             }
 
@@ -4464,7 +4344,7 @@ namespace MCISYS.DictionarysVersion
         }
         public List<tables> MontaTables()
         {
-            int tot_Tables = 28;
+            int tot_Tables = 30;
             int indice = 1;
             List<tables> ListTable = new List<tables>();
             
@@ -4542,7 +4422,7 @@ namespace MCISYS.DictionarysVersion
                         tablename.table_name = "COR_GRUPO_MERCADORIA";
                         break;
                     case 23:
-                        tablename.table_name = "COR_SUBGRUPO_MERCADORIA";
+                        tablename.table_name = "COR_SUB_GRUPO_MERCADORIA";
                         break;
                     case 24:
                         tablename.table_name = "COR_UNIDADE_MERCADORIA";
@@ -4559,7 +4439,13 @@ namespace MCISYS.DictionarysVersion
                     case 28:
                         tablename.table_name = "COR_MERCADORIA_VIGENCIA";
                         break;
-                }
+					case 29:
+						tablename.table_name = "SIS_SISTEMA_VERSAO_IMPLEMENTADO";
+						break;
+					case 30:
+						tablename.table_name = "COR_UNIDADE_MEDIDA";
+						break;
+				}
 
                 ListTable.Add(tablename);
                 indice += 1;

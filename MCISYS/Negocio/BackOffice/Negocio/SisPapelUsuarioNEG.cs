@@ -73,10 +73,15 @@ namespace MCISYS.Negocio.BackOffice.Negocio
                                            List<SisPapelUsuario> PListFinalPUsu)
         {
             Boolean vbInclue = true;
-
+            Boolean vbDefinicao = true;
             foreach(var Pusu in PListFinalPUsu)
             {
-                if (!pListInicialPUsu.Exists(LinhaPusu => LinhaPusu.ID_PAPEL == Pusu.ID_PAPEL && LinhaPusu.ID_USU == Pusu.ID_USU))
+                vbDefinicao = (pListInicialPUsu == null);
+                if (!vbDefinicao)
+                {
+                    vbDefinicao = (!pListInicialPUsu.Exists(LinhaPusu => LinhaPusu.ID_PAPEL == Pusu.ID_PAPEL && LinhaPusu.ID_USU == Pusu.ID_USU));
+                }
+                if (vbDefinicao == true)
                 {
                     vbInclue = vSisPapelUsuarioDAL.bInsert(ref pBanco, Pusu);
                     if (!vbInclue)

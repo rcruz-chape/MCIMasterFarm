@@ -913,6 +913,46 @@ namespace MCISYS.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icons8_instalador_de_software_12 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-instalador-de-software-12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_instalador_de_software_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-instalador-de-software-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_instalador_de_software_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-instalador-de-software-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap icons8_instalador_de_software_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-instalador-de-software-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icons8_interface_de_usuário_natural_2_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8_interface_de_usuário_natural_2_24", resourceCulture);

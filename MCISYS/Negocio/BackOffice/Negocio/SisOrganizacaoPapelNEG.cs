@@ -51,15 +51,21 @@ namespace MCISYS.Negocio.BackOffice.Negocio
             , List<SisOrganizacaoPapel> pListSisOrganizacaoFinal)
         {
             Boolean vbAssocia = true;
+            Boolean vbOrgInicial = true;
             var ListOrPapel = new List<SisOrganizacaoPapel>();
             foreach(var RegOrgPap in pListSisOrganizacaoFinal)
             {
-                if (!pListSisOrganizacaoInicial.Exists(linhaRegOrgPap => linhaRegOrgPap.ID_ORG == RegOrgPap.ID_ORG
-                                                                      && linhaRegOrgPap.ID_PAPEL == RegOrgPap.ID_PAPEL))
+                vbOrgInicial = (pListSisOrganizacaoInicial == null);
+                if (!vbOrgInicial)
+                {
+                    vbOrgInicial = (!pListSisOrganizacaoInicial.Exists(linhaRegOrgPap => linhaRegOrgPap.ID_ORG == RegOrgPap.ID_ORG
+                                                                          && linhaRegOrgPap.ID_PAPEL == RegOrgPap.ID_PAPEL));
+                }
+                if (vbOrgInicial)
                 {
                     vbAssocia = vSisOrgPap.InserePapelAssociadoOrg(ref pBanco, RegOrgPap);
                     if(!vbAssocia)
-                    {
+                {
                         break;
                     }
 
